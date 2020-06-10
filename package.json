@@ -23,8 +23,5 @@
   },
   "engines": {
     "node": "10"
-  },
-  "dependencies": {
-    "node-package": "^1.4.0"
   }
 }
