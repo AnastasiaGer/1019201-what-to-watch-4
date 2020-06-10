@@ -25,8 +25,6 @@
     "node": "10"
   },
   "dependencies": {
-    "npm-install": "^1.4.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "node-package": "^1.4.0"
   }
 }
