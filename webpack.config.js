@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const path = require(`path`);
 
 module.exports = {
@@ -9,8 +8,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, `public`),
-    open: true,
-    inline: true,
+    open: false,
     port: 1337,
   },
   module: {
