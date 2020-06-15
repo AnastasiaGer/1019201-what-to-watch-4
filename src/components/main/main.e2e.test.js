@@ -1,37 +1,38 @@
-import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import Main from './main.jsx';
+import React from "react";
+import Enzyme, {shallow} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import Main from "./main";
+
+const Movie = {
+  TITLE: `The Grand Budapest Hotel`,
+  GENRE: `Drama`,
+  DATE: `2014`,
+};
+
+const moviesTitles = [`Fantastic Beasts: The Crimes of Grindelwald`, `Bohemian Rhapsody`, `Macbeth`, `Aviator`, `We need to talk about Kevin`, `What We Do in the Shadows`, `Revenant`, `Johnny English`, `Shutter Island`, `Pulp Fiction`, `No Country for Old Men`, `Snatch`, `Moonrise Kingdom`, `Seven Years in Tibet`, `Midnight Special`, `War of the Worlds`, `Dardjeeling Limited`, `Orlando`, `Mindhunter`, `Midnight Special`];
 
 Enzyme.configure({
   adapter: new Adapter(),
 });
 
-const Movie = {
-  TITLE: `Film name`,
-  GENRE: `Film genre`,
-  DATE: 2020
-};
-
-const moviesTitles = [
-  `film-1`
-];
-
-it(`Should film-card title be pressed`, () => {
-
-  const onFilmCardTitleClick = jest.fn();
+it(`Card title should be pressed`, () => {
+  const cardTitleClickHandler = jest.fn();
 
   const main = shallow(
       <Main
-        film={Movie}
-        filmList={moviesTitles}
-        onFilmCardTitleClick={onFilmCardTitleClick}
-      />);
+        movieTitle={Movie.TITLE}
+        movieGenre={Movie.GENRE}
+        movieDate={Movie.DATE}
+        moviesTitles={moviesTitles}
+        onCardTitleClick={cardTitleClickHandler}
+      />
+  );
 
-  const filmCardLink = main.find(`.small-movie-card__title`).first();
+  const movieCardTitles = main.find(`.small-movie-card__title`);
 
-  filmCardLink.forEach((title) => title.simulate(`click`));
+  movieCardTitles.forEach((movieCardTitle) => {
+    movieCardTitle.props().onClick();
+  });
 
-  expect(onFilmCardTitleClick.mock.calls.length).toBe(Movie.length);
-
+  expect(cardTitleClickHandler.mock.calls.length).toBe(movieCardTitles.length);
 });

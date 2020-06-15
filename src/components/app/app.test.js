@@ -1,47 +1,24 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-
-import App from './app.jsx';
+import React from "react";
+import renderer from "react-test-renderer";
+import App from "./app";
 
 const Movie = {
-  TITLE: `Film name`,
-  GENRE: `Film genre`,
-  DATE: 2020,
+  TITLE: `The Grand Budapest Hotel`,
+  GENRE: `Drama`,
+  DATE: `2014`,
 };
 
-const moviesTitles = [
-  `film-1`,
-  `film-2`,
-  `film-3`,
-  `film-4`,
-  `film-5`,
-  `film-6`,
-  `film-7`,
-  `film-8`,
-  `film-9`,
-  `film-10`,
-  `film-11`,
-  `film-12`,
-  `film-13`,
-  `film-14`,
-  `film-15`,
-  `film-16`,
-  `film-17`,
-  `film-18`,
-  `film-19`,
-  `film-20`,
-];
-
-const onFilmCardTitleClick = jest.fn();
+const moviesTitles = [`Fantastic Beasts: The Crimes of Grindelwald`, `Bohemian Rhapsody`, `Macbeth`, `Aviator`, `We need to talk about Kevin`, `What We Do in the Shadows`, `Revenant`, `Johnny English`, `Shutter Island`, `Pulp Fiction`, `No Country for Old Men`, `Snatch`, `Moonrise Kingdom`, `Seven Years in Tibet`, `Midnight Special`, `War of the Worlds`, `Dardjeeling Limited`, `Orlando`, `Mindhunter`, `Midnight Special`];
 
 it(`Render App`, () => {
   const tree = renderer
-    .create(<App
-      film={Movie}
-      filmList={moviesTitles}
-      onFilmCardTitleClick = {onFilmCardTitleClick}
-    />)
-    .toJSON();
-
+    .create(
+        <App
+          movieTitle={Movie.TITLE}
+          movieGenre={Movie.GENRE}
+          movieDate={Movie.DATE}
+          moviesTitles={moviesTitles}
+        />
+    ).toJSON();
   expect(tree).toMatchSnapshot();
 });
