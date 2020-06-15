@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Main = (props) => {
-  const {movieTitle, movieGenre, movieDate, moviesTitles} = props;
+  const {movieTitle, movieGenre, movieDate, moviesTitles, onCardTitleClick} = props;
 
   return (
     <React.Fragment>
@@ -105,7 +105,7 @@ const Main = (props) => {
                   <div className="small-movie-card__image">
                     <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt={moviesTitle} width="280" height="175" />
                   </div>
-                  <h3 className="small-movie-card__title">
+                  <h3 onClick={onCardTitleClick} className="small-movie-card__title">
                     <a className="small-movie-card__link" href="movie-page.html">{moviesTitle}</a>
                   </h3>
                 </article>);
@@ -137,6 +137,7 @@ const Main = (props) => {
 
 Main.propTypes = {
   movieTitle: PropTypes.string.isRequired,
+  onCardTitleClick: PropTypes.func.isRequired,
   movieGenre: PropTypes.string.isRequired,
   movieDate: PropTypes.string.isRequired,
   moviesTitles: PropTypes.arrayOf(
