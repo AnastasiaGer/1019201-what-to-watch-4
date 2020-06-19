@@ -1,28 +1,41 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Main from "./main";
+import Main from "./main.jsx";
 
-const Movie = {
-  TITLE: `The Grand Budapest Hotel`,
-  GENRE: `Drama`,
-  DATE: `2014`,
+const promoMovie = {
+  TITLE: `The Dark Knight`,
+  GENRE: `Action`,
+  DATE: `2008`,
 };
 
-const moviesTitles = [`Fantastic Beasts: The Crimes of Grindelwald`, `Bohemian Rhapsody`, `Macbeth`, `Aviator`, `We need to talk about Kevin`, `What We Do in the Shadows`, `Revenant`, `Johnny English`, `Shutter Island`, `Pulp Fiction`, `No Country for Old Men`, `Snatch`, `Moonrise Kingdom`, `Seven Years in Tibet`, `Midnight Special`, `War of the Worlds`, `Dardjeeling Limited`, `Orlando`, `Mindhunter`, `Midnight Special`];
+const movies = [
+  {
+    title: `title-1`,
+    image: `image-1`
+  },
+  {
+    title: `title-2`,
+    image: `image-2`
+  },
+  {
+    title: `title-3`,
+    image: `image-3`
+  },
+  {
+    title: `title-4`,
+    image: `image-4`
+  }
+];
 
-const cardTitleClickHandler = () => {};
+describe(`Main`, () => {
+  it(`Should render correctly with movies titles array`, () => {
+    const tree = renderer
+      .create(<Main
+        promoMovie={promoMovie}
+        movies={movies}
+        onTitleClick={() => {}} />)
+      .toJSON();
 
-it(`Render Main`, () => {
-  const tree = renderer
-    .create(
-        <Main
-          movieTitle={Movie.TITLE}
-          movieGenre={Movie.GENRE}
-          movieDate={Movie.DATE}
-          moviesTitles={moviesTitles}
-          onCardTitleClick={cardTitleClickHandler}
-        />
-    ).toJSON();
-
-  expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
+  });
 });

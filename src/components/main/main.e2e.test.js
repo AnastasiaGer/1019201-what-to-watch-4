@@ -1,38 +1,52 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
+import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import Main from "./main";
+import Main from "./main.jsx";
 
-const Movie = {
-  TITLE: `The Grand Budapest Hotel`,
-  GENRE: `Drama`,
-  DATE: `2014`,
+const promoMovie = {
+  TITLE: `The Dark Knight`,
+  GENRE: `Action`,
+  DATE: `2008`,
 };
 
-const moviesTitles = [`Fantastic Beasts: The Crimes of Grindelwald`, `Bohemian Rhapsody`, `Macbeth`, `Aviator`, `We need to talk about Kevin`, `What We Do in the Shadows`, `Revenant`, `Johnny English`, `Shutter Island`, `Pulp Fiction`, `No Country for Old Men`, `Snatch`, `Moonrise Kingdom`, `Seven Years in Tibet`, `Midnight Special`, `War of the Worlds`, `Dardjeeling Limited`, `Orlando`, `Mindhunter`, `Midnight Special`];
+const movies = [
+  {
+    title: `title-1`,
+    image: `image-1`
+  },
+  {
+    title: `title-2`,
+    image: `image-2`
+  },
+  {
+    title: `title-3`,
+    image: `image-3`
+  },
+  {
+    title: `title-4`,
+    image: `image-4`
+  }];
+
 
 Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`Card title should be pressed`, () => {
-  const cardTitleClickHandler = jest.fn();
+describe(`Main e2e tests`, () => {
+  it(`Should title be clicked`, () => {
+    const titleClickHandler = jest.fn();
 
-  const main = shallow(
-      <Main
-        movieTitle={Movie.TITLE}
-        movieGenre={Movie.GENRE}
-        movieDate={Movie.DATE}
-        moviesTitles={moviesTitles}
-        onCardTitleClick={cardTitleClickHandler}
-      />
-  );
+    const mainComponent = mount(
+        <Main
+          promoMovie={promoMovie}
+          movies={movies}
+          onTitleClick={titleClickHandler} />
+    );
 
-  const movieCardTitles = main.find(`.small-movie-card__title`);
+    const movieTitles = mainComponent.find(`.small-movie-card__title`);
 
-  movieCardTitles.forEach((movieCardTitle) => {
-    movieCardTitle.props().onClick();
+    movieTitles.forEach((movieTitle) => movieTitle.simulate(`click`));
+
+    expect(titleClickHandler.mock.calls.length).toBe(movies.length);
   });
-
-  expect(cardTitleClickHandler.mock.calls.length).toBe(movieCardTitles.length);
 });
