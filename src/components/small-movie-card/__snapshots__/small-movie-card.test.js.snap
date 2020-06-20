@@ -9,9 +9,9 @@ exports[`SmallMovieCard Should render correctly movie card 1`] = `
     className="small-movie-card__image"
   >
     <img
-      alt="The Grand Budapest Hotel"
+      alt="title-1"
       height="175"
-      src="movie-image"
+      src="image-1"
       width="280"
     />
   </div>
@@ -23,7 +23,7 @@ exports[`SmallMovieCard Should render correctly movie card 1`] = `
       className="small-movie-card__link"
       href="movie-page.html"
     >
-      The Grand Budapest Hotel
+      title-1
     </a>
   </h3>
 </article>

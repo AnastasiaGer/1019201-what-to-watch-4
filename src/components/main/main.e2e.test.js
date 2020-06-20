@@ -25,7 +25,8 @@ const movies = [
   {
     title: `title-4`,
     image: `image-4`
-  }];
+  }
+];
 
 
 Enzyme.configure({

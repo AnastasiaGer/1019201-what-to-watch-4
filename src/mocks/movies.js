@@ -14,24 +14,24 @@ export const movies = [
     image: `img/bohemian-rhapsody.jpg`
   },
   {
+    title: `Macbeth`,
+    image: `img/macbeth.jpg`
+  },
+  {
     title: `Aviator`,
     image: `img/aviator.jpg`
   },
   {
-    title: `Shutter Island`,
-    image: `img/shutter-island.jpg`
+    title: `We need to talk about Kevin`,
+    image: `img/we-need-to-talk-about-kevin.jpg`
   },
   {
-    title: `Pulp Fiction`,
-    image: `img/pulp-fiction.jpg`
+    title: `What We Do in the Shadows`,
+    image: `img/what-we-do-in-the-shadows.jpg`
   },
   {
-    title: `No Country for Old Men`,
-    image: `img/no-country-for-old-men.jpg`
-  },
-  {
-    title: `Snatch`,
-    image: `img/snatch.jpg`
+    title: `Revenant`,
+    image: `img/revenant.jpg`
   },
   {
     title: `Johnny English`,
