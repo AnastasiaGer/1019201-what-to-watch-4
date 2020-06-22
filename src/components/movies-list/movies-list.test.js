@@ -1,12 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
-
-const promoMovie = {
-  TITLE: `The Dark Knight`,
-  GENRE: `Action`,
-  DATE: `2008`,
-};
+import MoviesList from "./movies-list.jsx";
 
 const movies = [
   {
@@ -27,13 +21,12 @@ const movies = [
   }
 ];
 
-describe(`App`, () => {
-  it(`Should render correctly with movies titles array`, () => {
+describe(`MoviesList`, () => {
+  it(`Should render correctly movie card`, () => {
     const tree = renderer
-      .create(<App
-        promoMovie={promoMovie}
+      .create(<MoviesList
         movies={movies}
-      />)
+        onTitleClick={() => {}} />)
       .toJSON();
 
     expect(tree).toMatchSnapshot();
