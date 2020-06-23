@@ -1,15 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MoviesList from '../movies-list/movies-list.jsx';
+import {RatingLevel} from '../../const.js';
 
-const MoviePage = ({movieCard, movies, onTitleClick}) => {
+const getMovieRatingDescription = (rating) => {
+  switch (true) {
+    case rating < 3:
+      return RatingLevel.BAD;
+    case rating < 5:
+      return RatingLevel.NORMAL;
+    case rating < 8:
+      return RatingLevel.GOOD;
+    case rating < 10:
+      return RatingLevel.VERY_GOOD;
+    default:
+      return RatingLevel.AWESOME;
+  }
+};
+
+const MoviePage = (props) => {
+  const {movieCard} = props;
+  const {title, genre, date, poster, background, rating, description, starring, director, scores} = movieCard;
 
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt={movieCard.title} />
+            <img src={background} alt={title}/>
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -32,10 +49,10 @@ const MoviePage = ({movieCard, movies, onTitleClick}) => {
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title"> {movieCard.title} </h2>
+              <h2 className="movie-card__title"> {title} </h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{movieCard.genre}</span>
-                <span className="movie-card__year">{movieCard.date}</span>
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{date}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -60,7 +77,8 @@ const MoviePage = ({movieCard, movies, onTitleClick}) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={poster} alt="The Grand Budapest Hotel poster" width="218"
+                height="327"/>
             </div>
 
             <div className="movie-card__desc">
@@ -79,21 +97,19 @@ const MoviePage = ({movieCard, movies, onTitleClick}) => {
               </nav>
 
               <div className="movie-rating">
-                <div className="movie-rating__score">8,9</div>
+                <div className="movie-rating__score">{rating}</div>
                 <p className="movie-rating__meta">
-                  <span className="movie-rating__level">Very good</span>
-                  <span className="movie-rating__count">240 ratings</span>
+                  <span className="movie-rating__level">{getMovieRatingDescription(rating)}</span>
+                  <span className="movie-rating__count">{scores} ratings</span>
                 </p>
               </div>
 
               <div className="movie-card__text">
-                <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave friend and protege.</p>
+                <p>{description}</p>
 
-                <p>Gustave prides himself on providing first-class service to the hotel guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
+                <p className="movie-card__director"><strong>Director: {director } </strong></p>
 
-                <p className="movie-card__director"><strong>Director: Wes Andreson</strong></p>
-
-                <p className="movie-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
+                <p className="movie-card__starring"><strong>Starring: {starring.join(`, `)} </strong></p>
               </div>
             </div>
           </div>
@@ -103,10 +119,44 @@ const MoviePage = ({movieCard, movies, onTitleClick}) => {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <MoviesList
-            movies={movies}
-            onTitleClick={onTitleClick}
-          />
+
+          <div className="catalog__movies-list">
+            <article className="small-movie-card catalog__movies-card">
+              <div className="small-movie-card__image">
+                <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
+              </div>
+              <h3 className="small-movie-card__title">
+                <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
+              </h3>
+            </article>
+
+            <article className="small-movie-card catalog__movies-card">
+              <div className="small-movie-card__image">
+                <img src="img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175" />
+              </div>
+              <h3 className="small-movie-card__title">
+                <a className="small-movie-card__link" href="movie-page.html">Bohemian Rhapsody</a>
+              </h3>
+            </article>
+
+            <article className="small-movie-card catalog__movies-card">
+              <div className="small-movie-card__image">
+                <img src="img/macbeth.jpg" alt="Macbeth" width="280" height="175" />
+              </div>
+              <h3 className="small-movie-card__title">
+                <a className="small-movie-card__link" href="movie-page.html">Macbeth</a>
+              </h3>
+            </article>
+
+            <article className="small-movie-card catalog__movies-card">
+              <div className="small-movie-card__image">
+                <img src="img/aviator.jpg" alt="Aviator" width="280" height="175" />
+              </div>
+              <h3 className="small-movie-card__title">
+                <a className="small-movie-card__link" href="movie-page.html">Aviator</a>
+              </h3>
+            </article>
+          </div>
         </section>
 
         <footer className="page-footer">
@@ -127,19 +177,21 @@ const MoviePage = ({movieCard, movies, onTitleClick}) => {
   );
 };
 
+
 MoviePage.propTypes = {
   movieCard: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    background: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    rating: PropTypes.string.isRequired,
+    scores: PropTypes.number.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   }).isRequired,
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-      }).isRequired
-  ).isRequired,
-  onTitleClick: PropTypes.func.isRequired,
 };
 
 export default MoviePage;

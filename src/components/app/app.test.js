@@ -3,29 +3,45 @@ import renderer from "react-test-renderer";
 import App from "./app.jsx";
 
 const movieCard = {
-  title: `The Dark Knight`,
-  genre: `Action`,
-  date: `2008`,
+  title: `Bohemian Rhapsody`,
+  genre: `Documentary`,
+  date: `2018`,
+  background: `https://placeimg.com/1300/512/nature`,
+  poster: `img/bohemian-rhapsody.jpg`,
+  id: 178345,
+  description: [`The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at Live Aid (1985).`],
+  rating: `8,0`,
+  scores: 800,
+  director: `Bryan Singer`,
+  starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`]
 };
 
 const movies = [
   {
-    title: `Fantastic Beasts: The Crimes of Grindelwald`,
-    image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
-  },
-  {
     title: `Bohemian Rhapsody`,
-    image: `img/bohemian-rhapsody.jpg`
-  },
-  {
-    title: `Macbeth`,
-    image: `img/macbeth.jpg`
+    genre: `Documentary`,
+    date: `2018`,
+    background: `https://placeimg.com/1300/512/nature`,
+    poster: `img/bohemian-rhapsody.jpg`,
+    id: 178345,
+    description: [`The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at Live Aid (1985).`],
+    scores: 800,
+    director: `Bryan Singer`,
+    starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`]
   },
   {
     title: `Aviator`,
-    image: `img/aviator.jpg`
-  }
-];
+    genre: `Drama`,
+    date: `2004`,
+    background: `https://placeimg.com/1300/512/nature`,
+    poster: `img/aviator.jpg`,
+    id: 167456,
+    description: [`A biopic depicting the early years of legendary Director and aviator Howard Hughes' career from the late 1920s to the mid 1940s.`],
+    rating: `7,5`,
+    scores: 1650,
+    director: `Martin Scorsese`,
+    starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `Kate Beckinsale`]
+  }];
 
 describe(`App`, () => {
   it(`Should render correctly with movies titles array`, () => {
