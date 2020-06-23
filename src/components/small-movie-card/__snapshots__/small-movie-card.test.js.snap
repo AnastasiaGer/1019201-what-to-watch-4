@@ -7,11 +7,12 @@ exports[`SmallMovieCard Should render correctly movie card 1`] = `
 >
   <div
     className="small-movie-card__image"
+    onClick={[Function]}
   >
     <img
-      alt="Fantastic Beasts: The Crimes of Grindelwald"
+      alt="No Country for Old Men"
       height="175"
-      src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+      src="img/no-country-for-old-men.jpg"
       width="280"
     />
   </div>
@@ -23,7 +24,7 @@ exports[`SmallMovieCard Should render correctly movie card 1`] = `
       className="small-movie-card__link"
       href="movie-page.html"
     >
-      Fantastic Beasts: The Crimes of Grindelwald
+      No Country for Old Men
     </a>
   </h3>
 </article>

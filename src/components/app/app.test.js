@@ -10,7 +10,7 @@ const movieCard = {
   poster: `img/bohemian-rhapsody.jpg`,
   id: 178345,
   description: [`The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at Live Aid (1985).`],
-  rating: `8,0`,
+  rating: 8,
   scores: 800,
   director: `Bryan Singer`,
   starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`]
@@ -25,6 +25,7 @@ const movies = [
     poster: `img/bohemian-rhapsody.jpg`,
     id: 178345,
     description: [`The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at Live Aid (1985).`],
+    rating: 8,
     scores: 800,
     director: `Bryan Singer`,
     starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`]
@@ -37,7 +38,7 @@ const movies = [
     poster: `img/aviator.jpg`,
     id: 167456,
     description: [`A biopic depicting the early years of legendary Director and aviator Howard Hughes' career from the late 1920s to the mid 1940s.`],
-    rating: `7,5`,
+    rating: 7,
     scores: 1650,
     director: `Martin Scorsese`,
     starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `Kate Beckinsale`]

@@ -39,7 +39,7 @@ SmallMovieCard.propTypes = {
     poster: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    rating: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
     scores: PropTypes.number.isRequired,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,

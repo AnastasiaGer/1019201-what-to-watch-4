@@ -11,7 +11,7 @@ const movies = [
     poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     id: 189234,
     description: [`The second installment of the "Fantastic Beasts" series featuring the adventures of Magizoologist Newt Scamander.`],
-    rating: `6,6`,
+    rating: 6,
     scores: 500,
     director: `David Yates`,
     starring: [`Johnny Depp`, `Eddie Redmayne`, `Katherine Waterston`, `Dan Fogler`]
@@ -24,7 +24,7 @@ const movies = [
     poster: `img/bohemian-rhapsody.jpg`,
     id: 178345,
     description: [`The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at Live Aid (1985).`],
-    rating: `8,0`,
+    rating: 8,
     scores: 800,
     director: `Bryan Singer`,
     starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`]
