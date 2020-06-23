@@ -11,7 +11,7 @@ const movieCard = {
   poster: `img/no-country-for-old-men.jpg`,
   id: 134789,
   description: [`Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande.`],
-  rating: 8,
+  rating: 8.1,
   ratingDescription: `Good`,
   scores: 870,
   director: `Ethan Coen, Joel Coen`,
@@ -27,7 +27,7 @@ const movies = [
     poster: `img/snatch.jpg`,
     id: 123890,
     description: [`Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers fight to track down a priceless stolen diamond.`],
-    rating: 8,
+    rating: 8.2,
     scores: 1500,
     director: `Guy Ritchie`,
     starring: [`Jason Statham`, `Brad Pitt`, `Benicio Del Toro`]
@@ -40,7 +40,7 @@ const movies = [
     poster: `img/johnny-english.jpg`,
     id: 109321,
     description: [`After a cyber-attack reveals the identity of all of the active undercover agents in Britain, Johnny English (Rowan Atkinson) is forced to come out of retirement to find the mastermind hacker.`],
-    rating: 6,
+    rating: 6.3,
     scores: 300,
     director: `David Kerr`,
     starring: [`Rowan Atkinson`, `Ben Miller`, `Olga Kurylenko`]

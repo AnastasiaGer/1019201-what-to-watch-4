@@ -10,7 +10,7 @@ const movie = {
   poster: `img/snatch.jpg`,
   id: 123890,
   description: [`Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers fight to track down a priceless stolen diamond.`],
-  rating: 8,
+  rating: 8.1,
   scores: 1500,
   director: `Guy Ritchie`,
   starring: [`Jason Statham`, `Brad Pitt`, `Benicio Del Toro`]

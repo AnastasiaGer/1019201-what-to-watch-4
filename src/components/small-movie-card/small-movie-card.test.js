@@ -10,7 +10,7 @@ const movie = {
   poster: `img/no-country-for-old-men.jpg`,
   id: 134789,
   description: [`Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande.`],
-  rating: 8,
+  rating: 8.1,
   scores: 870,
   director: `Ethan Coen, Joel Coen`,
   starring: [`Tommy Lee Jones`, `Javier Bardem`, `Josh Brolin`]

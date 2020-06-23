@@ -6,7 +6,7 @@ export const movieCard = {
   poster: `img/bg-the-grand-budapest-hotel.jpg`,
   id: 12345,
   description: [`In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege`, `Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`],
-  rating: 8,
+  rating: 8.1,
   scores: 240,
   director: `Wes Andreson`,
   starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`]
@@ -21,7 +21,7 @@ export const movies = [
     poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     id: 23456,
     description: [`The second installment of the "Fantastic Beasts" series featuring the adventures of Magizoologist Newt Scamander.`],
-    rating: 6,
+    rating: 6.2,
     scores: 500,
     director: `David Yates`,
     starring: [`Johnny Depp`, `Eddie Redmayne`, `Katherine Waterston`, `Dan Fogler`]
@@ -34,7 +34,7 @@ export const movies = [
     poster: `img/bohemian-rhapsody.jpg`,
     id: 34567,
     description: [`The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at Live Aid (1985).`],
-    rating: 8,
+    rating: 8.3,
     scores: 800,
     director: `Bryan Singer`,
     starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`]
@@ -47,7 +47,7 @@ export const movies = [
     poster: `img/aviator.jpg`,
     id: 45678,
     description: [`A biopic depicting the early years of legendary Director and aviator Howard Hughes' career from the late 1920s to the mid 1940s.`],
-    rating: 7,
+    rating: 7.4,
     scores: 1650,
     director: `Martin Scorsese`,
     starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `Kate Beckinsale`]
@@ -60,7 +60,7 @@ export const movies = [
     poster: `img/shutter-island.jpg`,
     id: 56789,
     description: [`In 1954, a U.S. Marshal investigates the disappearance of a murderer who escaped from a hospital for the criminally insane.`],
-    rating: 8,
+    rating: 8.5,
     scores: 900,
     director: `Martin Scorsese`,
     starring: [`Leonardo DiCaprio`, `Emily Mortimer`, `Mark Ruffalo`]
@@ -73,7 +73,7 @@ export const movies = [
     poster: `img/pulp-fiction.jpg`,
     id: 67890,
     description: [`The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.`],
-    rating: 8,
+    rating: 8.6,
     scores: 2500,
     director: `Quentin Tarantino`,
     starring: [`John Travolta`, `Uma Thurman`, `Samuel L. Jackson`, `Bruce Willis`]
@@ -86,7 +86,7 @@ export const movies = [
     poster: `img/no-country-for-old-men.jpg`,
     id: 78901,
     description: [`Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande.`],
-    rating: 8,
+    rating: 8.7,
     scores: 870,
     director: `Ethan Coen, Joel Coen`,
     starring: [`Tommy Lee Jones`, `Javier Bardem`, `Josh Brolin`]
@@ -99,7 +99,7 @@ export const movies = [
     poster: `img/snatch.jpg`,
     id: 89012,
     description: [`Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers fight to track down a priceless stolen diamond.`],
-    rating: 8,
+    rating: 8.8,
     scores: 1500,
     director: `Guy Ritchie`,
     starring: [`Jason Statham`, `Brad Pitt`, `Benicio Del Toro`]
@@ -112,7 +112,7 @@ export const movies = [
     poster: `img/johnny-english.jpg`,
     id: 90123,
     description: [`After a cyber-attack reveals the identity of all of the active undercover agents in Britain, Johnny English (Rowan Atkinson) is forced to come out of retirement to find the mastermind hacker.`],
-    rating: 6,
+    rating: 6.9,
     scores: 300,
     director: `David Kerr`,
     starring: [`Rowan Atkinson`, `Ben Miller`, `Olga Kurylenko`]
