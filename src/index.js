@@ -7,7 +7,7 @@ const root = document.querySelector(`#root`);
 
 ReactDOM.render(
     <App
-      promoMovie={Movie}
+      movieCard={Movie}
       movies={movies} />,
     root
 );

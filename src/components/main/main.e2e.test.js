@@ -3,7 +3,7 @@ import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Main from "./main.jsx";
 
-const promoMovie = {
+const movieCard = {
   title: `The Dark Knight`,
   genre: `Action`,
   date: `2008`,
@@ -39,7 +39,7 @@ describe(`Main e2e tests`, () => {
 
     const mainComponent = mount(
         <Main
-          promoMovie={promoMovie}
+          movieCard={movieCard}
           movies={movies}
           onTitleClick={titleClickHandler} />
     );

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Main from '../main/main.jsx';
 
 const App = (props) => {
-  const {promoMovie, movies} = props;
+  const {movieCard, movies} = props;
 
   const handleTitleClick = (evt) => {
     evt.preventDefault();
@@ -11,14 +11,14 @@ const App = (props) => {
 
   return (
     <Main
-      promoMovie={promoMovie}
+      movieCard={movieCard}
       movies={movies}
       onTitleClick={handleTitleClick} />
   );
 };
 
 App.propTypes = {
-  promoMovie: PropTypes.shape({
+  movieCard: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,

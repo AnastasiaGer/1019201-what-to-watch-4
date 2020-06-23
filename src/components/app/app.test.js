@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import App from "./app.jsx";
 
-const promoMovie = {
+const movieCard = {
   title: `The Dark Knight`,
   genre: `Action`,
   date: `2008`,
@@ -31,7 +31,7 @@ describe(`App`, () => {
   it(`Should render correctly with movies titles array`, () => {
     const tree = renderer
       .create(<App
-        promoMovie={promoMovie}
+        movieCard={movieCard}
         movies={movies}
       />)
       .toJSON();
