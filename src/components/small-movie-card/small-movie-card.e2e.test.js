@@ -4,8 +4,8 @@ import Adapter from "enzyme-adapter-react-16";
 import SmallMovieCard from "./small-movie-card.jsx";
 
 const movie = {
-  title: `title-1`,
-  image: `image-1`
+  title: `Fantastic Beasts: The Crimes of Grindelwald`,
+  image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
 };
 
 

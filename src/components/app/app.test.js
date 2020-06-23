@@ -3,27 +3,27 @@ import renderer from "react-test-renderer";
 import App from "./app.jsx";
 
 const promoMovie = {
-  TITLE: `The Dark Knight`,
-  GENRE: `Action`,
-  DATE: `2008`,
+  title: `The Dark Knight`,
+  genre: `Action`,
+  date: `2008`,
 };
 
 const movies = [
   {
-    title: `title-1`,
-    image: `image-1`
+    title: `Fantastic Beasts: The Crimes of Grindelwald`,
+    image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
   },
   {
-    title: `title-2`,
-    image: `image-2`
+    title: `Bohemian Rhapsody`,
+    image: `img/bohemian-rhapsody.jpg`
   },
   {
-    title: `title-3`,
-    image: `image-3`
+    title: `Macbeth`,
+    image: `img/macbeth.jpg`
   },
   {
-    title: `title-4`,
-    image: `image-4`
+    title: `Aviator`,
+    image: `img/aviator.jpg`
   }
 ];
 

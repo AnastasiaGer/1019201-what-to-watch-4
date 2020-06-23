@@ -3,8 +3,8 @@ import renderer from "react-test-renderer";
 import SmallMovieCard from "./small-movie-card.jsx";
 
 const movie = {
-  title: `title-1`,
-  image: `image-1`
+  title: `Fantastic Beasts: The Crimes of Grindelwald`,
+  image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
 };
 
 describe(`SmallMovieCard`, () => {

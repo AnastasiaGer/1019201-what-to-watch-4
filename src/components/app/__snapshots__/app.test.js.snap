@@ -265,9 +265,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="title-1"
+              alt="Fantastic Beasts: The Crimes of Grindelwald"
               height="175"
-              src="image-1"
+              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
           </div>
@@ -279,7 +279,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              title-1
+              Fantastic Beasts: The Crimes of Grindelwald
             </a>
           </h3>
         </article>
@@ -291,9 +291,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="title-2"
+              alt="Bohemian Rhapsody"
               height="175"
-              src="image-2"
+              src="img/bohemian-rhapsody.jpg"
               width="280"
             />
           </div>
@@ -305,7 +305,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              title-2
+              Bohemian Rhapsody
             </a>
           </h3>
         </article>
@@ -317,9 +317,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="title-3"
+              alt="Macbeth"
               height="175"
-              src="image-3"
+              src="img/macbeth.jpg"
               width="280"
             />
           </div>
@@ -331,7 +331,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              title-3
+              Macbeth
             </a>
           </h3>
         </article>
@@ -343,9 +343,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="title-4"
+              alt="Aviator"
               height="175"
-              src="image-4"
+              src="img/aviator.jpg"
               width="280"
             />
           </div>
@@ -357,7 +357,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              title-4
+              Aviator
             </a>
           </h3>
         </article>
