@@ -1,39 +1,119 @@
-export const Movie = {
-  TITLE: `The Grand Budapest Hotel`,
-  GENRE: `Drama`,
-  DATE: `2014`,
+export const movieCard = {
+  title: `The Grand Budapest Hotel`,
+  genre: `Drama`,
+  date: `2014`,
+  background: `img/bg-the-grand-budapest-hotel.jpg`,
+  poster: `img/bg-the-grand-budapest-hotel.jpg`,
+  id: 12345,
+  description: [`In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege`, `Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`],
+  rating: 8.1,
+  scores: 240,
+  director: `Wes Andreson`,
+  starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`]
 };
 
 export const movies = [
   {
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
-    image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
+    genre: `Kids & Family`,
+    date: `2018`,
+    background: `img/bg-the-grand-budapest-hotel.jpg`,
+    poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    id: 23456,
+    description: [`The second installment of the "Fantastic Beasts" series featuring the adventures of Magizoologist Newt Scamander.`],
+    rating: 6.2,
+    scores: 500,
+    director: `David Yates`,
+    starring: [`Johnny Depp`, `Eddie Redmayne`, `Katherine Waterston`, `Dan Fogler`]
   },
   {
     title: `Bohemian Rhapsody`,
-    image: `img/bohemian-rhapsody.jpg`
-  },
-  {
-    title: `Macbeth`,
-    image: `img/macbeth.jpg`
+    genre: `Documentary`,
+    date: `2018`,
+    background: `img/bg-the-grand-budapest-hotel.jpg`,
+    poster: `img/bohemian-rhapsody.jpg`,
+    id: 34567,
+    description: [`The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at Live Aid (1985).`],
+    rating: 8.3,
+    scores: 800,
+    director: `Bryan Singer`,
+    starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`]
   },
   {
     title: `Aviator`,
-    image: `img/aviator.jpg`
+    genre: `Drama`,
+    date: `2004`,
+    background: `img/bg-the-grand-budapest-hotel.jpg`,
+    poster: `img/aviator.jpg`,
+    id: 45678,
+    description: [`A biopic depicting the early years of legendary Director and aviator Howard Hughes' career from the late 1920s to the mid 1940s.`],
+    rating: 7.4,
+    scores: 1650,
+    director: `Martin Scorsese`,
+    starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `Kate Beckinsale`]
   },
   {
-    title: `We need to talk about Kevin`,
-    image: `img/we-need-to-talk-about-kevin.jpg`
+    title: `Shutter Island`,
+    genre: `Thriller`,
+    date: `2010`,
+    background: `img/bg-the-grand-budapest-hotel.jpg`,
+    poster: `img/shutter-island.jpg`,
+    id: 56789,
+    description: [`In 1954, a U.S. Marshal investigates the disappearance of a murderer who escaped from a hospital for the criminally insane.`],
+    rating: 8.5,
+    scores: 900,
+    director: `Martin Scorsese`,
+    starring: [`Leonardo DiCaprio`, `Emily Mortimer`, `Mark Ruffalo`]
   },
   {
-    title: `What We Do in the Shadows`,
-    image: `img/what-we-do-in-the-shadows.jpg`
+    title: `Pulp Fiction`,
+    genre: `Crime`,
+    date: `1994`,
+    background: `img/bg-the-grand-budapest-hotel.jpg`,
+    poster: `img/pulp-fiction.jpg`,
+    id: 67890,
+    description: [`The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.`],
+    rating: 8.6,
+    scores: 2500,
+    director: `Quentin Tarantino`,
+    starring: [`John Travolta`, `Uma Thurman`, `Samuel L. Jackson`, `Bruce Willis`]
   },
   {
-    title: `Revenant`,
-    image: `img/revenant.jpg`
+    title: `No Country for Old Men`,
+    genre: `Thriller`,
+    date: `2007`,
+    background: `img/bg-the-grand-budapest-hotel.jpg`,
+    poster: `img/no-country-for-old-men.jpg`,
+    id: 78901,
+    description: [`Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande.`],
+    rating: 8.7,
+    scores: 870,
+    director: `Ethan Coen, Joel Coen`,
+    starring: [`Tommy Lee Jones`, `Javier Bardem`, `Josh Brolin`]
+  },
+  {
+    title: `Snatch`,
+    genre: `Crime`,
+    date: `2000`,
+    background: `img/bg-the-grand-budapest-hotel.jpg`,
+    poster: `img/snatch.jpg`,
+    id: 89012,
+    description: [`Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers fight to track down a priceless stolen diamond.`],
+    rating: 8.8,
+    scores: 1500,
+    director: `Guy Ritchie`,
+    starring: [`Jason Statham`, `Brad Pitt`, `Benicio Del Toro`]
   },
   {
     title: `Johnny English`,
-    image: `img/johnny-english.jpg`
+    genre: `Comedy`,
+    date: `2003`,
+    background: `img/bg-the-grand-budapest-hotel.jpg`,
+    poster: `img/johnny-english.jpg`,
+    id: 90123,
+    description: [`After a cyber-attack reveals the identity of all of the active undercover agents in Britain, Johnny English (Rowan Atkinson) is forced to come out of retirement to find the mastermind hacker.`],
+    rating: 6.9,
+    scores: 300,
+    director: `David Kerr`,
+    starring: [`Rowan Atkinson`, `Ben Miller`, `Olga Kurylenko`]
   }];

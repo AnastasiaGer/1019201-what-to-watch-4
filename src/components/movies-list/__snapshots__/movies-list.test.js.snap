@@ -10,11 +10,12 @@ exports[`MoviesList Should render correctly movie card 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
-        alt="title-1"
+        alt="Fantastic Beasts: The Crimes of Grindelwald"
         height="175"
-        src="image-1"
+        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
@@ -26,7 +27,7 @@ exports[`MoviesList Should render correctly movie card 1`] = `
         className="small-movie-card__link"
         href="movie-page.html"
       >
-        title-1
+        Fantastic Beasts: The Crimes of Grindelwald
       </a>
     </h3>
   </article>
@@ -36,11 +37,12 @@ exports[`MoviesList Should render correctly movie card 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
-        alt="title-2"
+        alt="Bohemian Rhapsody"
         height="175"
-        src="image-2"
+        src="img/bohemian-rhapsody.jpg"
         width="280"
       />
     </div>
@@ -52,59 +54,7 @@ exports[`MoviesList Should render correctly movie card 1`] = `
         className="small-movie-card__link"
         href="movie-page.html"
       >
-        title-2
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <img
-        alt="title-3"
-        height="175"
-        src="image-3"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        title-3
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <img
-        alt="title-4"
-        height="175"
-        src="image-4"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        title-4
+        Bohemian Rhapsody
       </a>
     </h3>
   </article>

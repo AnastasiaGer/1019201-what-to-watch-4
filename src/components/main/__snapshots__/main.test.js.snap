@@ -9,7 +9,7 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="The Dark Knight"
+        alt="Aviator"
         src="img/bg-the-grand-budapest-hotel.jpg"
       />
     </div>
@@ -69,11 +69,12 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="The Dark Knight"
+            alt="Aviator"
             height="327"
             src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
           />
+                      
         </div>
         <div
           className="movie-card__desc"
@@ -81,7 +82,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            The Dark Knight
+            Aviator
           </h2>
           <p
             className="movie-card__meta"
@@ -89,12 +90,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Action
+              Drama
             </span>
             <span
               className="movie-card__year"
             >
-              2008
+              2004
             </span>
           </p>
           <div
@@ -263,11 +264,12 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
-              alt="title-1"
+              alt="Fantastic Beasts: The Crimes of Grindelwald"
               height="175"
-              src="image-1"
+              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
           </div>
@@ -279,7 +281,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              title-1
+              Fantastic Beasts: The Crimes of Grindelwald
             </a>
           </h3>
         </article>
@@ -289,11 +291,12 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
-              alt="title-2"
+              alt="Bohemian Rhapsody"
               height="175"
-              src="image-2"
+              src="img/bohemian-rhapsody.jpg"
               width="280"
             />
           </div>
@@ -305,59 +308,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              title-2
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="title-3"
-              height="175"
-              src="image-3"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-            onClick={[Function]}
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              title-3
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="title-4"
-              height="175"
-              src="image-4"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-            onClick={[Function]}
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              title-4
+              Bohemian Rhapsody
             </a>
           </h3>
         </article>
