@@ -9,7 +9,8 @@ export const movieCard = {
   rating: 8.1,
   scores: 240,
   director: `Wes Andreson`,
-  starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`]
+  starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+  videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
 };
 
 export const movies = [
@@ -24,7 +25,8 @@ export const movies = [
     rating: 6.2,
     scores: 500,
     director: `David Yates`,
-    starring: [`Johnny Depp`, `Eddie Redmayne`, `Katherine Waterston`, `Dan Fogler`]
+    starring: [`Johnny Depp`, `Eddie Redmayne`, `Katherine Waterston`, `Dan Fogler`],
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Bohemian Rhapsody`,
@@ -37,7 +39,8 @@ export const movies = [
     rating: 8.3,
     scores: 800,
     director: `Bryan Singer`,
-    starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`]
+    starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`],
+    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `Aviator`,
@@ -50,7 +53,8 @@ export const movies = [
     rating: 7.4,
     scores: 1650,
     director: `Martin Scorsese`,
-    starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `Kate Beckinsale`]
+    starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `Kate Beckinsale`],
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Shutter Island`,
@@ -63,7 +67,8 @@ export const movies = [
     rating: 8.5,
     scores: 900,
     director: `Martin Scorsese`,
-    starring: [`Leonardo DiCaprio`, `Emily Mortimer`, `Mark Ruffalo`]
+    starring: [`Leonardo DiCaprio`, `Emily Mortimer`, `Mark Ruffalo`],
+    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `Pulp Fiction`,
@@ -76,7 +81,8 @@ export const movies = [
     rating: 8.6,
     scores: 2500,
     director: `Quentin Tarantino`,
-    starring: [`John Travolta`, `Uma Thurman`, `Samuel L. Jackson`, `Bruce Willis`]
+    starring: [`John Travolta`, `Uma Thurman`, `Samuel L. Jackson`, `Bruce Willis`],
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `No Country for Old Men`,
@@ -89,7 +95,8 @@ export const movies = [
     rating: 8.7,
     scores: 870,
     director: `Ethan Coen, Joel Coen`,
-    starring: [`Tommy Lee Jones`, `Javier Bardem`, `Josh Brolin`]
+    starring: [`Tommy Lee Jones`, `Javier Bardem`, `Josh Brolin`],
+    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `Snatch`,
@@ -102,7 +109,8 @@ export const movies = [
     rating: 8.8,
     scores: 1500,
     director: `Guy Ritchie`,
-    starring: [`Jason Statham`, `Brad Pitt`, `Benicio Del Toro`]
+    starring: [`Jason Statham`, `Brad Pitt`, `Benicio Del Toro`],
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Johnny English`,
@@ -115,5 +123,6 @@ export const movies = [
     rating: 6.9,
     scores: 300,
     director: `David Kerr`,
-    starring: [`Rowan Atkinson`, `Ben Miller`, `Olga Kurylenko`]
+    starring: [`Rowan Atkinson`, `Ben Miller`, `Olga Kurylenko`],
+    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   }];
