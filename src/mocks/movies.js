@@ -10,7 +10,7 @@ export const movieCard = {
   scores: 240,
   director: `Wes Andreson`,
   starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
-  videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+  videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 };
 
 export const movies = [
@@ -40,7 +40,7 @@ export const movies = [
     scores: 800,
     director: `Bryan Singer`,
     starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`],
-    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Aviator`,
@@ -68,7 +68,7 @@ export const movies = [
     scores: 900,
     director: `Martin Scorsese`,
     starring: [`Leonardo DiCaprio`, `Emily Mortimer`, `Mark Ruffalo`],
-    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Pulp Fiction`,
@@ -96,7 +96,7 @@ export const movies = [
     scores: 870,
     director: `Ethan Coen, Joel Coen`,
     starring: [`Tommy Lee Jones`, `Javier Bardem`, `Josh Brolin`],
-    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Snatch`,
@@ -124,5 +124,5 @@ export const movies = [
     scores: 300,
     director: `David Kerr`,
     starring: [`Rowan Atkinson`, `Ben Miller`, `Olga Kurylenko`],
-    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   }];

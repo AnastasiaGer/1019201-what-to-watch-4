@@ -10,12 +10,12 @@ export default class VideoPlayer extends PureComponent {
   }
 
   componentDidMount() {
-    const {film} = this.props;
-    const {videoSource, image} = film;
+    const {movie} = this.props;
+    const {videoUrl, poster} = movie;
     const video = this._video.current;
 
-    video.src = videoSource;
-    video.poster = image;
+    video.src = videoUrl;
+    video.poster = poster;
     video.muted = true;
   }
 
@@ -56,10 +56,10 @@ export default class VideoPlayer extends PureComponent {
 }
 
 VideoPlayer.propTypes = {
-  film: PropTypes.shape({
+  movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    videoSource: PropTypes.string.isRequired
+    poster: PropTypes.string.isRequired,
+    videoUrl: PropTypes.string.isRequired
   }).isRequired,
   isPlaying: PropTypes.bool.isRequired
 };
