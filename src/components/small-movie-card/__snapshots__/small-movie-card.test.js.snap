@@ -3,12 +3,16 @@
 exports[`SmallMovieCard Should render correctly movie card 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onMouseOut={[Function]}
   onMouseOver={[Function]}
 >
   <div
     className="small-movie-card__image"
     onClick={[Function]}
   >
+    <video
+      className="player__video"
+    />
     <img
       alt="No Country for Old Men"
       height="175"

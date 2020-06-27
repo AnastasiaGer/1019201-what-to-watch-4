@@ -57,7 +57,6 @@ export default class VideoPlayer extends PureComponent {
 
 VideoPlayer.propTypes = {
   movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     videoUrl: PropTypes.string.isRequired
   }).isRequired,
