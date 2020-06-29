@@ -14,7 +14,8 @@ const movies = [
     rating: 6.1,
     scores: 500,
     director: `David Yates`,
-    starring: [`Johnny Depp`, `Eddie Redmayne`, `Katherine Waterston`, `Dan Fogler`]
+    starring: [`Johnny Depp`, `Eddie Redmayne`, `Katherine Waterston`, `Dan Fogler`],
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Bohemian Rhapsody`,
@@ -27,7 +28,8 @@ const movies = [
     rating: 8.2,
     scores: 800,
     director: `Bryan Singer`,
-    starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`]
+    starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`],
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   }
 ];
 
@@ -36,8 +38,12 @@ describe(`MoviesList`, () => {
     const tree = renderer
       .create(<MoviesList
         movies={movies}
-        onMovieCardClick={() => {}} />)
-      .toJSON();
+        onMovieCardClick={() => {}}
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      }).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

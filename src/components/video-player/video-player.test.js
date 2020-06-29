@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import SmallMovieCard from "./small-movie-card.jsx";
+
+import VideoPlayer from './video-player.jsx';
 
 const movie = {
   title: `No Country for Old Men`,
@@ -17,14 +18,14 @@ const movie = {
   videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 };
 
-describe(`SmallMovieCard`, () => {
-  it(`Should render correctly movie card`, () => {
+describe(`VideoPlayer`, () => {
+  it(`Should render correctly component`, () => {
     const tree = renderer
       .create(
-          <SmallMovieCard
+          <VideoPlayer
             movie={movie}
-            onMovieCardClick={() => {}}
-            onMovieCardHover={() => {}}
+            onplaying = {true}
+            muted = {true}
           />, {
             createNodeMock: () => {
               return {};
@@ -34,3 +35,4 @@ describe(`SmallMovieCard`, () => {
     expect(tree).toMatchSnapshot();
   });
 });
+

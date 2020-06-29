@@ -13,7 +13,8 @@ const movieCard = {
   rating: 8.1,
   scores: 800,
   director: `Bryan Singer`,
-  starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`]
+  starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`],
+  videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 };
 
 const movies = [
@@ -28,7 +29,8 @@ const movies = [
     rating: 8.2,
     scores: 800,
     director: `Bryan Singer`,
-    starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`]
+    starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`],
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Aviator`,
@@ -41,7 +43,8 @@ const movies = [
     rating: 7.3,
     scores: 1650,
     director: `Martin Scorsese`,
-    starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `Kate Beckinsale`]
+    starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `Kate Beckinsale`],
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   }];
 
 describe(`App`, () => {
@@ -50,8 +53,11 @@ describe(`App`, () => {
       .create(<App
         movieCard={movieCard}
         movies={movies}
-      />)
-      .toJSON();
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      }).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

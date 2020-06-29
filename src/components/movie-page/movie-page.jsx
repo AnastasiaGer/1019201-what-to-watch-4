@@ -3,18 +3,19 @@ import PropTypes from "prop-types";
 import {RatingLevel} from '../../const.js';
 
 const getMovieRatingDescription = (rating) => {
-  switch (true) {
-    case rating < 3:
-      return RatingLevel.BAD;
-    case rating < 5:
-      return RatingLevel.NORMAL;
-    case rating < 8:
-      return RatingLevel.GOOD;
-    case rating < 10:
-      return RatingLevel.VERY_GOOD;
-    default:
-      return RatingLevel.AWESOME;
+  let ratingLevel = ``;
+  if (rating === 10) {
+    ratingLevel = RatingLevel.AWESOME;
+  } else if (rating >= 8) {
+    ratingLevel = RatingLevel.VERY_GOOD;
+  } else if (rating >= 5) {
+    ratingLevel = RatingLevel.GOOD;
+  } else if (rating >= 3) {
+    ratingLevel = RatingLevel.NORMAL;
+  } else {
+    ratingLevel = RatingLevel.BAD;
   }
+  return ratingLevel;
 };
 
 const MoviePage = (props) => {

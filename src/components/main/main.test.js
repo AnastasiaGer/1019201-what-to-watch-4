@@ -13,7 +13,8 @@ const movieCard = {
   rating: 7,
   scores: 1650,
   director: `Martin Scorsese`,
-  starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `Kate Beckinsale`]
+  starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `Kate Beckinsale`],
+  videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 };
 
 const movies = [
@@ -28,7 +29,8 @@ const movies = [
     rating: 6,
     scores: 500,
     director: `David Yates`,
-    starring: [`Johnny Depp`, `Eddie Redmayne`, `Katherine Waterston`, `Dan Fogler`]
+    starring: [`Johnny Depp`, `Eddie Redmayne`, `Katherine Waterston`, `Dan Fogler`],
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Bohemian Rhapsody`,
@@ -41,7 +43,8 @@ const movies = [
     rating: 8,
     scores: 800,
     director: `Bryan Singer`,
-    starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`]
+    starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`],
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   }];
 
 describe(`Main`, () => {
@@ -50,8 +53,12 @@ describe(`Main`, () => {
       .create(<Main
         movieCard={movieCard}
         movies={movies}
-        onMovieCardClick={() => {}} />)
-      .toJSON();
+        onMovieCardClick={() => {}}
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      }).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

@@ -13,15 +13,20 @@ const movie = {
   rating: 8.1,
   scores: 1500,
   director: `Guy Ritchie`,
-  starring: [`Jason Statham`, `Brad Pitt`, `Benicio Del Toro`]
+  starring: [`Jason Statham`, `Brad Pitt`, `Benicio Del Toro`],
+  videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 };
 
 describe(`MoviePage`, () => {
   it(`Should render correctly`, () => {
     const tree = renderer
       .create(<MoviePage
-        movieCard={movie} />)
-      .toJSON();
+        movieCard={movie}
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      }).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
