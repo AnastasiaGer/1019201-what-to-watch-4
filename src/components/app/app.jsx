@@ -4,6 +4,7 @@ import Main from '../main/main.jsx';
 import MoviePage from "../movie-page/movie-page.jsx";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {PageNames} from '../../const.js';
+import {CustomPropTypes} from '../../custom-prop-types.js';
 
 import withTabs from '../../hocs/with-tabs.jsx';
 
@@ -38,6 +39,7 @@ export default class App extends PureComponent {
       return (
         <MoviePageWrapped
           movieCard={currentMovie}
+          movies={movies}
           movieReviews={movieReviews}
         />
       );
@@ -63,6 +65,7 @@ export default class App extends PureComponent {
           <Route exact path="/dev-movie">
             <MoviePageWrapped
               movieCard={this.state.currentMovie}
+              movies={this.props.movies}
               onMovieCardClick={this.handleMovieClick}
             />
           </Route>
@@ -73,35 +76,8 @@ export default class App extends PureComponent {
 }
 
 App.propTypes = {
-  movieCard: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    background: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    rating: PropTypes.number.isRequired,
-    scores: PropTypes.number.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    movieDurationTime: PropTypes.string.isRequired,
-  }).isRequired,
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-        background: PropTypes.string.isRequired,
-        poster: PropTypes.string.isRequired,
-        id: PropTypes.number.isRequired,
-        description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        rating: PropTypes.number.isRequired,
-        scores: PropTypes.number.isRequired,
-        director: PropTypes.string.isRequired,
-        starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      }).isRequired
-  ).isRequired,
+  movieCard: CustomPropTypes.MOVIE,
+  movies: PropTypes.arrayOf(CustomPropTypes.MOVIE).isRequired,
   movieReviews: PropTypes.arrayOf(PropTypes.shape({
     author: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,

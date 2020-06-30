@@ -21,6 +21,7 @@ const getMovieRatingDescription = (rating) => {
 
 
 const PageOverview = ({rating, scores, description, director, starring}) => {
+
   return (
     <>
       <div className="movie-rating">

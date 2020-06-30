@@ -5,13 +5,17 @@ import PageOverview from '../page-overview/page-overview.jsx';
 import PageDetails from '../page-details/page-details.jsx';
 import PageReviews from '../page-reviews/page-reviews.jsx';
 
-const MoviePage = (props) => {
-  const {
-    movieCard,
-    movieReviews,
-    renderTabs,
-    activeTab
-  } = props;
+import MoviesList from '../movies-list/movies-list.jsx';
+import {CustomPropTypes} from '../../custom-prop-types.js';
+
+const getSimilarCards = (movies, genre) => {
+  return movies.filter((movie) => movie.genre === genre).slice(0, 4);
+};
+
+const MoviePage = ({movieCard, movies, onMovieCardClick, movieReviews,
+  renderTabs,
+  activeTab}) => {
+
   const {
     title,
     genre,
@@ -25,6 +29,8 @@ const MoviePage = (props) => {
     scores,
     movieDurationTime
   } = movieCard;
+
+  const similarCards = getSimilarCards(movies, genre);
 
   const renderActiveTab = () => {
     switch (activeTab) {
@@ -125,41 +131,11 @@ const MoviePage = (props) => {
           <h2 className="catalog__title">More like this</h2>
 
           <div className="catalog__movies-list">
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Bohemian Rhapsody</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/macbeth.jpg" alt="Macbeth" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Macbeth</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/aviator.jpg" alt="Aviator" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Aviator</a>
-              </h3>
-            </article>
+            <MoviesList
+              movieCard={movieCard}
+              movies={similarCards}
+              onMovieCardClick={onMovieCardClick}
+            />
           </div>
         </section>
 
@@ -182,20 +158,8 @@ const MoviePage = (props) => {
 };
 
 MoviePage.propTypes = {
-  movieCard: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    background: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    rating: PropTypes.number.isRequired,
-    scores: PropTypes.number.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    movieDurationTime: PropTypes.string.isRequired,
-  }).isRequired,
+  movieCard: CustomPropTypes.MOVIE,
+  movies: PropTypes.arrayOf(CustomPropTypes.MOVIE),
   movieReviews: PropTypes.arrayOf(PropTypes.shape({
     author: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
@@ -204,5 +168,6 @@ MoviePage.propTypes = {
   })),
   renderTabs: PropTypes.func.isRequired,
   activeTab: PropTypes.string.isRequired,
+  onMovieCardClick: PropTypes.func,
 };
 export default MoviePage;
