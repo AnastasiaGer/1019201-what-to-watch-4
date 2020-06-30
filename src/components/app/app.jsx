@@ -5,6 +5,9 @@ import MoviePage from "../movie-page/movie-page.jsx";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {PageNames} from '../../const.js';
 
+import withTabs from '../../hocs/with-tabs.jsx';
+
+const MoviePageWrapped = withTabs(MoviePage);
 export default class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -18,7 +21,7 @@ export default class App extends PureComponent {
   }
 
   _renderApp() {
-    const {movieCard, movies} = this.props;
+    const {movieCard, movies, movieReviews} = this.props;
     const {currentPage, currentMovie} = this.state;
 
     if (currentPage === PageNames.MAIN) {
@@ -33,8 +36,10 @@ export default class App extends PureComponent {
 
     if (currentPage === PageNames.MOVIE_DETAIL) {
       return (
-        <MoviePage
-          movieCard={currentMovie} />
+        <MoviePageWrapped
+          movieCard={currentMovie}
+          movieReviews={movieReviews}
+        />
       );
     }
 
@@ -56,7 +61,7 @@ export default class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-movie">
-            <MoviePage
+            <MoviePageWrapped
               movieCard={this.state.currentMovie}
               onMovieCardClick={this.handleMovieClick}
             />
@@ -80,6 +85,7 @@ App.propTypes = {
     scores: PropTypes.number.isRequired,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    movieDurationTime: PropTypes.string.isRequired,
   }).isRequired,
   movies: PropTypes.arrayOf(
       PropTypes.shape({
@@ -96,4 +102,10 @@ App.propTypes = {
         starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
       }).isRequired
   ).isRequired,
+  movieReviews: PropTypes.arrayOf(PropTypes.shape({
+    author: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
+  })),
 };

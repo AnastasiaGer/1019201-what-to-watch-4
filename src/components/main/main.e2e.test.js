@@ -16,7 +16,8 @@ const movieCard = {
   scores: 870,
   director: `Ethan Coen, Joel Coen`,
   starring: [`Tommy Lee Jones`, `Javier Bardem`, `Josh Brolin`],
-  videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  movieDurationTime: `1h 49m`,
 };
 
 const movies = [
@@ -32,7 +33,8 @@ const movies = [
     scores: 1500,
     director: `Guy Ritchie`,
     starring: [`Jason Statham`, `Brad Pitt`, `Benicio Del Toro`],
-    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    movieDurationTime: `1h 49m`,
   },
   {
     title: `Johnny English`,
@@ -46,7 +48,8 @@ const movies = [
     scores: 300,
     director: `David Kerr`,
     starring: [`Rowan Atkinson`, `Ben Miller`, `Olga Kurylenko`],
-    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    movieDurationTime: `1h 49m`,
   }];
 
 
