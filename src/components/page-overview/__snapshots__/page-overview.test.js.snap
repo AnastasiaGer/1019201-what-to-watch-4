@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should PageOverview render correctly 1`] = `
+exports[`PageOverview Should render correctly 1`] = `
 Array [
   <div
     className="movie-rating"
@@ -21,7 +21,7 @@ Array [
       <span
         className="movie-rating__count"
       >
-        1500
+        800
          ratings
       </span>
     </p>
@@ -30,14 +30,14 @@ Array [
     className="movie-card__text"
   >
     <p>
-      Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers fight to track down a priceless stolen diamond.
+      The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at Live Aid (1985).
     </p>
     <p
       className="movie-card__director"
     >
       <strong>
         Director: 
-        Guy Ritchie
+        Bryan Singer
       </strong>
     </p>
     <p
@@ -45,9 +45,9 @@ Array [
     >
       <strong>
         Starring: 
-        Jason Statham
-        Brad Pitt
-        Benicio Del Toro
+        Rami Malek
+        Lucy Boynton
+        Gwilym Lee
       </strong>
     </p>
   </div>,

@@ -9,7 +9,7 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="Aviator"
+        alt="Bohemian Rhapsody"
         src="img/bg-the-grand-budapest-hotel.jpg"
       />
     </div>
@@ -69,7 +69,7 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="Aviator"
+            alt="Bohemian Rhapsody"
             height="327"
             src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
@@ -82,7 +82,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Aviator
+            Bohemian Rhapsody
           </h2>
           <p
             className="movie-card__meta"
@@ -90,12 +90,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Drama
+              Documentary
             </span>
             <span
               className="movie-card__year"
             >
-              2004
+              2018
             </span>
           </p>
           <div
@@ -271,9 +271,9 @@ Array [
               className="player__video"
             />
             <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              alt="Bohemian Rhapsody"
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="img/bohemian-rhapsody.jpg"
               width="280"
             />
           </div>
@@ -285,7 +285,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Fantastic Beasts: The Crimes of Grindelwald
+              Bohemian Rhapsody
             </a>
           </h3>
         </article>
@@ -302,9 +302,9 @@ Array [
               className="player__video"
             />
             <img
-              alt="Bohemian Rhapsody"
+              alt="Aviator"
               height="175"
-              src="img/bohemian-rhapsody.jpg"
+              src="img/aviator.jpg"
               width="280"
             />
           </div>
@@ -316,7 +316,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Bohemian Rhapsody
+              Aviator
             </a>
           </h3>
         </article>

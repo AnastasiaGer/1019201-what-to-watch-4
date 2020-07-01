@@ -12,7 +12,7 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="Snatch"
+          alt="Bohemian Rhapsody"
           src="https://placeimg.com/1300/512/nature"
         />
       </div>
@@ -72,7 +72,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Snatch
+            Bohemian Rhapsody
           </h2>
           <p
             className="movie-card__meta"
@@ -80,12 +80,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Crime
+              Documentary
             </span>
             <span
               className="movie-card__year"
             >
-              2000
+              2018
             </span>
           </p>
           <div
@@ -145,9 +145,9 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="Snatch"
+            alt="Bohemian Rhapsody"
             height="327"
-            src="img/snatch.jpg"
+            src="img/bohemian-rhapsody.jpg"
             width="218"
           />
         </div>
@@ -175,7 +175,39 @@ Array [
       >
         <div
           className="catalog__movies-list"
-        />
+        >
+          <article
+            className="small-movie-card catalog__movies-card"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+          >
+            <div
+              className="small-movie-card__image"
+              onClick={[Function]}
+            >
+              <video
+                className="player__video"
+              />
+              <img
+                alt="Bohemian Rhapsody"
+                height="175"
+                src="img/bohemian-rhapsody.jpg"
+                width="280"
+              />
+            </div>
+            <h3
+              className="small-movie-card__title"
+              onClick={[Function]}
+            >
+              <a
+                className="small-movie-card__link"
+                href="movie-page.html"
+              >
+                Bohemian Rhapsody
+              </a>
+            </h3>
+          </article>
+        </div>
       </div>
     </section>
     <footer

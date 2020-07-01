@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should PageReviews render correctly 1`] = `
+exports[`PageReviews Should render correctly 1`] = `
 <div
   className="movie-card__reviews movie-card__row"
 >
