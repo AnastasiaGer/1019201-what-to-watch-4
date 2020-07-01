@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MoviesList from '../movies-list/movies-list.jsx';
-import {CustomPropTypes} from '../../custom-prop-types.js';
+import {CustomPropTypes} from '../../utils/props.js';
 
 const Main = ({movieCard, movies, onMovieCardClick}) => {
   const {title, genre, date} = movieCard;

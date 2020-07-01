@@ -6,7 +6,7 @@ import PageDetails from '../page-details/page-details.jsx';
 import PageReviews from '../page-reviews/page-reviews.jsx';
 
 import MoviesList from '../movies-list/movies-list.jsx';
-import {CustomPropTypes} from '../../custom-prop-types.js';
+import {CustomPropTypes} from '../../utils/props.js';
 
 const getSimilarCards = (movies, genre) => {
   return movies.filter((movie) => movie.genre === genre).slice(0, 4);
@@ -160,12 +160,7 @@ const MoviePage = ({movieCard, movies, onMovieCardClick, movieReviews,
 MoviePage.propTypes = {
   movieCard: CustomPropTypes.MOVIE,
   movies: PropTypes.arrayOf(CustomPropTypes.MOVIE),
-  movieReviews: PropTypes.arrayOf(PropTypes.shape({
-    author: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    text: PropTypes.string.isRequired,
-  })),
+  movieReviews: CustomPropTypes.REVIEWS,
   renderTabs: PropTypes.func.isRequired,
   activeTab: PropTypes.string.isRequired,
   onMovieCardClick: PropTypes.func,

@@ -15,5 +15,12 @@ export const CustomPropTypes = {
     starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     videoUrl: PropTypes.string.isRequired,
     movieDurationTime: PropTypes.string.isRequired,
-  }).isRequired
+  }),
+  REVIEWS: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+  }))
 };

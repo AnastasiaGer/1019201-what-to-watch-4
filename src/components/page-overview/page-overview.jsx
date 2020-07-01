@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {CustomPropTypes} from '../../utils/props.js';
 
 import {RatingLevel} from '../../const.js';
 
@@ -20,8 +20,8 @@ const getMovieRatingDescription = (rating) => {
 };
 
 
-const PageOverview = ({rating, scores, description, director, starring}) => {
-
+const PageOverview = (movieCard) => {
+  const {rating, scores, description, director, starring} = movieCard;
   return (
     <>
       <div className="movie-rating">
@@ -41,10 +41,6 @@ const PageOverview = ({rating, scores, description, director, starring}) => {
   );
 };
 PageOverview.propTypes = {
-  rating: PropTypes.number.isRequired,
-  scores: PropTypes.number.isRequired,
-  description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  director: PropTypes.string.isRequired,
-  starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  movieCard: CustomPropTypes.MOVIE,
 };
 export default PageOverview;

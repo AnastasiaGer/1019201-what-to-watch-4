@@ -1,7 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {CustomPropTypes} from '../../utils/props.js';
 
-const PageDetails = ({director, starring, genre, movieDurationTime, date}) => {
+
+const PageDetails = (movie) => {
+  const {director, starring, genre, movieDurationTime, date} = movie;
   return (
     <div className="movie-card__text movie-card__row">
       <div className="movie-card__text-col">
@@ -33,11 +35,7 @@ const PageDetails = ({director, starring, genre, movieDurationTime, date}) => {
 };
 
 PageDetails.propTypes = {
-  director: PropTypes.string.isRequired,
-  starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  genre: PropTypes.string.isRequired,
-  movieDurationTime: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  movie: CustomPropTypes.MOVIE,
 };
 
 export default PageDetails;

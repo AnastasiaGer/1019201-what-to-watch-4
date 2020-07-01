@@ -4,7 +4,7 @@ import Main from '../main/main.jsx';
 import MoviePage from "../movie-page/movie-page.jsx";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {PageNames} from '../../const.js';
-import {CustomPropTypes} from '../../custom-prop-types.js';
+import {CustomPropTypes} from '../../utils/props.js';
 
 import withTabs from '../../hocs/with-tabs.jsx';
 
@@ -78,10 +78,5 @@ export default class App extends PureComponent {
 App.propTypes = {
   movieCard: CustomPropTypes.MOVIE,
   movies: PropTypes.arrayOf(CustomPropTypes.MOVIE).isRequired,
-  movieReviews: PropTypes.arrayOf(PropTypes.shape({
-    author: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    text: PropTypes.string.isRequired,
-  })),
+  movieReviews: CustomPropTypes.REVIEWS,
 };

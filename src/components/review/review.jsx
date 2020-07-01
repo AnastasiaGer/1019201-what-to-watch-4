@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Review = (props) => {
-  const {author, date, rating, text} = props.review;
+const Review = (review) => {
+  const {author, date, rating, text} = review;
 
   return (
     <div className="review">
