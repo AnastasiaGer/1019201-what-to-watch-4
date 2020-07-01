@@ -1,5 +1,6 @@
 import React from 'react';
-import {CustomPropTypes} from '../../utils/props.js';
+import PropTypes from 'prop-types';
+
 import Review from '../review/review.jsx';
 
 const PageReviews = (props) => {
@@ -20,10 +21,14 @@ const PageReviews = (props) => {
     </div>
   );
 };
-
 PageReviews.propTypes = {
-  movieReviews: CustomPropTypes.REVIEWS,
-
+  movieReviews: PropTypes.arrayOf(
+      PropTypes.shape({
+        author: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        text: PropTypes.string.isRequired,
+      }).isRequired
+  ),
 };
-
 export default PageReviews;
