@@ -12,7 +12,7 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="Snatch"
+          alt="Bohemian Rhapsody"
           src="https://placeimg.com/1300/512/nature"
         />
       </div>
@@ -72,9 +72,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-             
-            Snatch
-             
+            Bohemian Rhapsody
           </h2>
           <p
             className="movie-card__meta"
@@ -82,12 +80,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Crime
+              Documentary
             </span>
             <span
               className="movie-card__year"
             >
-              2000
+              2018
             </span>
           </p>
           <div
@@ -147,102 +145,16 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="Bohemian Rhapsody"
             height="327"
-            src="img/snatch.jpg"
+            src="img/bohemian-rhapsody.jpg"
             width="218"
           />
         </div>
         <div
           className="movie-card__desc"
         >
-          <nav
-            className="movie-nav movie-card__nav"
-          >
-            <ul
-              className="movie-nav__list"
-            >
-              <li
-                className="movie-nav__item movie-nav__item--active"
-              >
-                <a
-                  className="movie-nav__link"
-                  href="#"
-                >
-                  Overview
-                </a>
-              </li>
-              <li
-                className="movie-nav__item"
-              >
-                <a
-                  className="movie-nav__link"
-                  href="#"
-                >
-                  Details
-                </a>
-              </li>
-              <li
-                className="movie-nav__item"
-              >
-                <a
-                  className="movie-nav__link"
-                  href="#"
-                >
-                  Reviews
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div
-            className="movie-rating"
-          >
-            <div
-              className="movie-rating__score"
-            >
-              8.1
-            </div>
-            <p
-              className="movie-rating__meta"
-            >
-              <span
-                className="movie-rating__level"
-              >
-                Very good
-              </span>
-              <span
-                className="movie-rating__count"
-              >
-                1500
-                 ratings
-              </span>
-            </p>
-          </div>
-          <div
-            className="movie-card__text"
-          >
-            <p>
-              Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers fight to track down a priceless stolen diamond.
-            </p>
-            <p
-              className="movie-card__director"
-            >
-              <strong>
-                Director: 
-                Guy Ritchie
-                 
-              </strong>
-            </p>
-            <p
-              className="movie-card__starring"
-            >
-              <strong>
-                Starring: 
-                Jason Statham, Brad Pitt, Benicio Del Toro
-                 
-              </strong>
-            </p>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -261,102 +173,41 @@ Array [
       <div
         className="catalog__movies-list"
       >
-        <article
-          className="small-movie-card catalog__movies-card"
+        <div
+          className="catalog__movies-list"
         >
-          <div
-            className="small-movie-card__image"
+          <article
+            className="small-movie-card catalog__movies-card"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
           >
-            <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
-              height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
+            <div
+              className="small-movie-card__image"
+              onClick={[Function]}
             >
-              Fantastic Beasts: The Crimes of Grindelwald
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Bohemian Rhapsody"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
+              <video
+                className="player__video"
+              />
+              <img
+                alt="Bohemian Rhapsody"
+                height="175"
+                src="img/bohemian-rhapsody.jpg"
+                width="280"
+              />
+            </div>
+            <h3
+              className="small-movie-card__title"
+              onClick={[Function]}
             >
-              Bohemian Rhapsody
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Macbeth"
-              height="175"
-              src="img/macbeth.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Macbeth
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Aviator"
-              height="175"
-              src="img/aviator.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Aviator
-            </a>
-          </h3>
-        </article>
+              <a
+                className="small-movie-card__link"
+                href="movie-page.html"
+              >
+                Bohemian Rhapsody
+              </a>
+            </h3>
+          </article>
+        </div>
       </div>
     </section>
     <footer

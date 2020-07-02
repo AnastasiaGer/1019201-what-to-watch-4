@@ -10,3 +10,9 @@ export const RatingLevel = {
   NORMAL: `Normal`,
   BAD: `Bad`
 };
+
+export const TABS = {
+  OVERVIEW: `overview`,
+  DETAILS: `details`,
+  REVIEWS: `reviews`,
+};

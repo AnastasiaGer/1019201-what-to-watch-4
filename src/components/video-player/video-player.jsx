@@ -1,5 +1,6 @@
 import React, {PureComponent, createRef} from 'react';
 import PropTypes from 'prop-types';
+import {CustomPropTypes} from '../../utils/props.js';
 
 export default class VideoPlayer extends PureComponent {
   constructor(props) {
@@ -56,9 +57,6 @@ export default class VideoPlayer extends PureComponent {
 }
 
 VideoPlayer.propTypes = {
-  movie: PropTypes.shape({
-    poster: PropTypes.string.isRequired,
-    videoUrl: PropTypes.string.isRequired
-  }).isRequired,
-  isPlaying: PropTypes.bool.isRequired
+  movie: CustomPropTypes.MOVIE,
+  isPlaying: PropTypes.bool
 };

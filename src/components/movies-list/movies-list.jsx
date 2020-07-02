@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
+import {CustomPropTypes} from '../../utils/props.js';
 
 export default class MoviesList extends PureComponent {
   constructor(props) {
@@ -9,6 +10,14 @@ export default class MoviesList extends PureComponent {
     this.state = {
       currentMovie: null
     };
+
+    this._handleSmallMovieCardHover = this._handleSmallMovieCardHover.bind(this);
+  }
+
+  _handleSmallMovieCardHover(movie) {
+    this.setState({
+      currentMovie: movie,
+    });
   }
 
   render() {
@@ -22,11 +31,7 @@ export default class MoviesList extends PureComponent {
               key={movie.id}
               movie={movie}
               onMovieCardClick={onMovieCardClick}
-              onMovieCardHover={() => {
-                this.setState({
-                  currentMovie: movie
-                });
-              }}
+              onMovieCardHover={this._handleSmallMovieCardHover}
             />
           );
         })}
@@ -37,20 +42,6 @@ export default class MoviesList extends PureComponent {
 
 
 MoviesList.propTypes = {
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-        background: PropTypes.string.isRequired,
-        poster: PropTypes.string.isRequired,
-        id: PropTypes.number.isRequired,
-        description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        rating: PropTypes.number.isRequired,
-        scores: PropTypes.number.isRequired,
-        director: PropTypes.string.isRequired,
-        starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      }).isRequired
-  ).isRequired,
-  onMovieCardClick: PropTypes.func.isRequired
+  movies: PropTypes.arrayOf(CustomPropTypes.MOVIE).isRequired,
+  onMovieCardClick: PropTypes.func,
 };
