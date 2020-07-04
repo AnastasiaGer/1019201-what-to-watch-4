@@ -6,17 +6,29 @@ import Review from '../review/review.jsx';
 const PageReviews = (props) => {
   const {movieReviews} = props;
 
-  const commentsMiddle = Math.round(movieReviews.length / 2);
-  const commentsForFirstCol = movieReviews.slice(0, commentsMiddle);
-  const commentsForSecondCol = movieReviews.slice(commentsMiddle);
+  const halfOffReviews = Math.round(movieReviews.length / 2);
+  const reviewsForFirstCol = movieReviews.slice(0, halfOffReviews);
+  const reviewsForSecondCol = movieReviews.slice(halfOffReviews);
+
+  const getReview = (review) => {
+    return (
+      <Review
+        key = {review.id}
+        review={review}
+      />
+    );
+  };
+
+  const renderFirstReviewsCol = () => reviewsForFirstCol.map(getReview);
+  const renderSecondReviewsCol = () => reviewsForSecondCol.map(getReview);
 
   return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
-        {commentsForFirstCol.map((review) => <Review key = {review.id} review = {review}/>)}
+        {renderFirstReviewsCol()}
       </div>
       <div className="movie-card__reviews-col">
-        {commentsForSecondCol.map((review) => <Review key = {review.id} review = {review}/>)}
+        {renderSecondReviewsCol()}
       </div>
     </div>
   );
