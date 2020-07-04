@@ -3,6 +3,13 @@ import renderer from "react-test-renderer";
 import Main from "./main.jsx";
 import {movieCard, movies} from '../../utils/test-data.js';
 
+const genres = [`Comedies`, `Crime`, `Documentary`];
+const activeGenre = `Comedies`;
+
+const createNodeMock = () => {
+  return {};
+};
+
 describe(`Main`, () => {
   it(`Should render correctly with movies titles array`, () => {
     const tree = renderer
@@ -10,11 +17,11 @@ describe(`Main`, () => {
         movieCard={movieCard}
         movies={movies}
         onMovieCardClick={() => {}}
-      />, {
-        createNodeMock: () => {
-          return {};
-        }
-      }).toJSON();
+        genres={genres}
+        activeGenre={activeGenre}
+        onGenreItemClick={() => {}}
+      />, {createNodeMock})
+        .toJSON();
 
     expect(tree).toMatchSnapshot();
   });
