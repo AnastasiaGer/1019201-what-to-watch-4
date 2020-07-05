@@ -1,5 +1,5 @@
 import {movieCard, movieReviews, movies} from "../mocks/movies.js";
-import {DefaultGenre} from "../const.js";
+import {DEFAULT_GENRE} from "../const.js";
 import {extend} from "../utils/utils.js";
 
 const CARDS_BATCH = 8;
@@ -9,7 +9,7 @@ const movieGenre = movieCard.genre;
 const movieReleaseDate = movieCard.date;
 
 const genres = Array.from(new Set(movies.map((movie) => movie.genre)));
-genres.unshift(DefaultGenre);
+genres.unshift(DEFAULT_GENRE);
 
 const initialState = {
   movies,
@@ -18,7 +18,7 @@ const initialState = {
   movieGenre,
   movieReleaseDate,
   movieReviews,
-  activeGenre: DefaultGenre,
+  activeGenre: DEFAULT_GENRE,
   genres,
   activeCard: null,
   cardsToShow: CARDS_BATCH,
@@ -46,7 +46,7 @@ const ActionCreator = {
   }),
 
   getFilmsByGenre: (genre) => {
-    if (genre === DefaultGenre) {
+    if (genre === DEFAULT_GENRE) {
       return {
         type: ActionType.GET_FILMS_BY_GENRE,
         payload: initialState.movies,

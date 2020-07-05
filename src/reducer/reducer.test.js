@@ -1,6 +1,6 @@
 import {reducer, ActionCreator, ActionType, genres, getFilmsByGenre} from "./reducer.js";
 import {movies, movieCard, movieReviews} from "../mocks/movies.js";
-import {DefaultGenre} from "../const.js";
+import {DEFAULT_GENRE} from "../const.js";
 
 const movieTitle = movieCard.title;
 const movieGenre = movieCard.genre;
@@ -15,7 +15,7 @@ it(`Reducer without additional parameters should return initial state`, () => {
     movieGenre,
     movieReleaseDate,
     movieReviews,
-    activeGenre: DefaultGenre,
+    activeGenre: DEFAULT_GENRE,
     genres,
     cardsToShow: 8,
   });
@@ -81,7 +81,7 @@ it(`Reducer should return filtered films`, () => {
     movieGenre,
     movieReleaseDate,
     movieReviews,
-    activeGenre: DefaultGenre,
+    activeGenre: DEFAULT_GENRE,
     genres,
     cardsToShow: 8,
   }, {
@@ -94,7 +94,7 @@ it(`Reducer should return filtered films`, () => {
     movieGenre,
     movieReleaseDate,
     movieReviews,
-    activeGenre: DefaultGenre,
+    activeGenre: DEFAULT_GENRE,
     genres,
     cardsToShow: 8,
   });
@@ -134,7 +134,7 @@ describe(`Action creators work correctly`, () => {
   });
 
   it(`Action creator for getFilmsByGenre returns films filtered by default genre`, () => {
-    expect(ActionCreator.getFilmsByGenre(DefaultGenre)).toEqual({
+    expect(ActionCreator.getFilmsByGenre(DEFAULT_GENRE)).toEqual({
       type: ActionType.GET_FILMS_BY_GENRE,
       payload: movies,
     });
