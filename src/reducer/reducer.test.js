@@ -16,7 +16,8 @@ it(`Reducer without additional parameters should return initial state`, () => {
     movieReleaseDate,
     movieReviews,
     activeGenre: DefaultGenre,
-    genres
+    genres,
+    cardsToShow: 8,
   });
 });
 
@@ -29,7 +30,8 @@ it(`Reducer should change genre filter`, () => {
     movieReleaseDate,
     movieReviews,
     activeGenre: `Documentary`,
-    genres
+    genres,
+    cardsToShow: 8,
   }, {
     type: ActionType.CHANGE_GENRE_FILTER,
     payload: `Dramas`,
@@ -41,7 +43,8 @@ it(`Reducer should change genre filter`, () => {
     movieReleaseDate,
     movieReviews,
     activeGenre: `Dramas`,
-    genres
+    genres,
+    cardsToShow: 8,
   });
 
   expect(reducer({
@@ -52,7 +55,8 @@ it(`Reducer should change genre filter`, () => {
     movieReleaseDate,
     movieReviews,
     activeGenre: `Dramas`,
-    genres
+    genres,
+    cardsToShow: 8,
   }, {
     type: ActionType.CHANGE_GENRE_FILTER,
     payload: `Kids & Family`,
@@ -64,7 +68,8 @@ it(`Reducer should change genre filter`, () => {
     movieReleaseDate,
     movieReviews,
     activeGenre: `Kids & Family`,
-    genres
+    genres,
+    cardsToShow: 8,
   });
 });
 
@@ -77,7 +82,8 @@ it(`Reducer should return filtered films`, () => {
     movieReleaseDate,
     movieReviews,
     activeGenre: DefaultGenre,
-    genres
+    genres,
+    cardsToShow: 8,
   }, {
     type: ActionType.GET_FILMS_BY_GENRE,
     payload: getFilmsByGenre(movies, `Romance`),
@@ -89,7 +95,8 @@ it(`Reducer should return filtered films`, () => {
     movieReleaseDate,
     movieReviews,
     activeGenre: DefaultGenre,
-    genres
+    genres,
+    cardsToShow: 8,
   });
 
   expect(reducer({
@@ -100,7 +107,8 @@ it(`Reducer should return filtered films`, () => {
     movieReleaseDate,
     movieReviews,
     activeGenre: `Dramas`,
-    genres
+    genres,
+    cardsToShow: 8,
   }, {
     type: ActionType.GET_FILMS_BY_GENRE,
     payload: movies,
@@ -112,7 +120,8 @@ it(`Reducer should return filtered films`, () => {
     movieReleaseDate,
     movieReviews,
     activeGenre: `Dramas`,
-    genres
+    genres,
+    cardsToShow: 8,
   });
 });
 
@@ -128,6 +137,13 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.getFilmsByGenre(DefaultGenre)).toEqual({
       type: ActionType.GET_FILMS_BY_GENRE,
       payload: movies,
+    });
+  });
+
+  it(`ActionCreator for incrementing number of cards to show returns correct action`, () => {
+    expect(ActionCreator.showMore(8)).toEqual({
+      type: ActionType.SHOW_MORE,
+      payload: 8,
     });
   });
 });

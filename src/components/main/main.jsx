@@ -107,8 +107,8 @@ Main.propTypes = {
   activeGenre: PropTypes.string,
   genres: PropTypes.arrayOf(PropTypes.string),
   onGenreItemClick: PropTypes.func.isRequired,
-  onShowMoreClick: PropTypes.func.isRequired,
-  shown: PropTypes.number.isRequired,
+  onShowMoreClick: PropTypes.func,
+  shown: PropTypes.number,
 };
 
 export default Main;
