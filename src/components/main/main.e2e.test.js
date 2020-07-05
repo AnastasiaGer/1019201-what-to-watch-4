@@ -9,6 +9,9 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
+const genres = [`Comedies`, `Crime`, `Documentary`];
+const activeGenre = `Comedies`;
+
 describe(`Main e2e tests`, () => {
   it(`Should be clicked on title`, () => {
     const titleClickHandler = jest.fn();
@@ -17,7 +20,11 @@ describe(`Main e2e tests`, () => {
         <Main
           movieCard={movieCard}
           movies={movies}
-          onMovieCardClick={titleClickHandler} />
+          onMovieCardClick={titleClickHandler}
+          genres={genres}
+          activeGenre={activeGenre}
+          onGenreItemClick={() => {}}
+        />
     );
 
     const movieTitles = mainComponent.find(`.small-movie-card__title`);
@@ -34,7 +41,11 @@ describe(`Main e2e tests`, () => {
         <Main
           movieCard={movieCard}
           movies={movies}
-          onMovieCardClick={titleClickHandler} />
+          onMovieCardClick={titleClickHandler}
+          genres={genres}
+          activeGenre={activeGenre}
+          onGenreItemClick={() => {}}
+        />
     );
 
     const movieImages = mainComponent.find(`.small-movie-card__image`);

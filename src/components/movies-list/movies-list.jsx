@@ -8,7 +8,7 @@ export default class MoviesList extends PureComponent {
     super(props);
 
     this.state = {
-      currentMovie: null
+      activeCard: null
     };
 
     this._handleSmallMovieCardHover = this._handleSmallMovieCardHover.bind(this);
@@ -16,7 +16,7 @@ export default class MoviesList extends PureComponent {
 
   _handleSmallMovieCardHover(movie) {
     this.setState({
-      currentMovie: movie,
+      activeCard: movie,
     });
   }
 

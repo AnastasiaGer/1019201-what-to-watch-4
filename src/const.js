@@ -16,3 +16,7 @@ export const TABS = {
   DETAILS: `details`,
   REVIEWS: `reviews`,
 };
+
+export const MaxSimilarCards = 4;
+
+export const DefaultGenre = `All genres`;

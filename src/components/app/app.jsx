@@ -3,55 +3,61 @@ import PropTypes from 'prop-types';
 import Main from '../main/main.jsx';
 import MoviePage from "../movie-page/movie-page.jsx";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-import {PageNames} from '../../const.js';
 import {CustomPropTypes} from '../../utils/props.js';
-
 import withTabs from '../../hocs/with-tabs.jsx';
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer/reducer.js";
+
 
 const MoviePageWrapped = withTabs(MoviePage);
-export default class App extends PureComponent {
+class App extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentPage: PageNames.MAIN,
-      currentMovie: this.props.movieCard,
+      activeCard: null,
     };
 
     this.handleMovieClick = this.handleMovieClick.bind(this);
   }
 
-  _renderApp() {
+  _renderMain() {
+    const {movieCard, movies, onGenreItemClick, genres, activeGenre} = this.props;
+    return (
+      <Main
+        movieCard={movieCard}
+        movies={movies}
+        onMovieCardClick={this.handleMovieClick}
+        genres={genres}
+        activeGenre={activeGenre}
+        onGenreItemClick={onGenreItemClick}
+      />
+    );
+  }
+
+  _renderMoviePage() {
     const {movieCard, movies, movieReviews} = this.props;
-    const {currentPage, currentMovie} = this.state;
 
-    if (currentPage === PageNames.MAIN) {
-      return (
-        <Main
-          movieCard={movieCard}
-          movies={movies}
-          onMovieCardClick={this.handleMovieClick}
-        />
-      );
-    }
+    return (
+      <MoviePageWrapped
+        movieCard={movieCard}
+        movies={movies}
+        movieReviews={movieReviews}
+        onMovieCardClick={this.handleMovieClick}
+      />
+    );
+  }
 
-    if (currentPage === PageNames.MOVIE_DETAIL) {
-      return (
-        <MoviePageWrapped
-          movieCard={currentMovie}
-          movies={movies}
-          movieReviews={movieReviews}
-        />
-      );
-    }
+  _renderApp() {
+    const {activeCard} = this.state;
 
-    return null;
+    const isActiveCard = activeCard ? this._renderMoviePage() : this._renderMain();
+    return isActiveCard;
   }
 
   handleMovieClick(movie) {
     this.setState({
-      currentPage: PageNames.MOVIE_DETAIL,
-      currentMovie: movie,
+      activeCard: movie,
     });
   }
 
@@ -63,11 +69,7 @@ export default class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-movie">
-            <MoviePageWrapped
-              movieCard={this.state.currentMovie}
-              movies={this.props.movies}
-              onMovieCardClick={this.handleMovieClick}
-            />
+            {this._renderMoviePage()}
           </Route>
         </Switch>
       </BrowserRouter>
@@ -79,4 +81,25 @@ App.propTypes = {
   movieCard: CustomPropTypes.MOVIE,
   movies: PropTypes.arrayOf(CustomPropTypes.MOVIE).isRequired,
   movieReviews: CustomPropTypes.REVIEWS,
+  activeGenre: PropTypes.string,
+  genres: PropTypes.arrayOf(PropTypes.string),
+  onGenreItemClick: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  activeGenre: state.activeGenre,
+  movies: state.movies,
+  movieCard: state.movieCard,
+  movieReviews: state.movieReviews,
+  genres: state.genres,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onGenreItemClick(genre) {
+    dispatch(ActionCreator.getFilmsByGenre(genre));
+    dispatch(ActionCreator.changeFilter(genre));
+  },
+});
+
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

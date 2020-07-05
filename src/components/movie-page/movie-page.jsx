@@ -7,9 +7,10 @@ import PageReviews from '../page-reviews/page-reviews.jsx';
 
 import MoviesList from '../movies-list/movies-list.jsx';
 import {CustomPropTypes} from '../../utils/props.js';
+import {MaxSimilarCards} from '../../const.js';
 
 const getSimilarCards = (movies, genre) => {
-  return movies.filter((movie) => movie.genre === genre).slice(0, 4);
+  return movies.filter((movie) => movie.genre === genre).slice(0, MaxSimilarCards);
 };
 
 const MoviePage = ({movieCard, movies, onMovieCardClick, movieReviews,
