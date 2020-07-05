@@ -22,7 +22,7 @@ class App extends PureComponent {
   }
 
   _renderMain() {
-    const {movieCard, movies, onGenreItemClick, genres, activeGenre} = this.props;
+    const {movieCard, movies, onGenreItemClick, genres, activeGenre, shown, onShowMoreClick} = this.props;
     return (
       <Main
         movieCard={movieCard}
@@ -31,6 +31,8 @@ class App extends PureComponent {
         genres={genres}
         activeGenre={activeGenre}
         onGenreItemClick={onGenreItemClick}
+        onShowMoreClick={onShowMoreClick}
+        shown={shown}
       />
     );
   }
@@ -84,6 +86,8 @@ App.propTypes = {
   activeGenre: PropTypes.string,
   genres: PropTypes.arrayOf(PropTypes.string),
   onGenreItemClick: PropTypes.func.isRequired,
+  onShowMoreClick: PropTypes.func.isRequired,
+  shown: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -92,12 +96,16 @@ const mapStateToProps = (state) => ({
   movieCard: state.movieCard,
   movieReviews: state.movieReviews,
   genres: state.genres,
+  shown: state.cardsToShow,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreItemClick(genre) {
     dispatch(ActionCreator.getFilmsByGenre(genre));
     dispatch(ActionCreator.changeFilter(genre));
+  },
+  onShowMoreClick() {
+    dispatch(ActionCreator.showMore());
   },
 });
 

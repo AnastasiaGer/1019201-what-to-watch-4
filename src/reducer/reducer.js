@@ -2,6 +2,8 @@ import {movieCard, movieReviews, movies} from "../mocks/movies.js";
 import {DefaultGenre} from "../const.js";
 import {extend} from "../utils/utils.js";
 
+const CARDS_BATCH = 8;
+
 const movieTitle = movieCard.title;
 const movieGenre = movieCard.genre;
 const movieReleaseDate = movieCard.date;
@@ -19,11 +21,13 @@ const initialState = {
   activeGenre: DefaultGenre,
   genres,
   activeCard: null,
+  cardsToShow: CARDS_BATCH,
 };
 
 const ActionType = {
   CHANGE_GENRE_FILTER: `CHANGE_GENRE_FILTER`,
   GET_FILMS_BY_GENRE: `GET_FILMS_BY_GENRE`,
+  SHOW_MORE: `SHOW_MORE`,
 };
 
 const getFilmsByGenre = (films, genre) => {
@@ -34,6 +38,11 @@ const ActionCreator = {
   changeFilter: (filter) => ({
     type: ActionType.CHANGE_GENRE_FILTER,
     payload: filter,
+  }),
+
+  showMore: () => ({
+    type: ActionType.SHOW_MORE,
+    payload: CARDS_BATCH,
   }),
 
   getFilmsByGenre: (genre) => {
@@ -69,7 +78,8 @@ const reducer = (state = extend(initialState), action) => {
       return extend(state, {
         activeCard: action.payload,
       });
-
+    case ActionType.SHOW_MORE:
+      return extend(state, {cardsToShow: state.cardsToShow + action.payload});
   }
 
   return state;
