@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import MoviesList from '../movies-list/movies-list.jsx';
 import {CustomPropTypes} from '../../utils/props.js';
 import GenresList from "../genres-list/genres-list.jsx";
+import ShowMoreButton from '../show-more-btn/show-more-btn.jsx';
 
-const Main = ({movieCard, movies, onMovieCardClick, onGenreItemClick, genres, activeGenre}) => {
+const Main = ({movieCard, movies, onMovieCardClick, onGenreItemClick, genres, activeGenre, onShowMoreClick, shown}) => {
   const {title, genre, date} = movieCard;
 
   return (
@@ -74,13 +75,11 @@ const Main = ({movieCard, movies, onMovieCardClick, onGenreItemClick, genres, ac
           />
 
           <MoviesList
-            movies={movies}
+            movies={movies.slice(0, shown)}
             onMovieCardClick={onMovieCardClick}
           />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          {movies.length > shown ? <ShowMoreButton onShowMoreClick={onShowMoreClick} /> : ``}
         </section>
 
         <footer className="page-footer">
@@ -108,6 +107,8 @@ Main.propTypes = {
   activeGenre: PropTypes.string,
   genres: PropTypes.arrayOf(PropTypes.string),
   onGenreItemClick: PropTypes.func.isRequired,
+  onShowMoreClick: PropTypes.func,
+  shown: PropTypes.number,
 };
 
 export default Main;

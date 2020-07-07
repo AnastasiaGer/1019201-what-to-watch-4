@@ -1,6 +1,6 @@
 import {reducer, ActionCreator, ActionType, genres, getFilmsByGenre} from "./reducer.js";
 import {movies, movieCard, movieReviews} from "../mocks/movies.js";
-import {DefaultGenre} from "../const.js";
+import {DEFAULT_GENRE} from "../const.js";
 
 const movieTitle = movieCard.title;
 const movieGenre = movieCard.genre;
@@ -15,8 +15,9 @@ it(`Reducer without additional parameters should return initial state`, () => {
     movieGenre,
     movieReleaseDate,
     movieReviews,
-    activeGenre: DefaultGenre,
-    genres
+    activeGenre: DEFAULT_GENRE,
+    genres,
+    cardsToShow: 8,
   });
 });
 
@@ -29,7 +30,8 @@ it(`Reducer should change genre filter`, () => {
     movieReleaseDate,
     movieReviews,
     activeGenre: `Documentary`,
-    genres
+    genres,
+    cardsToShow: 8,
   }, {
     type: ActionType.CHANGE_GENRE_FILTER,
     payload: `Dramas`,
@@ -41,7 +43,8 @@ it(`Reducer should change genre filter`, () => {
     movieReleaseDate,
     movieReviews,
     activeGenre: `Dramas`,
-    genres
+    genres,
+    cardsToShow: 8,
   });
 
   expect(reducer({
@@ -52,7 +55,8 @@ it(`Reducer should change genre filter`, () => {
     movieReleaseDate,
     movieReviews,
     activeGenre: `Dramas`,
-    genres
+    genres,
+    cardsToShow: 8,
   }, {
     type: ActionType.CHANGE_GENRE_FILTER,
     payload: `Kids & Family`,
@@ -64,7 +68,8 @@ it(`Reducer should change genre filter`, () => {
     movieReleaseDate,
     movieReviews,
     activeGenre: `Kids & Family`,
-    genres
+    genres,
+    cardsToShow: 8,
   });
 });
 
@@ -76,8 +81,9 @@ it(`Reducer should return filtered films`, () => {
     movieGenre,
     movieReleaseDate,
     movieReviews,
-    activeGenre: DefaultGenre,
-    genres
+    activeGenre: DEFAULT_GENRE,
+    genres,
+    cardsToShow: 8,
   }, {
     type: ActionType.GET_FILMS_BY_GENRE,
     payload: getFilmsByGenre(movies, `Romance`),
@@ -88,8 +94,9 @@ it(`Reducer should return filtered films`, () => {
     movieGenre,
     movieReleaseDate,
     movieReviews,
-    activeGenre: DefaultGenre,
-    genres
+    activeGenre: DEFAULT_GENRE,
+    genres,
+    cardsToShow: 8,
   });
 
   expect(reducer({
@@ -100,7 +107,8 @@ it(`Reducer should return filtered films`, () => {
     movieReleaseDate,
     movieReviews,
     activeGenre: `Dramas`,
-    genres
+    genres,
+    cardsToShow: 8,
   }, {
     type: ActionType.GET_FILMS_BY_GENRE,
     payload: movies,
@@ -112,7 +120,8 @@ it(`Reducer should return filtered films`, () => {
     movieReleaseDate,
     movieReviews,
     activeGenre: `Dramas`,
-    genres
+    genres,
+    cardsToShow: 8,
   });
 });
 
@@ -125,9 +134,16 @@ describe(`Action creators work correctly`, () => {
   });
 
   it(`Action creator for getFilmsByGenre returns films filtered by default genre`, () => {
-    expect(ActionCreator.getFilmsByGenre(DefaultGenre)).toEqual({
+    expect(ActionCreator.getFilmsByGenre(DEFAULT_GENRE)).toEqual({
       type: ActionType.GET_FILMS_BY_GENRE,
       payload: movies,
+    });
+  });
+
+  it(`ActionCreator for incrementing number of cards to show returns correct action`, () => {
+    expect(ActionCreator.showMore(8)).toEqual({
+      type: ActionType.SHOW_MORE,
+      payload: 8,
     });
   });
 });

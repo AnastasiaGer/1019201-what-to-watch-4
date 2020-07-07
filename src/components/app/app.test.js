@@ -29,6 +29,8 @@ describe(`App`, () => {
               genres={genres}
               activeGenre={activeGenre}
               onGenreItemClick={() => {}}
+              onShowMoreClick={() => {}}
+              shown={0}
             />
           </Provider>, {createNodeMock})
      .toJSON();
