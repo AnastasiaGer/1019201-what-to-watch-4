@@ -4,7 +4,7 @@ import MoviesList from '../movies-list/movies-list.jsx';
 import {CustomPropTypes} from '../../utils/props.js';
 import GenresList from "../genres-list/genres-list.jsx";
 import ShowMoreButton from '../show-more-btn/show-more-btn.jsx';
-import withTabs from '../../hocs/with-tabs.jsx';
+import withTabs from '../../hocs/with-tabs.js';
 
 const MoviesListWrapped = withTabs(MoviesList);
 const GenresListWrapped = withTabs(GenresList);

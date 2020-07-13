@@ -6,7 +6,7 @@ const withActiveCard = (Component) => {
       super(props);
 
       this.state = {
-        activeCard: {},
+        activeCard: null,
       };
 
       this._setActiveCard = this._setActiveCard.bind(this);
