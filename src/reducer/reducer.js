@@ -20,7 +20,7 @@ const initialState = {
   movieReviews,
   activeGenre: DEFAULT_GENRE,
   genres,
-  activeCard: null,
+  currentMovieCard: null,
   cardsToShow: CARDS_BATCH,
 };
 
@@ -28,6 +28,7 @@ const ActionType = {
   CHANGE_GENRE_FILTER: `CHANGE_GENRE_FILTER`,
   GET_FILMS_BY_GENRE: `GET_FILMS_BY_GENRE`,
   SHOW_MORE: `SHOW_MORE`,
+  CHANGE_MOVIE_CARD: `CHANGE_MOVIE_CARD`,
 };
 
 const getFilmsByGenre = (films, genre) => {
@@ -60,6 +61,10 @@ const ActionCreator = {
       payload: filteredFilms,
     };
   },
+  changeMovieCard: (movie) => ({
+    type: ActionType.CHANGE_MOVIE_CARD,
+    payload: movie,
+  }),
 };
 
 const reducer = (state = extend(initialState), action) => {
@@ -73,7 +78,10 @@ const reducer = (state = extend(initialState), action) => {
       return extend(state, {
         movies: action.payload,
       });
-
+    case (ActionType.CHANGE_MOVIE_CARD):
+      return extend(state, {
+        currentMovieCard: action.payload,
+      });
     case ActionType.GET_ACTIVE_FILM:
       return extend(state, {
         activeCard: action.payload,
