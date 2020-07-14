@@ -107,7 +107,7 @@ const Main = ({movieCard, movies, onMovieCardClick, onGenreItemClick, genres, ac
 Main.propTypes = {
   movieCard: CustomPropTypes.MOVIE,
   movies: PropTypes.arrayOf(CustomPropTypes.MOVIE).isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
+  onMovieCardClick: PropTypes.func,
   activeGenre: PropTypes.string,
   genres: PropTypes.arrayOf(PropTypes.string),
   onGenreItemClick: PropTypes.func.isRequired,
