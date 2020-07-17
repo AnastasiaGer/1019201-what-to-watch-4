@@ -25,26 +25,6 @@ Enzyme.configure({
 });
 
 describe(`SmallMovieCard e2e tests`, () => {
-  it(`SmallMovieCard be hovered`, () => {
-    const onMovieCardHover = jest.fn((args) => args);
-
-    const mainComponent = shallow(
-        <SmallMovieCard
-          movie={movie}
-          onMovieCardClick={() => {}}
-          onMovieCardHover={onMovieCardHover} />
-    );
-
-    const movieCards = mainComponent.find(`.small-movie-card`);
-
-    movieCards.forEach((movieCard) => {
-      movieCard.simulate(`mouseover`, movie);
-    });
-
-    expect(onMovieCardHover).toHaveBeenCalledTimes(1);
-    expect(onMovieCardHover.mock.calls[0][0]).toMatchObject(movie);
-  });
-
   it(`SmallMovieCard be clicked`, () => {
     const onMovieCardClick = jest.fn();
 
@@ -52,7 +32,9 @@ describe(`SmallMovieCard e2e tests`, () => {
         <SmallMovieCard
           movie={movie}
           onMovieCardClick={onMovieCardClick}
-          onMovieCardHover={() => {}} />
+          onMouseEnter={() => {}}
+          onMouseLeave={() => {}}
+        />
     );
 
     const movieCards = mainComponent.find(`.small-movie-card`);
