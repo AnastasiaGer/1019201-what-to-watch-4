@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {CustomPropTypes} from '../../utils/props.js';
 
-const FullVideoPlayer = ({movieCard,children,
+const FullVideoPlayer = ({movieCard, children,
   duration,
   currentTime,
   isPlaying,

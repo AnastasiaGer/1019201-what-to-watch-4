@@ -1,5 +1,6 @@
 import React, {PureComponent, createRef} from 'react';
 import {Time} from '../const';
+import {CustomPropTypes} from '../../utils/props.js';
 
 const withVideoControls = (Component) => {
   class WithVideoControls extends PureComponent {
@@ -45,7 +46,7 @@ const withVideoControls = (Component) => {
 
     componentDidMount() {
       const {movieCard} = this.props;
-    const {videoUrl} = movieCard;
+      const {videoUrl} = movieCard;
       const video = this._videoRef.current;
 
       video.src = videoUrl;
@@ -72,10 +73,10 @@ const withVideoControls = (Component) => {
 
     componentWillUnmount() {
       const {movieCard} = this.props;
-    const {videoUrl} = movieCard;
+      const {videoUrl} = movieCard;
       const video = this._videoRef.current;
 
-      video.src =videoUrl;
+      video.src = videoUrl;
       video.onplay = null;
       video.onloadedmetadata = null;
       video.ontimeupdate = null;
@@ -104,7 +105,9 @@ const withVideoControls = (Component) => {
     }
   }
 
-  WithVideoControls.propTypes = {};
+  WithVideoControls.propTypes = {
+    movieCard: CustomPropTypes.MOVIE,
+  };
 
   return WithVideoControls;
 };

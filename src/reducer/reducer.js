@@ -97,14 +97,14 @@ const reducer = (state = extend(initialState), action) => {
       return extend(state, {
         activeCard: action.payload,
       });
-      case (ActionType.PLAY_MOVIE):
-        return extend(state, {
-          isVideoPlayer: action.payload,
-        });
-      case (ActionType.STOP_MOVIE):
-        return extend(state, {
-          isVideoPlayer: action.payload,
-        });
+    case (ActionType.PLAY_MOVIE):
+      return extend(state, {
+        isVideoPlayer: action.payload,
+      });
+    case (ActionType.STOP_MOVIE):
+      return extend(state, {
+        isVideoPlayer: action.payload,
+      });
     case ActionType.SHOW_MORE:
       return extend(state, {cardsToShow: state.cardsToShow + action.payload});
   }
