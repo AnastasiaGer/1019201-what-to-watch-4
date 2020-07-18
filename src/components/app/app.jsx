@@ -8,16 +8,35 @@ import withTabs from '../../hocs/with-tabs.js';
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/reducer.js";
 
+import FullVideoPlayer from '../full-video-player/full-video-player.jsx';
+import withVideoControls from '../../hocs/with-full-video.js';
+
+const FullVideoPlayerWrapped = withVideoControls(FullVideoPlayer);
+
 
 const MoviePageWrapped = withTabs(MoviePage);
 class App extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      isVideoPlayer: false,
+    };
+
+    this._renderMoviePlayer = this._renderMoviePlayer.bind(this);
+    this._handleClosePlayerClick = this._handleClosePlayerClick.bind(this);
+    this._handlePlayClick = this._handlePlayClick.bind(this);
   }
 
   _renderApp() {
     const {
       movieCard, movies, onGenreItemClick, genres, activeGenre, shown, onShowMoreClick, movieReviews, currentMovieCard, handleMovieCardClick} = this.props;
+
+      const {isVideoPlayer} = this.state;
+
+      if (isVideoPlayer) {
+        return this._renderMoviePlayer();
+      }
 
     if (currentMovieCard) {
       return <MoviePageWrapped
@@ -25,6 +44,7 @@ class App extends PureComponent {
         movies={movies}
         movieReviews={movieReviews}
         onMovieCardClick={handleMovieCardClick}
+        onPlayClick={this._handlePlayClick}
       />;
     }
 
@@ -38,8 +58,31 @@ class App extends PureComponent {
         onGenreItemClick={onGenreItemClick}
         onShowMoreClick={onShowMoreClick}
         shown={shown}
+        onPlayClick={this._handlePlayClick}
       />
     );
+  }
+
+  _renderMoviePlayer() {
+    const {movieCard} = this.props;
+    return (
+      <FullVideoPlayerWrapped
+        movieCard={movieCard}
+        onClosePlayerClick={this._handleClosePlayerClick}
+      />
+    );
+  }
+
+  _handleClosePlayerClick() {
+    this.setState({
+      isVideoPlayer: false,
+    });
+  }
+
+  _handlePlayClick() {
+    this.setState({
+      isVideoPlayer: true,
+    });
   }
 
   handleMovieClick(movie) {

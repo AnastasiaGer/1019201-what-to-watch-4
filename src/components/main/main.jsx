@@ -9,7 +9,7 @@ import withTabs from '../../hocs/with-tabs.js';
 const MoviesListWrapped = withTabs(MoviesList);
 const GenresListWrapped = withTabs(GenresList);
 
-const Main = ({movieCard, movies, onMovieCardClick, onGenreItemClick, genres, activeGenre, onShowMoreClick, shown}) => {
+const Main = ({movieCard, movies, onMovieCardClick, onGenreItemClick, genres, activeGenre, onShowMoreClick, shown, onPlayClick}) => {
   const {title, genre, date} = movieCard;
 
   return (
@@ -50,12 +50,14 @@ const Main = ({movieCard, movies, onMovieCardClick, onGenreItemClick, genres, ac
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
-                  </svg>
-                  <span>Play</span>
-                </button>
+              <button className="btn btn--play movie-card__button" type="button"
+                onClick={() => onPlayClick(movieCard)}
+              >
+                <svg viewBox="0 0 19 19" width="19" height="19">
+                  <use xlinkHref="#play-s"></use>
+                </svg>
+                <span>Play</span>
+              </button>
                 <button className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
@@ -113,6 +115,7 @@ Main.propTypes = {
   onGenreItemClick: PropTypes.func.isRequired,
   onShowMoreClick: PropTypes.func,
   shown: PropTypes.number,
+  onPlayClick: PropTypes.func,
 };
 
 export default Main;

@@ -22,6 +22,7 @@ describe(`Main`, () => {
         onGenreItemClick={() => {}}
         shown={0}
         onShowMoreClick={() => {}}
+        onPlayClick={() => {}}
       />, {createNodeMock})
         .toJSON();
 
