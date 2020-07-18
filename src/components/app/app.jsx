@@ -85,12 +85,6 @@ class App extends PureComponent {
     });
   }
 
-  handleMovieClick(movie) {
-    this.setState({
-      currentMovieCard: movie,
-    });
-  }
-
   render() {
     const {movieReviews, movies, currentMovieCard, handleMovieCardClick} = this.props;
 
