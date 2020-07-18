@@ -24,11 +24,11 @@ class App extends PureComponent {
 
   _renderApp() {
     const {
-      movieCard, movies, onGenreItemClick, genres, activeGenre, shown, onShowMoreClick, movieReviews, currentMovieCard, handleMovieCardClick, isVideoPlayer = false, onPlayButtonClick} = this.props;
+      movieCard, movies, onGenreItemClick, genres, activeGenre, shown, onShowMoreClick, movieReviews, currentMovieCard, handleMovieCardClick, isVideoPlayer, onPlayButtonClick} = this.props;
 
-      if (isVideoPlayer) {
-        return this._renderMoviePlayer();
-      }
+    if (isVideoPlayer) {
+      return this._renderMoviePlayer();
+    }
 
     if (currentMovieCard) {
       return <MoviePageWrapped
@@ -102,6 +102,7 @@ App.propTypes = {
   handleMovieCardClick: PropTypes.func,
   onPlayButtonClick: PropTypes.func,
   handleCloseButtonClick: PropTypes.func,
+  isVideoPlayer: PropTypes.bool
 };
 
 const mapStateToProps = (state) => ({
