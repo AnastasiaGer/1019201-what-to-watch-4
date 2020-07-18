@@ -1,6 +1,6 @@
 import React, {PureComponent, createRef} from 'react';
 import {Time} from '../const';
-import {CustomPropTypes} from '../../utils/props.js';
+import {CustomPropTypes} from '../utils/props';
 
 const withVideoControls = (Component) => {
   class WithVideoControls extends PureComponent {
