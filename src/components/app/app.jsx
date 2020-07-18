@@ -19,20 +19,12 @@ class App extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      isVideoPlayer: false,
-    };
-
     this._renderMoviePlayer = this._renderMoviePlayer.bind(this);
-    this._handleClosePlayerClick = this._handleClosePlayerClick.bind(this);
-    this._handlePlayClick = this._handlePlayClick.bind(this);
   }
 
   _renderApp() {
     const {
-      movieCard, movies, onGenreItemClick, genres, activeGenre, shown, onShowMoreClick, movieReviews, currentMovieCard, handleMovieCardClick} = this.props;
-
-      const {isVideoPlayer} = this.state;
+      movieCard, movies, onGenreItemClick, genres, activeGenre, shown, onShowMoreClick, movieReviews, currentMovieCard, handleMovieCardClick, isVideoPlayer = false, onPlayButtonClick} = this.props;
 
       if (isVideoPlayer) {
         return this._renderMoviePlayer();
@@ -44,7 +36,7 @@ class App extends PureComponent {
         movies={movies}
         movieReviews={movieReviews}
         onMovieCardClick={handleMovieCardClick}
-        onPlayClick={this._handlePlayClick}
+        onPlayClick={onPlayButtonClick}
       />;
     }
 
@@ -58,31 +50,19 @@ class App extends PureComponent {
         onGenreItemClick={onGenreItemClick}
         onShowMoreClick={onShowMoreClick}
         shown={shown}
-        onPlayClick={this._handlePlayClick}
+        onPlayClick={onPlayButtonClick}
       />
     );
   }
 
   _renderMoviePlayer() {
-    const {movieCard} = this.props;
+    const {movieCard, handleCloseButtonClick} = this.props;
     return (
       <FullVideoPlayerWrapped
         movieCard={movieCard}
-        onClosePlayerClick={this._handleClosePlayerClick}
+        onClosePlayerClick={handleCloseButtonClick}
       />
     );
-  }
-
-  _handleClosePlayerClick() {
-    this.setState({
-      isVideoPlayer: false,
-    });
-  }
-
-  _handlePlayClick() {
-    this.setState({
-      isVideoPlayer: true,
-    });
   }
 
   render() {
@@ -120,6 +100,8 @@ App.propTypes = {
   shown: PropTypes.number.isRequired,
   currentMovieCard: PropTypes.object,
   handleMovieCardClick: PropTypes.func,
+  onPlayButtonClick: PropTypes.func,
+  handleCloseButtonClick: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
@@ -130,6 +112,7 @@ const mapStateToProps = (state) => ({
   genres: state.genres,
   shown: state.cardsToShow,
   currentMovieCard: state.currentMovieCard,
+  isVideoPlayer: state.isVideoPlayer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -142,7 +125,14 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleMovieCardClick(movie) {
     dispatch(ActionCreator.changeMovieCard(movie));
-  }
+  },
+  onPlayButtonClick(isVideoPlayer) {
+    dispatch(ActionCreator.playFullMovie(isVideoPlayer));
+  },
+  handleCloseButtonClick(isVideoPlayer) {
+    dispatch(ActionCreator.closeFulMovie(isVideoPlayer));
+  },
+
 });
 
 export {App};

@@ -19,6 +19,7 @@ it(`Reducer without additional parameters should return initial state`, () => {
     genres,
     cardsToShow: 8,
     currentMovieCard: null,
+    isVideoPlayer: false,
   });
 });
 
@@ -34,6 +35,7 @@ it(`Reducer should change genre filter`, () => {
     genres,
     cardsToShow: 8,
     currentMovieCard: null,
+    isVideoPlayer: false,
   }, {
     type: ActionType.CHANGE_GENRE_FILTER,
     payload: `Dramas`,
@@ -48,6 +50,7 @@ it(`Reducer should change genre filter`, () => {
     genres,
     cardsToShow: 8,
     currentMovieCard: null,
+    isVideoPlayer: false,
   });
 
   expect(reducer({
@@ -61,6 +64,7 @@ it(`Reducer should change genre filter`, () => {
     genres,
     cardsToShow: 8,
     currentMovieCard: null,
+    isVideoPlayer: false,
   }, {
     type: ActionType.CHANGE_GENRE_FILTER,
     payload: `Kids & Family`,
@@ -75,6 +79,7 @@ it(`Reducer should change genre filter`, () => {
     genres,
     cardsToShow: 8,
     currentMovieCard: null,
+    isVideoPlayer: false,
   });
 });
 
@@ -90,6 +95,7 @@ it(`Reducer should return filtered films`, () => {
     genres,
     cardsToShow: 8,
     currentMovieCard: null,
+    isVideoPlayer: false,
   }, {
     type: ActionType.GET_FILMS_BY_GENRE,
     payload: getFilmsByGenre(movies, `Romance`),
@@ -104,6 +110,7 @@ it(`Reducer should return filtered films`, () => {
     genres,
     cardsToShow: 8,
     currentMovieCard: null,
+    isVideoPlayer: false,
   });
 
   expect(reducer({
@@ -117,6 +124,7 @@ it(`Reducer should return filtered films`, () => {
     genres,
     cardsToShow: 8,
     currentMovieCard: null,
+    isVideoPlayer: false,
   }, {
     type: ActionType.GET_FILMS_BY_GENRE,
     payload: movies,
@@ -131,6 +139,7 @@ it(`Reducer should return filtered films`, () => {
     genres,
     cardsToShow: 8,
     currentMovieCard: null,
+    isVideoPlayer: false,
   });
 });
 

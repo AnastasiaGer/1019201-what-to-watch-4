@@ -66,7 +66,7 @@ const FullVideoPlayer = ({movieCard,children,
 
 FullVideoPlayer.propTypes = {
   children: PropTypes.element.isRequired,
-  progress: PropTypes.number.isRequired,
+  currentTime: PropTypes.number.isRequired,
   duration: PropTypes.number,
   movieCard: CustomPropTypes.MOVIE,
   isPlaying: PropTypes.bool.isRequired,

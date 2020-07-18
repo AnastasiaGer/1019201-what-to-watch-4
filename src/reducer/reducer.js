@@ -22,6 +22,7 @@ const initialState = {
   genres,
   currentMovieCard: null,
   cardsToShow: CARDS_BATCH,
+  isVideoPlayer: false
 };
 
 const ActionType = {
@@ -29,6 +30,8 @@ const ActionType = {
   GET_FILMS_BY_GENRE: `GET_FILMS_BY_GENRE`,
   SHOW_MORE: `SHOW_MORE`,
   CHANGE_MOVIE_CARD: `CHANGE_MOVIE_CARD`,
+  PLAY_MOVIE: `PLAY_MOVIE`,
+  STOP_MOVIE: `STOP_MOVIE`
 };
 
 const getFilmsByGenre = (films, genre) => {
@@ -65,6 +68,14 @@ const ActionCreator = {
     type: ActionType.CHANGE_MOVIE_CARD,
     payload: movie,
   }),
+  playFullMovie: (isVideoPlayer) => ({
+    type: ActionType.PLAY_MOVIE,
+    payload: isVideoPlayer,
+  }),
+  closeFulMovie: (isVideoPlayer) => ({
+    type: ActionType.STOP_MOVIE,
+    payload: isVideoPlayer,
+  }),
 };
 
 const reducer = (state = extend(initialState), action) => {
@@ -86,6 +97,14 @@ const reducer = (state = extend(initialState), action) => {
       return extend(state, {
         activeCard: action.payload,
       });
+      case (ActionType.PLAY_MOVIE):
+        return extend(state, {
+          isVideoPlayer: action.payload,
+        });
+      case (ActionType.STOP_MOVIE):
+        return extend(state, {
+          isVideoPlayer: action.payload,
+        });
     case ActionType.SHOW_MORE:
       return extend(state, {cardsToShow: state.cardsToShow + action.payload});
   }

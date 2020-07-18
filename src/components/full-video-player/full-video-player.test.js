@@ -17,7 +17,7 @@ describe(`FullVideoPlayer`, () => {
     const tree = renderer.create(
         <Provider store={store}>
           <FullVideoPlayer
-            progress={20}
+            currentTime={20}
             duration={100}
             movieCard={movieCard}
             isPlaying={true}

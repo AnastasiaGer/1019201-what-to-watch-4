@@ -24,12 +24,13 @@ exports[`FullVideoPlayer Render FullVideoPlayer 1`] = `
         <progress
           className="player__progress"
           max={100}
+          value={20}
         />
         <div
           className="player__toggler"
           style={
             Object {
-              "left": "NaN%",
+              "left": "20%",
             }
           }
         >
