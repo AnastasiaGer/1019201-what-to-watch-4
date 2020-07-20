@@ -20,3 +20,8 @@ export const TABS = {
 export const MAX_SIMILAR_CARDS = 4;
 
 export const DEFAULT_GENRE = `All genres`;
+
+export const Time = {
+  MINUTES_IN_HOUR: 60,
+  SECONDS_IN_MINUTE: 60,
+};

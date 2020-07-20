@@ -8,16 +8,27 @@ import withTabs from '../../hocs/with-tabs.js';
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/reducer.js";
 
+import FullVideoPlayer from '../full-video-player/full-video-player.jsx';
+import withVideoControls from '../../hocs/with-full-video.js';
+
+const FullVideoPlayerWrapped = withVideoControls(FullVideoPlayer);
+
 
 const MoviePageWrapped = withTabs(MoviePage);
 class App extends PureComponent {
   constructor(props) {
     super(props);
+
+    this._renderMoviePlayer = this._renderMoviePlayer.bind(this);
   }
 
   _renderApp() {
     const {
-      movieCard, movies, onGenreItemClick, genres, activeGenre, shown, onShowMoreClick, movieReviews, currentMovieCard, handleMovieCardClick} = this.props;
+      movieCard, movies, onGenreItemClick, genres, activeGenre, shown, onShowMoreClick, movieReviews, currentMovieCard, handleMovieCardClick, isVideoPlayer, onPlayButtonClick} = this.props;
+
+    if (isVideoPlayer) {
+      return this._renderMoviePlayer();
+    }
 
     if (currentMovieCard) {
       return <MoviePageWrapped
@@ -25,6 +36,7 @@ class App extends PureComponent {
         movies={movies}
         movieReviews={movieReviews}
         onMovieCardClick={handleMovieCardClick}
+        onPlayClick={onPlayButtonClick}
       />;
     }
 
@@ -38,14 +50,19 @@ class App extends PureComponent {
         onGenreItemClick={onGenreItemClick}
         onShowMoreClick={onShowMoreClick}
         shown={shown}
+        onPlayClick={onPlayButtonClick}
       />
     );
   }
 
-  handleMovieClick(movie) {
-    this.setState({
-      currentMovieCard: movie,
-    });
+  _renderMoviePlayer() {
+    const {movieCard, handleCloseButtonClick} = this.props;
+    return (
+      <FullVideoPlayerWrapped
+        movieCard={movieCard}
+        onClosePlayerClick={handleCloseButtonClick}
+      />
+    );
   }
 
   render() {
@@ -83,6 +100,9 @@ App.propTypes = {
   shown: PropTypes.number.isRequired,
   currentMovieCard: PropTypes.object,
   handleMovieCardClick: PropTypes.func,
+  onPlayButtonClick: PropTypes.func,
+  handleCloseButtonClick: PropTypes.func,
+  isVideoPlayer: PropTypes.bool
 };
 
 const mapStateToProps = (state) => ({
@@ -93,6 +113,7 @@ const mapStateToProps = (state) => ({
   genres: state.genres,
   shown: state.cardsToShow,
   currentMovieCard: state.currentMovieCard,
+  isVideoPlayer: state.isVideoPlayer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -105,7 +126,14 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleMovieCardClick(movie) {
     dispatch(ActionCreator.changeMovieCard(movie));
-  }
+  },
+  onPlayButtonClick(isVideoPlayer) {
+    dispatch(ActionCreator.playFullMovie(isVideoPlayer));
+  },
+  handleCloseButtonClick(isVideoPlayer) {
+    dispatch(ActionCreator.closeFulMovie(isVideoPlayer));
+  },
+
 });
 
 export {App};
