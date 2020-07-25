@@ -19,7 +19,8 @@ export const TABS = {
 
 export const MAX_SIMILAR_CARDS = 4;
 
-export const DEFAULT_GENRE = `All genres`;
+export const ALL_GENRES = `All genres`;
+export const MAX_SHOWN_MOVIES_LIKE_THIS = 8;
 
 export const Time = {
   MINUTES_IN_HOUR: 60,

@@ -18,7 +18,7 @@ it(`Reducer without additional parameters should return initial state`, () => {
     activeGenre: DEFAULT_GENRE,
     genres,
     cardsToShow: 8,
-    currentMovieCard: null,
+    currentMovie: null,
     isVideoPlayer: false,
   });
 });
@@ -34,7 +34,7 @@ it(`Reducer should change genre filter`, () => {
     activeGenre: `Documentary`,
     genres,
     cardsToShow: 8,
-    currentMovieCard: null,
+    currentMovie: null,
     isVideoPlayer: false,
   }, {
     type: ActionType.CHANGE_GENRE_FILTER,
@@ -49,7 +49,7 @@ it(`Reducer should change genre filter`, () => {
     activeGenre: `Dramas`,
     genres,
     cardsToShow: 8,
-    currentMovieCard: null,
+    currentMovie: null,
     isVideoPlayer: false,
   });
 
@@ -63,7 +63,7 @@ it(`Reducer should change genre filter`, () => {
     activeGenre: `Dramas`,
     genres,
     cardsToShow: 8,
-    currentMovieCard: null,
+    currentMovie: null,
     isVideoPlayer: false,
   }, {
     type: ActionType.CHANGE_GENRE_FILTER,
@@ -78,7 +78,7 @@ it(`Reducer should change genre filter`, () => {
     activeGenre: `Kids & Family`,
     genres,
     cardsToShow: 8,
-    currentMovieCard: null,
+    currentMovie: null,
     isVideoPlayer: false,
   });
 });
@@ -94,7 +94,7 @@ it(`Reducer should return filtered films`, () => {
     activeGenre: DEFAULT_GENRE,
     genres,
     cardsToShow: 8,
-    currentMovieCard: null,
+    currentMovie: null,
     isVideoPlayer: false,
   }, {
     type: ActionType.GET_FILMS_BY_GENRE,
@@ -109,7 +109,7 @@ it(`Reducer should return filtered films`, () => {
     activeGenre: DEFAULT_GENRE,
     genres,
     cardsToShow: 8,
-    currentMovieCard: null,
+    currentMovie: null,
     isVideoPlayer: false,
   });
 
@@ -123,7 +123,7 @@ it(`Reducer should return filtered films`, () => {
     activeGenre: `Dramas`,
     genres,
     cardsToShow: 8,
-    currentMovieCard: null,
+    currentMovie: null,
     isVideoPlayer: false,
   }, {
     type: ActionType.GET_FILMS_BY_GENRE,
@@ -138,7 +138,7 @@ it(`Reducer should return filtered films`, () => {
     activeGenre: `Dramas`,
     genres,
     cardsToShow: 8,
-    currentMovieCard: null,
+    currentMovie: null,
     isVideoPlayer: false,
   });
 });

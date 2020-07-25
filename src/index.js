@@ -1,20 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
-import {createStore} from "redux";
+import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
-import {reducer} from "./reducer/reducer.js";
+import reducer from "./reducer/reducer";
+import {composeWithDevTools} from "redux-devtools-extension";
+import thunk from "redux-thunk";
+
+import {createAPI} from './api';
+import {Operations as DataOperations} from "./reducer/data/data";
+
 
 const root = document.querySelector(`#root`);
 
+const api = createAPI(() => {});
+
 const store = createStore(
     reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api))
+    )
 );
+
+store.dispatch(DataOperations.loadMovieCard());
+store.dispatch(DataOperations.loadMovies());
 
 ReactDOM.render(
     <Provider store={store}>
-      <App/>
+      <App />
     </Provider>,
     root
 );

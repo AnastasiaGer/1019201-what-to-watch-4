@@ -6,7 +6,10 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {CustomPropTypes} from '../../utils/props.js';
 import withTabs from '../../hocs/with-tabs.js';
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/reducer.js";
+import {getMovies, getMovieCard, getMovieReviews} from '../../reducer/data/selectors';
+import {ActionCreator} from '../../reducer/app-state/app-state';
+import {getMoviesGenres} from '../../reducer/data/selectors';
+import {getActiveGenre, getCurrentPage, getIsMoviePlayerActive} from '../../reducer/app-state/selectors';
 
 import FullVideoPlayer from '../full-video-player/full-video-player.jsx';
 import withVideoControls from '../../hocs/with-full-video.js';
@@ -24,13 +27,13 @@ class App extends PureComponent {
 
   _renderApp() {
     const {
-      movieCard, movies, onGenreItemClick, genres, activeGenre, shown, onShowMoreClick, movieReviews, currentMovieCard, handleMovieCardClick, isVideoPlayer, onPlayButtonClick} = this.props;
+      movieCard, movies, onGenreItemClick, genres, activeGenre, shown, onShowMoreClick, movieReviews, currentPage, handleMovieCardClick, isVideoPlayer, onPlayButtonClick} = this.props;
 
     if (isVideoPlayer) {
       return this._renderMoviePlayer();
     }
 
-    if (currentMovieCard) {
+    if (currentPage) {
       return <MoviePageWrapped
         movieCard={movieCard}
         movies={movies}
@@ -66,7 +69,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {movieReviews, movies, currentMovieCard, handleMovieCardClick} = this.props;
+    const {movieReviews, movies, currentPage, handleMovieCardClick} = this.props;
 
     return (
       <BrowserRouter>
@@ -76,7 +79,7 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/movie-page">
             <MoviePageWrapped
-              movie={currentMovieCard === null ? this.props.movies[0] : currentMovieCard}
+              movie={currentPage === null ? this.props.movies[0] : currentPage}
               movies={movies}
               movieReviews={movieReviews}
               onMovieCardClick={handleMovieCardClick}
@@ -91,14 +94,14 @@ class App extends PureComponent {
 
 App.propTypes = {
   movieCard: CustomPropTypes.MOVIE,
-  movies: PropTypes.arrayOf(CustomPropTypes.MOVIE).isRequired,
+  movies: PropTypes.arrayOf(CustomPropTypes.MOVIE),
   movieReviews: CustomPropTypes.REVIEWS,
   activeGenre: PropTypes.string,
   genres: PropTypes.arrayOf(PropTypes.string),
-  onGenreItemClick: PropTypes.func.isRequired,
-  onShowMoreClick: PropTypes.func.isRequired,
-  shown: PropTypes.number.isRequired,
-  currentMovieCard: PropTypes.object,
+  onGenreItemClick: PropTypes.func,
+  onShowMoreClick: PropTypes.func,
+  shown: PropTypes.number,
+  currentPage: PropTypes.string,
   handleMovieCardClick: PropTypes.func,
   onPlayButtonClick: PropTypes.func,
   handleCloseButtonClick: PropTypes.func,
@@ -106,19 +109,18 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  activeGenre: state.activeGenre,
-  movies: state.movies,
-  movieCard: state.movieCard,
-  movieReviews: state.movieReviews,
-  genres: state.genres,
+  movies: getMovies(state),
+  movieCard: getMovieCard(state),
+  movieReviews: getMovieReviews(state),
+  genres: getMoviesGenres(state),
+  activeGenre: getActiveGenre(state),
   shown: state.cardsToShow,
-  currentMovieCard: state.currentMovieCard,
-  isVideoPlayer: state.isVideoPlayer,
+  currentPage: getCurrentPage(state),
+  isVideoPlayer: getIsMoviePlayerActive(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreItemClick(genre) {
-    dispatch(ActionCreator.getFilmsByGenre(genre));
     dispatch(ActionCreator.changeFilter(genre));
   },
   onShowMoreClick() {
