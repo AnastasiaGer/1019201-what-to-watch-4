@@ -19,7 +19,7 @@ export const CustomPropTypes = {
     isFavorite: PropTypes.bool,
     backgroundColor: PropTypes.string,
   }),
-  REVIEWS: PropTypes.arrayOf(PropTypes.shape({
+  REVIEWS: PropTypes.shape({
     id: PropTypes.number,
     user: PropTypes.shape({
       id: PropTypes.number,
@@ -28,5 +28,5 @@ export const CustomPropTypes = {
     rating: PropTypes.number,
     comment: PropTypes.string,
     date: PropTypes.string,
-  }))
+  }),
 };

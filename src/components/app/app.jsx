@@ -95,7 +95,10 @@ class App extends PureComponent {
 App.propTypes = {
   movieCard: CustomPropTypes.MOVIE,
   movies: PropTypes.arrayOf(CustomPropTypes.MOVIE),
-  movieReviews: CustomPropTypes.REVIEWS,
+  movieReviews: PropTypes.PropTypes.oneOfType([
+    PropTypes.arrayOf(CustomPropTypes.REVIEWS),
+    PropTypes.bool,
+  ]),
   activeGenre: PropTypes.string,
   genres: PropTypes.arrayOf(PropTypes.string),
   onGenreItemClick: PropTypes.func,

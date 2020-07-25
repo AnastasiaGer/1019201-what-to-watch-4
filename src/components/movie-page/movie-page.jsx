@@ -163,7 +163,10 @@ const MoviePage = ({movieCard, movies, onMovieCardClick, movieReviews,
 MoviePage.propTypes = {
   movieCard: CustomPropTypes.MOVIE,
   movies: PropTypes.arrayOf(CustomPropTypes.MOVIE),
-  movieReviews: CustomPropTypes.REVIEWS,
+  movieReviews: PropTypes.PropTypes.oneOfType([
+    PropTypes.arrayOf(CustomPropTypes.REVIEWS),
+    PropTypes.bool,
+  ]),
   renderTabs: PropTypes.func.isRequired,
   activeTab: PropTypes.string.isRequired,
   onMovieCardClick: PropTypes.func,
