@@ -1,17 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ShowMoreButton = (props) => {
-  const {onShowMoreClick} = props;
+const ShowMoreButton = ({onShowMoreClick}) => {
   return (
     <div className="catalog__more">
-      <button className="catalog__button" type="button" onClick={onShowMoreClick}>Show more</button>
+      <button
+        className="catalog__button"
+        type="button"
+        onClick={(evt) => {
+          evt.preventDefault();
+          onShowMoreClick();
+        }}>
+          Show more
+      </button>
     </div>
   );
 };
 
 ShowMoreButton.propTypes = {
-  onShowMoreClick: PropTypes.func.isRequired,
+  onShowMoreClick: PropTypes.func,
 };
 
 export default ShowMoreButton;

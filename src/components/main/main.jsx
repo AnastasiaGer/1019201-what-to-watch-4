@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import MoviesList from '../movies-list/movies-list.jsx';
 import {CustomPropTypes} from '../../utils/props.js';
 import GenresList from "../genres-list/genres-list.jsx";
-import ShowMoreButton from '../show-more-btn/show-more-btn.jsx';
 import withTabs from '../../hocs/with-tabs.js';
+import withShowMore from '../../hocs/with-show-more';
 
-const MoviesListWrapped = withTabs(MoviesList);
+const MoviesListWrapped = withShowMore(withTabs(MoviesList));
 const GenresListWrapped = withTabs(GenresList);
 
-const Main = ({movieCard, movies, onMovieCardClick, onGenreItemClick, genres, activeGenre, onShowMoreClick, shown, onPlayClick}) => {
+const Main = ({movieCard, onPlayClick}) => {
   const {title, genre, date} = movieCard;
 
   return (
@@ -75,17 +75,10 @@ const Main = ({movieCard, movies, onMovieCardClick, onGenreItemClick, genres, ac
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenresListWrapped
-            onGenreItemClick={onGenreItemClick}
-            activeGenre={activeGenre}
-            genres={genres}
           />
 
           <MoviesListWrapped
-            movies={movies.slice(0, shown)}
-            onMovieCardClick={onMovieCardClick}
           />
-
-          {movies.length > shown ? <ShowMoreButton onShowMoreClick={onShowMoreClick} /> : ``}
         </section>
 
         <footer className="page-footer">
@@ -108,13 +101,6 @@ const Main = ({movieCard, movies, onMovieCardClick, onGenreItemClick, genres, ac
 
 Main.propTypes = {
   movieCard: CustomPropTypes.MOVIE,
-  movies: PropTypes.arrayOf(CustomPropTypes.MOVIE).isRequired,
-  onMovieCardClick: PropTypes.func,
-  activeGenre: PropTypes.string,
-  genres: PropTypes.arrayOf(PropTypes.string),
-  onGenreItemClick: PropTypes.func.isRequired,
-  onShowMoreClick: PropTypes.func,
-  shown: PropTypes.number,
   onPlayClick: PropTypes.func,
 };
 

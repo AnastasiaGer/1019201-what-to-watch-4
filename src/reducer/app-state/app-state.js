@@ -30,7 +30,6 @@ const initialState = {
 
 const ActionType = {
   CHANGE_GENRE_FILTER: `CHANGE_GENRE_FILTER`,
-  GET_FILMS_BY_GENRE: `GET_FILMS_BY_GENRE`,
   SHOW_MORE: `SHOW_MORE`,
   CHANGE_MOVIE_CARD: `CHANGE_MOVIE_CARD`,
   PLAY_MOVIE: `PLAY_MOVIE`,
@@ -39,9 +38,9 @@ const ActionType = {
 };
 
 const ActionCreator = {
-  changeFilter: (filter) => ({
+  changeFilter: (activeGenre) => ({
     type: ActionType.CHANGE_GENRE_FILTER,
-    payload: filter,
+    payload: activeGenre,
   }),
 
   goToMoviePage: () => {

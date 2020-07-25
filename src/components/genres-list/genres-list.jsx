@@ -32,8 +32,8 @@ GenresList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  moviesGenres: getMoviesGenres(state),
-  currentActiveGenre: getActiveGenre(state),
+  genres: getMoviesGenres(state),
+  activeGenre: getActiveGenre(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
