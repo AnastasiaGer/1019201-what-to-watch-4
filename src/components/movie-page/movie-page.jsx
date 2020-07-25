@@ -8,12 +8,14 @@ import PageReviews from '../page-reviews/page-reviews.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
 import {CustomPropTypes} from '../../utils/props.js';
 import {MAX_SIMILAR_CARDS} from '../../const.js';
+import {connect} from 'react-redux';
+import {getCurrentMovie} from '../../reducer/app-state/selectors.js';
 
 const getSimilarCards = (movies, genre) => {
   return movies.filter((movie) => movie.genre === genre).slice(0, MAX_SIMILAR_CARDS);
 };
 
-const MoviePage = ({movieCard, movies, onMovieCardClick, movieReviews,
+const MoviePage = ({currentMovie, movies, onMovieCardClick, movieReviews,
   renderTabs,
   activeTab, onPlayClick}) => {
 
@@ -29,7 +31,7 @@ const MoviePage = ({movieCard, movies, onMovieCardClick, movieReviews,
     director,
     scores,
     movieDurationTime
-  } = movieCard;
+  } = currentMovie;
 
   const similarCards = getSimilarCards(movies, genre);
 
@@ -96,7 +98,7 @@ const MoviePage = ({movieCard, movies, onMovieCardClick, movieReviews,
 
               <div className="movie-card__buttons">
                 <button className="btn btn--play movie-card__button" type="button"
-                  onClick={() => onPlayClick(movieCard)}
+                  onClick={() => onPlayClick(currentMovie)}
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
@@ -135,7 +137,7 @@ const MoviePage = ({movieCard, movies, onMovieCardClick, movieReviews,
 
           <div className="catalog__movies-list">
             <MoviesList
-              movieCard={movieCard}
+              currentMovie={currentMovie}
               movies={similarCards}
               onMovieCardClick={onMovieCardClick}
             />
@@ -161,7 +163,7 @@ const MoviePage = ({movieCard, movies, onMovieCardClick, movieReviews,
 };
 
 MoviePage.propTypes = {
-  movieCard: CustomPropTypes.MOVIE,
+  currentMovie: CustomPropTypes.MOVIE,
   movies: PropTypes.arrayOf(CustomPropTypes.MOVIE),
   movieReviews: PropTypes.PropTypes.oneOfType([
     PropTypes.arrayOf(CustomPropTypes.REVIEWS),
@@ -172,4 +174,10 @@ MoviePage.propTypes = {
   onMovieCardClick: PropTypes.func,
   onPlayClick: PropTypes.func,
 };
-export default MoviePage;
+const mapStateToProps = (state) => {
+  return {
+    currentMovie: getCurrentMovie(state),
+  };
+};
+
+export default connect(mapStateToProps)(MoviePage);

@@ -10,6 +10,7 @@ import {getMovies, getMovieCard, getMovieReviews} from '../../reducer/data/selec
 import {ActionCreator} from '../../reducer/app-state/app-state';
 import {getMoviesGenres} from '../../reducer/data/selectors';
 import {getActiveGenre, getCurrentPage, getIsMoviePlayerActive} from '../../reducer/app-state/selectors';
+import {PageNames} from '../../const';
 
 import FullVideoPlayer from '../full-video-player/full-video-player.jsx';
 import withVideoControls from '../../hocs/with-full-video.js';
@@ -21,55 +22,64 @@ const MoviePageWrapped = withTabs(MoviePage);
 class App extends PureComponent {
   constructor(props) {
     super(props);
-
-    this._renderMoviePlayer = this._renderMoviePlayer.bind(this);
   }
 
   _renderApp() {
-    const {
-      movieCard, movies, onGenreItemClick, genres, activeGenre, shown, onShowMoreClick, movieReviews, currentPage, handleMovieCardClick, isVideoPlayer, onPlayButtonClick} = this.props;
+    const {movieCard, movies, onGenreItemClick, genres, activeGenre, shown, onShowMoreClick, movieReviews, currentPage, handleMovieCardClick, isVideoPlayer, onPlayButtonClick, handleCloseButtonClick} = this.props;
 
     if (isVideoPlayer) {
-      return this._renderMoviePlayer();
+      return (
+        <FullVideoPlayerWrapped
+          movieCard={movieCard}
+          onClosePlayerClick={handleCloseButtonClick}
+        />
+      );
     }
 
-    if (currentPage) {
-      return <MoviePageWrapped
-        movieCard={movieCard}
-        movies={movies}
-        movieReviews={movieReviews}
-        onMovieCardClick={handleMovieCardClick}
-        onPlayClick={onPlayButtonClick}
-      />;
+    switch (currentPage) {
+      case PageNames.MAIN:
+        return (
+          <Main
+            movieCard={movieCard}
+            movies={movies}
+            onMovieCardClick={handleMovieCardClick}
+            genres={genres}
+            activeGenre={activeGenre}
+            onGenreItemClick={onGenreItemClick}
+            onShowMoreClick={onShowMoreClick}
+            shown={shown}
+            onPlayClick={onPlayButtonClick}
+          />
+        );
+      case PageNames.MOVIE_DETAILS:
+        return (
+          <MoviePageWrapped
+            movieCard={movieCard}
+            movies={movies}
+            movieReviews={movieReviews}
+            onMovieCardClick={handleMovieCardClick}
+            onPlayClick={onPlayButtonClick}
+          />
+        );
+      default:
+        return (
+          <Main
+            movieCard={movieCard}
+            movies={movies}
+            onMovieCardClick={handleMovieCardClick}
+            genres={genres}
+            activeGenre={activeGenre}
+            onGenreItemClick={onGenreItemClick}
+            onShowMoreClick={onShowMoreClick}
+            shown={shown}
+            onPlayClick={onPlayButtonClick}
+          />
+        );
     }
-
-    return (
-      <Main
-        movieCard={movieCard}
-        movies={movies}
-        onMovieCardClick={handleMovieCardClick}
-        genres={genres}
-        activeGenre={activeGenre}
-        onGenreItemClick={onGenreItemClick}
-        onShowMoreClick={onShowMoreClick}
-        shown={shown}
-        onPlayClick={onPlayButtonClick}
-      />
-    );
-  }
-
-  _renderMoviePlayer() {
-    const {movieCard, handleCloseButtonClick} = this.props;
-    return (
-      <FullVideoPlayerWrapped
-        movieCard={movieCard}
-        onClosePlayerClick={handleCloseButtonClick}
-      />
-    );
   }
 
   render() {
-    const {movieReviews, movies, currentPage, handleMovieCardClick} = this.props;
+    const {movieReviews, movies, movieCard, handleMovieCardClick, onPlayButtonClick} = this.props;
 
     return (
       <BrowserRouter>
@@ -77,12 +87,16 @@ class App extends PureComponent {
           <Route exact path="/">
             {this._renderApp()}
           </Route>
-          <Route exact path="/movie-page">
+          <Route exact path="/dev-film">
+            <MoviePage />
+          </Route>
+          <Route exact path="/dev-watch">
             <MoviePageWrapped
-              movie={currentPage === null ? this.props.movies[0] : currentPage}
+              movieCard={movieCard}
               movies={movies}
               movieReviews={movieReviews}
               onMovieCardClick={handleMovieCardClick}
+              onPlayClick={onPlayButtonClick}
             />
           </Route>
         </Switch>
