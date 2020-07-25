@@ -30,7 +30,6 @@ const initialState = {
 
 const ActionType = {
   CHANGE_GENRE_FILTER: `CHANGE_GENRE_FILTER`,
-  SHOW_MORE: `SHOW_MORE`,
   CHANGE_MOVIE_CARD: `CHANGE_MOVIE_CARD`,
   PLAY_MOVIE: `PLAY_MOVIE`,
   STOP_MOVIE: `STOP_MOVIE`,
@@ -42,19 +41,12 @@ const ActionCreator = {
     type: ActionType.CHANGE_GENRE_FILTER,
     payload: activeGenre,
   }),
-
   goToMoviePage: () => {
     return {
       type: ActionType.GO_TO_MOVIE_PAGE,
       payload: PageNames.MOVIE_DETAILS,
     };
   },
-
-  showMore: () => ({
-    type: ActionType.SHOW_MORE,
-    payload: MAX_SHOWN_MOVIES_LIKE_THIS,
-  }),
-
   changeMovieCard: (movie) => ({
     type: ActionType.CHANGE_MOVIE_CARD,
     payload: movie,
@@ -91,8 +83,6 @@ const reducer = (state = extend(initialState), action) => {
       return extend(state, {
         currentPage: action.payload,
       });
-    case ActionType.SHOW_MORE:
-      return extend(state, {cardsToShow: state.cardsToShow + action.payload});
   }
 
   return state;

@@ -2,10 +2,10 @@ export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-export const sliceReviews = (reviews) => {
-  const sliceIndex = Math.ceil(reviews.length / 2);
-  const firstColReviews = reviews.slice(0, sliceIndex);
-  const secondColReviews = reviews.slice(sliceIndex, reviews.length);
+export const sliceReviews = (movieReviews) => {
+  const halfOffReviews = Math.round(movieReviews.length / 2);
+  const col1 = movieReviews.slice(0, halfOffReviews);
+  const col2 = movieReviews.slice(halfOffReviews, movieReviews.length);
 
-  return [firstColReviews, secondColReviews];
+  return [col1, col2];
 };
