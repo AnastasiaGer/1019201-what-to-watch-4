@@ -6,6 +6,9 @@ import NameSpace from '../../reducer/name-space';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 
+const genres = [`Comedies`, `Crime`, `Documentary`];
+const activeGenre = `Comedies`;
+
 const mockStore = configureStore([]);
 
 describe(`Main`, () => {
@@ -25,7 +28,17 @@ describe(`Main`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
-            <Main />
+            <Main
+              movieCard={movieCard}
+              movies={movies}
+              onMovieCardClick={() => {}}
+              genres={genres}
+              activeGenre={activeGenre}
+              onGenreItemClick={() => {}}
+              shown={0}
+              onShowMoreClick={() => {}}
+              onPlayClick={() => {}}
+            />
           </Provider>, {
             createNodeMock: () => {
               return {};

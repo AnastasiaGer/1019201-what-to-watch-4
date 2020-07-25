@@ -67,7 +67,7 @@ exports[`FullVideoPlayer Render FullVideoPlayer 1`] = `
       <div
         className="player__name"
       >
-        Bohemian Rhapsody
+        Snatch
       </div>
       <button
         className="player__full-screen"

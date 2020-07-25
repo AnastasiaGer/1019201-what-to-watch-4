@@ -9,7 +9,7 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="Bohemian Rhapsody"
+        alt="Snatch"
         src="img/bg-the-grand-budapest-hotel.jpg"
       />
     </div>
@@ -69,7 +69,7 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="Bohemian Rhapsody"
+            alt="Snatch"
             height="327"
             src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
@@ -82,7 +82,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Bohemian Rhapsody
+            Snatch
           </h2>
           <p
             className="movie-card__meta"
@@ -90,12 +90,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Documentary
+              Crime
             </span>
             <span
               className="movie-card__year"
             >
-              2018
+              2014
             </span>
           </p>
           <div
@@ -174,7 +174,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Documentary
+            Crime
           </a>
         </li>
         <li
@@ -185,13 +185,44 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Drama
+            Documentary
           </a>
         </li>
       </ul>
       <div
         className="catalog__movies-list"
       >
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+            onClick={[Function]}
+          >
+            <video
+              className="player__video"
+            />
+            <img
+              alt="Snatch"
+              height="175"
+              src="img/snatch.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+            onClick={[Function]}
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Snatch
+            </a>
+          </h3>
+        </article>
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
@@ -220,37 +251,6 @@ Array [
               href="movie-page.html"
             >
               Bohemian Rhapsody
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onClick={[Function]}
-          >
-            <video
-              className="player__video"
-            />
-            <img
-              alt="Aviator"
-              height="175"
-              src="img/aviator.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-            onClick={[Function]}
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Aviator
             </a>
           </h3>
         </article>

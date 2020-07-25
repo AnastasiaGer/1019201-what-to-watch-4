@@ -8,6 +8,13 @@ import NameSpace from '../../reducer/name-space';
 
 const mockStore = configureStore([]);
 
+const activeGenre = `Drama`;
+const genres = [`All genres`, `Drama`, `Documentary`, `Horror`];
+
+const createNodeMock = () => {
+  return {};
+};
+
 describe(`App`, () => {
   it(`Should render correctly with movies titles array`, () => {
     const store = mockStore({
@@ -25,16 +32,20 @@ describe(`App`, () => {
       },
     });
     const tree = renderer
-      .create(<Provider store={store}>
-        <App
-          onSmallMovieCardClick={() => {}}
-        />
-      </Provider>, {
-        createNodeMock: () => {
-          return {};
-        }
-      })
-      .toJSON();
+      .create(
+          <Provider store={store}>
+            <App
+              movieCard={movieCard}
+              movies={movies}
+              movieReviews={movieReviews}
+              genres={genres}
+              activeGenre={activeGenre}
+              onGenreItemClick={() => {}}
+              onShowMoreClick={() => {}}
+              shown={0}
+            />
+          </Provider>, {createNodeMock})
+     .toJSON();
 
     expect(tree).toMatchSnapshot();
   });

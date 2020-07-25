@@ -2,14 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {CustomPropTypes} from '../../utils/props.js';
 import Review from '../review/review.jsx';
+import {sliceReviews} from '../../utils/utils';
 
-const sliceReviews = (reviews) => {
-  const sliceIndex = Math.ceil(reviews.length / 2);
-  const firstColReviews = reviews.slice(0, sliceIndex);
-  const secondColReviews = reviews.slice(sliceIndex, reviews.length);
-
-  return [firstColReviews, secondColReviews];
-};
 const PageReviews = ({movieReviews}) => {
   const slicedReviews = sliceReviews(movieReviews);
 
