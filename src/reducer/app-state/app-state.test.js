@@ -29,23 +29,23 @@ describe(`App State Reducer`, () => {
 
   it(`Should return true in store when MoviePlayer is active`, () => {
     expect(reducer({
-      isMoviePlayerActive: false,
+      isVideoPlayer: false,
     }, {
       type: ActionType.PLAY_MOVIE,
       payload: true,
     })).toEqual({
-      isMoviePlayerActive: true
+      isVideoPlayer: true
     });
   });
 
   it(`Should return false in store when MoviePlayer is not active`, () => {
     expect(reducer({
-      isMoviePlayerActive: true,
+      isVideoPlayer: true,
     }, {
       type: ActionType.STOP_MOVIE,
       payload: false,
     })).toEqual({
-      isMoviePlayerActive: false
+      isVideoPlayer: false
     });
   });
 });
