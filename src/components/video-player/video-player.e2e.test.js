@@ -18,6 +18,8 @@ describe(`VideoPlayer component's tests`, () => {
           movie={movieCard}
           isPlaying={isPlaying}
           muted
+          source={movieCard.preview}
+          poster={movieCard.poster}
         />
     );
 
@@ -32,6 +34,8 @@ describe(`VideoPlayer component's tests`, () => {
           movie={movieCard}
           isPlaying={isPlaying}
           muted
+          source={movieCard.preview}
+          poster={movieCard.poster}
         />
     );
 

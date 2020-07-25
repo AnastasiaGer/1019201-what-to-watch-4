@@ -156,17 +156,6 @@ Array [
         className="catalog__genres-list"
       >
         <li
-          className="catalog__genres-item "
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
-            All genres
-          </a>
-        </li>
-        <li
           className="catalog__genres-item catalog__genres-item--active"
         >
           <a
@@ -174,7 +163,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Drama
+            All genres
           </a>
         </li>
         <li
@@ -196,23 +185,75 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Horror
+            Drama
           </a>
         </li>
       </ul>
       <div
         className="catalog__movies-list"
-      />
-      <div
-        className="catalog__more"
       >
-        <button
-          className="catalog__button"
-          onClick={[Function]}
-          type="button"
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
-          Show more
-        </button>
+          <div
+            className="small-movie-card__image"
+            onClick={[Function]}
+          >
+            <video
+              className="player__video"
+            />
+            <img
+              alt="Bohemian Rhapsody"
+              height="175"
+              src="img/bohemian-rhapsody.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+            onClick={[Function]}
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Bohemian Rhapsody
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+            onClick={[Function]}
+          >
+            <video
+              className="player__video"
+            />
+            <img
+              alt="Aviator"
+              height="175"
+              src="img/aviator.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+            onClick={[Function]}
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Aviator
+            </a>
+          </h3>
+        </article>
       </div>
     </section>
     <footer
