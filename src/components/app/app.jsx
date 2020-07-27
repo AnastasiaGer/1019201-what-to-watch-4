@@ -11,6 +11,9 @@ import {ActionCreator} from '../../reducer/app-state/app-state';
 import {getMoviesGenres} from '../../reducer/data/selectors';
 import {getActiveGenre, getCurrentPage, getIsMoviePlayerActive} from '../../reducer/app-state/selectors';
 import {PageNames} from '../../const';
+import {getAuthorizationStatus} from '../../reducer/user/selectors';
+import SignIn from '../sign-in/sign-in.jsx';
+import {Operations as UserOperation} from '../../reducer/user/user';
 
 import FullVideoPlayer from '../full-video-player/full-video-player.jsx';
 import withVideoControls from '../../hocs/with-full-video.js';
@@ -25,7 +28,7 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {movieCard, movies, onGenreItemClick, genres, activeGenre, shown, onShowMoreClick, movieReviews, currentPage, handleMovieCardClick, isVideoPlayer, onPlayButtonClick, handleCloseButtonClick} = this.props;
+    const {movieCard, movies, onGenreItemClick, genres, activeGenre, shown, onShowMoreClick, movieReviews, currentPage, handleMovieCardClick, isVideoPlayer, onPlayButtonClick, handleCloseButtonClick, login} = this.props;
 
     if (isVideoPlayer) {
       return (
@@ -59,6 +62,12 @@ class App extends PureComponent {
             movieReviews={movieReviews}
             onMovieCardClick={handleMovieCardClick}
             onPlayClick={onPlayButtonClick}
+          />
+        );
+      case PageNames.SIGN_IN:
+        return (
+          <SignIn
+            onFormSubmit={login}
           />
         );
       default:
@@ -122,7 +131,9 @@ App.propTypes = {
   handleMovieCardClick: PropTypes.func,
   onPlayButtonClick: PropTypes.func,
   handleCloseButtonClick: PropTypes.func,
-  isVideoPlayer: PropTypes.bool
+  isVideoPlayer: PropTypes.bool,
+  login: PropTypes.func,
+  authorizationStatus: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({
@@ -134,6 +145,7 @@ const mapStateToProps = (state) => ({
   shown: state.cardsToShow,
   currentPage: getCurrentPage(state),
   isVideoPlayer: getIsMoviePlayerActive(state),
+  authorizationStatus: getAuthorizationStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -151,6 +163,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleCloseButtonClick(isVideoPlayer) {
     dispatch(ActionCreator.closeFulMovie(isVideoPlayer));
+  },
+  login(authData) {
+    dispatch(UserOperation.login(authData));
   },
 
 });

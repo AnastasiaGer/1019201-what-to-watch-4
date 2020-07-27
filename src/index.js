@@ -9,11 +9,16 @@ import thunk from "redux-thunk";
 
 import {createAPI} from './api';
 import {Operations as DataOperations} from "./reducer/data/data";
+import {Operations as UserOperation, ActionCreator} from './reducer/user/user';
+import {AuthorizationStatus} from './const';
 
+
+const onUnauthorized = () => {
+  store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
+};
 
 const root = document.querySelector(`#root`);
-
-const api = createAPI(() => {});
+const api = createAPI(onUnauthorized);
 
 const store = createStore(
     reducer,
@@ -24,6 +29,7 @@ const store = createStore(
 
 store.dispatch(DataOperations.loadMovieCard());
 store.dispatch(DataOperations.loadMovies());
+store.dispatch(UserOperation.checkAuth());
 
 ReactDOM.render(
     <Provider store={store}>

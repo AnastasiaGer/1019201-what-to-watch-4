@@ -30,6 +30,9 @@ describe(`App`, () => {
         isMainPage: true,
         isVideoPlayer: false,
       },
+      [NameSpace.USER]: {
+        authorizationStatus: `AUTH`,
+      },
     });
     const tree = renderer
       .create(

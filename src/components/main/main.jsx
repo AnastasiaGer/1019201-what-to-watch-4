@@ -5,42 +5,30 @@ import {CustomPropTypes} from '../../utils/props.js';
 import GenresList from "../genres-list/genres-list.jsx";
 import withTabs from '../../hocs/with-tabs.js';
 import withShowMore from '../../hocs/with-show-more';
+import PageHeader from '../page-header/page-header.jsx';
+import PageFooter from '../page-footer/page-footer.jsx';
 
 const MoviesListWrapped = withShowMore(withTabs(MoviesList));
 const GenresListWrapped = withTabs(GenresList);
 
 const Main = ({movieCard, onPlayClick}) => {
-  const {title, genre, date} = movieCard;
+  const {title, genre, date, background, poster} = movieCard;
 
   return (
     <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt={title} />
+          <img src={background} alt={title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head">
-          <div className="logo">
-            <a className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
-        </header>
+        <PageHeader />
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt={title} width="218" height="327" />            </div>
+              <img src={poster} alt={title} width="218" height="327" />            </div>
 
             <div className="movie-card__desc">
               <h2 className="movie-card__title">{title}</h2>
@@ -81,19 +69,7 @@ const Main = ({movieCard, onPlayClick}) => {
           />
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <PageFooter />
       </div>
     </React.Fragment>
   );

@@ -10,7 +10,7 @@ Array [
     >
       <img
         alt="Snatch"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        src="https://placeimg.com/1300/512/nature"
       />
     </div>
     <h1
@@ -26,6 +26,7 @@ Array [
       >
         <a
           className="logo__link"
+          href={null}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -71,7 +72,7 @@ Array [
           <img
             alt="Snatch"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="img/snatch.jpg"
             width="218"
           />
                       
@@ -264,6 +265,7 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
+          href={null}
         >
           <span
             className="logo__letter logo__letter--1"

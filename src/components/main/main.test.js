@@ -24,6 +24,9 @@ describe(`Main`, () => {
         currentPage: `main`,
         currentMovie: movieCard,
       },
+      [NameSpace.USER]: {
+        authorizationStatus: `AUTH`,
+      },
     });
     const tree = renderer
       .create(

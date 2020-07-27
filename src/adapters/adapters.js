@@ -1,4 +1,4 @@
-export const createMovie = (movie) => {
+export const movieAdapter = (movie) => {
   return {
     id: movie.id,
     title: movie.name,
