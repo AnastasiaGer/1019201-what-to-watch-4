@@ -28,7 +28,7 @@ const ActionCreator = {
     };
   },
 
-  clearAuthorizationError: () => {
+  deleteAuthorizationError: () => {
     return {
       type: ActionType.DELETE_ERROR_AUTHORIZATION,
       payload: false

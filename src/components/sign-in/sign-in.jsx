@@ -81,7 +81,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   deleteAuthError() {
-    dispatch(ActionCreator.clearAuthorizationError());
+    dispatch(ActionCreator.deleteAuthorizationError());
   }
 });
 
