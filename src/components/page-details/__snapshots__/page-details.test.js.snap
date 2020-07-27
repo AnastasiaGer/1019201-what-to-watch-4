@@ -18,7 +18,7 @@ exports[`PageDetails Should render correctly 1`] = `
       <span
         className="movie-card__details-value"
       >
-        Bryan Singer
+        Guy Ritchie
       </span>
     </p>
     <p
@@ -32,9 +32,9 @@ exports[`PageDetails Should render correctly 1`] = `
       <span
         className="movie-card__details-value"
       >
-        Rami Malek
-        Lucy Boynton
-        Gwilym Lee
+        Jason Statham
+        Brad Pitt
+        Benicio Del Toro
       </span>
     </p>
   </div>
@@ -52,7 +52,7 @@ exports[`PageDetails Should render correctly 1`] = `
       <span
         className="movie-card__details-value"
       >
-        1h 49m
+        107
       </span>
     </p>
     <p
@@ -66,7 +66,7 @@ exports[`PageDetails Should render correctly 1`] = `
       <span
         className="movie-card__details-value"
       >
-        Documentary
+        Crime
       </span>
     </p>
     <p
@@ -80,7 +80,7 @@ exports[`PageDetails Should render correctly 1`] = `
       <span
         className="movie-card__details-value"
       >
-        2018
+        2014
       </span>
     </p>
   </div>

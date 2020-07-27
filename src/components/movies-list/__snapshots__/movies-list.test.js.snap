@@ -17,9 +17,9 @@ exports[`MoviesList Should render correctly movie card 1`] = `
         className="player__video"
       />
       <img
-        alt="Bohemian Rhapsody"
+        alt="Snatch"
         height="175"
-        src="img/bohemian-rhapsody.jpg"
+        src="img/snatch.jpg"
         width="280"
       />
     </div>
@@ -31,7 +31,7 @@ exports[`MoviesList Should render correctly movie card 1`] = `
         className="small-movie-card__link"
         href="movie-page.html"
       >
-        Bohemian Rhapsody
+        Snatch
       </a>
     </h3>
   </article>
@@ -48,9 +48,9 @@ exports[`MoviesList Should render correctly movie card 1`] = `
         className="player__video"
       />
       <img
-        alt="Aviator"
+        alt="Bohemian Rhapsody"
         height="175"
-        src="img/aviator.jpg"
+        src="img/bohemian-rhapsody.jpg"
         width="280"
       />
     </div>
@@ -62,7 +62,7 @@ exports[`MoviesList Should render correctly movie card 1`] = `
         className="small-movie-card__link"
         href="movie-page.html"
       >
-        Aviator
+        Bohemian Rhapsody
       </a>
     </h3>
   </article>

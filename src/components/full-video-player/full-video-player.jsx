@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {CustomPropTypes} from '../../utils/props.js';
 
@@ -77,8 +76,4 @@ FullVideoPlayer.propTypes = {
 
 };
 
-const mapStateToProps = (state) => ({
-  currentPage: state.currentPage,
-});
-
-export default connect(mapStateToProps)(FullVideoPlayer);
+export default FullVideoPlayer;

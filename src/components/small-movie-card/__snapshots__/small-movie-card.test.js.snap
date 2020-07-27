@@ -14,9 +14,9 @@ exports[`SmallMovieCard Should render correctly movie card 1`] = `
       className="player__video"
     />
     <img
-      alt="Bohemian Rhapsody"
+      alt="Snatch"
       height="175"
-      src="img/bohemian-rhapsody.jpg"
+      src="img/snatch.jpg"
       width="280"
     />
   </div>
@@ -28,7 +28,7 @@ exports[`SmallMovieCard Should render correctly movie card 1`] = `
       className="small-movie-card__link"
       href="movie-page.html"
     >
-      Bohemian Rhapsody
+      Snatch
     </a>
   </h3>
 </article>

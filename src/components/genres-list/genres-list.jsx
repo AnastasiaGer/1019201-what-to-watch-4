@@ -1,48 +1,46 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../reducer/app-state/app-state';
+import {getMoviesGenres} from '../../reducer/data/selectors';
+import {getActiveGenre} from '../../reducer/app-state/selectors';
 
-const GenresList = (props) => {
-  const {genres, onGenreItemClick, activeGenre} = props;
-
-  const activeClass = (genre) => {
-    return activeGenre === genre ? `catalog__genres-item--active` : ``;
-  };
-
-  const handleGenreClick = (genre) => {
-    return (evt) => {
-      evt.preventDefault();
-      onGenreItemClick(genre);
-    };
-  };
-
-  const getGenre = (genre, i) => {
-    const genreClass = `catalog__genres-item ${activeClass(genre)}`;
-    const key = `${genre} + ${i}`;
-
-    return (
-      <li
-        className={genreClass}
-        key={key}
-      >
-        <a onClick={handleGenreClick(genre)} href="#" className="catalog__genres-link">{genre}</a>
-      </li>
-    );
-  };
-
-  const renderGenres = () => genres.map(getGenre);
-
+const GenresList = ({genres, activeGenre, onGenreItemClick}) => {
   return (
     <ul className="catalog__genres-list">
-      {renderGenres()}
+      {genres.map((genre, index) => {
+        return (<li
+          key={`${genre}-${index}`}
+          className={`catalog__genres-item ${genre === activeGenre ? `catalog__genres-item--active` : ``}`}>
+          <a
+            href="#"
+            className="catalog__genres-link"
+            onClick={(evt) => {
+              evt.preventDefault();
+              onGenreItemClick(genre);
+            }}>{genre}</a>
+        </li>);
+      })}
     </ul>
   );
 };
 
-
 GenresList.propTypes = {
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   activeGenre: PropTypes.string.isRequired,
   onGenreItemClick: PropTypes.func.isRequired,
 };
 
-export default GenresList;
+const mapStateToProps = (state) => ({
+  genres: getMoviesGenres(state),
+  activeGenre: getActiveGenre(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onGenreItemClick(genre) {
+    dispatch(ActionCreator.changeFilter(genre));
+  },
+});
+
+export {GenresList};
+export default connect(mapStateToProps, mapDispatchToProps)(GenresList);

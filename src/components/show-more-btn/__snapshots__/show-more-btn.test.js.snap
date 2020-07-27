@@ -6,7 +6,7 @@ exports[`ShowMoreButton Should render correctly 1`] = `
 >
   <button
     className="catalog__button"
-    onClick={[MockFunction]}
+    onClick={[Function]}
     type="button"
   >
     Show more

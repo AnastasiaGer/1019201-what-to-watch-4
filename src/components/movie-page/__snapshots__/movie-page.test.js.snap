@@ -12,7 +12,7 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="Bohemian Rhapsody"
+          alt="Snatch"
           src="https://placeimg.com/1300/512/nature"
         />
       </div>
@@ -72,7 +72,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Bohemian Rhapsody
+            Snatch
           </h2>
           <p
             className="movie-card__meta"
@@ -80,12 +80,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Documentary
+              Crime
             </span>
             <span
               className="movie-card__year"
             >
-              2018
+              2014
             </span>
           </p>
           <div
@@ -146,9 +146,9 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="Bohemian Rhapsody"
+            alt="Snatch"
             height="327"
-            src="img/bohemian-rhapsody.jpg"
+            src="img/snatch.jpg"
             width="218"
           />
         </div>
@@ -176,39 +176,7 @@ Array [
       >
         <div
           className="catalog__movies-list"
-        >
-          <article
-            className="small-movie-card catalog__movies-card"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            <div
-              className="small-movie-card__image"
-              onClick={[Function]}
-            >
-              <video
-                className="player__video"
-              />
-              <img
-                alt="Bohemian Rhapsody"
-                height="175"
-                src="img/bohemian-rhapsody.jpg"
-                width="280"
-              />
-            </div>
-            <h3
-              className="small-movie-card__title"
-              onClick={[Function]}
-            >
-              <a
-                className="small-movie-card__link"
-                href="movie-page.html"
-              >
-                Bohemian Rhapsody
-              </a>
-            </h3>
-          </article>
-        </div>
+        />
       </div>
     </section>
     <footer

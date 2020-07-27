@@ -7,13 +7,14 @@ import PageReviews from '../page-reviews/page-reviews.jsx';
 
 import MoviesList from '../movies-list/movies-list.jsx';
 import {CustomPropTypes} from '../../utils/props.js';
-import {MAX_SIMILAR_CARDS} from '../../const.js';
+import {connect} from 'react-redux';
+import {getCurrentMovie} from '../../reducer/app-state/selectors.js';
 
-const getSimilarCards = (movies, genre) => {
-  return movies.filter((movie) => movie.genre === genre).slice(0, MAX_SIMILAR_CARDS);
-};
+import withShowMore from '../../hocs/with-show-more';
 
-const MoviePage = ({movieCard, movies, onMovieCardClick, movieReviews,
+const MoviesListWrapped = withShowMore(MoviesList);
+
+const MoviePage = ({currentMovie, movieReviews,
   renderTabs,
   activeTab, onPlayClick}) => {
 
@@ -29,9 +30,7 @@ const MoviePage = ({movieCard, movies, onMovieCardClick, movieReviews,
     director,
     scores,
     movieDurationTime
-  } = movieCard;
-
-  const similarCards = getSimilarCards(movies, genre);
+  } = currentMovie;
 
   const renderActiveTab = () => {
     switch (activeTab) {
@@ -96,7 +95,7 @@ const MoviePage = ({movieCard, movies, onMovieCardClick, movieReviews,
 
               <div className="movie-card__buttons">
                 <button className="btn btn--play movie-card__button" type="button"
-                  onClick={() => onPlayClick(movieCard)}
+                  onClick={() => onPlayClick(currentMovie)}
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
@@ -134,10 +133,7 @@ const MoviePage = ({movieCard, movies, onMovieCardClick, movieReviews,
           <h2 className="catalog__title">More like this</h2>
 
           <div className="catalog__movies-list">
-            <MoviesList
-              movieCard={movieCard}
-              movies={similarCards}
-              onMovieCardClick={onMovieCardClick}
+            <MoviesListWrapped
             />
           </div>
         </section>
@@ -161,12 +157,19 @@ const MoviePage = ({movieCard, movies, onMovieCardClick, movieReviews,
 };
 
 MoviePage.propTypes = {
-  movieCard: CustomPropTypes.MOVIE,
-  movies: PropTypes.arrayOf(CustomPropTypes.MOVIE),
-  movieReviews: CustomPropTypes.REVIEWS,
+  currentMovie: CustomPropTypes.MOVIE,
+  movieReviews: PropTypes.PropTypes.oneOfType([
+    PropTypes.arrayOf(CustomPropTypes.REVIEWS),
+    PropTypes.bool,
+  ]),
   renderTabs: PropTypes.func.isRequired,
   activeTab: PropTypes.string.isRequired,
-  onMovieCardClick: PropTypes.func,
   onPlayClick: PropTypes.func,
 };
-export default MoviePage;
+const mapStateToProps = (state) => {
+  return {
+    currentMovie: getCurrentMovie(state),
+  };
+};
+
+export default connect(mapStateToProps)(MoviePage);

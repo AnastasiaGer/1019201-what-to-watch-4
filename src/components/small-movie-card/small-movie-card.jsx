@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import VideoPlayer from '../video-player/video-player.jsx';
 import {CustomPropTypes} from '../../utils/props.js';
 
+import {connect} from "react-redux";
+import {ActionCreator} from '../../reducer/app-state/app-state';
+import {Operations as DataOperations} from "../../reducer/data/data";
+
 const SmallMovieCard = (props) => {
   const {movie, onMovieCardClick, isPlaying, setPlayingFilm} = props;
   const {poster, title} = movie;
@@ -46,4 +50,13 @@ SmallMovieCard.propTypes = {
   setPlayingFilm: PropTypes.func,
 };
 
-export default SmallMovieCard;
+const mapDispatchToProps = (dispatch) => ({
+  onMovieCardClick(movie) {
+    dispatch(ActionCreator.goToMoviePage());
+    dispatch(ActionCreator.changeMovieCard(movie));
+    dispatch(ActionCreator.changeFilter(movie.genre));
+    dispatch(DataOperations.loadMovieReviews(movie.id));
+  },
+});
+
+export default connect(null, mapDispatchToProps)(SmallMovieCard);

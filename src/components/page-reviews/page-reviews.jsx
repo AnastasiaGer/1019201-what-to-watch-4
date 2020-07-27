@@ -1,45 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import {CustomPropTypes} from '../../utils/props.js';
 import Review from '../review/review.jsx';
+import {sliceReviews} from '../../utils/utils';
 
-const PageReviews = (props) => {
-  const {movieReviews} = props;
-
-  const halfOffReviews = Math.round(movieReviews.length / 2);
-  const col1 = movieReviews.slice(0, halfOffReviews);
-  const col2 = movieReviews.slice(halfOffReviews);
-
-  const getReviews = (filmReviews) => {
-    return (
-      <div className="movie-card__reviews-col">
-        {filmReviews.map((review) => {
-          return <Review
-            key={review.id}
-            review={review}
-          />;
-        })}
-      </div>
-    );
-  };
+const PageReviews = ({movieReviews}) => {
+  const slicedReviews = sliceReviews(movieReviews);
 
   return (
-    <div className="movie-card__reviews movie-card__row">
-
-      {getReviews(col1)}
-      {getReviews(col2)}
-
-    </div>
+    <React.Fragment>
+      <div className="movie-card__reviews movie-card__row">
+        {slicedReviews.map((slicedReview, index) => {
+          return (
+            <div key={Math.random() + index} className="movie-card__reviews-col">
+              {slicedReview.map((review) => <Review movieReview={review} key={Math.random() + review.id} />)}
+            </div>
+          );
+        })}
+      </div>
+    </React.Fragment>
   );
 };
 PageReviews.propTypes = {
-  movieReviews: PropTypes.arrayOf(
-      PropTypes.shape({
-        author: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
-        text: PropTypes.string.isRequired,
-      }).isRequired
-  ),
+  movieReviews: PropTypes.PropTypes.oneOfType([
+    PropTypes.arrayOf(CustomPropTypes.REVIEWS),
+    PropTypes.bool,
+  ]),
 };
 export default PageReviews;

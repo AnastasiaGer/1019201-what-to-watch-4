@@ -8,21 +8,24 @@ const SmallMovieCardWrapped = withVideo(SmallMovieCard);
 
 const MoviesList = (props) => {
 
-  const {movies, onMovieCardClick, handleSmallMovieCardHover} = props;
+  const {movies, onMovieCardClick, handleSmallMovieCardHover, render} = props;
 
   return (
-    <div className="catalog__movies-list">
-      {movies.map((movie) => {
-        return (
-          <SmallMovieCardWrapped
-            key={movie.id}
-            movie={movie}
-            onMovieCardClick={onMovieCardClick}
-            handleSmallMovieCardHover={handleSmallMovieCardHover}
-          />
-        );
-      })}
-    </div>
+    <React.Fragment>
+      <div className="catalog__movies-list">
+        {movies.map((movie) => {
+          return (
+            <SmallMovieCardWrapped
+              key={movie.id}
+              movie={movie}
+              onMovieCardClick={onMovieCardClick}
+              handleSmallMovieCardHover={handleSmallMovieCardHover}
+            />
+          );
+        })}
+      </div>
+      {render()}
+    </React.Fragment>
   );
 };
 
@@ -30,6 +33,7 @@ MoviesList.propTypes = {
   movies: PropTypes.arrayOf(CustomPropTypes.MOVIE).isRequired,
   onMovieCardClick: PropTypes.func,
   handleSmallMovieCardHover: PropTypes.func,
+  render: PropTypes.func
 };
 
 export default MoviesList;
