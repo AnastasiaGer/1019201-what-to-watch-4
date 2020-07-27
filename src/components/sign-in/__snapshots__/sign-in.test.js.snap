@@ -32,6 +32,11 @@ exports[`SignIn Should render correctly when AuthError 1`] = `
       </a>
     </div>
     <div
+      className="error-message"
+    >
+      <p />
+    </div>
+    <div
       className="user-block"
     >
       <a
@@ -69,7 +74,7 @@ exports[`SignIn Should render correctly when AuthError 1`] = `
         >
           <input
             className="sign-in__input"
-            id="user-email"
+            d="user-email"
             name="user-email"
             placeholder="Email address"
             required={true}
@@ -212,7 +217,7 @@ exports[`SignIn Should render correctly when no AuthError 1`] = `
         >
           <input
             className="sign-in__input"
-            id="user-email"
+            d="user-email"
             name="user-email"
             placeholder="Email address"
             required={true}

@@ -145,7 +145,7 @@ const mapStateToProps = (state) => ({
   shown: state.cardsToShow,
   currentPage: getCurrentPage(state),
   isVideoPlayer: getIsMoviePlayerActive(state),
-  authorizationStatus: getAuthorizationStatus(state)
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -167,7 +167,6 @@ const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
   },
-
 });
 
 export {App};

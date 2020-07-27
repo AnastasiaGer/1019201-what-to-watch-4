@@ -1,14 +1,24 @@
 import {extend} from '../../utils/utils';
 import {AuthorizationStatus} from '../../const';
 import {ActionCreator as AppStateActionCreator} from '../app-state/app-state';
+import {userAdapter} from '../../adapters/adapters';
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
+  message: ``,
   authorizationError: false,
+  userInfo: {
+    id: 0,
+    email: ``,
+    name: ``,
+    avatarUrl: `img/avatar.jpg`,
+  },
 };
 
 const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  SET_AUTHOR_INFORMATION: `SET_AUTHOR_INFORMATION`,
+  SET_ERROR_MESSAGE: `SET_ERROR_MESSAGE`,
   SHOW_AUTHORIZATION_ERROR: `SHOW_AUTHORIZATION_ERROR`,
   DELETE_ERROR_AUTHORIZATION: `DELETE_ERROR_AUTHORIZATION`,
 };
@@ -18,6 +28,19 @@ const ActionCreator = {
     return {
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: status,
+    };
+  },
+
+  setAuthorInfo: (userData) => {
+    return {
+      type: ActionType.SET_AUTHOR_INFORMATION,
+      payload: userData,
+    };
+  },
+  setErrMessage: (msg) => {
+    return {
+      type: ActionType.SET_ERROR_MESSAGE,
+      payload: msg,
     };
   },
 
@@ -39,8 +62,9 @@ const ActionCreator = {
 const Operations = {
   checkAuth: () => (dispatch, getState, api) => {
     return api.get(`/login`)
-      .then(() => {
+      .then((response) => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.setAuthorInfo(userAdapter(response.data)));
       })
       .catch(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
@@ -67,6 +91,16 @@ const reducer = (state = initialState, action) => {
     case ActionType.REQUIRED_AUTHORIZATION:
       return extend(state, {
         authorizationStatus: action.payload,
+      });
+
+    case ActionType.SET_AUTHOR_INFORMATION:
+      return extend(state, {
+        userInfo: action.payload,
+      });
+
+    case ActionType.SET_ERROR_MESSAGE:
+      return extend(state, {
+        message: action.payload,
       });
     case ActionType.SHOW_AUTHORIZATION_ERROR:
       return extend(state, {

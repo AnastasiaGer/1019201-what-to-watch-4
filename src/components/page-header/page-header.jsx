@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {PageNames, AuthorizationStatus} from '../../const';
 import {getCurrentPage} from '../../reducer/app-state/selectors';
-import {getAuthorizationStatus} from '../../reducer/user/selectors';
+import {getAuthorizationStatus, getErrMessage, getAuthorizationError, getAuthorInfo} from '../../reducer/user/selectors.js';
 import {ActionCreator} from '../../reducer/app-state/app-state.js';
+import ErrorMsg from '../error-msg/error-msg.jsx';
 
-const PageHeader = ({isMainPage, isSignInPage, isSignedIn, onSignInClick}) => {
+const PageHeader = ({isMainPage, isSignInPage, isSignedIn, onSignInClick, showErrMessage, errMessage, userInfo}) => {
+
   const signInPageTitle = (
     <React.Fragment>
       <h1 className="page-title user-page__title">Sign in</h1>
@@ -18,7 +20,7 @@ const PageHeader = ({isMainPage, isSignInPage, isSignedIn, onSignInClick}) => {
       <div className="user-block">
         {isSignedIn &&
         <div className="user-block__avatar">
-          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+          <img src={userInfo.avatarUrl} alt="User avatar" width="63" height="63" />
         </div>}
         {!isSignedIn &&
         <a
@@ -46,6 +48,12 @@ const PageHeader = ({isMainPage, isSignInPage, isSignedIn, onSignInClick}) => {
         </a>
       </div>
 
+      {showErrMessage &&
+      <ErrorMsg
+        errMessage={errMessage}
+      />
+      }
+
       {isSignInPage ? signInPageTitle : userBlockElement}
     </header>
   );
@@ -56,12 +64,23 @@ PageHeader.propTypes = {
   isSignInPage: PropTypes.bool.isRequired,
   isSignedIn: PropTypes.bool.isRequired,
   onSignInClick: PropTypes.func.isRequired,
+  showErrMessage: PropTypes.bool,
+  errMessage: PropTypes.string,
+  userInfo: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    email: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    avatarUrl: PropTypes.string.isRequired,
+  }).isRequired
 };
 
 const mapStateToProps = (state) => ({
   isMainPage: getCurrentPage(state) === PageNames.MAIN,
   isSignInPage: getCurrentPage(state) === PageNames.SIGN_IN,
   isSignedIn: getAuthorizationStatus(state) === AuthorizationStatus.AUTH,
+  showErrMessage: getAuthorizationError(state),
+  errMessage: getErrMessage(state),
+  userInfo: getAuthorInfo(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
