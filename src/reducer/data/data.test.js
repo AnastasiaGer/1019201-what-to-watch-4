@@ -2,7 +2,7 @@ import MockAdapter from 'axios-mock-adapter';
 import {initialState, ActionType, reducer, Operations} from './data';
 import {movieCard as movie, movies, movieReviews as reviews} from '../../utils/test-data.js';
 import {createAPI} from '../../api';
-import {movieAdapter} from '../../adapters/adapters';
+import {adaptMovie} from '../../adapters/movies';
 
 const api = createAPI(() => {});
 
@@ -60,7 +60,7 @@ describe(`Operations work correctly`, () => {
             expect(dispatch).toHaveBeenCalledTimes(1);
             expect(dispatch).toHaveBeenCalledWith({
               type: ActionType.LOAD_MOVIE_CARD,
-              payload: movieAdapter({fake: true}),
+              payload: adaptMovie({fake: true}),
             });
           });
   });
@@ -79,7 +79,7 @@ describe(`Operations work correctly`, () => {
             expect(dispatch).toHaveBeenCalledTimes(1);
             expect(dispatch).toHaveBeenCalledWith({
               type: ActionType.LOAD_MOVIES,
-              payload: [movieAdapter({fake: true})],
+              payload: [adaptMovie({fake: true})],
             });
           });
   });

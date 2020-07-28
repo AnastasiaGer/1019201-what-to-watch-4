@@ -22,12 +22,6 @@ export const createAPI = (onUnauthorized) => {
     if (response.status === Error.UNAUTHORIZED || response.status === Error.BAD_REQUEST) {
       onUnauthorized();
 
-      // Бросаем ошибку, потому что нам важно прервать цепочку промисов после запроса авторизации.
-      // Запрос авторизации - это особый случай и важно дать понять приложению, что запрос был неудачным.
-      throw err;
-    }
-    if (response.status !== Error.SUCCESS) {
-
       throw err;
     }
 
