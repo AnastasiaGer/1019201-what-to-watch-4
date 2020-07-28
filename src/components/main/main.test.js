@@ -24,6 +24,16 @@ describe(`Main`, () => {
         currentPage: `main`,
         currentMovie: movieCard,
       },
+      [NameSpace.USER]: {
+        authorizationStatus: `AUTH`,
+        userInfo: {
+          id: 1,
+          email: `sadas@dsasd.ru`,
+          name: `asdasd`,
+          avatarUrl: `https://4.react.pages.academy/wtw/asda.jpg`,
+        },
+        message: `asdasd`,
+      },
     });
     const tree = renderer
       .create(

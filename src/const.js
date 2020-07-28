@@ -1,6 +1,13 @@
+export const ENTRY_POINT = `https://4.react.pages.academy/wtw`;
+export const REQUEST_TIMEOUT = 5000;
+export const MAX_SIMILAR_CARDS = 4;
+export const ALL_GENRES = `All genres`;
+export const MAX_SHOWN_MOVIES_LIKE_THIS = 8;
+
 export const PageNames = {
   MAIN: `main`,
-  MOVIE_DETAILS: `movieDetails`
+  MOVIE_DETAILS: `movieDetails`,
+  SIGN_IN: `sign in`,
 };
 
 export const RatingLevel = {
@@ -17,12 +24,14 @@ export const TABS = {
   REVIEWS: `reviews`,
 };
 
-export const MAX_SIMILAR_CARDS = 4;
-
-export const ALL_GENRES = `All genres`;
-export const MAX_SHOWN_MOVIES_LIKE_THIS = 8;
-
 export const Time = {
   MINUTES_IN_HOUR: 60,
   SECONDS_IN_MINUTE: 60,
 };
+
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
+

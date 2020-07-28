@@ -34,6 +34,8 @@ const ActionType = {
   PLAY_MOVIE: `PLAY_MOVIE`,
   STOP_MOVIE: `STOP_MOVIE`,
   GO_TO_MOVIE_PAGE: `GO_TO_MOVIE_PAGE`,
+  GO_TO_SIGN_IN_PAGE: `GO_TO_SIGN_IN_PAGE`,
+  GO_TO_MAIN_PAGE: `GO_TO_MAIN_PAGE`,
 };
 
 const ActionCreator = {
@@ -45,6 +47,19 @@ const ActionCreator = {
     return {
       type: ActionType.GO_TO_MOVIE_PAGE,
       payload: PageNames.MOVIE_DETAILS,
+    };
+  },
+  goToMainPage: () => {
+    return {
+      type: ActionType.GO_TO_MAIN_PAGE,
+      payload: PageNames.MAIN,
+    };
+  },
+
+  goToSignInPage: () => {
+    return {
+      type: ActionType.GO_TO_SIGN_IN_PAGE,
+      payload: PageNames.SIGN_IN,
     };
   },
   changeMovieCard: (movie) => ({
@@ -74,6 +89,14 @@ const reducer = (state = extend(initialState), action) => {
     case (ActionType.PLAY_MOVIE):
       return extend(state, {
         isVideoPlayer: action.payload,
+      });
+    case ActionType.GO_TO_SIGN_IN_PAGE:
+      return extend(state, {
+        currentPage: action.payload,
+      });
+    case ActionType.GO_TO_MAIN_PAGE:
+      return extend(state, {
+        currentPage: action.payload,
       });
     case (ActionType.STOP_MOVIE):
       return extend(state, {

@@ -1,5 +1,5 @@
 import {extend} from '../../utils/utils';
-import {createMovie} from '../../adapters/adapters';
+import {movieAdapter} from '../../adapters/adapters';
 
 const emptyMovie = {
   title: `Loading...`,
@@ -59,7 +59,7 @@ const Operations = {
   loadMovieCard: () => (dispatch, getState, api) => {
     return api.get(`/films/promo`)
       .then((response) => {
-        dispatch(ActionCreator.loadMovieCard(createMovie(response.data)));
+        dispatch(ActionCreator.loadMovieCard(movieAdapter(response.data)));
       })
       .catch(() => {
         dispatch(ActionCreator.catchError());
@@ -69,7 +69,7 @@ const Operations = {
   loadMovies: () => (dispatch, getState, api) => {
     return api.get(`/films`)
       .then((response) => {
-        const movies = response.data.map((movie) => createMovie(movie));
+        const movies = response.data.map((movie) => movieAdapter(movie));
         dispatch(ActionCreator.loadMovies(movies));
       })
       .catch(() => {

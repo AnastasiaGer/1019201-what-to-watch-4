@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorMsg test ErrorMsg component should render correctly 1`] = `
+Array [
+  <div
+    className="error-message"
+  >
+    <p>
+      Error 401. Unauthorized status
+    </p>
+  </div>,
+  ")",
+]
+`;

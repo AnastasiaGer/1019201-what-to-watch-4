@@ -9,6 +9,7 @@ import MoviesList from '../movies-list/movies-list.jsx';
 import {CustomPropTypes} from '../../utils/props.js';
 import {connect} from 'react-redux';
 import {getCurrentMovie} from '../../reducer/app-state/selectors.js';
+import PageFooter from '../page-footer/page-footer.jsx';
 
 import withShowMore from '../../hocs/with-show-more';
 
@@ -138,19 +139,7 @@ const MoviePage = ({currentMovie, movieReviews,
           </div>
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <PageFooter />
       </div>
     </React.Fragment>
   );
