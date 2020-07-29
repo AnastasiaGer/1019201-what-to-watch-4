@@ -34,11 +34,11 @@ describe(`App`, () => {
         authorizationStatus: `AUTH`,
         userInfo: {
           id: 1,
-          email: `sadas@dsasd.ru`,
-          name: `asdasd`,
+          email: `ivanov@dmail.ru`,
+          name: `Ivan`,
           avatarUrl: `https://4.react.pages.academy/wtw/asda.jpg`,
         },
-        message: `asdasd`,
+        message: `To be or not to be`,
       },
     });
     const tree = renderer
@@ -52,7 +52,6 @@ describe(`App`, () => {
               activeGenre={activeGenre}
               onGenreItemClick={() => {}}
               onShowMoreClick={() => {}}
-              shown={0}
             />
           </Provider>, {createNodeMock})
      .toJSON();

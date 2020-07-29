@@ -9,7 +9,11 @@ import MoviesList from '../movies-list/movies-list.jsx';
 import {CustomPropTypes} from '../../utils/props.js';
 import {connect} from 'react-redux';
 import {getCurrentMovie} from '../../reducer/app-state/selectors.js';
+import {ActionCreator} from '../../reducer/app-state/app-state';
+import {getAuthorizationStatus} from '../../reducer/user/selectors';
+import {AuthorizationStatus} from '../../const';
 import PageFooter from '../page-footer/page-footer.jsx';
+import PageHeader from '../page-header/page-header.jsx';
 
 import withShowMore from '../../hocs/with-show-more';
 
@@ -17,7 +21,7 @@ const MoviesListWrapped = withShowMore(MoviesList);
 
 const MoviePage = ({currentMovie, movieReviews,
   renderTabs,
-  activeTab, onPlayClick}) => {
+  activeTab, onPlayClick, onAddReviewClick, isSignedIn}) => {
 
   const {
     title,
@@ -32,6 +36,16 @@ const MoviePage = ({currentMovie, movieReviews,
     scores,
     movieDurationTime
   } = currentMovie;
+
+  const addReviewButton = (
+    <a
+      href="add-review.html"
+      className="btn movie-card__button"
+      onClick={(evt) => {
+        evt.preventDefault();
+        onAddReviewClick();
+      }}>Add review</a>
+  );
 
   const renderActiveTab = () => {
     switch (activeTab) {
@@ -70,21 +84,7 @@ const MoviePage = ({currentMovie, movieReviews,
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <header className="page-header movie-card__head">
-            <div className="logo">
-              <a href="main.html" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
-
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </div>
-          </header>
+          <PageHeader />
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
@@ -109,7 +109,7 @@ const MoviePage = ({currentMovie, movieReviews,
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                {isSignedIn && addReviewButton}
               </div>
             </div>
           </div>
@@ -154,11 +154,21 @@ MoviePage.propTypes = {
   renderTabs: PropTypes.func.isRequired,
   activeTab: PropTypes.string.isRequired,
   onPlayClick: PropTypes.func,
+  onAddReviewClick: PropTypes.func,
+  isSignedIn: PropTypes.bool,
+
 };
 const mapStateToProps = (state) => {
   return {
     currentMovie: getCurrentMovie(state),
+    isSignedIn: getAuthorizationStatus(state) === AuthorizationStatus.AUTH,
   };
 };
 
-export default connect(mapStateToProps)(MoviePage);
+const mapDispatchToProps = (dispatch) => ({
+  onAddReviewClick() {
+    dispatch(ActionCreator.addReview());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

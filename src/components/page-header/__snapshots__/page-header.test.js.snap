@@ -28,6 +28,31 @@ exports[`PageHeader Should render correctly when is main page and user is not si
       </span>
     </a>
   </div>
+  <nav
+    className="breadcrumbs"
+  >
+    <ul
+      className="breadcrumbs__list"
+    >
+      <li
+        className="breadcrumbs__item"
+      >
+        <a
+          className="breadcrumbs__link"
+          href="movie-page.html"
+        />
+      </li>
+      <li
+        className="breadcrumbs__item"
+      >
+        <a
+          className="breadcrumbs__link"
+        >
+          Add review
+        </a>
+      </li>
+    </ul>
+  </nav>
   <div
     className="user-block"
   >
@@ -70,6 +95,31 @@ exports[`PageHeader Should render correctly when is main page and user signed in
       </span>
     </a>
   </div>
+  <nav
+    className="breadcrumbs"
+  >
+    <ul
+      className="breadcrumbs__list"
+    >
+      <li
+        className="breadcrumbs__item"
+      >
+        <a
+          className="breadcrumbs__link"
+          href="movie-page.html"
+        />
+      </li>
+      <li
+        className="breadcrumbs__item"
+      >
+        <a
+          className="breadcrumbs__link"
+        >
+          Add review
+        </a>
+      </li>
+    </ul>
+  </nav>
   <div
     className="user-block"
   >
@@ -115,6 +165,31 @@ exports[`PageHeader Should render correctly when is not main page and not sign i
       </span>
     </a>
   </div>
+  <nav
+    className="breadcrumbs"
+  >
+    <ul
+      className="breadcrumbs__list"
+    >
+      <li
+        className="breadcrumbs__item"
+      >
+        <a
+          className="breadcrumbs__link"
+          href="movie-page.html"
+        />
+      </li>
+      <li
+        className="breadcrumbs__item"
+      >
+        <a
+          className="breadcrumbs__link"
+        >
+          Add review
+        </a>
+      </li>
+    </ul>
+  </nav>
   <div
     className="user-block"
   >
@@ -157,6 +232,31 @@ exports[`PageHeader Should render correctly when is sign in page 1`] = `
       </span>
     </a>
   </div>
+  <nav
+    className="breadcrumbs"
+  >
+    <ul
+      className="breadcrumbs__list"
+    >
+      <li
+        className="breadcrumbs__item"
+      >
+        <a
+          className="breadcrumbs__link"
+          href="movie-page.html"
+        />
+      </li>
+      <li
+        className="breadcrumbs__item"
+      >
+        <a
+          className="breadcrumbs__link"
+        >
+          Add review
+        </a>
+      </li>
+    </ul>
+  </nav>
   <h1
     className="page-title user-page__title"
   >

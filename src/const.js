@@ -8,6 +8,7 @@ export const PageNames = {
   MAIN: `main`,
   MOVIE_DETAILS: `movieDetails`,
   SIGN_IN: `sign in`,
+  ADD_REVIEW: `add review`,
 };
 
 export const RatingLevel = {
@@ -34,4 +35,12 @@ export const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
 };
 
+export const ReviewLength = {
+  MIN: 50,
+  MAX: 400,
+};
 
+export const reviewSubmitButton = {
+  post: `Post`,
+  sending: `Sending...`,
+};

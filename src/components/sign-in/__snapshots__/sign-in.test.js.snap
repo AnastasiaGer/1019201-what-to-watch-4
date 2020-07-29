@@ -36,6 +36,33 @@ exports[`SignIn Should render correctly when AuthError 1`] = `
     >
       <p />
     </div>
+    <nav
+      className="breadcrumbs"
+    >
+      <ul
+        className="breadcrumbs__list"
+      >
+        <li
+          className="breadcrumbs__item"
+        >
+          <a
+            className="breadcrumbs__link"
+            href="movie-page.html"
+          >
+            Snatch
+          </a>
+        </li>
+        <li
+          className="breadcrumbs__item"
+        >
+          <a
+            className="breadcrumbs__link"
+          >
+            Add review
+          </a>
+        </li>
+      </ul>
+    </nav>
     <div
       className="user-block"
     >
@@ -187,6 +214,33 @@ exports[`SignIn Should render correctly when no AuthError 1`] = `
         </span>
       </a>
     </div>
+    <nav
+      className="breadcrumbs"
+    >
+      <ul
+        className="breadcrumbs__list"
+      >
+        <li
+          className="breadcrumbs__item"
+        >
+          <a
+            className="breadcrumbs__link"
+            href="movie-page.html"
+          >
+            Snatch
+          </a>
+        </li>
+        <li
+          className="breadcrumbs__item"
+        >
+          <a
+            className="breadcrumbs__link"
+          >
+            Add review
+          </a>
+        </li>
+      </ul>
+    </nav>
     <div
       className="user-block"
     >

@@ -36,6 +36,7 @@ const ActionType = {
   GO_TO_MOVIE_PAGE: `GO_TO_MOVIE_PAGE`,
   GO_TO_SIGN_IN_PAGE: `GO_TO_SIGN_IN_PAGE`,
   GO_TO_MAIN_PAGE: `GO_TO_MAIN_PAGE`,
+  ADD_REVIEW: `ADD_REVIEW`,
 };
 
 const ActionCreator = {
@@ -53,6 +54,12 @@ const ActionCreator = {
     return {
       type: ActionType.GO_TO_MAIN_PAGE,
       payload: PageNames.MAIN,
+    };
+  },
+  addReview: () => {
+    return {
+      type: ActionType.ADD_REVIEW,
+      payload: PageNames.ADD_REVIEW,
     };
   },
 
@@ -103,6 +110,10 @@ const reducer = (state = extend(initialState), action) => {
         isVideoPlayer: action.payload,
       });
     case ActionType.GO_TO_MOVIE_PAGE:
+      return extend(state, {
+        currentPage: action.payload,
+      });
+    case ActionType.ADD_REVIEW:
       return extend(state, {
         currentPage: action.payload,
       });
