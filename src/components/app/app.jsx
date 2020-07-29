@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Main from '../main/main.jsx';
 import MoviePage from "../movie-page/movie-page.jsx";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, BrowserRouter as Router} from "react-router-dom";
 import {CustomPropTypes} from '../../utils/props.js';
 import withTabs from '../../hocs/with-tabs.js';
 import {connect} from "react-redux";
@@ -10,7 +10,7 @@ import {getMovies, getMovieCard, getMovieReviews} from '../../reducer/data/selec
 import {ActionCreator} from '../../reducer/app-state/app-state';
 import {getMoviesGenres} from '../../reducer/data/selectors';
 import {getActiveGenre, getCurrentPage, getIsMoviePlayerActive} from '../../reducer/app-state/selectors';
-import {PageNames} from '../../const';
+import {PageNames, AppRoute} from '../../const';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import SignIn from '../sign-in/sign-in.jsx';
 import {Operations as UserOperation} from '../../reducer/user/user';
@@ -93,31 +93,27 @@ class App extends PureComponent {
   }
 
   render() {
-    const {movieReviews, movies, movieCard, handleMovieCardClick, onPlayButtonClick} = this.props;
-
     return (
-      <BrowserRouter>
+      <Router>
         <Switch>
-          <Route exact path="/">
+          <Route exact path={AppRoute.ROOT}>
             {this._renderApp()}
           </Route>
-          <Route exact path="/dev-film">
+          <Route exact path={AppRoute.MOVIE_PAGE}>
             <MoviePage />
           </Route>
-          <Route exact path="/dev-watch">
-            <MoviePageWrapped
-              movieCard={movieCard}
-              movies={movies}
-              movieReviews={movieReviews}
-              onMovieCardClick={handleMovieCardClick}
-              onPlayClick={onPlayButtonClick}
+          <Route exact path={AppRoute.LOGIN}>
+            <SignIn
             />
           </Route>
-          <Route exact path="/dev-review">
+          <Route exact path={AppRoute.VIDEO_PLAYER}>
+            <MoviePageWrapped/>
+          </Route>
+          <Route exact path={AppRoute.MOVIE_REVIEW}>
             <AddReviewWrapped />
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

@@ -11,6 +11,14 @@ export const PageNames = {
   ADD_REVIEW: `add review`,
 };
 
+export const AppRoute = {
+  LOGIN: `/login`,
+  MOVIE_PAGE: `/film`,
+  MOVIE_REVIEW: `/review`,
+  VIDEO_PLAYER: `/player`,
+  ROOT: `/`,
+};
+
 export const RatingLevel = {
   AWESOME: `Awesome`,
   VERY_GOOD: `Very good`,
