@@ -7,6 +7,9 @@ export const getMovies = (state) => state[NameSpace.DATA].movies;
 export const getMovieCard = (state) => state[NameSpace.DATA].movieCard;
 export const getMovieReviews = (state) => state[NameSpace.DATA].movieReviews;
 
+export const getLoadingDataStatus = (state) => state[NameSpace.DATA].isReviewSending;
+export const getErrorLoadingDataStatus = (state) => state[NameSpace.DATA].isSendingError;
+
 export const getMoviesGenres = createSelector(
     getMovies,
     (movies) => {

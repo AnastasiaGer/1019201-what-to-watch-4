@@ -48,6 +48,33 @@ Array [
             </span>
           </a>
         </div>
+        <nav
+          className="breadcrumbs"
+        >
+          <ul
+            className="breadcrumbs__list"
+          >
+            <li
+              className="breadcrumbs__item"
+            >
+              <a
+                className="breadcrumbs__link"
+                href="movie-page.html"
+              >
+                Snatch
+              </a>
+            </li>
+            <li
+              className="breadcrumbs__item"
+            >
+              <a
+                className="breadcrumbs__link"
+              >
+                Add review
+              </a>
+            </li>
+          </ul>
+        </nav>
         <div
           className="user-block"
         >
@@ -57,7 +84,7 @@ Array [
             <img
               alt="User avatar"
               height="63"
-              src="img/avatar.jpg"
+              src="https://4.react.pages.academy/wtw/asda.jpg"
               width="63"
             />
           </div>
@@ -129,6 +156,7 @@ Array [
             <a
               className="btn movie-card__button"
               href="add-review.html"
+              onClick={[Function]}
             >
               Add review
             </a>

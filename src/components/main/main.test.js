@@ -45,7 +45,6 @@ describe(`Main`, () => {
               genres={genres}
               activeGenre={activeGenre}
               onGenreItemClick={() => {}}
-              shown={0}
               onShowMoreClick={() => {}}
               onPlayClick={() => {}}
             />

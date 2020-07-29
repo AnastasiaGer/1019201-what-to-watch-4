@@ -14,11 +14,14 @@ import {PageNames} from '../../const';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import SignIn from '../sign-in/sign-in.jsx';
 import {Operations as UserOperation} from '../../reducer/user/user';
+import AddReview from '../add-review/add-review.jsx';
+import withReview from '../../hocs/with-review.js';
 
 import FullVideoPlayer from '../full-video-player/full-video-player.jsx';
 import withVideoControls from '../../hocs/with-full-video.js';
 
 const FullVideoPlayerWrapped = withVideoControls(FullVideoPlayer);
+const AddReviewWrapped = withReview(AddReview);
 
 
 const MoviePageWrapped = withTabs(MoviePage);
@@ -28,7 +31,7 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {movieCard, movies, onGenreItemClick, genres, activeGenre, shown, onShowMoreClick, movieReviews, currentPage, handleMovieCardClick, isVideoPlayer, onPlayButtonClick, handleCloseButtonClick, login} = this.props;
+    const {movieCard, movies, onGenreItemClick, genres, activeGenre, onShowMoreClick, movieReviews, currentPage, handleMovieCardClick, isVideoPlayer, onPlayButtonClick, handleCloseButtonClick, login} = this.props;
 
     if (isVideoPlayer) {
       return (
@@ -50,7 +53,6 @@ class App extends PureComponent {
             activeGenre={activeGenre}
             onGenreItemClick={onGenreItemClick}
             onShowMoreClick={onShowMoreClick}
-            shown={shown}
             onPlayClick={onPlayButtonClick}
           />
         );
@@ -70,6 +72,10 @@ class App extends PureComponent {
             onFormSubmit={login}
           />
         );
+      case PageNames.ADD_REVIEW:
+        return (
+          <AddReviewWrapped />
+        );
       default:
         return (
           <Main
@@ -80,7 +86,6 @@ class App extends PureComponent {
             activeGenre={activeGenre}
             onGenreItemClick={onGenreItemClick}
             onShowMoreClick={onShowMoreClick}
-            shown={shown}
             onPlayClick={onPlayButtonClick}
           />
         );
@@ -108,6 +113,9 @@ class App extends PureComponent {
               onPlayClick={onPlayButtonClick}
             />
           </Route>
+          <Route exact path="/dev-review">
+            <AddReviewWrapped />
+          </Route>
         </Switch>
       </BrowserRouter>
     );
@@ -126,7 +134,6 @@ App.propTypes = {
   genres: PropTypes.arrayOf(PropTypes.string),
   onGenreItemClick: PropTypes.func,
   onShowMoreClick: PropTypes.func,
-  shown: PropTypes.number,
   currentPage: PropTypes.string,
   handleMovieCardClick: PropTypes.func,
   onPlayButtonClick: PropTypes.func,
@@ -142,7 +149,6 @@ const mapStateToProps = (state) => ({
   movieReviews: getMovieReviews(state),
   genres: getMoviesGenres(state),
   activeGenre: getActiveGenre(state),
-  shown: state.cardsToShow,
   currentPage: getCurrentPage(state),
   isVideoPlayer: getIsMoviePlayerActive(state),
   authorizationStatus: getAuthorizationStatus(state),

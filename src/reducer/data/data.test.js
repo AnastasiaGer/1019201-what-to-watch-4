@@ -2,7 +2,7 @@ import MockAdapter from 'axios-mock-adapter';
 import {initialState, ActionType, reducer, Operations} from './data';
 import {movieCard as movie, movies, movieReviews as reviews} from '../../utils/test-data.js';
 import {createAPI} from '../../api';
-import {movieAdapter} from '../../adapters/adapters';
+import {adaptMovie} from '../../adapters/movies';
 
 const api = createAPI(() => {});
 
@@ -43,6 +43,28 @@ describe(`Data Reducer`, () => {
       movieReviews: reviews,
     });
   });
+
+  it(`Reducer should check if review is sending`, () => {
+    expect(reducer({
+      isReviewSending: false,
+    }, {
+      type: ActionType.IS_LOADING_DATA,
+      payload: true,
+    })).toEqual({
+      isReviewSending: true,
+    });
+  });
+
+  it(`Reducer should check if is sending error`, () => {
+    expect(reducer({
+      isSendingError: false,
+    }, {
+      type: ActionType.IS_ERROR_DATA,
+      payload: true,
+    })).toEqual({
+      isSendingError: true,
+    });
+  });
 });
 
 describe(`Operations work correctly`, () => {
@@ -60,7 +82,7 @@ describe(`Operations work correctly`, () => {
             expect(dispatch).toHaveBeenCalledTimes(1);
             expect(dispatch).toHaveBeenCalledWith({
               type: ActionType.LOAD_MOVIE_CARD,
-              payload: movieAdapter({fake: true}),
+              payload: adaptMovie({fake: true}),
             });
           });
   });
@@ -79,7 +101,7 @@ describe(`Operations work correctly`, () => {
             expect(dispatch).toHaveBeenCalledTimes(1);
             expect(dispatch).toHaveBeenCalledWith({
               type: ActionType.LOAD_MOVIES,
-              payload: [movieAdapter({fake: true})],
+              payload: [adaptMovie({fake: true})],
             });
           });
   });
@@ -99,6 +121,29 @@ describe(`Operations work correctly`, () => {
             expect(dispatch).toHaveBeenCalledWith({
               type: ActionType.LOAD_MOVIE_REVIEWS,
               payload: [{fake: true}],
+            });
+          });
+  });
+
+  it(`Should send review to /comments/1`, () => {
+    const review = {
+      rating: 5,
+      comment: ``,
+    };
+
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const pushReview = Operations.pushReview(1, review);
+
+    apiMock
+      .onPost(`/comments/1`)
+      .reply(200, [{fake: true}]);
+
+    return pushReview(dispatch, () => {}, api)
+          .then(() => {
+            expect(dispatch).toHaveBeenCalledWith({
+              type: ActionType.IS_LOADING_DATA,
+              payload: true,
             });
           });
   });

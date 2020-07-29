@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {PageNames, AuthorizationStatus} from '../../const';
-import {getCurrentPage} from '../../reducer/app-state/selectors';
+import {getCurrentPage, getCurrentMovie} from '../../reducer/app-state/selectors';
 import {getAuthorizationStatus, getErrMessage, getAuthorizationError, getAuthorInfo} from '../../reducer/user/selectors.js';
 import {ActionCreator} from '../../reducer/app-state/app-state.js';
 import ErrorMsg from '../error-msg/error-msg.jsx';
 
-const PageHeader = ({isMainPage, isSignInPage, isSignedIn, onSignInClick, showErrMessage, errMessage, userInfo}) => {
+const PageHeader = ({isMainPage, isSignInPage, isSignedIn, onSignInClick, showErrMessage, errMessage, userInfo, movieTitle}) => {
 
   const signInPageTitle = (
     <React.Fragment>
@@ -16,13 +16,12 @@ const PageHeader = ({isMainPage, isSignInPage, isSignedIn, onSignInClick, showEr
   );
 
   const userBlockElement = (
-    <React.Fragment>
-      <div className="user-block">
-        {isSignedIn &&
+    <div className="user-block">
+      {isSignedIn &&
         <div className="user-block__avatar">
           <img src={userInfo.avatarUrl} alt="User avatar" width="63" height="63" />
         </div>}
-        {!isSignedIn &&
+      {!isSignedIn &&
         <a
           href="sign-in.html"
           className="user-block__link"
@@ -31,8 +30,20 @@ const PageHeader = ({isMainPage, isSignInPage, isSignedIn, onSignInClick, showEr
             onSignInClick();
           }}
         >Sign in</a>}
-      </div>
-    </React.Fragment>
+    </div>
+  );
+
+  const isReview = (
+    <nav className="breadcrumbs">
+      <ul className="breadcrumbs__list">
+        <li className="breadcrumbs__item">
+          <a href="movie-page.html" className="breadcrumbs__link">{movieTitle}</a>
+        </li>
+        <li className="breadcrumbs__item">
+          <a className="breadcrumbs__link">Add review</a>
+        </li>
+      </ul>
+    </nav>
   );
 
   return (
@@ -53,7 +64,7 @@ const PageHeader = ({isMainPage, isSignInPage, isSignedIn, onSignInClick, showEr
         errMessage={errMessage}
       />
       }
-
+      {isReview}
       {isSignInPage ? signInPageTitle : userBlockElement}
     </header>
   );
@@ -71,7 +82,8 @@ PageHeader.propTypes = {
     email: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     avatarUrl: PropTypes.string.isRequired,
-  }).isRequired
+  }).isRequired,
+  movieTitle: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -81,6 +93,7 @@ const mapStateToProps = (state) => ({
   showErrMessage: getAuthorizationError(state),
   errMessage: getErrMessage(state),
   userInfo: getAuthorInfo(state),
+  movieTitle: getCurrentMovie(state).title,
 });
 
 const mapDispatchToProps = (dispatch) => ({

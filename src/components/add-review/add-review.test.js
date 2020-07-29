@@ -1,43 +1,42 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import MoviePage from "./movie-page.jsx";
-import {movieCard, movies, movieReviews} from '../../utils/test-data.js';
+import React from 'react';
+import renderer from 'react-test-renderer';
+import {movieCard} from '../../utils/test-data.js';
+import AddReview from './add-review';
 import NameSpace from '../../reducer/name-space';
-import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-
+import {Provider} from 'react-redux';
 
 const mockStore = configureStore([]);
 
-describe(`MoviePage`, () => {
+describe(`Catalog`, () => {
   it(`Should render correctly`, () => {
     const store = mockStore({
-      [NameSpace.DATA]: {
-        movies,
-      },
       [NameSpace.APP_STATE]: {
+        currentPage: `main`,
         currentMovie: movieCard,
       },
       [NameSpace.USER]: {
-        authorizationStatus: `AUTH`,
         userInfo: {
           id: 1,
           email: `ivanov@dmail.ru`,
           name: `Ivan`,
           avatarUrl: `https://4.react.pages.academy/wtw/asda.jpg`,
-        },
+        }
       },
     });
 
     const tree = renderer
       .create(
           <Provider store={store}>
-            <MoviePage
-              movieCard={movieCard}
-              movies={movies}
-              movieReviews={movieReviews}
-              renderTabs={() => {}}
-              activeTab={``}
+            <AddReview
+              currentMovie={movieCard}
+              isReviewSending={false}
+              isSendingError={false}
+              onSubmitClick={() => {}}
+              onFormChange={() => {}}
+              onRatingChange={() => {}}
+              onReviewChange={() => {}}
+              isSubmitDisabled={false}
             />
           </Provider>, {
             createNodeMock: () => {

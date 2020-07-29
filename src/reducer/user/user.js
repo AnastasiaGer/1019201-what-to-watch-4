@@ -1,7 +1,7 @@
 import {extend} from '../../utils/utils';
 import {AuthorizationStatus} from '../../const';
 import {ActionCreator as AppStateActionCreator} from '../app-state/app-state';
-import {userAdapter} from '../../adapters/adapters';
+import {adaptUser} from '../../adapters/user';
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
@@ -64,7 +64,7 @@ const Operations = {
     return api.get(`/login`)
       .then((response) => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
-        dispatch(ActionCreator.setAuthorInfo(userAdapter(response.data)));
+        dispatch(ActionCreator.setAuthorInfo(adaptUser(response.data)));
       })
       .catch(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
