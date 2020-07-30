@@ -6,10 +6,9 @@ import {Switch, Route, Router} from "react-router-dom";
 import {CustomPropTypes} from '../../utils/props.js';
 import withTabs from '../../hocs/with-tabs.js';
 import {connect} from "react-redux";
-import {getMovies, getMovieCard, getMovieReviews} from '../../reducer/data/selectors';
+import {getMovieCard, getMovieReviews} from '../../reducer/data/selectors';
 import {ActionCreator} from '../../reducer/app-state/app-state';
-import {getMoviesGenres} from '../../reducer/data/selectors';
-import {getActiveGenre, getCurrentPage, getIsMoviePlayerActive} from '../../reducer/app-state/selectors';
+import {getCurrentPage, getIsMoviePlayerActive} from '../../reducer/app-state/selectors';
 import {PageNames, AppRoute} from '../../const';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import SignIn from '../sign-in/sign-in.jsx';
@@ -33,7 +32,7 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {movieCard, movies, onGenreItemClick, genres, activeGenre, onShowMoreClick, movieReviews, currentPage, handleMovieCardClick, isVideoPlayer, onPlayButtonClick, handleCloseButtonClick, login} = this.props;
+    const {movieCard, movieReviews, currentPage, isVideoPlayer, onPlayButtonClick, handleCloseButtonClick, login} = this.props;
 
     if (isVideoPlayer) {
       return (
@@ -49,12 +48,6 @@ class App extends PureComponent {
         return (
           <Main
             movieCard={movieCard}
-            movies={movies}
-            onMovieCardClick={handleMovieCardClick}
-            genres={genres}
-            activeGenre={activeGenre}
-            onGenreItemClick={onGenreItemClick}
-            onShowMoreClick={onShowMoreClick}
             onPlayClick={onPlayButtonClick}
           />
         );
@@ -79,12 +72,6 @@ class App extends PureComponent {
         return (
           <Main
             movieCard={movieCard}
-            movies={movies}
-            onMovieCardClick={handleMovieCardClick}
-            genres={genres}
-            activeGenre={activeGenre}
-            onGenreItemClick={onGenreItemClick}
-            onShowMoreClick={onShowMoreClick}
             onPlayClick={onPlayButtonClick}
           />
         );
@@ -92,7 +79,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {movieReviews, movies, movieCard, handleMovieCardClick, onPlayButtonClick} = this.props;
+    const {movieReviews, onPlayButtonClick} = this.props;
     return (
       <Router history={history}>
         <Switch>
@@ -107,10 +94,7 @@ class App extends PureComponent {
           </Route>
           <Route exact path={`${AppRoute.VIDEO_PLAYER}/:id?`}>
             <MoviePageWrapped
-              movieCard={movieCard}
-              movies={movies}
               movieReviews={movieReviews}
-              onMovieCardClick={handleMovieCardClick}
               onPlayClick={onPlayButtonClick}
             />
           </Route>
@@ -126,17 +110,11 @@ class App extends PureComponent {
 
 App.propTypes = {
   movieCard: CustomPropTypes.MOVIE,
-  movies: PropTypes.arrayOf(CustomPropTypes.MOVIE),
   movieReviews: PropTypes.PropTypes.oneOfType([
     PropTypes.arrayOf(CustomPropTypes.REVIEWS),
     PropTypes.bool,
   ]),
-  activeGenre: PropTypes.string,
-  genres: PropTypes.arrayOf(PropTypes.string),
-  onGenreItemClick: PropTypes.func,
-  onShowMoreClick: PropTypes.func,
   currentPage: PropTypes.string,
-  handleMovieCardClick: PropTypes.func,
   onPlayButtonClick: PropTypes.func,
   handleCloseButtonClick: PropTypes.func,
   isVideoPlayer: PropTypes.bool,
@@ -145,26 +123,14 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  movies: getMovies(state),
   movieCard: getMovieCard(state),
   movieReviews: getMovieReviews(state),
-  genres: getMoviesGenres(state),
-  activeGenre: getActiveGenre(state),
   currentPage: getCurrentPage(state),
   isVideoPlayer: getIsMoviePlayerActive(state),
   authorizationStatus: getAuthorizationStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onGenreItemClick(genre) {
-    dispatch(ActionCreator.changeFilter(genre));
-  },
-  onShowMoreClick() {
-    dispatch(ActionCreator.showMore());
-  },
-  handleMovieCardClick(movie) {
-    dispatch(ActionCreator.changeMovieCard(movie));
-  },
   onPlayButtonClick(isVideoPlayer) {
     dispatch(ActionCreator.playFullMovie(isVideoPlayer));
   },

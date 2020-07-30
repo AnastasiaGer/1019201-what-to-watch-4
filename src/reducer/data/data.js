@@ -1,25 +1,7 @@
 import {extend} from '../../utils/utils';
 import {adaptMovie} from '../../adapter/movies';
 import {ActionCreator as AppStateActionCreator} from '../app-state/app-state';
-
-const emptyMovie = {
-  title: `Loading...`,
-  genre: ``,
-  date: 0,
-  background: ``,
-  poster: ``,
-  id: 0,
-  description: ``,
-  rating: 0,
-  votes: 0,
-  director: ``,
-  starring: [],
-  runTime: 0,
-  preview: ``,
-  videoLink: ``,
-  isFavorite: false,
-  backgroundColor: ``,
-};
+import {emptyMovie} from "../../const";
 
 const initialState = {
   movieCard: emptyMovie,

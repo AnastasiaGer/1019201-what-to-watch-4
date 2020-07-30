@@ -1,24 +1,6 @@
-import {ALL_GENRES, MAX_SHOWN_MOVIES_LIKE_THIS, PageNames} from "../../const";
+import {ALL_GENRES, MAX_SHOWN_MOVIES_LIKE_THIS, PageNames, emptyMovie} from "../../const";
 import {extend} from '../../utils/utils';
 
-const emptyMovie = {
-  title: `Loading...`,
-  genre: ``,
-  date: 0,
-  background: ``,
-  poster: ``,
-  id: 0,
-  description: ``,
-  rating: 0,
-  votes: 0,
-  director: ``,
-  starring: [],
-  runTime: 0,
-  preview: ``,
-  videoLink: ``,
-  isFavorite: false,
-  backgroundColor: ``,
-};
 
 const initialState = {
   activeGenre: ALL_GENRES,

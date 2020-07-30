@@ -54,3 +54,22 @@ export const reviewSubmitButton = {
   post: `Post`,
   sending: `Sending...`,
 };
+
+export const emptyMovie = {
+  title: `Loading...`,
+  genre: ``,
+  date: 0,
+  background: ``,
+  poster: ``,
+  id: 0,
+  description: ``,
+  rating: 0,
+  votes: 0,
+  director: ``,
+  starring: [],
+  runTime: 0,
+  preview: ``,
+  videoLink: ``,
+  isFavorite: false,
+  backgroundColor: ``,
+};
