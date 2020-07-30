@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {PageNames, AuthorizationStatus} from '../../const';
+import {AppRoute, AuthorizationStatus} from '../../const';
 import {getCurrentPage, getCurrentMovie} from '../../reducer/app-state/selectors';
 import {getAuthorizationStatus, getErrMessage, getAuthorizationError, getAuthorInfo} from '../../reducer/user/selectors.js';
 import {ActionCreator} from '../../reducer/app-state/app-state.js';
 import ErrorMsg from '../error-msg/error-msg.jsx';
-
-const PageHeader = ({isMainPage, isSignInPage, isSignedIn, onSignInClick, showErrMessage, errMessage, userInfo, movieTitle}) => {
+import {Link} from "react-router-dom";
+const PageHeader = ({isSignInPage, isSignedIn, onSignInClick, showErrMessage, errMessage, userInfo, movieTitle}) => {
 
   const signInPageTitle = (
     <React.Fragment>
@@ -22,14 +22,13 @@ const PageHeader = ({isMainPage, isSignInPage, isSignedIn, onSignInClick, showEr
           <img src={userInfo.avatarUrl} alt="User avatar" width="63" height="63" />
         </div>}
       {!isSignedIn &&
-        <a
-          href="sign-in.html"
+        <Link to={AppRoute.LOGIN}
           className="user-block__link"
           onClick={(evt) => {
             evt.preventDefault();
             onSignInClick();
           }}
-        >Sign in</a>}
+        >Sign in</Link>}
     </div>
   );
 
@@ -49,14 +48,14 @@ const PageHeader = ({isMainPage, isSignInPage, isSignedIn, onSignInClick, showEr
   return (
     <header className={`page-header ${isSignInPage ? `user-page__head` : `movie-card__head`}`}>
       <div className="logo">
-        <a
+        <Link to={AppRoute.ROOT}
           className="logo__link"
-          href={!isMainPage ? `main.html` : null}
+
         >
           <span className="logo__letter logo__letter--1">W</span>
           <span className="logo__letter logo__letter--2">T</span>
           <span className="logo__letter logo__letter--3">W</span>
-        </a>
+        </Link>
       </div>
 
       {showErrMessage &&
@@ -71,7 +70,6 @@ const PageHeader = ({isMainPage, isSignInPage, isSignedIn, onSignInClick, showEr
 };
 
 PageHeader.propTypes = {
-  isMainPage: PropTypes.bool.isRequired,
   isSignInPage: PropTypes.bool.isRequired,
   isSignedIn: PropTypes.bool.isRequired,
   onSignInClick: PropTypes.func.isRequired,
@@ -87,8 +85,7 @@ PageHeader.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  isMainPage: getCurrentPage(state) === PageNames.MAIN,
-  isSignInPage: getCurrentPage(state) === PageNames.SIGN_IN,
+  isSignInPage: getCurrentPage(state) === AppRoute.LOGIN,
   isSignedIn: getAuthorizationStatus(state) === AuthorizationStatus.AUTH,
   showErrMessage: getAuthorizationError(state),
   errMessage: getErrMessage(state),
