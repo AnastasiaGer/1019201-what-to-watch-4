@@ -14,6 +14,8 @@ import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import {AuthorizationStatus} from '../../const';
 import PageFooter from '../page-footer/page-footer.jsx';
 import PageHeader from '../page-header/page-header.jsx';
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const.js";
 
 import withShowMore from '../../hocs/with-show-more';
 
@@ -38,13 +40,12 @@ const MoviePage = ({currentMovie, movieReviews,
   } = currentMovie;
 
   const addReviewButton = (
-    <a
-      href="add-review.html"
+    <Link to={AppRoute.MOVIE_REVIEW}
       className="btn movie-card__button"
       onClick={(evt) => {
         evt.preventDefault();
         onAddReviewClick();
-      }}>Add review</a>
+      }}>Add review</Link>
   );
 
   const renderActiveTab = () => {
@@ -84,7 +85,7 @@ const MoviePage = ({currentMovie, movieReviews,
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <PageHeader />
+          <PageHeader isSignedIn={isSignedIn}/>
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">

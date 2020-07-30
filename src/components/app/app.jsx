@@ -16,6 +16,7 @@ import SignIn from '../sign-in/sign-in.jsx';
 import {Operations as UserOperation} from '../../reducer/user/user';
 import AddReview from '../add-review/add-review.jsx';
 import withReview from '../../hocs/with-review.js';
+import history from "../../history.js";
 
 import FullVideoPlayer from '../full-video-player/full-video-player.jsx';
 import withVideoControls from '../../hocs/with-full-video.js';
@@ -93,8 +94,9 @@ class App extends PureComponent {
   }
 
   render() {
+    const {movieReviews, movies, movieCard, handleMovieCardClick, onPlayButtonClick} = this.props;
     return (
-      <Router>
+      <Router history={history}>
         <Switch>
           <Route exact path={AppRoute.ROOT}>
             {this._renderApp()}
@@ -102,12 +104,14 @@ class App extends PureComponent {
           <Route exact path={AppRoute.MOVIE_PAGE}>
             <MoviePage />
           </Route>
-          <Route exact path={AppRoute.LOGIN}>
-            <SignIn
+          <Route exact path={`${AppRoute.VIDEO_PLAYER}/:id?`}>
+            <MoviePageWrapped
+              movieCard={movieCard}
+              movies={movies}
+              movieReviews={movieReviews}
+              onMovieCardClick={handleMovieCardClick}
+              onPlayClick={onPlayButtonClick}
             />
-          </Route>
-          <Route exact path={AppRoute.VIDEO_PLAYER}>
-            <MoviePageWrapped/>
           </Route>
           <Route exact path={AppRoute.MOVIE_REVIEW}>
             <AddReviewWrapped />
