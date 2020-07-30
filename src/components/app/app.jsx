@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Main from '../main/main.jsx';
 import MoviePage from "../movie-page/movie-page.jsx";
-import {Switch, Route, BrowserRouter as Router} from "react-router-dom";
+import {Switch, Route, Router} from "react-router-dom";
 import {CustomPropTypes} from '../../utils/props.js';
 import withTabs from '../../hocs/with-tabs.js';
 import {connect} from "react-redux";
