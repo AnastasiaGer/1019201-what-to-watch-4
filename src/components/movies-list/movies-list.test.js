@@ -4,6 +4,8 @@ import MoviesList from "./movies-list.jsx";
 import {movies} from '../../utils/test-data.js';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
+import {Router} from 'react-router-dom';
+import history from '../../history.js';
 
 const mockStore = configureStore([]);
 
@@ -16,13 +18,15 @@ describe(`MoviesList`, () => {
 
     const tree = renderer
       .create(
-          <Provider store={store}>
-            <MoviesList
-              movies={movies}
-              onMovieCardClick={() => {}}
-              handleSmallMovieCardHover={() => {}}
-              render={() => {}}
-            /></Provider>, {
+          <Router history={history}>
+            <Provider store={store}>
+              <MoviesList
+                movies={movies}
+                onMovieCardClick={() => {}}
+                handleSmallMovieCardHover={() => {}}
+                render={() => {}}
+              /></Provider>
+          </Router>, {
             createNodeMock: () => {
               return {};
             }

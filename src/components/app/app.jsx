@@ -78,6 +78,14 @@ class App extends PureComponent {
       default:
         return (
           <Main
+            movieCard={movieCard}
+            movies={movies}
+            onMovieCardClick={handleMovieCardClick}
+            genres={genres}
+            activeGenre={activeGenre}
+            onGenreItemClick={onGenreItemClick}
+            onShowMoreClick={onShowMoreClick}
+            onPlayClick={onPlayButtonClick}
           />
         );
     }

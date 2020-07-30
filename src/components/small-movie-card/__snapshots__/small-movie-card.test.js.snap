@@ -6,27 +6,31 @@ exports[`SmallMovieCard Should render correctly movie card 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
-  <div
-    className="small-movie-card__image"
+  <a
+    href="/film"
     onClick={[Function]}
   >
-    <video
-      className="player__video"
-    />
-    <img
-      alt="Snatch"
-      height="175"
-      src="img/snatch.jpg"
-      width="280"
-    />
-  </div>
+    <div
+      className="small-movie-card__image"
+    >
+      <video
+        className="player__video"
+      />
+      <img
+        alt="Snatch"
+        height="175"
+        src="img/snatch.jpg"
+        width="280"
+      />
+    </div>
+  </a>
   <h3
     className="small-movie-card__title"
-    onClick={[Function]}
   >
     <a
       className="small-movie-card__link"
-      href="movie-page.html"
+      href="/film"
+      onClick={[Function]}
     >
       Snatch
     </a>

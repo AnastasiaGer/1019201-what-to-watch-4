@@ -2,7 +2,7 @@ import MockAdapter from 'axios-mock-adapter';
 import {initialState, ActionType, reducer, Operations} from './data';
 import {movieCard as movie, movies, movieReviews as reviews} from '../../utils/test-data.js';
 import {createAPI} from '../../api';
-import {adaptMovie} from '../../adapters/movies';
+import {adaptMovie} from '../../adapter/movies';
 
 const api = createAPI(() => {});
 

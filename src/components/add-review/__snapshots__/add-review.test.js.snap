@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Catalog Should render correctly 1`] = `
+exports[`AddReview Should render correctly 1`] = `
 <section
   className="movie-card movie-card--full"
   style={
@@ -33,7 +33,8 @@ exports[`Catalog Should render correctly 1`] = `
       >
         <a
           className="logo__link"
-          href={null}
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -83,11 +84,17 @@ exports[`Catalog Should render correctly 1`] = `
         className="user-block"
       >
         <a
-          className="user-block__link"
-          href="sign-in.html"
+          href="/login"
           onClick={[Function]}
+          style={
+            Object {
+              "color": "inherit",
+              "cursor": "pointer",
+              "textDecoration": "none",
+            }
+          }
         >
-          Sign in
+          Sign In
         </a>
       </div>
     </header>
@@ -117,81 +124,82 @@ exports[`Catalog Should render correctly 1`] = `
       >
         <div
           className="rating__stars"
+          onChange={[Function]}
         >
           <input
             className="rating__input"
             disabled={false}
             id="star-1"
             name="rating"
-            onChange={[Function]}
             type="radio"
-            value="1"
+            value={1}
           />
           <label
             className="rating__label"
             htmlFor="star-1"
           >
-            Rating 1
+            Rating 
+            1
           </label>
           <input
             className="rating__input"
             disabled={false}
             id="star-2"
             name="rating"
-            onChange={[Function]}
             type="radio"
-            value="2"
+            value={2}
           />
           <label
             className="rating__label"
             htmlFor="star-2"
           >
-            Rating 2
+            Rating 
+            2
           </label>
           <input
             className="rating__input"
             disabled={false}
             id="star-3"
             name="rating"
-            onChange={[Function]}
             type="radio"
-            value="3"
+            value={3}
           />
           <label
             className="rating__label"
             htmlFor="star-3"
           >
-            Rating 3
+            Rating 
+            3
           </label>
           <input
             className="rating__input"
             disabled={false}
             id="star-4"
             name="rating"
-            onChange={[Function]}
             type="radio"
-            value="4"
+            value={4}
           />
           <label
             className="rating__label"
             htmlFor="star-4"
           >
-            Rating 4
+            Rating 
+            4
           </label>
           <input
             className="rating__input"
             disabled={false}
             id="star-5"
             name="rating"
-            onChange={[Function]}
             type="radio"
-            value="5"
+            value={5}
           />
           <label
             className="rating__label"
             htmlFor="star-5"
           >
-            Rating 5
+            Rating 
+            5
           </label>
         </div>
       </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {Router} from 'react-router-dom';
+import history from '../../history.js';
 
 import {PageHeader} from './page-header';
 
@@ -13,13 +15,16 @@ const userInfo = {
 describe(`PageHeader`, () => {
   it(`Should render correctly when is main page and user signed in`, () => {
     const tree = renderer
-      .create(<PageHeader
-        isMainPage={true}
-        isSignInPage={false}
-        isSignedIn={true}
-        onSignInClick={() => {}}
-        userInfo={userInfo}
-      />)
+      .create(
+          <Router history={history}>
+            <PageHeader
+              isMainPage={true}
+              isSignInPage={false}
+              isSignedIn={true}
+              onSignInClick={() => {}}
+              userInfo={userInfo}
+            />
+          </Router>)
       .toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -27,12 +32,15 @@ describe(`PageHeader`, () => {
 
   it(`Should render correctly when is main page and user is not signed in`, () => {
     const tree = renderer
-      .create(<PageHeader
-        isMainPage={true}
-        isSignInPage={false}
-        isSignedIn={false}
-        onSignInClick={() => {}}
-      />)
+      .create(
+          <Router history={history}>
+            <PageHeader
+              isMainPage={true}
+              isSignInPage={false}
+              isSignedIn={false}
+              onSignInClick={() => {}}
+            />
+          </Router>)
       .toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -40,12 +48,15 @@ describe(`PageHeader`, () => {
 
   it(`Should render correctly when is not main page and not sign in page`, () => {
     const tree = renderer
-      .create(<PageHeader
-        isMainPage={false}
-        isSignInPage={false}
-        isSignedIn={false}
-        onSignInClick={() => {}}
-      />)
+      .create(
+          <Router history={history}>
+            <PageHeader
+              isMainPage={false}
+              isSignInPage={false}
+              isSignedIn={false}
+              onSignInClick={() => {}}
+            />
+          </Router>)
       .toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -53,12 +64,15 @@ describe(`PageHeader`, () => {
 
   it(`Should render correctly when is sign in page`, () => {
     const tree = renderer
-      .create(<PageHeader
-        isMainPage={false}
-        isSignInPage={true}
-        isSignedIn={false}
-        onSignInClick={() => {}}
-      />)
+      .create(
+          <Router history={history}>
+            <PageHeader
+              isMainPage={false}
+              isSignInPage={true}
+              isSignedIn={false}
+              onSignInClick={() => {}}
+            />
+          </Router>)
       .toJSON();
 
     expect(tree).toMatchSnapshot();

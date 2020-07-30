@@ -6,6 +6,7 @@ import {App} from "./app.jsx";
 import {movieCard, movies, movieReviews} from '../../utils/test-data.js';
 import NameSpace from '../../reducer/name-space';
 
+
 const mockStore = configureStore([]);
 
 const activeGenre = `Drama`;
