@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {CustomPropTypes} from '../../utils/props.js';
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const.js";
 
 const FullVideoPlayer = ({movieCard, children,
   duration,
@@ -16,9 +18,9 @@ const FullVideoPlayer = ({movieCard, children,
     <div className="player">
       {children}
 
-      <button type="button" className="player__exit"
+      <Link to={AppRoute.ROOT} type="button" className="player__exit"
         onClick={() => onClosePlayerClick()}
-      >Exit</button>
+      >Exit</Link>
 
       <div className="player__controls">
         <div className="player__controls-row">
