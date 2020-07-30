@@ -17,6 +17,7 @@ import {Operations as UserOperation} from '../../reducer/user/user';
 import AddReview from '../add-review/add-review.jsx';
 import withReview from '../../hocs/with-review.js';
 import history from "../../history.js";
+import PrivateRoute from "../private-route/private-route.jsx";
 
 import FullVideoPlayer from '../full-video-player/full-video-player.jsx';
 import withVideoControls from '../../hocs/with-full-video.js';
@@ -105,9 +106,9 @@ class App extends PureComponent {
               onPlayClick={onPlayButtonClick}
             />
           </Route>
-          <Route exact path={AppRoute.MOVIE_REVIEW}>
+          <PrivateRoute exact path={AppRoute.MOVIE_REVIEW}>
             <AddReviewWrapped />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </Router>
     );
