@@ -61,6 +61,7 @@ class App extends PureComponent {
         return (
           <MoviePageWrapped
             movieReviews={movieReviews}
+            onPlayClick={onPlayButtonClick}
           />
         );
       case PageNames.SIGN_IN:
