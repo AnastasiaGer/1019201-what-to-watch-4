@@ -3,6 +3,7 @@ export const REQUEST_TIMEOUT = 5000;
 export const MAX_SIMILAR_CARDS = 4;
 export const ALL_GENRES = `All genres`;
 export const MAX_SHOWN_MOVIES_LIKE_THIS = 8;
+export const NUMBER_OF_RATINGS = 5;
 
 export const PageNames = {
   MAIN: `main`,

@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PageHeader from '../page-header/page-header.jsx';
 import {CustomPropTypes} from '../../utils/props.js';
-import {ReviewLength, reviewSubmitButton} from '../../const';
+import {ReviewLength, reviewSubmitButton, NUMBER_OF_RATINGS} from '../../const';
 
-const AddReview = ({currentMovie, isReviewSending, isSendingError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, isSubmitDisabled}) => {
-  const {backgroundColor, title, background, poster, rating} = currentMovie;
+const AddReview = ({currentMovie, isReviewSending, isSendingError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, isSubmitDisabled, ratings}) => {
+  const {backgroundColor, title, background, poster} = currentMovie;
   const isRadioDisabled = isReviewSending ? true : false;
 
   return (
@@ -28,7 +28,7 @@ const AddReview = ({currentMovie, isReviewSending, isSendingError, onSubmitClick
           </div>
         </div>
 
-        {rating === 0 ?
+        {ratings === 0 ?
           <div
             style={{
               position: `absolute`,
@@ -47,26 +47,25 @@ const AddReview = ({currentMovie, isReviewSending, isSendingError, onSubmitClick
             onChange={onFormChange}
           >
             <div className="rating">
-              <div className="rating__stars">
-                <input className="rating__input" id="star-1" type="radio" name="rating" value="1"
-                  disabled={isRadioDisabled} onChange={onRatingChange}/>
-                <label className="rating__label" htmlFor="star-1">Rating 1</label>
-
-                <input className="rating__input" id="star-2" type="radio" name="rating" value="2"
-                  disabled={isRadioDisabled} onChange={onRatingChange}/>
-                <label className="rating__label" htmlFor="star-2">Rating 2</label>
-
-                <input className="rating__input" id="star-3" type="radio" name="rating" value="3"
-                  disabled={isRadioDisabled} onChange={onRatingChange}/>
-                <label className="rating__label" htmlFor="star-3">Rating 3</label>
-
-                <input className="rating__input" id="star-4" type="radio" name="rating" value="4"
-                  disabled={isRadioDisabled} onChange={onRatingChange}/>
-                <label className="rating__label" htmlFor="star-4">Rating 4</label>
-
-                <input className="rating__input" id="star-5" type="radio" name="rating" value="5"
-                  disabled={isRadioDisabled} onChange={onRatingChange}/>
-                <label className="rating__label" htmlFor="star-5">Rating 5</label>
+              <div
+                className="rating__stars"
+                onChange={onRatingChange}>
+                {Array.from(Array(NUMBER_OF_RATINGS)).map((_, index) => {
+                  const rating = index + 1;
+                  return (
+                    <React.Fragment key={rating}>
+                      <input
+                        className="rating__input"
+                        id={`star-${rating}`}
+                        type="radio"
+                        name="rating"
+                        value={rating}
+                        disabled={isRadioDisabled}
+                      />
+                      <label className="rating__label" htmlFor={`star-${rating}`}>Rating {rating}</label>
+                    </React.Fragment>
+                  );
+                })}
               </div>
             </div>
             <div
@@ -111,7 +110,7 @@ AddReview.propTypes = {
   onRatingChange: PropTypes.func,
   onReviewChange: PropTypes.func,
   isSubmitDisabled: PropTypes.bool,
-  rating: PropTypes.number,
+  ratings: PropTypes.number,
 };
 
 export default AddReview;

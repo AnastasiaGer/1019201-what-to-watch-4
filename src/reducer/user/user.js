@@ -1,7 +1,7 @@
 import {extend} from '../../utils/utils';
 import {AuthorizationStatus} from '../../const';
 import {ActionCreator as AppStateActionCreator} from '../app-state/app-state';
-import {adaptUser} from '../../adapters/user';
+import {adaptUser} from '../../adapter/user';
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
