@@ -60,11 +60,7 @@ class App extends PureComponent {
       case PageNames.MOVIE_DETAILS:
         return (
           <MoviePageWrapped
-            movieCard={movieCard}
-            movies={movies}
             movieReviews={movieReviews}
-            onMovieCardClick={handleMovieCardClick}
-            onPlayClick={onPlayButtonClick}
           />
         );
       case PageNames.SIGN_IN:
@@ -80,14 +76,6 @@ class App extends PureComponent {
       default:
         return (
           <Main
-            movieCard={movieCard}
-            movies={movies}
-            onMovieCardClick={handleMovieCardClick}
-            genres={genres}
-            activeGenre={activeGenre}
-            onGenreItemClick={onGenreItemClick}
-            onShowMoreClick={onShowMoreClick}
-            onPlayClick={onPlayButtonClick}
           />
         );
     }
@@ -103,6 +91,9 @@ class App extends PureComponent {
           </Route>
           <Route exact path={AppRoute.MOVIE_PAGE}>
             <MoviePage />
+          </Route>
+          <Route exact path={AppRoute.LOGIN}>
+            <SignIn/>
           </Route>
           <Route exact path={`${AppRoute.VIDEO_PLAYER}/:id?`}>
             <MoviePageWrapped
