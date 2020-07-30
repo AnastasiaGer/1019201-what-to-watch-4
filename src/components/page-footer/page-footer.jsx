@@ -22,7 +22,5 @@ const PageFooter = () => {
   );
 };
 
-PageFooter.propTypes = {};
-
 export default PageFooter;
 
