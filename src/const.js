@@ -17,6 +17,7 @@ export const AppRoute = {
   MOVIE_REVIEW: `/review`,
   VIDEO_PLAYER: `/player`,
   ROOT: `/`,
+  MY_LIST: `/mylist`,
 };
 
 export const RatingLevel = {

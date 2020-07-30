@@ -23,7 +23,8 @@ const MoviesListWrapped = withShowMore(MoviesList);
 
 const MoviePage = ({currentMovie, movieReviews,
   renderTabs,
-  activeTab, onPlayClick, onAddReviewClick, isSignedIn}) => {
+  activeTab, onPlayClick, onAddReviewClick, isSignedIn, onMyListClickHandler,
+  isFavoriteStatus}) => {
 
   const {
     title,
@@ -104,10 +105,16 @@ const MoviePage = ({currentMovie, movieReviews,
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add" />
-                  </svg>
+                <button className="btn btn--list movie-card__button" type="button"
+                  onClick={onMyListClickHandler}>
+                  {isFavoriteStatus ?
+                    <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"/>
+                    </svg> :
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"/>
+                    </svg>
+                  }
                   <span>My list</span>
                 </button>
                 {isSignedIn && addReviewButton}
@@ -157,6 +164,8 @@ MoviePage.propTypes = {
   onPlayClick: PropTypes.func,
   onAddReviewClick: PropTypes.func,
   isSignedIn: PropTypes.bool,
+  onMyListClickHandler: PropTypes.func,
+  isFavoriteStatus: PropTypes.bool,
 
 };
 const mapStateToProps = (state) => {

@@ -17,18 +17,18 @@ const PageHeader = ({isSignInPage, isSignedIn, onSignInClick, showErrMessage, er
 
   const userBlockElement = (
     <div className="user-block">
-      {isSignedIn &&
-        <div className="user-block__avatar">
-          <img src={userInfo.avatarUrl} alt="User avatar" width="63" height="63" />
-        </div>}
-      {!isSignedIn &&
-        <Link to={AppRoute.LOGIN}
-          className="user-block__link"
-          onClick={(evt) => {
-            evt.preventDefault();
-            onSignInClick();
-          }}
-        >Sign in</Link>}
+      {isSignedIn ?
+        <Link to={AppRoute.MY_LIST}>
+          <div className="user-block__avatar">
+            <img src={userInfo.avatarUrl} alt="User avatar" width="63" height="63"/>
+          </div>
+        </Link>
+        :
+        <Link to={AppRoute.LOGIN} style={{cursor: `pointer`, textDecoration: `none`, color: `inherit`}} onClick={(evt) => {
+          evt.preventDefault();
+          onSignInClick();
+        }}>Sign In</Link>
+      }
     </div>
   );
 
