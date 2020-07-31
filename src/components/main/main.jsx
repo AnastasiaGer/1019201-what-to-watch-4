@@ -7,11 +7,15 @@ import withTabs from '../../hocs/with-tabs.js';
 import withShowMore from '../../hocs/with-show-more';
 import PageHeader from '../page-header/page-header.jsx';
 import PageFooter from '../page-footer/page-footer.jsx';
+import {getAuthorizationStatus} from '../../reducer/user/selectors';
+import {AuthorizationStatus} from '../../const';
+import {connect} from 'react-redux';
 
 const MoviesListWrapped = withShowMore(withTabs(MoviesList));
 const GenresListWrapped = withTabs(GenresList);
 
-const Main = ({movieCard, onPlayClick}) => {
+const Main = ({movieCard, onPlayClick, onMyListClickHandler,
+  isFavoriteStatus, isSignedIn}) => {
   const {title, genre, date, background, poster} = movieCard;
 
   return (
@@ -23,7 +27,7 @@ const Main = ({movieCard, onPlayClick}) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <PageHeader />
+        <PageHeader isSignedIn={isSignedIn}/>
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">
@@ -46,10 +50,16 @@ const Main = ({movieCard, onPlayClick}) => {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+                <button className="btn btn--list movie-card__button" type="button"
+                  onClick={onMyListClickHandler}>
+                  {isFavoriteStatus ?
+                    <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"/>
+                    </svg> :
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"/>
+                    </svg>
+                  }
                   <span>My list</span>
                 </button>
               </div>
@@ -78,6 +88,16 @@ const Main = ({movieCard, onPlayClick}) => {
 Main.propTypes = {
   movieCard: CustomPropTypes.MOVIE,
   onPlayClick: PropTypes.func,
+  onMyListClickHandler: PropTypes.func,
+  isFavoriteStatus: PropTypes.bool,
+  isSignedIn: PropTypes.bool,
 };
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    isSignedIn: getAuthorizationStatus(state) === AuthorizationStatus.AUTH,
+  };
+};
+
+export default connect(mapStateToProps, null)(Main);
+

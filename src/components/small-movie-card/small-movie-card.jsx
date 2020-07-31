@@ -6,6 +6,8 @@ import {CustomPropTypes} from '../../utils/props.js';
 import {connect} from "react-redux";
 import {ActionCreator} from '../../reducer/app-state/app-state';
 import {Operations as DataOperations} from "../../reducer/data/data";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const.js";
 
 const SmallMovieCard = (props) => {
   const {movie, onMovieCardClick, isPlaying, setPlayingFilm} = props;
@@ -22,20 +24,20 @@ const SmallMovieCard = (props) => {
       onMouseEnter={() => setPlayingFilm(true)}
       onMouseLeave={() => setPlayingFilm(false)}
     >
-      <div
-        onClick={handleMovieCardClick}
-        className="small-movie-card__image">
-        <VideoPlayer
-          movie={movie}
-          isPlaying={isPlaying}
-        />
-        <img src={poster} alt={title} width="280" height="175" />
-      </div>
-      <h3
-        onClick={handleMovieCardClick}
-        className="small-movie-card__title"
-      >
-        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+      <Link to={AppRoute.MOVIE_PAGE} onClick={handleMovieCardClick}>
+        <div className="small-movie-card__image">
+          <VideoPlayer
+            movie={movie}
+            isPlaying={isPlaying}
+          />
+          <img src={poster} alt={title} width="280" height="175" />
+        </div>
+      </Link>
+      <h3 className="small-movie-card__title">
+        <Link to={AppRoute.MOVIE_PAGE}
+          onClick={handleMovieCardClick}
+          className="small-movie-card__link">{title}
+        </Link>
       </h3>
     </article>
   );

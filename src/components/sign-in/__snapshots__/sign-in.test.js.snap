@@ -12,7 +12,8 @@ exports[`SignIn Should render correctly when AuthError 1`] = `
     >
       <a
         className="logo__link"
-        href="main.html"
+        href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"
@@ -67,11 +68,17 @@ exports[`SignIn Should render correctly when AuthError 1`] = `
       className="user-block"
     >
       <a
-        className="user-block__link"
-        href="sign-in.html"
+        href="/login"
         onClick={[Function]}
+        style={
+          Object {
+            "color": "inherit",
+            "cursor": "pointer",
+            "textDecoration": "none",
+          }
+        }
       >
-        Sign in
+        Sign In
       </a>
     </div>
   </header>
@@ -153,7 +160,8 @@ exports[`SignIn Should render correctly when AuthError 1`] = `
     >
       <a
         className="logo__link logo__link--light"
-        href="main.html"
+        href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"
@@ -195,7 +203,8 @@ exports[`SignIn Should render correctly when no AuthError 1`] = `
     >
       <a
         className="logo__link"
-        href="main.html"
+        href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"
@@ -245,11 +254,17 @@ exports[`SignIn Should render correctly when no AuthError 1`] = `
       className="user-block"
     >
       <a
-        className="user-block__link"
-        href="sign-in.html"
+        href="/login"
         onClick={[Function]}
+        style={
+          Object {
+            "color": "inherit",
+            "cursor": "pointer",
+            "textDecoration": "none",
+          }
+        }
       >
-        Sign in
+        Sign In
       </a>
     </div>
   </header>
@@ -323,7 +338,8 @@ exports[`SignIn Should render correctly when no AuthError 1`] = `
     >
       <a
         className="logo__link logo__link--light"
-        href="main.html"
+        href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"

@@ -5,10 +5,12 @@ import AddReview from './add-review';
 import NameSpace from '../../reducer/name-space';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
+import {Router} from 'react-router-dom';
+import history from '../../history.js';
 
 const mockStore = configureStore([]);
 
-describe(`Catalog`, () => {
+describe(`AddReview`, () => {
   it(`Should render correctly`, () => {
     const store = mockStore({
       [NameSpace.APP_STATE]: {
@@ -27,18 +29,20 @@ describe(`Catalog`, () => {
 
     const tree = renderer
       .create(
-          <Provider store={store}>
-            <AddReview
-              currentMovie={movieCard}
-              isReviewSending={false}
-              isSendingError={false}
-              onSubmitClick={() => {}}
-              onFormChange={() => {}}
-              onRatingChange={() => {}}
-              onReviewChange={() => {}}
-              isSubmitDisabled={false}
-            />
-          </Provider>, {
+          <Router history={history}>
+            <Provider store={store}>
+              <AddReview
+                currentMovie={movieCard}
+                isReviewSending={false}
+                isSendingError={false}
+                onSubmitClick={() => {}}
+                onFormChange={() => {}}
+                onRatingChange={() => {}}
+                onReviewChange={() => {}}
+                isSubmitDisabled={false}
+              />
+            </Provider>
+          </Router>, {
             createNodeMock: () => {
               return {};
             }

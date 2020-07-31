@@ -12,10 +12,10 @@ export default class VideoPlayer extends PureComponent {
 
   componentDidMount() {
     const {movie} = this.props;
-    const {videoUrl, poster} = movie;
+    const {videoPreview, poster} = movie;
     const video = this._video.current;
 
-    video.src = videoUrl;
+    video.src = videoPreview;
     video.poster = poster;
     video.muted = true;
   }

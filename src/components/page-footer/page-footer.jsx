@@ -1,21 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {connect} from "react-redux";
-import {getCurrentPage} from '../../reducer/app-state/selectors';
-import {PageNames} from '../../const';
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const.js";
 
-const PageFooter = ({isMainPage}) => {
+const PageFooter = () => {
   return (
     <footer className="page-footer">
       <div className="logo">
-        <a
+        <Link to={AppRoute.ROOT}
           className="logo__link logo__link--light"
-          href={!isMainPage ? `main.html` : null}
         >
           <span className="logo__letter logo__letter--1">W</span>
           <span className="logo__letter logo__letter--2">T</span>
           <span className="logo__letter logo__letter--3">W</span>
-        </a>
+        </Link>
       </div>
 
       <div className="copyright">
@@ -25,13 +22,5 @@ const PageFooter = ({isMainPage}) => {
   );
 };
 
-PageFooter.propTypes = {
-  isMainPage: PropTypes.bool.isRequired,
-};
+export default PageFooter;
 
-const mapStateToProps = (state) => ({
-  isMainPage: getCurrentPage(state) === PageNames.MAIN,
-});
-
-export {PageFooter};
-export default connect(mapStateToProps)(PageFooter);

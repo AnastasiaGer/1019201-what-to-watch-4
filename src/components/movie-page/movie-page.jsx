@@ -14,6 +14,8 @@ import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import {AuthorizationStatus} from '../../const';
 import PageFooter from '../page-footer/page-footer.jsx';
 import PageHeader from '../page-header/page-header.jsx';
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const.js";
 
 import withShowMore from '../../hocs/with-show-more';
 
@@ -21,7 +23,8 @@ const MoviesListWrapped = withShowMore(MoviesList);
 
 const MoviePage = ({currentMovie, movieReviews,
   renderTabs,
-  activeTab, onPlayClick, onAddReviewClick, isSignedIn}) => {
+  activeTab, onPlayClick, onAddReviewClick, isSignedIn, onMyListClickHandler,
+  isFavoriteStatus}) => {
 
   const {
     title,
@@ -38,13 +41,12 @@ const MoviePage = ({currentMovie, movieReviews,
   } = currentMovie;
 
   const addReviewButton = (
-    <a
-      href="add-review.html"
+    <Link to={AppRoute.MOVIE_REVIEW}
       className="btn movie-card__button"
       onClick={(evt) => {
         evt.preventDefault();
         onAddReviewClick();
-      }}>Add review</a>
+      }}>Add review</Link>
   );
 
   const renderActiveTab = () => {
@@ -84,7 +86,7 @@ const MoviePage = ({currentMovie, movieReviews,
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <PageHeader />
+          <PageHeader isSignedIn={isSignedIn}/>
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
@@ -103,10 +105,16 @@ const MoviePage = ({currentMovie, movieReviews,
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add" />
-                  </svg>
+                <button className="btn btn--list movie-card__button" type="button"
+                  onClick={onMyListClickHandler}>
+                  {isFavoriteStatus ?
+                    <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"/>
+                    </svg> :
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"/>
+                    </svg>
+                  }
                   <span>My list</span>
                 </button>
                 {isSignedIn && addReviewButton}
@@ -156,6 +164,8 @@ MoviePage.propTypes = {
   onPlayClick: PropTypes.func,
   onAddReviewClick: PropTypes.func,
   isSignedIn: PropTypes.bool,
+  onMyListClickHandler: PropTypes.func,
+  isFavoriteStatus: PropTypes.bool,
 
 };
 const mapStateToProps = (state) => {
