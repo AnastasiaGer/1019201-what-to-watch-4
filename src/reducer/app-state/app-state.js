@@ -12,13 +12,10 @@ const initialState = {
 
 const ActionType = {
   CHANGE_GENRE_FILTER: `CHANGE_GENRE_FILTER`,
-  CHANGE_MOVIE_CARD: `CHANGE_MOVIE_CARD`,
   PLAY_MOVIE: `PLAY_MOVIE`,
   STOP_MOVIE: `STOP_MOVIE`,
-  GO_TO_MOVIE_PAGE: `GO_TO_MOVIE_PAGE`,
-  GO_TO_SIGN_IN_PAGE: `GO_TO_SIGN_IN_PAGE`,
-  GO_TO_MAIN_PAGE: `GO_TO_MAIN_PAGE`,
   ADD_REVIEW: `ADD_REVIEW`,
+  SET_CURRENT_MOVIE: `SET_CURRENT_MOVIE`,
 };
 
 const ActionCreator = {
@@ -26,16 +23,10 @@ const ActionCreator = {
     type: ActionType.CHANGE_GENRE_FILTER,
     payload: activeGenre,
   }),
-  goToMoviePage: () => {
+  setCurrentMovie: (movie) => {
     return {
-      type: ActionType.GO_TO_MOVIE_PAGE,
-      payload: PageNames.MOVIE_DETAILS,
-    };
-  },
-  goToMainPage: () => {
-    return {
-      type: ActionType.GO_TO_MAIN_PAGE,
-      payload: PageNames.MAIN,
+      type: ActionType.SET_CURRENT_MOVIE,
+      payload: movie,
     };
   },
   addReview: () => {
@@ -44,17 +35,6 @@ const ActionCreator = {
       payload: PageNames.ADD_REVIEW,
     };
   },
-
-  goToSignInPage: () => {
-    return {
-      type: ActionType.GO_TO_SIGN_IN_PAGE,
-      payload: PageNames.SIGN_IN,
-    };
-  },
-  changeMovieCard: (movie) => ({
-    type: ActionType.CHANGE_MOVIE_CARD,
-    payload: movie,
-  }),
   playFullMovie: (isVideoPlayer) => ({
     type: ActionType.PLAY_MOVIE,
     payload: isVideoPlayer,
@@ -71,29 +51,17 @@ const reducer = (state = extend(initialState), action) => {
       return extend(state, {
         activeGenre: action.payload,
       });
-    case (ActionType.CHANGE_MOVIE_CARD):
-      return extend(state, {
-        currentMovie: action.payload,
-      });
     case (ActionType.PLAY_MOVIE):
       return extend(state, {
         isVideoPlayer: action.payload,
       });
-    case ActionType.GO_TO_SIGN_IN_PAGE:
+    case ActionType.SET_CURRENT_MOVIE:
       return extend(state, {
-        currentPage: action.payload,
-      });
-    case ActionType.GO_TO_MAIN_PAGE:
-      return extend(state, {
-        currentPage: action.payload,
+        currentMovie: action.payload,
       });
     case (ActionType.STOP_MOVIE):
       return extend(state, {
         isVideoPlayer: action.payload,
-      });
-    case ActionType.GO_TO_MOVIE_PAGE:
-      return extend(state, {
-        currentPage: action.payload,
       });
     case ActionType.ADD_REVIEW:
       return extend(state, {

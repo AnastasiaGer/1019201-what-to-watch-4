@@ -8,6 +8,11 @@ const initialState = {
   movies: [],
   movieReviews: [],
   isReviewSending: false,
+  favoriteMovies: [],
+  isLoading: true,
+  isLoadError: false,
+  isDataSending: false,
+  isSendingSuccessfull: false,
   isSendingError: false,
 };
 
@@ -15,9 +20,13 @@ const ActionType = {
   LOAD_MOVIE_CARD: `LOAD_MOVIE_CARD`,
   LOAD_MOVIES: `LOAD_MOVIES`,
   LOAD_MOVIE_REVIEWS: `LOAD_MOVIE_REVIEWS`,
-  IS_LOADING_DATA: `IS_LOADING_DATA`,
-  IS_ERROR_DATA: `IS_ERROR_DATA`
-
+  LOAD_FAVORITE_MOVIES: `LOAD_FAVORITE_MOVIES`,
+  FINISH_LOADING: `FINISH_LOADING`,
+  CATCH_LOAD_ERROR: `CATCH_LOAD_ERROR`,
+  CHECK_IS_DATA_SENDING: `CHECK_IS_DATA_SENDING`,
+  CHECK_IS_SENDING_SUCCESSFULL: `CHECK_IS_REVIEW_SENDING_SUCCESSFULL`,
+  CHECK_IS_SENDING_ERROR: `CHECK_IS_REVIEW_SENDING_ERROR`,
+  CLEAR_SENDING_ERROR: `CLEAR_SENDING_ERROR`,
 };
 
 const ActionCreator = {
@@ -46,10 +55,34 @@ const ActionCreator = {
     type: ActionType.IS_LOADING_DATA,
     payload: isReviewSending,
   }),
+  finishLoading: () => ({
+    type: ActionType.FINISH_LOADING,
+    payload: false,
+  }),
+
+  catchLoadError: () => ({
+    type: ActionType.CATCH_LOAD_ERROR,
+    payload: true,
+  }),
+
+  checkIsDataSending: (isDataSending) => ({
+    type: ActionType.CHECK_IS_DATA_SENDING,
+    payload: isDataSending,
+  }),
+
+  checkIsSendingSuccessfull: (isSendingSuccessfull) => ({
+    type: ActionType.CHECK_IS_SENDING_SUCCESSFULL,
+    payload: isSendingSuccessfull,
+  }),
 
   checkIsSendingError: (isSendingError) => ({
-    type: ActionType.IS_ERROR_DATA,
+    type: ActionType.CHECK_IS_SENDING_ERROR,
     payload: isSendingError,
+  }),
+
+  clearSendingError: () => ({
+    type: ActionType.CLEAR_SENDING_ERROR,
+    payload: false,
   }),
 };
 
@@ -58,9 +91,11 @@ const Operations = {
     return api.get(`/films/promo`)
       .then((response) => {
         dispatch(ActionCreator.loadMovieCard(adaptMovie(response.data)));
+        dispatch(AppStateActionCreator.setCurrentMovie(adaptMovie(response.data)));
+
       })
       .catch(() => {
-        dispatch(ActionCreator.catchError());
+        dispatch(ActionCreator.catchLoadError());
       });
   },
 
@@ -69,9 +104,10 @@ const Operations = {
       .then((response) => {
         const movies = response.data.map((movie) => adaptMovie(movie));
         dispatch(ActionCreator.loadMovies(movies));
+        dispatch(ActionCreator.finishLoading());
       })
       .catch(() => {
-        dispatch(ActionCreator.catchError());
+        dispatch(ActionCreator.catchLoadError());
       });
   },
 
@@ -81,7 +117,7 @@ const Operations = {
         dispatch(ActionCreator.loadMovieReviews(response.data));
       })
       .catch(() => {
-        dispatch(ActionCreator.catchError(true));
+        dispatch(ActionCreator.catchLoadError());
       });
   },
   pushReview: (movieId, review) => (dispatch, getState, api) => {
@@ -91,15 +127,44 @@ const Operations = {
       comment: review.comment,
     })
     .then(() => {
-      dispatch(ActionCreator.checkIsReviewSending(false));
+      dispatch(ActionCreator.checkIsDataSending(false));
+      dispatch(ActionCreator.checkIsSendingSuccessfull(true));
       dispatch(ActionCreator.checkIsSendingError(false));
-    })
-    .then(() => {
+
       dispatch(Operations.loadMovieReviews(movieId));
-      dispatch(AppStateActionCreator.goToMoviePage());
+      history.goBack();
     })
     .catch(() => {
-      dispatch(ActionCreator.checkIsReviewSending(false));
+      dispatch(ActionCreator.checkIsDataSending(false));
+      dispatch(ActionCreator.checkIsSendingSuccessfull(false));
+      dispatch(ActionCreator.checkIsSendingError(true));
+    });
+  },
+  loadFavoriteMovies: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`)
+    .then((response) => {
+      if (response.data) {
+        const favoriteMovies = response.data.map((favoriteMovie) => adaptMovie(favoriteMovie));
+        dispatch(ActionCreator.loadFavoriteMovies(favoriteMovies));
+      }
+    })
+    .catch(() => {
+      dispatch(ActionCreator.catchLoadError());
+    });
+  },
+  changeIsMovieFavorite: (movieId, isFavorite) => (dispatch, getState, api) => {
+    dispatch(ActionCreator.checkIsDataSending(true));
+    return api.post(`/favorite/${movieId}/${isFavorite ? 1 : 0}`)
+    .then(() => {
+      dispatch(ActionCreator.checkIsDataSending(false));
+      dispatch(ActionCreator.checkIsSendingSuccessfull(true));
+      dispatch(ActionCreator.checkIsSendingError(false));
+      dispatch(Operations.loadMovies());
+      dispatch(Operations.loadMovieCard());
+    })
+    .catch(() => {
+      dispatch(ActionCreator.checkIsDataSending(false));
+      dispatch(ActionCreator.checkIsSendingSuccessfull(false));
       dispatch(ActionCreator.checkIsSendingError(true));
     });
   },
@@ -119,14 +184,35 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         movieReviews: action.payload,
       });
-    case ActionType.IS_LOADING_DATA:
+    case ActionType.LOAD_FAVORITE_MOVIES:
       return extend(state, {
-        isReviewSending: action.payload,
+        favoriteMovies: action.payload,
       });
-    case ActionType.IS_ERROR_DATA:
+    case ActionType.FINISH_LOADING:
+      return extend(state, {
+        isLoading: action.payload,
+      });
+    case ActionType.CATCH_LOAD_ERROR:
+      return extend(state, {
+        isLoadError: action.payload,
+      });
+    case ActionType.CHECK_IS_DATA_SENDING:
+      return extend(state, {
+        isDataSending: action.payload,
+      });
+    case ActionType.CHECK_IS_SENDING_SUCCESSFULL:
+      return extend(state, {
+        isSendingSuccessfull: action.payload,
+      });
+    case ActionType.CHECK_IS_SENDING_ERROR:
       return extend(state, {
         isSendingError: action.payload,
       });
+    case ActionType.CLEAR_SENDING_ERROR:
+      return extend(state, {
+        isSendingError: action.payload,
+      });
+
   }
 
   return state;

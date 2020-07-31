@@ -1,12 +1,12 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Operations as DataOperations} from '../reducer/data/data.js';
-import {getCurrentMovie} from '../reducer/app-state/selectors.js';
+import {Operations as DataOperations, ActionCreator} from '../reducer/data/data.js';
+import {getCurrentMovieById} from '../reducer/app-state/selectors.js';
 import {CustomPropTypes} from '../utils/props';
 import {ReviewLength} from '../const';
 
-import {getLoadingDataStatus, getErrorLoadingDataStatus} from '../reducer/data/selectors.js';
+import {getIsReviewSending, getIsSendingError} from '../reducer/data/selectors.js';
 
 const withReview = (Component) => {
   class WithReview extends PureComponent {
@@ -73,15 +73,19 @@ const withReview = (Component) => {
     onReviewSubmit: PropTypes.func.isRequired,
   };
 
-  const mapStateToProps = (state) => ({
-    currentMovie: getCurrentMovie(state),
-    isReviewSending: getLoadingDataStatus(state),
-    isSendingError: getErrorLoadingDataStatus(state),
+  const mapStateToProps = (state, ownProps) => ({
+    currentMovie: getCurrentMovieById(state, ownProps),
+    isDataSending: getIsReviewSending(state),
+    isSendingError: getIsSendingError(state),
   });
 
   const mapDispatchToProps = (dispatch) => ({
     onReviewSubmit(movieId, review) {
       dispatch(DataOperations.pushReview(movieId, review));
+    },
+
+    clearSendingError() {
+      dispatch(ActionCreator.clearSendingError());
     },
   });
 

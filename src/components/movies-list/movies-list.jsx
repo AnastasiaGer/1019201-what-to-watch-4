@@ -8,7 +8,7 @@ const SmallMovieCardWrapped = withVideo(SmallMovieCard);
 
 const MoviesList = (props) => {
 
-  const {movies, onMovieCardClick, handleSmallMovieCardHover, render} = props;
+  const {movies, handleSmallMovieCardHover, render} = props;
 
   return (
     <React.Fragment>
@@ -18,7 +18,6 @@ const MoviesList = (props) => {
             <SmallMovieCardWrapped
               key={movie.id}
               movie={movie}
-              onMovieCardClick={onMovieCardClick}
               handleSmallMovieCardHover={handleSmallMovieCardHover}
             />
           );
@@ -31,7 +30,6 @@ const MoviesList = (props) => {
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(CustomPropTypes.MOVIE).isRequired,
-  onMovieCardClick: PropTypes.func,
   handleSmallMovieCardHover: PropTypes.func,
   render: PropTypes.func
 };

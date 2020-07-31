@@ -7,7 +7,8 @@ import {getAuthorizationStatus, getErrMessage, getAuthorizationError, getAuthorI
 import {ActionCreator} from '../../reducer/app-state/app-state.js';
 import ErrorMsg from '../error-msg/error-msg.jsx';
 import {Link} from "react-router-dom";
-const PageHeader = ({isSignInPage, isSignedIn, onSignInClick, showErrMessage, errMessage, userInfo, movieTitle}) => {
+
+const PageHeader = ({isSignInPage, isSignedIn, showErrMessage, errMessage, userInfo, movieTitle}) => {
 
   const signInPageTitle = (
     <React.Fragment>
@@ -17,18 +18,19 @@ const PageHeader = ({isSignInPage, isSignedIn, onSignInClick, showErrMessage, er
 
   const userBlockElement = (
     <div className="user-block">
-      {isSignedIn ?
+      {isSignedIn &&
         <Link to={AppRoute.MY_LIST}>
           <div className="user-block__avatar">
-            <img src={userInfo.avatarUrl} alt="User avatar" width="63" height="63"/>
+            <img src={userInfo.avatarUrl} alt={userInfo.name} width="63" height="63" />
           </div>
-        </Link>
-        :
-        <Link to={AppRoute.LOGIN} style={{cursor: `pointer`, textDecoration: `none`, color: `inherit`}} onClick={(evt) => {
-          evt.preventDefault();
-          onSignInClick();
-        }}>Sign In</Link>
-      }
+        </Link>}
+      {!isSignedIn &&
+        <Link
+          to={AppRoute.LOGIN}
+          className="user-block__link"
+        >
+        Sign in
+        </Link>}
     </div>
   );
 

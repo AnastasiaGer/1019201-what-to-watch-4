@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {CustomPropTypes} from '../../utils/props.js';
+import history from "../../history.js";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const.js";
+
 
 const FullVideoPlayer = ({movieCard, children,
   duration,
   currentTime,
   isPlaying,
   leftTime,
-  onClosePlayerClick,
   onIsPlayingChange,
   onSetFullScreen}) => {
   const {title} = movieCard;
@@ -16,9 +19,7 @@ const FullVideoPlayer = ({movieCard, children,
     <div className="player">
       {children}
 
-      <button type="button" className="player__exit"
-        onClick={() => onClosePlayerClick()}
-      >Exit</button>
+      <Link to={AppRoute.ROOT} onClick={() => history.goBack()} type="button" className="player__exit">Exit</Link>
 
       <div className="player__controls">
         <div className="player__controls-row">
@@ -70,7 +71,6 @@ FullVideoPlayer.propTypes = {
   movieCard: CustomPropTypes.MOVIE,
   isPlaying: PropTypes.bool.isRequired,
   leftTime: PropTypes.string.isRequired,
-  onClosePlayerClick: PropTypes.func.isRequired,
   onIsPlayingChange: PropTypes.func.isRequired,
   onSetFullScreen: PropTypes.func.isRequired,
 

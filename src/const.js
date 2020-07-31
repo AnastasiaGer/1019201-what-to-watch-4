@@ -10,6 +10,7 @@ export const PageNames = {
   MOVIE_DETAILS: `movieDetails`,
   SIGN_IN: `sign in`,
   ADD_REVIEW: `add review`,
+  MY_LIST: `my list`,
 };
 
 export const AppRoute = {
