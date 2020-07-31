@@ -70,18 +70,18 @@ const PageHeader = ({isSignInPage, isSignedIn, onSignInClick, showErrMessage, er
 };
 
 PageHeader.propTypes = {
-  isSignInPage: PropTypes.bool.isRequired,
-  isSignedIn: PropTypes.bool.isRequired,
-  onSignInClick: PropTypes.func.isRequired,
+  isSignInPage: PropTypes.bool,
+  isSignedIn: PropTypes.bool,
+  onSignInClick: PropTypes.func,
   showErrMessage: PropTypes.bool,
   errMessage: PropTypes.string,
   userInfo: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    email: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    avatarUrl: PropTypes.string.isRequired,
-  }).isRequired,
-  movieTitle: PropTypes.string.isRequired,
+    id: PropTypes.number,
+    email: PropTypes.string,
+    name: PropTypes.string,
+    avatarUrl: PropTypes.string,
+  }),
+  movieTitle: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({

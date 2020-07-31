@@ -1,5 +1,5 @@
 import {extend} from '../../utils/utils';
-import {adaptMovie} from '../../adapter/movies';
+import {adaptMovie} from '../../adapters/movie';
 import {ActionCreator as AppStateActionCreator} from '../app-state/app-state';
 import {emptyMovie} from "../../const";
 
