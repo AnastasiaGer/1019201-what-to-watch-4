@@ -38,8 +38,12 @@ describe(`MoviePage`, () => {
           <Router history={history}>
             <Provider store={store}>
               <MoviePage
+                movies={movies}
+                renderTabs={() => {}}
+                activeTab={``}
                 loadMovieInformation={() => {}}
-                routeProps={{match: {params: {id: 167456}, isExact: true, path: ``, url: ``}}} />
+                routeProps={{match: {params: {id: 167456, picture: `img/snatch.jpg`, title: `The Grand Budapest Hotel`}, isExact: true, path: ``, url: ``}}}
+              />
             </Provider>
           </Router>, {
             createNodeMock: () => {

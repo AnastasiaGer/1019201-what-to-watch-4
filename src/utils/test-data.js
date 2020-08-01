@@ -4,6 +4,7 @@ export const movieCard = {
   date: 2014,
   background: `https://placeimg.com/1300/512/nature`,
   poster: `img/snatch.jpg`,
+  picture: `img/snatch.jpg`,
   id: 123890,
   description: `Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers fight to track down a priceless stolen diamond.`,
   rating: 8.3,
@@ -24,6 +25,7 @@ export const movies = [
     date: 2014,
     background: `https://placeimg.com/1300/512/nature`,
     poster: `img/snatch.jpg`,
+    picture: `img/snatch.jpg`,
     id: 123890,
     description: `Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers fight to track down a priceless stolen diamond.`,
     rating: 8.3,
@@ -42,6 +44,7 @@ export const movies = [
     date: 2014,
     background: `img/bg-the-grand-budapest-hotel.jpg`,
     poster: `img/bohemian-rhapsody.jpg`,
+    picture: `img/snatch.jpg`,
     id: 34567,
     description: `Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers fight to track down a priceless stolen diamond.`,
     rating: 8.3,
@@ -61,6 +64,7 @@ export const currentMovie = {
   date: 2014,
   background: `img/bg-the-grand-budapest-hotel.jpg`,
   poster: `img/the-grand-budapest-hotel-poster.jpg`,
+  picture: `img/snatch.jpg`,
   id: 190123,
   description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege`,
   rating: 8.9,
@@ -105,3 +109,5 @@ export const movieReviews = [{
   comment: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.`,
   date: `2019-05-08T14:13:56.569Z`,
 }];
+
+export const genres = [`All genres`, `Drama`, `Thriller`, `Comedy`];
