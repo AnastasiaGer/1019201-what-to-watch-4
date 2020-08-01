@@ -72,11 +72,9 @@ const withVideoControls = (Component) => {
     }
 
     componentWillUnmount() {
-      const {movieCard} = this.props;
-      const {videoUrl} = movieCard;
       const video = this._videoRef.current;
 
-      video.src = videoUrl;
+      video.src = ``;
       video.onplay = null;
       video.onloadedmetadata = null;
       video.ontimeupdate = null;

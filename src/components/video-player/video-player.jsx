@@ -29,6 +29,15 @@ export default class VideoPlayer extends PureComponent {
     video.muted = null;
   }
 
+  render() {
+    return (
+      <video
+        className="player__video"
+        ref={this._video}
+      />
+    );
+  }
+
   componentDidUpdate() {
     const {isPlaying} = this.props;
     const video = this._video.current;
@@ -39,20 +48,10 @@ export default class VideoPlayer extends PureComponent {
       }, 1000);
     } else {
       if (this._videoPlayerSetTimeout) {
-        clearTimeout(this._videoPlayerSetTimeout);
-        this._videoPlayerSetTimeout = null;
         video.load();
+        clearTimeout(this._videoPlayerSetTimeout);
       }
     }
-  }
-
-  render() {
-    return (
-      <video
-        className="player__video"
-        ref={this._video}
-      />
-    );
   }
 }
 
