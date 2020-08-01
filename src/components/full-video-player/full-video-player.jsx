@@ -2,9 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {CustomPropTypes} from '../../utils/props.js';
 import history from "../../history.js";
-import {Link} from "react-router-dom";
-import {AppRoute} from "../../const.js";
-
 
 const FullVideoPlayer = ({movieCard, children,
   duration,
@@ -19,7 +16,7 @@ const FullVideoPlayer = ({movieCard, children,
     <div className="player">
       {children}
 
-      <Link to={AppRoute.ROOT} onClick={() => history.goBack()} type="button" className="player__exit">Exit</Link>
+      <button onClick={() => history.goBack()} type="button" className="player__exit">Exit</button>
 
       <div className="player__controls">
         <div className="player__controls-row">

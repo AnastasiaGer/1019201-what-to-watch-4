@@ -35,17 +35,8 @@ const MoviePageWrapped = withTabs(MoviePage);
 const App = (props) => {
   const {
     login, authorizationStatus, movies, isLoadError,
-    movieCard, onPlayButtonClick, movieReviews, handleCloseButtonClick, isVideoPlayer, loadMovies, setActiveGenre, isAuthorizationProgress, isLoading
+    movieCard, movieReviews, handleCloseButtonClick, loadMovies, setActiveGenre, isAuthorizationProgress, isLoading
   } = props;
-
-  if (isVideoPlayer) {
-    return (
-      <FullVideoPlayerWrapped
-        movieCard={movieCard}
-        onClosePlayerClick={handleCloseButtonClick}
-      />
-    );
-  }
 
   const renderMainPage = () => {
     setActiveGenre(ALL_GENRES);
@@ -77,7 +68,6 @@ const App = (props) => {
                   routeProps={routeProps}
                   movies={movies}
                   movieReviews={movieReviews}
-                  onPlayClick={onPlayButtonClick}
                 />;
               }}
             />
