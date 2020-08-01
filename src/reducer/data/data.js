@@ -1,10 +1,9 @@
 import {extend} from '../../utils/utils';
 import {adaptMovie} from '../../adapters/movie';
 import {ActionCreator as AppStateActionCreator} from '../app-state/app-state';
-import {emptyMovie} from "../../const";
 
 const initialState = {
-  movieCard: emptyMovie,
+  movieCard: {},
   movies: [],
   movieReviews: [],
   favoriteMovies: [],

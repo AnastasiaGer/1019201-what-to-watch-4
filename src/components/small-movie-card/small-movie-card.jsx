@@ -7,7 +7,6 @@ import {AppRoute} from "../../const.js";
 
 const SmallMovieCard = (props) => {
   const {movie, isPlaying, setPlayingFilm} = props;
-  const {poster, title, id, videoPreview} = movie;
 
   return (
     <article
@@ -17,18 +16,18 @@ const SmallMovieCard = (props) => {
     >
       <Link
         className="small-movie-card__link"
-        to={`${AppRoute.MOVIE_PAGE}/${id}`}>
+        to={`${AppRoute.MOVIE_PAGE}/${movie.id}`}>
         <div
           className="small-movie-card__image">
           <VideoPlayer
             movie={movie}
             isPlaying={isPlaying}
-            source={videoPreview}
-            poster={poster}
+            source={movie.videoPreview}
+            poster={movie.picture}
           />
-          <img src={poster} alt={title} width="280" height="175" />
+          <img src={movie.poster} alt={movie.title} width="280" height="175" />
         </div>
-        <h3 className="small-movie-card__title">{title}</h3>
+        <h3 className="small-movie-card__title">{movie.title}</h3>
       </Link>
     </article>
   );

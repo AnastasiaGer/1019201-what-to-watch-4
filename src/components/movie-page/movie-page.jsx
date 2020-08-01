@@ -10,11 +10,10 @@ import PageFooter from '../page-footer/page-footer.jsx';
 import MovieCardHero from '../movie-card-hero/movie-card-hero.jsx';
 
 import {CustomPropTypes} from '../../utils/props.js';
-import {AuthorizationStatus, PageNames} from "../../const.js";
+import {PageNames} from "../../const.js";
 
 import {getCurrentMovieById} from '../../reducer/app-state/selectors.js';
 import {ActionCreator} from '../../reducer/app-state/app-state';
-import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import {Operations as DataOperations} from "../../reducer/data/data";
 
 import withShowMore from '../../hocs/with-show-more';
@@ -115,13 +114,11 @@ MoviePage.propTypes = {
   ]),
   renderTabs: PropTypes.func.isRequired,
   activeTab: PropTypes.string.isRequired,
-  isSignedIn: PropTypes.bool,
   loadMovieInformation: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state, ownProps) => {
   return {
     currentMovie: getCurrentMovieById(state, ownProps),
-    isSignedIn: getAuthorizationStatus(state) === AuthorizationStatus.AUTH,
   };
 };
 

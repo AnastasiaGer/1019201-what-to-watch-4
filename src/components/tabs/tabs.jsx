@@ -29,8 +29,8 @@ const Tabs = ({activeTab, onTabClick}) => {
 };
 
 Tabs.propTypes = {
-  activeTab: PropTypes.string.isRequired,
-  onTabClick: PropTypes.func.isRequired
+  activeTab: PropTypes.string,
+  onTabClick: PropTypes.func,
 };
 
 export default Tabs;

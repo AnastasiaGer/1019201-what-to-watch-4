@@ -1,10 +1,10 @@
-import {ALL_GENRES, MAX_SHOWN_MOVIES_LIKE_THIS, PageNames, emptyMovie} from "../../const";
+import {ALL_GENRES, MAX_SHOWN_MOVIES_LIKE_THIS, PageNames} from "../../const";
 import {extend} from '../../utils/utils';
 
 
 const initialState = {
   activeGenre: ALL_GENRES,
-  currentMovie: emptyMovie,
+  currentMovie: {},
   cardsToShow: MAX_SHOWN_MOVIES_LIKE_THIS,
   isVideoPlayer: false,
   currentPage: PageNames.MAIN,
