@@ -46,33 +46,6 @@ Array [
           </span>
         </a>
       </div>
-      <nav
-        className="breadcrumbs"
-      >
-        <ul
-          className="breadcrumbs__list"
-        >
-          <li
-            className="breadcrumbs__item"
-          >
-            <a
-              className="breadcrumbs__link"
-              href="movie-page.html"
-            >
-              Snatch
-            </a>
-          </li>
-          <li
-            className="breadcrumbs__item"
-          >
-            <a
-              className="breadcrumbs__link"
-            >
-              Add review
-            </a>
-          </li>
-        </ul>
-      </nav>
       <div
         className="user-block"
       >
@@ -84,7 +57,7 @@ Array [
             className="user-block__avatar"
           >
             <img
-              alt="User avatar"
+              alt="Ivan"
               height="63"
               src="https://4.react.pages.academy/wtw/asda.jpg"
               width="63"
@@ -135,8 +108,9 @@ Array [
           <div
             className="movie-card__buttons"
           >
-            <button
+            <a
               className="btn btn--play movie-card__button"
+              href="/player/123890"
               onClick={[Function]}
               type="button"
             >
@@ -152,9 +126,10 @@ Array [
               <span>
                 Play
               </span>
-            </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -232,7 +207,8 @@ Array [
           onMouseLeave={[Function]}
         >
           <a
-            href="/film"
+            className="small-movie-card__link"
+            href="/film/123890"
             onClick={[Function]}
           >
             <div
@@ -248,18 +224,12 @@ Array [
                 width="280"
               />
             </div>
-          </a>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="/film"
-              onClick={[Function]}
+            <h3
+              className="small-movie-card__title"
             >
               Snatch
-            </a>
-          </h3>
+            </h3>
+          </a>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
@@ -267,7 +237,8 @@ Array [
           onMouseLeave={[Function]}
         >
           <a
-            href="/film"
+            className="small-movie-card__link"
+            href="/film/34567"
             onClick={[Function]}
           >
             <div
@@ -283,18 +254,12 @@ Array [
                 width="280"
               />
             </div>
-          </a>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="/film"
-              onClick={[Function]}
+            <h3
+              className="small-movie-card__title"
             >
               Bohemian Rhapsody
-            </a>
-          </h3>
+            </h3>
+          </a>
         </article>
       </div>
     </section>

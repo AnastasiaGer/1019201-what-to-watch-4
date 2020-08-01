@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {CustomPropTypes} from '../../utils/props.js';
+import {connect} from 'react-redux';
+
 import Review from '../review/review.jsx';
+
+import {CustomPropTypes} from '../../utils/props.js';
 import {sliceReviews} from '../../utils/utils';
+
+import {getMovieReviews} from '../../reducer/data/selectors';
 
 const PageReviews = ({movieReviews}) => {
   const slicedReviews = sliceReviews(movieReviews);
@@ -27,4 +32,9 @@ PageReviews.propTypes = {
     PropTypes.bool,
   ]),
 };
-export default PageReviews;
+
+const mapStateToProps = (state) => ({
+  movieReviews: getMovieReviews(state)
+});
+export default connect(mapStateToProps)(PageReviews);
+

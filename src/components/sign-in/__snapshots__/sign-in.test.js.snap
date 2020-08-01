@@ -5,7 +5,7 @@ exports[`SignIn Should render correctly when AuthError 1`] = `
   className="user-page"
 >
   <header
-    className="page-header movie-card__head"
+    className="page-header user-page__head"
   >
     <div
       className="logo"
@@ -32,55 +32,11 @@ exports[`SignIn Should render correctly when AuthError 1`] = `
         </span>
       </a>
     </div>
-    <div
-      className="error-message"
+    <h1
+      className="page-title user-page__title"
     >
-      <p />
-    </div>
-    <nav
-      className="breadcrumbs"
-    >
-      <ul
-        className="breadcrumbs__list"
-      >
-        <li
-          className="breadcrumbs__item"
-        >
-          <a
-            className="breadcrumbs__link"
-            href="movie-page.html"
-          >
-            Snatch
-          </a>
-        </li>
-        <li
-          className="breadcrumbs__item"
-        >
-          <a
-            className="breadcrumbs__link"
-          >
-            Add review
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <div
-      className="user-block"
-    >
-      <a
-        href="/login"
-        onClick={[Function]}
-        style={
-          Object {
-            "color": "inherit",
-            "cursor": "pointer",
-            "textDecoration": "none",
-          }
-        }
-      >
-        Sign In
-      </a>
-    </div>
+      Sign in
+    </h1>
   </header>
   <div
     className="sign-in user-page__content"
@@ -95,9 +51,7 @@ exports[`SignIn Should render correctly when AuthError 1`] = `
         className="sign-in__message"
       >
         <p>
-          We can’t recognize this email 
-          <br />
-           and password combination. Please try again.
+          Please enter a valid email address
         </p>
       </div>
       <div
@@ -108,7 +62,7 @@ exports[`SignIn Should render correctly when AuthError 1`] = `
         >
           <input
             className="sign-in__input"
-            d="user-email"
+            id="user-email"
             name="user-email"
             placeholder="Email address"
             required={true}
@@ -196,7 +150,7 @@ exports[`SignIn Should render correctly when no AuthError 1`] = `
   className="user-page"
 >
   <header
-    className="page-header movie-card__head"
+    className="page-header user-page__head"
   >
     <div
       className="logo"
@@ -223,50 +177,11 @@ exports[`SignIn Should render correctly when no AuthError 1`] = `
         </span>
       </a>
     </div>
-    <nav
-      className="breadcrumbs"
+    <h1
+      className="page-title user-page__title"
     >
-      <ul
-        className="breadcrumbs__list"
-      >
-        <li
-          className="breadcrumbs__item"
-        >
-          <a
-            className="breadcrumbs__link"
-            href="movie-page.html"
-          >
-            Snatch
-          </a>
-        </li>
-        <li
-          className="breadcrumbs__item"
-        >
-          <a
-            className="breadcrumbs__link"
-          >
-            Add review
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <div
-      className="user-block"
-    >
-      <a
-        href="/login"
-        onClick={[Function]}
-        style={
-          Object {
-            "color": "inherit",
-            "cursor": "pointer",
-            "textDecoration": "none",
-          }
-        }
-      >
-        Sign In
-      </a>
-    </div>
+      Sign in
+    </h1>
   </header>
   <div
     className="sign-in user-page__content"
@@ -277,16 +192,15 @@ exports[`SignIn Should render correctly when no AuthError 1`] = `
       onChange={[Function]}
       onSubmit={[Function]}
     >
-      
       <div
         className="sign-in__fields"
       >
         <div
-          className="sign-in__field"
+          className="sign-in__field false"
         >
           <input
             className="sign-in__input"
-            d="user-email"
+            id="user-email"
             name="user-email"
             placeholder="Email address"
             required={true}

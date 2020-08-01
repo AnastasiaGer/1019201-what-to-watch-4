@@ -10,7 +10,8 @@ exports[`MoviesList Should render correctly movie card 1`] = `
     onMouseLeave={[Function]}
   >
     <a
-      href="/film"
+      className="small-movie-card__link"
+      href="/film/123890"
       onClick={[Function]}
     >
       <div
@@ -26,18 +27,12 @@ exports[`MoviesList Should render correctly movie card 1`] = `
           width="280"
         />
       </div>
-    </a>
-    <h3
-      className="small-movie-card__title"
-    >
-      <a
-        className="small-movie-card__link"
-        href="/film"
-        onClick={[Function]}
+      <h3
+        className="small-movie-card__title"
       >
         Snatch
-      </a>
-    </h3>
+      </h3>
+    </a>
   </article>
   <article
     className="small-movie-card catalog__movies-card"
@@ -45,7 +40,8 @@ exports[`MoviesList Should render correctly movie card 1`] = `
     onMouseLeave={[Function]}
   >
     <a
-      href="/film"
+      className="small-movie-card__link"
+      href="/film/34567"
       onClick={[Function]}
     >
       <div
@@ -61,18 +57,12 @@ exports[`MoviesList Should render correctly movie card 1`] = `
           width="280"
         />
       </div>
-    </a>
-    <h3
-      className="small-movie-card__title"
-    >
-      <a
-        className="small-movie-card__link"
-        href="/film"
-        onClick={[Function]}
+      <h3
+        className="small-movie-card__title"
       >
         Bohemian Rhapsody
-      </a>
-    </h3>
+      </h3>
+    </a>
   </article>
 </div>
 `;

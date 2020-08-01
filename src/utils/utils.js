@@ -9,3 +9,11 @@ export const sliceReviews = (movieReviews) => {
 
   return [col1, col2];
 };
+
+export const getRatingFormat = (rating) => {
+  if (Math.trunc(rating) === rating) {
+    return `${rating},0`;
+  }
+
+  return rating.toString().replace(`.`, `,`);
+};

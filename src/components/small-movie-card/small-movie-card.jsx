@@ -7,7 +7,7 @@ import {AppRoute} from "../../const.js";
 
 const SmallMovieCard = (props) => {
   const {movie, isPlaying, setPlayingFilm} = props;
-  const {poster, title, id} = movie;
+  const {poster, title, id, videoPreview} = movie;
 
   return (
     <article
@@ -23,6 +23,8 @@ const SmallMovieCard = (props) => {
           <VideoPlayer
             movie={movie}
             isPlaying={isPlaying}
+            source={videoPreview}
+            poster={poster}
           />
           <img src={poster} alt={title} width="280" height="175" />
         </div>

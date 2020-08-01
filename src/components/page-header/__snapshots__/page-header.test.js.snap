@@ -29,46 +29,15 @@ exports[`PageHeader Should render correctly when is main page and user is not si
       </span>
     </a>
   </div>
-  <nav
-    className="breadcrumbs"
-  >
-    <ul
-      className="breadcrumbs__list"
-    >
-      <li
-        className="breadcrumbs__item"
-      >
-        <a
-          className="breadcrumbs__link"
-          href="movie-page.html"
-        />
-      </li>
-      <li
-        className="breadcrumbs__item"
-      >
-        <a
-          className="breadcrumbs__link"
-        >
-          Add review
-        </a>
-      </li>
-    </ul>
-  </nav>
   <div
     className="user-block"
   >
     <a
+      className="user-block__link"
       href="/login"
       onClick={[Function]}
-      style={
-        Object {
-          "color": "inherit",
-          "cursor": "pointer",
-          "textDecoration": "none",
-        }
-      }
     >
-      Sign In
+      Sign in
     </a>
   </div>
 </header>
@@ -103,31 +72,6 @@ exports[`PageHeader Should render correctly when is main page and user signed in
       </span>
     </a>
   </div>
-  <nav
-    className="breadcrumbs"
-  >
-    <ul
-      className="breadcrumbs__list"
-    >
-      <li
-        className="breadcrumbs__item"
-      >
-        <a
-          className="breadcrumbs__link"
-          href="movie-page.html"
-        />
-      </li>
-      <li
-        className="breadcrumbs__item"
-      >
-        <a
-          className="breadcrumbs__link"
-        >
-          Add review
-        </a>
-      </li>
-    </ul>
-  </nav>
   <div
     className="user-block"
   >
@@ -139,7 +83,7 @@ exports[`PageHeader Should render correctly when is main page and user signed in
         className="user-block__avatar"
       >
         <img
-          alt="User avatar"
+          alt="asdasd"
           height="63"
           src="https://4.react.pages.academy/wtw/asda.jpg"
           width="63"
@@ -179,46 +123,15 @@ exports[`PageHeader Should render correctly when is not main page and not sign i
       </span>
     </a>
   </div>
-  <nav
-    className="breadcrumbs"
-  >
-    <ul
-      className="breadcrumbs__list"
-    >
-      <li
-        className="breadcrumbs__item"
-      >
-        <a
-          className="breadcrumbs__link"
-          href="movie-page.html"
-        />
-      </li>
-      <li
-        className="breadcrumbs__item"
-      >
-        <a
-          className="breadcrumbs__link"
-        >
-          Add review
-        </a>
-      </li>
-    </ul>
-  </nav>
   <div
     className="user-block"
   >
     <a
+      className="user-block__link"
       href="/login"
       onClick={[Function]}
-      style={
-        Object {
-          "color": "inherit",
-          "cursor": "pointer",
-          "textDecoration": "none",
-        }
-      }
     >
-      Sign In
+      Sign in
     </a>
   </div>
 </header>
@@ -226,7 +139,7 @@ exports[`PageHeader Should render correctly when is not main page and not sign i
 
 exports[`PageHeader Should render correctly when is sign in page 1`] = `
 <header
-  className="page-header user-page__head"
+  className="page-header movie-card__head"
 >
   <div
     className="logo"
@@ -253,35 +166,16 @@ exports[`PageHeader Should render correctly when is sign in page 1`] = `
       </span>
     </a>
   </div>
-  <nav
-    className="breadcrumbs"
+  <div
+    className="user-block"
   >
-    <ul
-      className="breadcrumbs__list"
+    <a
+      className="user-block__link"
+      href="/login"
+      onClick={[Function]}
     >
-      <li
-        className="breadcrumbs__item"
-      >
-        <a
-          className="breadcrumbs__link"
-          href="movie-page.html"
-        />
-      </li>
-      <li
-        className="breadcrumbs__item"
-      >
-        <a
-          className="breadcrumbs__link"
-        >
-          Add review
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <h1
-    className="page-title user-page__title"
-  >
-    Sign in
-  </h1>
+      Sign in
+    </a>
+  </div>
 </header>
 `;

@@ -14,8 +14,8 @@ const Loading = () => {
     <div className="user-page">
       <div className="sign-in user-page__content" style={loaderStyles}>
         <ReactLoading
-          type="spinningBubbles"
-          color="#d9cd8d"
+          type="Bubbles"
+          color="#372824"
         />
       </div>
     </div>

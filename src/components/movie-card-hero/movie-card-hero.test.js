@@ -1,23 +1,23 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {movieCard} from '../../utils/test-data.js';
-import AddReview from './add-review';
-import NameSpace from '../../reducer/name-space';
-import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
+import MovieCardHero from './movie-card-hero';
+import {movieCard} from '../../utils/test-data.js';
+import NameSpace from '../../reducer/name-space';
 import {Router} from 'react-router-dom';
-import history from '../../history.js';
+import history from '../../history';
 
-const mockStore = configureStore([]);
+describe(`MovieCardHero`, () => {
+  const mockStore = configureStore([]);
 
-describe(`AddReview`, () => {
   it(`Should render correctly`, () => {
     const store = mockStore({
       [NameSpace.APP_STATE]: {
-        currentPage: `main`,
         currentMovie: movieCard,
       },
       [NameSpace.USER]: {
+        authorizationStatus: `AUTH`,
         userInfo: {
           id: 1,
           email: `ivanov@dmail.ru`,
@@ -31,15 +31,8 @@ describe(`AddReview`, () => {
       .create(
           <Router history={history}>
             <Provider store={store}>
-              <AddReview
+              <MovieCardHero
                 currentMovie={movieCard}
-                isReviewSending={false}
-                isDispatchError={false}
-                onSubmitClick={() => {}}
-                onFormChange={() => {}}
-                onRatingChange={() => {}}
-                onReviewChange={() => {}}
-                isSubmitDisabled={false}
               />
             </Provider>
           </Router>, {

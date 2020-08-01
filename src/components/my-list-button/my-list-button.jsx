@@ -11,7 +11,7 @@ const MyListButton = ({authorizationStatus, movie, changeIsMovieFavorite}) => {
   const handleMovieListButtonClick = (isFavorite) => {
     return authorizationStatus === AuthorizationStatus.AUTH
       ? changeIsMovieFavorite(movie.id, isFavorite)
-      : history.push(AppRoute.SIGN_IN);
+      : history.push(AppRoute.LOGIN);
   };
 
   const addToMyList = (

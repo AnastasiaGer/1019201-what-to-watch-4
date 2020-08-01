@@ -1,24 +1,45 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {getErrMessage} from '../../reducer/user/selectors';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../const';
 
-const ErrorMsg = React.memo(function ErrorMsg(props) {
-  const {errMessage} = props;
+const ErrorScreen = () => {
   return (
-    <div className="error-message">
-      <p>{errMessage}</p>
-    </div>
+    <React.Fragment>
+      <div className="user-page">
+        <header className="page-header user-page__head">
+          <div className="logo">
+            <Link
+              className="logo__link"
+              to={AppRoute.ROOT}
+            >
+              <span className="logo__letter logo__letter--1">W</span>
+              <span className="logo__letter logo__letter--2">T</span>
+              <span className="logo__letter logo__letter--3">W</span>
+            </Link>
+          </div>
+        </header>
+
+        <div className="sign-in user-page__content">
+          <h1 className="page-title">Sorry, something went wrong! :(</h1>
+          <p>We are working to solve this problem. Please, try again later.</p>
+        </div>
+
+        <footer className="page-footer">
+          <div className="logo">
+            <a href="main.html" className="logo__link logo__link--light">
+              <span className="logo__letter logo__letter--1">W</span>
+              <span className="logo__letter logo__letter--2">T</span>
+              <span className="logo__letter logo__letter--3">W</span>
+            </a>
+          </div>
+
+          <div className="copyright">
+            <p>© 2019 What to watch Ltd.</p>
+          </div>
+        </footer>
+      </div>
+    </React.Fragment>
   );
-});
-
-const mapStateToProps = (state) => ({
-  errMessage: getErrMessage(state),
-});
-
-ErrorMsg.propTypes = {
-  errMessage: PropTypes.string,
 };
 
-export {ErrorMsg};
-export default connect(mapStateToProps)(ErrorMsg);
+export default ErrorScreen;

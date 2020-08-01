@@ -1,27 +1,18 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {Provider} from "react-redux";
-import configureStore from "redux-mock-store";
-import {ErrorMsg} from './error-msg.jsx';
+import ErrorScreen from './error-msg.jsx';
+import {Router} from 'react-router-dom';
+import history from '../../history';
 
-const mockStore = configureStore([]);
-
-describe(`ErrorMsg test`, () => {
-  it(`ErrorMsg component should render correctly`, () => {
-    const store = mockStore({
-      ERROR: {
-        message: ``,
-        show: false,
-      },
-    });
+describe(`ErrorScreen`, () => {
+  it(`Should render correctly`, () => {
     const tree = renderer
-    .create(
-        <Provider store={store}>
-          <ErrorMsg
-            errMessage={`Error 401. Unauthorized status`}
-          />)
-        </Provider>
-    ).toJSON();
+      .create(
+          <Router history={history}>
+            <ErrorScreen />
+          </Router>
+      ).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 });

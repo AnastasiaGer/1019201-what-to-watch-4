@@ -6,15 +6,7 @@ import {App} from "./app.jsx";
 import {movieCard, movies, movieReviews} from '../../utils/test-data.js';
 import NameSpace from '../../reducer/name-space';
 
-
 const mockStore = configureStore([]);
-
-const activeGenre = `Drama`;
-const genres = [`All genres`, `Drama`, `Documentary`, `Horror`];
-
-const createNodeMock = () => {
-  return {};
-};
 
 describe(`App`, () => {
   it(`Should render correctly with movies titles array`, () => {
@@ -23,6 +15,8 @@ describe(`App`, () => {
         movieCard,
         movies,
         movieReviews,
+        isLoading: false,
+        isLoadError: false,
       },
       [NameSpace.APP_STATE]: {
         activeGenre: `All genres`,
@@ -33,6 +27,8 @@ describe(`App`, () => {
       },
       [NameSpace.USER]: {
         authorizationStatus: `AUTH`,
+        isAuthorizationError: false,
+        isAuthorizationProgress: true,
         userInfo: {
           id: 1,
           email: `ivanov@dmail.ru`,
@@ -46,16 +42,15 @@ describe(`App`, () => {
       .create(
           <Provider store={store}>
             <App
-              movieCard={movieCard}
-              movies={movies}
-              movieReviews={movieReviews}
-              genres={genres}
-              activeGenre={activeGenre}
-              onGenreItemClick={() => {}}
-              onShowMoreClick={() => {}}
+              setActiveGenre={() => {}}
+              loadMovies={() => {}}
             />
-          </Provider>, {createNodeMock})
-     .toJSON();
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
+      .toJSON();
 
     expect(tree).toMatchSnapshot();
   });

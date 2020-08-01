@@ -10,19 +10,21 @@ import SignIn from '../sign-in/sign-in.jsx';
 import AddReview from '../add-review/add-review.jsx';
 import PrivateRoute from "../private-route/private-route.jsx";
 import FullVideoPlayer from '../full-video-player/full-video-player.jsx';
+import ErrorScreen from '../error-msg/error-msg.jsx';
+import Loading from '../loading/loading.jsx';
 
-import {CustomPropTypes} from '../../utils/props.js';
 import history from "../../history.js";
-import {AppRoute, AuthorizationStatus} from '../../const';
+import {CustomPropTypes} from '../../utils/props.js';
+import {AppRoute, AuthorizationStatus, ALL_GENRES} from '../../const';
 
 import withReview from '../../hocs/with-review.js';
 import withTabs from '../../hocs/with-tabs.js';
 import withVideoControls from '../../hocs/with-full-video.js';
 
-import {getMovies, getMovieCard, getMovieReviews} from '../../reducer/data/selectors';
+import {getMovies, getMovieCard, getMovieReviews, getIsLoadError, getIsLoading} from '../../reducer/data/selectors';
 import {ActionCreator} from '../../reducer/app-state/app-state';
 import {getCurrentPage, getIsMoviePlayerActive} from '../../reducer/app-state/selectors';
-import {getAuthorizationStatus} from '../../reducer/user/selectors';
+import {getAuthorizationStatus, getAuthorizationProgress} from '../../reducer/user/selectors';
 import {Operations as UserOperation} from '../../reducer/user/user';
 import {Operations as DataOperations} from '../../reducer/data/data.js';
 
@@ -32,8 +34,8 @@ const MoviePageWrapped = withTabs(MoviePage);
 
 const App = (props) => {
   const {
-    login, authorizationStatus, movies,
-    movieCard, onPlayButtonClick, movieReviews, handleCloseButtonClick, isVideoPlayer, loadMovies
+    login, authorizationStatus, movies, isLoadError,
+    movieCard, onPlayButtonClick, movieReviews, handleCloseButtonClick, isVideoPlayer, loadMovies, setActiveGenre, isAuthorizationProgress, isLoading
   } = props;
 
   if (isVideoPlayer) {
@@ -45,66 +47,71 @@ const App = (props) => {
     );
   }
 
+  const renderMainPage = () => {
+    setActiveGenre(ALL_GENRES);
+    return !isLoadError ? <Main /> : <ErrorScreen />;
+  };
+
   return (
-    <Router history={history}>
-      <Switch>
-        <Route exact path={AppRoute.ROOT}
-          render={(routeProps) => {
-            return <Main
-              routeProps={routeProps}
-              movieCard={movieCard}
-              onPlayClick={onPlayButtonClick}
+    <React.Fragment>
+      {!isLoading && !isAuthorizationProgress ?
+        <Router history={history}>
+          <Switch>
+            <Route exact path={AppRoute.ROOT}
+              render={renderMainPage}
             />;
-          }}>
-        </Route>
-        <Route exact path={AppRoute.LOGIN}
-          render={() => {
-            return authorizationStatus !== AuthorizationStatus.AUTH ?
-              <SignIn
-                onFormSubmit={login}
-              /> :
-              <Redirect
-                to={AppRoute.ROOT}
-              />;
-          }}
-        />
-        <Route exact path={`${AppRoute.MOVIE_PAGE}/:id`}
-          render={(routeProps) => {
-            return <MoviePageWrapped
-              routeProps={routeProps}
-              movies={movies}
-              movieReviews={movieReviews}
-              onPlayClick={onPlayButtonClick}
-            />;
-          }}
-        />
-        <Route exact path={`${AppRoute.VIDEO_PLAYER}/:id`}
-          render={(routeProps) => {
-            return <FullVideoPlayerWrapped
-              routeProps={routeProps}
-              movieCard={movieCard}
-              onClosePlayerClick={handleCloseButtonClick}
-            />;
-          }}
-        />
-        <PrivateRoute exact path={`${AppRoute.MOVIE_PAGE}/:id/review`}
-          render={(routeProps) => {
-            return <AddReviewWrapped
-              routeProps={routeProps}
-            />;
-          }}>
-        </PrivateRoute>
-        <PrivateRoute
-          exact path={AppRoute.MY_LIST}
-          render={(routeProps) => {
-            loadMovies();
-            return <MyList
-              routeProps={routeProps}
-            />;
-          }}
-        />
-      </Switch>
-    </Router>
+            <Route exact path={AppRoute.LOGIN}
+              render={() => {
+                return authorizationStatus !== AuthorizationStatus.AUTH ?
+                  <SignIn
+                    onFormSubmit={login}
+                  /> :
+                  <Redirect
+                    to={AppRoute.ROOT}
+                  />;
+              }}
+            />
+            <Route exact path={`${AppRoute.MOVIE_PAGE}/:id`}
+              render={(routeProps) => {
+                return <MoviePageWrapped
+                  routeProps={routeProps}
+                  movies={movies}
+                  movieReviews={movieReviews}
+                  onPlayClick={onPlayButtonClick}
+                />;
+              }}
+            />
+            <Route exact path={`${AppRoute.VIDEO_PLAYER}/:id`}
+              render={(routeProps) => {
+                return <FullVideoPlayerWrapped
+                  routeProps={routeProps}
+                  movieCard={movieCard}
+                  onClosePlayerClick={handleCloseButtonClick}
+                />;
+              }}
+            />
+            <PrivateRoute exact path={`${AppRoute.MOVIE_PAGE}/:id/review`}
+              render={(routeProps) => {
+                return <AddReviewWrapped
+                  routeProps={routeProps}
+                />;
+              }}>
+            </PrivateRoute>
+            <PrivateRoute
+              exact path={AppRoute.MY_LIST}
+              render={(routeProps) => {
+                loadMovies();
+                return <MyList
+                  routeProps={routeProps}
+                />;
+              }}
+            />
+            <Route component={ErrorScreen}
+            />
+          </Switch>
+        </Router>
+        : <Loading />}
+    </React.Fragment>
   );
 };
 
@@ -123,6 +130,10 @@ App.propTypes = {
   authorizationStatus: PropTypes.string,
   onReviewSubmit: PropTypes.func.isRequired,
   loadMovies: PropTypes.func.isRequired,
+  isLoadError: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  isAuthorizationProgress: PropTypes.bool,
+  setActiveGenre: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
@@ -131,7 +142,10 @@ const mapStateToProps = (state) => ({
   movieReviews: getMovieReviews(state),
   currentPage: getCurrentPage(state),
   isVideoPlayer: getIsMoviePlayerActive(state),
+  isAuthorizationProgress: getAuthorizationProgress(state),
   authorizationStatus: getAuthorizationStatus(state),
+  isLoadError: getIsLoadError(state),
+  isLoading: getIsLoading(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -149,6 +163,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onReviewSubmit(movieId, review) {
     dispatch(DataOperations.pushReview(movieId, review));
+  },
+  setActiveGenre(genre) {
+    dispatch(ActionCreator.changeFilter(genre));
   },
 });
 

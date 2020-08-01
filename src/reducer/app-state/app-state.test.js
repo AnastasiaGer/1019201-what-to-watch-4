@@ -1,4 +1,6 @@
 import {initialState, ActionType, reducer} from './app-state';
+import {movieCard, currentMovie} from '../../utils/test-data.js';
+
 
 describe(`App State Reducer`, () => {
   it(`Reducer without additional parameters should return initial state`, () => {
@@ -16,14 +18,14 @@ describe(`App State Reducer`, () => {
     });
   });
 
-  it(`Should return new current page`, () => {
+  it(`Should return new current movie`, () => {
     expect(reducer({
-      currentPage: `main`,
+      currentMovie: movieCard,
     }, {
-      type: ActionType.GO_TO_MOVIE_PAGE,
-      payload: `movie`,
+      type: ActionType.SET_CURRENT_MOVIE,
+      payload: currentMovie,
     })).toEqual({
-      currentPage: `movie`,
+      currentMovie,
     });
   });
 

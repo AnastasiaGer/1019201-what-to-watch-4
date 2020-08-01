@@ -7,13 +7,12 @@ const initialState = {
   movieCard: emptyMovie,
   movies: [],
   movieReviews: [],
-  isReviewSending: false,
   favoriteMovies: [],
   isLoading: true,
   isLoadError: false,
   isDataSending: false,
-  isSendingSuccessfull: false,
-  isSendingError: false,
+  isDispatchSuccessful: false,
+  isDispatchError: false,
 };
 
 const ActionType = {
@@ -24,8 +23,8 @@ const ActionType = {
   FINISH_LOADING: `FINISH_LOADING`,
   CATCH_LOAD_ERROR: `CATCH_LOAD_ERROR`,
   CHECK_IS_DATA_SENDING: `CHECK_IS_DATA_SENDING`,
-  CHECK_IS_SENDING_SUCCESSFULL: `CHECK_IS_REVIEW_SENDING_SUCCESSFULL`,
-  CHECK_IS_SENDING_ERROR: `CHECK_IS_REVIEW_SENDING_ERROR`,
+  CHECK_IS_DISPATCH_SUCCESSFUL: `CHECK_IS_DISPATCH_SUCCESSFUL`,
+  CHECK_IS_DISPATCH_ERROR: `CHECK_IS_DISPATCH_ERROR`,
   CLEAR_SENDING_ERROR: `CLEAR_SENDING_ERROR`,
 };
 
@@ -50,10 +49,9 @@ const ActionCreator = {
       payload: movieReviews,
     };
   },
-
-  checkIsReviewSending: (isReviewSending) => ({
-    type: ActionType.IS_LOADING_DATA,
-    payload: isReviewSending,
+  loadFavoriteMovies: (movies) => ({
+    type: ActionType.LOAD_FAVORITE_MOVIES,
+    payload: movies,
   }),
   finishLoading: () => ({
     type: ActionType.FINISH_LOADING,
@@ -70,14 +68,14 @@ const ActionCreator = {
     payload: isDataSending,
   }),
 
-  checkIsSendingSuccessfull: (isSendingSuccessfull) => ({
-    type: ActionType.CHECK_IS_SENDING_SUCCESSFULL,
-    payload: isSendingSuccessfull,
+  checkIsDispatchSuccessful: (isDispatchSuccessful) => ({
+    type: ActionType.CHECK_IS_DISPATCH_SUCCESSFUL,
+    payload: isDispatchSuccessful,
   }),
 
-  checkIsSendingError: (isSendingError) => ({
-    type: ActionType.CHECK_IS_SENDING_ERROR,
-    payload: isSendingError,
+  checkIsDispatchError: (isDispatchError) => ({
+    type: ActionType.CHECK_IS_DISPATCH_ERROR,
+    payload: isDispatchError,
   }),
 
   clearSendingError: () => ({
@@ -121,23 +119,23 @@ const Operations = {
       });
   },
   pushReview: (movieId, review) => (dispatch, getState, api) => {
-    dispatch(ActionCreator.checkIsReviewSending(true));
+    dispatch(ActionCreator.checkIsDataSending(true));
     return api.post(`/comments/${movieId}`, {
       rating: review.rating,
       comment: review.comment,
     })
     .then(() => {
       dispatch(ActionCreator.checkIsDataSending(false));
-      dispatch(ActionCreator.checkIsSendingSuccessfull(true));
-      dispatch(ActionCreator.checkIsSendingError(false));
+      dispatch(ActionCreator.checkIsDispatchSuccessful(true));
+      dispatch(ActionCreator.checkIsDispatchError(false));
 
       dispatch(Operations.loadMovieReviews(movieId));
       history.goBack();
     })
     .catch(() => {
       dispatch(ActionCreator.checkIsDataSending(false));
-      dispatch(ActionCreator.checkIsSendingSuccessfull(false));
-      dispatch(ActionCreator.checkIsSendingError(true));
+      dispatch(ActionCreator.checkIsDispatchSuccessful(false));
+      dispatch(ActionCreator.checkIsDispatchError(true));
     });
   },
   loadFavoriteMovies: () => (dispatch, getState, api) => {
@@ -157,15 +155,15 @@ const Operations = {
     return api.post(`/favorite/${movieId}/${isFavorite ? 1 : 0}`)
     .then(() => {
       dispatch(ActionCreator.checkIsDataSending(false));
-      dispatch(ActionCreator.checkIsSendingSuccessfull(true));
-      dispatch(ActionCreator.checkIsSendingError(false));
+      dispatch(ActionCreator.checkIsDispatchSuccessful(true));
+      dispatch(ActionCreator.checkIsDispatchError(false));
       dispatch(Operations.loadMovies());
       dispatch(Operations.loadMovieCard());
     })
     .catch(() => {
       dispatch(ActionCreator.checkIsDataSending(false));
-      dispatch(ActionCreator.checkIsSendingSuccessfull(false));
-      dispatch(ActionCreator.checkIsSendingError(true));
+      dispatch(ActionCreator.checkIsDispatchSuccessful(false));
+      dispatch(ActionCreator.checkIsDispatchError(true));
     });
   },
 };
@@ -200,17 +198,17 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         isDataSending: action.payload,
       });
-    case ActionType.CHECK_IS_SENDING_SUCCESSFULL:
+    case ActionType.CHECK_IS_DISPATCH_SUCCESSFUL:
       return extend(state, {
-        isSendingSuccessfull: action.payload,
+        isDispatchSuccessful: action.payload,
       });
-    case ActionType.CHECK_IS_SENDING_ERROR:
+    case ActionType.CHECK_IS_DISPATCH_ERROR:
       return extend(state, {
-        isSendingError: action.payload,
+        isDispatchError: action.payload,
       });
     case ActionType.CLEAR_SENDING_ERROR:
       return extend(state, {
-        isSendingError: action.payload,
+        isDispatchError: action.payload,
       });
 
   }

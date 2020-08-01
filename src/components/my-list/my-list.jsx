@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+
 import PageFooter from '../page-footer/page-footer.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
-import {connect} from 'react-redux';
 import PageHeader from '../page-header/page-header.jsx';
+
 import {PageNames} from '../../const';
-import {getFavoriteMovies} from '../../reducer/data/selectors.js';
 import {CustomPropTypes} from '../../utils/props.js';
+
+import {getFavoriteMovies} from '../../reducer/data/selectors.js';
+
 
 const MyList = (props) => {
   const {favoriteMovies} = props;

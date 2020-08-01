@@ -10,8 +10,8 @@ export const getMovieReviews = (state) => state[NameSpace.DATA].movieReviews;
 export const getFavoriteMovies = (state) => state[NameSpace.DATA].favoriteMovies;
 export const getIsLoadError = (state) => state[NameSpace.DATA].isLoadError;
 export const getIsReviewSending = (state) => state[NameSpace.DATA].isDataSending;
-export const getIsSendingSuccessfull = (state) => state[NameSpace.DATA].isSendingSuccessfull;
-export const getIsSendingError = (state) => state[NameSpace.DATA].isSendingError;
+export const getIsDispatchSuccessful = (state) => state[NameSpace.DATA].isDispatchSuccessful;
+export const getIsDispatchError = (state) => state[NameSpace.DATA].isDispatchError;
 export const getIsLoading = (state) => state[NameSpace.DATA].isLoading;
 
 export const getMoviesGenres = createSelector(

@@ -6,7 +6,7 @@ import {ReviewLength, reviewSubmitButton, NUMBER_OF_RATINGS} from '../../const';
 import {PageNames, AppRoute} from "../../const.js";
 import {Link} from 'react-router-dom';
 
-const AddReview = ({currentMovie, isReviewSending, isSendingError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, isSubmitDisabled, ratings}) => {
+const AddReview = ({currentMovie, isReviewSending, isDispatchError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, isSubmitDisabled}) => {
   const {backgroundColor, title, background, poster} = currentMovie;
   const isRadioDisabled = isReviewSending ? true : false;
 
@@ -98,7 +98,7 @@ const AddReview = ({currentMovie, isReviewSending, isSendingError, onSubmitClick
 
             </div>
           </form>
-          {isSendingError &&
+          {isDispatchError &&
             <p style={{color: `red`}}>Error while sending data. Please, try again later.</p>
           }
         </div>
@@ -110,13 +110,12 @@ const AddReview = ({currentMovie, isReviewSending, isSendingError, onSubmitClick
 AddReview.propTypes = {
   currentMovie: CustomPropTypes.MOVIE,
   isReviewSending: PropTypes.bool,
-  isSendingError: PropTypes.bool,
+  isDispatchError: PropTypes.bool,
   onSubmitClick: PropTypes.func,
   onFormChange: PropTypes.func,
   onRatingChange: PropTypes.func,
   onReviewChange: PropTypes.func,
   isSubmitDisabled: PropTypes.bool,
-  ratings: PropTypes.number,
 };
 
 export default AddReview;

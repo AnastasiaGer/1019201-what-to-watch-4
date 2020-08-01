@@ -1,23 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
+import {connect} from 'react-redux';
+
 import MoviesList from '../movies-list/movies-list.jsx';
-import {CustomPropTypes} from '../../utils/props.js';
 import GenresList from "../genres-list/genres-list.jsx";
-import withTabs from '../../hocs/with-tabs.js';
-import withShowMore from '../../hocs/with-show-more';
 import PageHeader from '../page-header/page-header.jsx';
 import PageFooter from '../page-footer/page-footer.jsx';
-import {getAuthorizationStatus} from '../../reducer/user/selectors';
-import {AuthorizationStatus} from '../../const';
-import {connect} from 'react-redux';
-import {AppRoute, PageNames} from "../../const.js";
-import {Link} from "react-router-dom";
 import MyListButton from '../my-list-button/my-list-button.jsx';
+
+import {CustomPropTypes} from '../../utils/props.js';
+import {AppRoute, PageNames} from "../../const.js";
+
+import {getMovieCard} from '../../reducer/data/selectors';
+
+import withTabs from '../../hocs/with-tabs.js';
+import withShowMore from '../../hocs/with-show-more';
 
 const MoviesListWrapped = withShowMore(withTabs(MoviesList));
 const GenresListWrapped = withTabs(GenresList);
 
-const Main = ({movieCard, isSignedIn}) => {
+const Main = ({movieCard}) => {
   const {title, genre, date, background, poster, id} = movieCard;
 
   return (
@@ -29,7 +32,7 @@ const Main = ({movieCard, isSignedIn}) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <PageHeader isSignedIn={isSignedIn}/>
+        <PageHeader currentPage={PageNames.MAIN}/>
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">
@@ -83,14 +86,12 @@ const Main = ({movieCard, isSignedIn}) => {
 Main.propTypes = {
   movieCard: CustomPropTypes.MOVIE,
   onPlayClick: PropTypes.func,
-  isSignedIn: PropTypes.bool,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isSignedIn: getAuthorizationStatus(state) === AuthorizationStatus.AUTH,
-  };
-};
+const mapStateToProps = (state) => ({
+  movieCard: getMovieCard(state),
+});
 
-export default connect(mapStateToProps, null)(Main);
+
+export default connect(mapStateToProps)(Main);
 

@@ -5,13 +5,14 @@ exports[`FullVideoPlayer Render FullVideoPlayer 1`] = `
   className="player"
 >
   <video />
-  <button
+  <a
     className="player__exit"
+    href="/"
     onClick={[Function]}
     type="button"
   >
     Exit
-  </button>
+  </a>
   <div
     className="player__controls"
   >
