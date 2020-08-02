@@ -21,7 +21,7 @@ import withReview from '../../hocs/with-review.js';
 import withTabs from '../../hocs/with-tabs.js';
 import withVideoControls from '../../hocs/with-full-video.js';
 
-import {getMovieCard, getIsLoadError, getIsLoading} from '../../reducer/data/selectors';
+import {getMovies, getMovieCard, getIsLoadError, getIsLoading} from '../../reducer/data/selectors';
 import {ActionCreator} from '../../reducer/app-state/app-state';
 import {getIsMoviePlayerActive} from '../../reducer/app-state/selectors';
 import {getAuthorizationStatus, getAuthorizationProgress} from '../../reducer/user/selectors';
@@ -33,7 +33,7 @@ const AddReviewWrapped = withReview(AddReview);
 const MoviePageWrapped = withTabs(MoviePage);
 
 const App = (props) => {
-  const {
+  const {movies,
     login, authorizationStatus, isLoadError,
     movieCard, loadMovies, setActiveGenre, isAuthorizationProgress, isLoading
   } = props;
@@ -64,8 +64,12 @@ const App = (props) => {
             />
             <Route exact path={`${AppRoute.MOVIE_PAGE}/:id`}
               render={(routeProps) => {
+                const movieId = Number(routeProps.match.params.id);
+                const currentMovie = movies.find((movie) => movie.id === movieId);
                 return <MoviePageWrapped
                   routeProps={routeProps}
+
+                  currentMovie={currentMovie}
                 />;
               }}
             />
@@ -113,6 +117,7 @@ App.propTypes = {
   isLoading: PropTypes.bool,
   isAuthorizationProgress: PropTypes.bool,
   setActiveGenre: PropTypes.func,
+  movies: PropTypes.arrayOf(CustomPropTypes.MOVIE),
 };
 
 const mapStateToProps = (state) => ({
@@ -122,6 +127,7 @@ const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state),
   isLoadError: getIsLoadError(state),
   isLoading: getIsLoading(state),
+  movies: getMovies(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

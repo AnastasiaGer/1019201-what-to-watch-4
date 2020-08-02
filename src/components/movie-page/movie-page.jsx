@@ -12,7 +12,6 @@ import MovieCardHero from '../movie-card-hero/movie-card-hero.jsx';
 import {CustomPropTypes} from '../../utils/props.js';
 import {PageNames} from "../../const.js";
 
-import {getCurrentMovieById} from '../../reducer/app-state/selectors.js';
 import {ActionCreator} from '../../reducer/app-state/app-state';
 import {Operations as DataOperations} from "../../reducer/data/data";
 
@@ -116,11 +115,6 @@ MoviePage.propTypes = {
   activeTab: PropTypes.string.isRequired,
   loadMovieInformation: PropTypes.func.isRequired,
 };
-const mapStateToProps = (state, ownProps) => {
-  return {
-    currentMovie: getCurrentMovieById(state, ownProps),
-  };
-};
 
 const mapDispatchToProps = (dispatch) => ({
   loadMovieInformation(movie) {
@@ -130,4 +124,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);
+export default connect(null, mapDispatchToProps)(MoviePage);
