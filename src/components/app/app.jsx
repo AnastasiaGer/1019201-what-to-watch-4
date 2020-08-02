@@ -21,9 +21,9 @@ import withReview from '../../hocs/with-review.js';
 import withTabs from '../../hocs/with-tabs.js';
 import withVideoControls from '../../hocs/with-full-video.js';
 
-import {getMovies, getMovieCard, getMovieReviews, getIsLoadError, getIsLoading} from '../../reducer/data/selectors';
+import {getMovieCard, getIsLoadError, getIsLoading} from '../../reducer/data/selectors';
 import {ActionCreator} from '../../reducer/app-state/app-state';
-import {getCurrentPage, getIsMoviePlayerActive} from '../../reducer/app-state/selectors';
+import {getIsMoviePlayerActive} from '../../reducer/app-state/selectors';
 import {getAuthorizationStatus, getAuthorizationProgress} from '../../reducer/user/selectors';
 import {Operations as UserOperation} from '../../reducer/user/user';
 import {Operations as DataOperations} from '../../reducer/data/data.js';
@@ -34,8 +34,8 @@ const MoviePageWrapped = withTabs(MoviePage);
 
 const App = (props) => {
   const {
-    login, authorizationStatus, movies, isLoadError,
-    movieCard, movieReviews, handleCloseButtonClick, loadMovies, setActiveGenre, isAuthorizationProgress, isLoading
+    login, authorizationStatus, isLoadError,
+    movieCard, loadMovies, setActiveGenre, isAuthorizationProgress, isLoading
   } = props;
 
   const renderMainPage = () => {
@@ -66,8 +66,6 @@ const App = (props) => {
               render={(routeProps) => {
                 return <MoviePageWrapped
                   routeProps={routeProps}
-                  movies={movies}
-                  movieReviews={movieReviews}
                 />;
               }}
             />
@@ -76,7 +74,6 @@ const App = (props) => {
                 return <FullVideoPlayerWrapped
                   routeProps={routeProps}
                   movieCard={movieCard}
-                  onClosePlayerClick={handleCloseButtonClick}
                 />;
               }}
             />
@@ -106,15 +103,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  movies: PropTypes.arrayOf(CustomPropTypes.MOVIE),
   movieCard: CustomPropTypes.MOVIE,
-  movieReviews: PropTypes.PropTypes.oneOfType([
-    PropTypes.arrayOf(CustomPropTypes.REVIEWS),
-    PropTypes.bool,
-  ]),
-  currentPage: PropTypes.string,
-  onPlayButtonClick: PropTypes.func,
-  handleCloseButtonClick: PropTypes.func,
   isVideoPlayer: PropTypes.bool,
   login: PropTypes.func,
   authorizationStatus: PropTypes.string,
@@ -127,10 +116,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  movies: getMovies(state),
   movieCard: getMovieCard(state),
-  movieReviews: getMovieReviews(state),
-  currentPage: getCurrentPage(state),
   isVideoPlayer: getIsMoviePlayerActive(state),
   isAuthorizationProgress: getAuthorizationProgress(state),
   authorizationStatus: getAuthorizationStatus(state),
