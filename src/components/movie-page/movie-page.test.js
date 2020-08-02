@@ -1,12 +1,13 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import {Provider} from 'react-redux';
-import configureStore from 'redux-mock-store';
-import MoviePage from './movie-page';
+import React from "react";
+import renderer from "react-test-renderer";
+import MoviePage from "./movie-page.jsx";
 import {movies, movieCard} from '../../utils/test-data.js';
 import NameSpace from '../../reducer/name-space';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
 import {Router} from 'react-router-dom';
 import history from '../../history';
+import {adaptMovie, adaptMovies} from "../../adapters/movie.js";
 
 const mockStore = configureStore([]);
 
@@ -14,10 +15,10 @@ describe(`MoviePage`, () => {
   it(`Should render correctly`, () => {
     const store = mockStore({
       [NameSpace.DATA]: {
-        movies,
+        movies: adaptMovies(movies)
       },
       [NameSpace.APP_STATE]: {
-        currentMovie: movieCard,
+        currentMovie: adaptMovie(movieCard)
       },
       [NameSpace.USER]: {
         authorizationStatus: `AUTH`,
@@ -26,7 +27,7 @@ describe(`MoviePage`, () => {
           email: `ivanov@dmail.ru`,
           name: `Ivan`,
           avatarUrl: `https://4.react.pages.academy/wtw/asda.jpg`,
-        }
+        },
       },
     });
 
@@ -37,10 +38,12 @@ describe(`MoviePage`, () => {
           <Router history={history}>
             <Provider store={store}>
               <MoviePage
+                currentMovie={adaptMovie(movieCard)}
                 renderTabs={() => {}}
                 activeTab={``}
                 loadMovieInformation={() => {}}
-                routeProps={{match: {params: {id: 167456}, isExact: true, path: ``, url: ``}}} />
+                routeProps={{match: {params: {id: 167456}, isExact: true, path: ``, url: ``}}}
+              />
             </Provider>
           </Router>, {
             createNodeMock: () => {
@@ -52,3 +55,5 @@ describe(`MoviePage`, () => {
     expect(tree).toMatchSnapshot();
   });
 });
+
+

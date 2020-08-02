@@ -1,8 +1,6 @@
 import NameSpace from '../name-space';
 import {getMovies} from '../data/selectors';
 
-export const getCurrentPage = (state) => state[NameSpace.APP_STATE].currentPage;
-
 export const getCurrentMovie = (state) => state[NameSpace.APP_STATE].currentMovie;
 
 export const getCurrentMovieById = (state, ownProps) => {
