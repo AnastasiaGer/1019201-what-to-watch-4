@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import PageHeader from '../page-header/page-header.jsx';
 import {CustomPropTypes} from '../../utils/props.js';
 import {ReviewLength, reviewSubmitButton, NUMBER_OF_RATINGS} from '../../const';
+import {PageNames, AppRoute} from "../../const.js";
+import {Link} from 'react-router-dom';
 
-const AddReview = ({currentMovie, isReviewSending, isSendingError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, isSubmitDisabled, ratings}) => {
+const AddReview = ({currentMovie, isReviewSending, isDispatchError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, isSubmitDisabled}) => {
   const {backgroundColor, title, background, poster} = currentMovie;
   const isRadioDisabled = isReviewSending ? true : false;
 
@@ -21,23 +23,27 @@ const AddReview = ({currentMovie, isReviewSending, isSendingError, onSubmitClick
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <PageHeader />
+          <PageHeader currentPage={PageNames.ADD_REVIEW}
+          >
+            <nav className="breadcrumbs">
+              <ul className="breadcrumbs__list">
+                <li className="breadcrumbs__item">
+                  <Link
+                    to={`${AppRoute.MOVIE_PAGE}/${currentMovie.id}`}
+                    className="breadcrumbs__link">{currentMovie.title}
+                  </Link>
+                </li>
+                <li className="breadcrumbs__item">
+                  <a className="breadcrumbs__link">Add review</a>
+                </li>
+              </ul>
+            </nav>
+          </PageHeader>
 
           <div className="movie-card__poster movie-card__poster--small">
             <img src={poster} alt={title} width="218" height="327" />
           </div>
         </div>
-
-        {ratings === 0 ?
-          <div
-            style={{
-              position: `absolute`,
-              color: `red`,
-              top: `27%`,
-              left: `46%`}}
-          >
-            Сhoose a rating
-          </div> : ``}
 
         <div className="add-review">
           <form
@@ -92,7 +98,7 @@ const AddReview = ({currentMovie, isReviewSending, isSendingError, onSubmitClick
 
             </div>
           </form>
-          {isSendingError &&
+          {isDispatchError &&
             <p style={{color: `red`}}>Error while sending data. Please, try again later.</p>
           }
         </div>
@@ -104,13 +110,12 @@ const AddReview = ({currentMovie, isReviewSending, isSendingError, onSubmitClick
 AddReview.propTypes = {
   currentMovie: CustomPropTypes.MOVIE,
   isReviewSending: PropTypes.bool,
-  isSendingError: PropTypes.bool,
+  isDispatchError: PropTypes.bool,
   onSubmitClick: PropTypes.func,
   onFormChange: PropTypes.func,
   onRatingChange: PropTypes.func,
   onReviewChange: PropTypes.func,
   isSubmitDisabled: PropTypes.bool,
-  ratings: PropTypes.number,
 };
 
 export default AddReview;

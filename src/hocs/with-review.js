@@ -2,11 +2,11 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Operations as DataOperations} from '../reducer/data/data.js';
-import {getCurrentMovie} from '../reducer/app-state/selectors.js';
+import {getCurrentMovieById} from '../reducer/app-state/selectors.js';
 import {CustomPropTypes} from '../utils/props';
 import {ReviewLength} from '../const';
 
-import {getLoadingDataStatus, getErrorLoadingDataStatus} from '../reducer/data/selectors.js';
+import {getIsReviewSending, getIsDispatchError} from '../reducer/data/selectors.js';
 
 const withReview = (Component) => {
   class WithReview extends PureComponent {
@@ -31,11 +31,11 @@ const withReview = (Component) => {
     }
 
     _handleReviewChange(evt) {
-      const {isReviewSending} = this.props;
+      const {isDataSending} = this.props;
 
       this.setState({
         comment: evt.target.value,
-        isSubmitDisabled: evt.target.value.length < ReviewLength.MIN || isReviewSending,
+        isSubmitDisabled: evt.target.value.length < ReviewLength.MIN || isDataSending,
       });
     }
 
@@ -68,15 +68,15 @@ const withReview = (Component) => {
 
   WithReview.propTypes = {
     currentMovie: CustomPropTypes.MOVIE,
-    isReviewSending: PropTypes.bool.isRequired,
-    isSendingError: PropTypes.bool.isRequired,
+    isDataSending: PropTypes.bool.isRequired,
+    isDispatchError: PropTypes.bool.isRequired,
     onReviewSubmit: PropTypes.func.isRequired,
   };
 
-  const mapStateToProps = (state) => ({
-    currentMovie: getCurrentMovie(state),
-    isReviewSending: getLoadingDataStatus(state),
-    isSendingError: getErrorLoadingDataStatus(state),
+  const mapStateToProps = (state, ownProps) => ({
+    currentMovie: getCurrentMovieById(state, ownProps),
+    isDataSending: getIsReviewSending(state),
+    isDispatchError: getIsDispatchError(state),
   });
 
   const mapDispatchToProps = (dispatch) => ({

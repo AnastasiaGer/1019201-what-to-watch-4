@@ -34,7 +34,7 @@ describe(`AddReview`, () => {
               <AddReview
                 currentMovie={movieCard}
                 isReviewSending={false}
-                isSendingError={false}
+                isDispatchError={false}
                 onSubmitClick={() => {}}
                 onFormChange={() => {}}
                 onRatingChange={() => {}}

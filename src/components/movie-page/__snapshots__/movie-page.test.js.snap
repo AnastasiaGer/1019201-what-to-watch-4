@@ -11,10 +11,7 @@ Array [
       <div
         className="movie-card__bg"
       >
-        <img
-          alt="Snatch"
-          src="https://placeimg.com/1300/512/nature"
-        />
+        <img />
       </div>
       <h1
         className="visually-hidden"
@@ -49,33 +46,6 @@ Array [
             </span>
           </a>
         </div>
-        <nav
-          className="breadcrumbs"
-        >
-          <ul
-            className="breadcrumbs__list"
-          >
-            <li
-              className="breadcrumbs__item"
-            >
-              <a
-                className="breadcrumbs__link"
-                href="movie-page.html"
-              >
-                Snatch
-              </a>
-            </li>
-            <li
-              className="breadcrumbs__item"
-            >
-              <a
-                className="breadcrumbs__link"
-              >
-                Add review
-              </a>
-            </li>
-          </ul>
-        </nav>
         <div
           className="user-block"
         >
@@ -87,7 +57,7 @@ Array [
               className="user-block__avatar"
             >
               <img
-                alt="User avatar"
+                alt="Ivan"
                 height="63"
                 src="https://4.react.pages.academy/wtw/asda.jpg"
                 width="63"
@@ -104,9 +74,7 @@ Array [
         >
           <h2
             className="movie-card__title"
-          >
-            Snatch
-          </h2>
+          />
           <p
             className="movie-card__meta"
           >
@@ -117,17 +85,15 @@ Array [
             </span>
             <span
               className="movie-card__year"
-            >
-              2014
-            </span>
+            />
           </p>
           <div
             className="movie-card__buttons"
           >
-            <button
+            <a
               className="btn btn--play movie-card__button"
+              href="/player/123890"
               onClick={[Function]}
-              type="button"
             >
               <svg
                 height="19"
@@ -141,9 +107,10 @@ Array [
               <span>
                 Play
               </span>
-            </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -161,7 +128,7 @@ Array [
             </button>
             <a
               className="btn movie-card__button"
-              href="/review"
+              href="/film/123890/review"
               onClick={[Function]}
             >
               Add review
@@ -180,9 +147,7 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="Snatch"
             height="327"
-            src="img/snatch.jpg"
             width="218"
           />
         </div>

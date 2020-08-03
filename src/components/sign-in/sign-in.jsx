@@ -1,10 +1,15 @@
 import React, {PureComponent, createRef} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer/user/user.js';
-import {getAuthorizationError} from '../../reducer/user/selectors.js';
+
 import PageHeader from '../page-header/page-header.jsx';
 import PageFooter from '../page-footer/page-footer.jsx';
+
+import {PageNames} from '../../const';
+
+import {ActionCreator, Operations as UserOperations} from '../../reducer/user/user.js';
+import {getAuthorizationError} from '../../reducer/user/selectors.js';
+
 
 class SignIn extends PureComponent {
   constructor(props) {
@@ -29,32 +34,38 @@ class SignIn extends PureComponent {
   }
 
   render() {
-    const {authorizationError, deleteAuthError} = this.props;
+    const {isAuthorizationError, clearAuthError} = this.props;
+
+    const isInvalidForm = isAuthorizationError &&
+      <React.Fragment>
+        <div className="sign-in__message">
+          <p>Please enter a valid email address</p>
+        </div>
+      </React.Fragment>;
 
     return (
       <React.Fragment>
         <div className="user-page">
-          <PageHeader />
+          <PageHeader currentPage={PageNames.SIGN_IN}/>
           <div className="sign-in user-page__content">
             <form
               action="#"
               className="sign-in__form"
               onSubmit={this._handleSubmitClick}
-              onChange={deleteAuthError}>
-              {authorizationError ?
-                <div className="sign-in__message">
-                  <p>We can’t recognize this email <br/> and password combination. Please try again.</p>
-                </div> : ``}
+              onChange={clearAuthError}
+            >
+              {isInvalidForm}
               <div className="sign-in__fields">
-                <div className={authorizationError ? `sign-in__field sign-in__field--error` : `sign-in__field`}>
+                <div className={`sign-in__field ${isAuthorizationError && `sign-in__field--error`}`}>
                   <input
                     className="sign-in__input"
                     type="email"
                     placeholder="Email address"
                     name="user-email"
-                    d="user-email"
+                    id="user-email"
                     ref={this.loginRef}
-                    required/>
+                    required
+                  />
                   <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
                 </div>
                 <div className="sign-in__field">
@@ -65,7 +76,8 @@ class SignIn extends PureComponent {
                     name="user-password"
                     id="user-password"
                     ref={this.passwordRef}
-                    required/>
+                    required
+                  />
                   <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
                 </div>
               </div>
@@ -83,18 +95,22 @@ class SignIn extends PureComponent {
 
 SignIn.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
-  authorizationError: PropTypes.bool.isRequired,
-  deleteAuthError: PropTypes.func.isRequired,
+  isAuthorizationError: PropTypes.bool.isRequired,
+  clearAuthError: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  authorizationError: getAuthorizationError(state),
+  isAuthorizationError: getAuthorizationError(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  deleteAuthError() {
-    dispatch(ActionCreator.deleteAuthorizationError());
-  }
+  clearAuthError() {
+    dispatch(ActionCreator.clearAuthorizationError());
+  },
+
+  onFormSubmit(authData) {
+    dispatch(UserOperations.login(authData));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

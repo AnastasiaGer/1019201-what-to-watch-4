@@ -7,6 +7,7 @@ export const CustomPropTypes = {
     date: PropTypes.number,
     background: PropTypes.string,
     poster: PropTypes.string,
+    picture: PropTypes.string,
     id: PropTypes.number,
     description: PropTypes.string,
     rating: PropTypes.number,

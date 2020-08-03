@@ -5,8 +5,6 @@ import {MAX_SHOWN_MOVIES_LIKE_THIS, PageNames} from '../const';
 import {CustomPropTypes} from '../utils/props.js';
 import ShowMoreButton from '../components/show-more-btn/show-more-btn.jsx';
 import {getFilteredMoviesByGenre, getFilteredMoviesLikeThis} from '../reducer/data/selectors';
-import {getCurrentPage, getActiveGenre} from '../reducer/app-state/selectors';
-
 
 const withShowMore = (Component) => {
   class WithShowMore extends PureComponent {
@@ -64,19 +62,15 @@ const withShowMore = (Component) => {
     movies: PropTypes.arrayOf(CustomPropTypes.MOVIE).isRequired,
   };
 
-  const mapStateToProps = (state) => {
-    const currentPage = getCurrentPage(state);
-
-    if (currentPage !== PageNames.MAIN) {
+  const mapStateToProps = (state, ownProps) => {
+    if (ownProps.currentPage !== PageNames.MAIN) {
       return {
         movies: getFilteredMoviesLikeThis(state),
-        activeGenre: getActiveGenre(state),
       };
     }
 
     return {
       movies: getFilteredMoviesByGenre(state),
-      activeGenre: getActiveGenre(state),
     };
   };
 

@@ -64,7 +64,8 @@ exports[`AddReview Should render correctly 1`] = `
           >
             <a
               className="breadcrumbs__link"
-              href="movie-page.html"
+              href="/film/123890"
+              onClick={[Function]}
             >
               Snatch
             </a>
@@ -84,17 +85,11 @@ exports[`AddReview Should render correctly 1`] = `
         className="user-block"
       >
         <a
+          className="user-block__link"
           href="/login"
           onClick={[Function]}
-          style={
-            Object {
-              "color": "inherit",
-              "cursor": "pointer",
-              "textDecoration": "none",
-            }
-          }
         >
-          Sign In
+          Sign in
         </a>
       </div>
     </header>
@@ -109,7 +104,6 @@ exports[`AddReview Should render correctly 1`] = `
       />
     </div>
   </div>
-  
   <div
     className="add-review"
   >

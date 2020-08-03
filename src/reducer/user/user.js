@@ -1,24 +1,23 @@
 import {extend} from '../../utils/utils';
 import {AuthorizationStatus} from '../../const';
-import {ActionCreator as AppStateActionCreator} from '../app-state/app-state';
 import {adaptUser} from '../../adapters/user';
 
 const initialState = {
-  authorizationStatus: AuthorizationStatus.NO_AUTH,
-  message: ``,
-  authorizationError: false,
+  authorizationStatus: ``,
+  isAuthorizationError: false,
+  isAuthorizationProgress: true,
   userInfo: {
     id: 0,
     email: ``,
     name: ``,
-    avatarUrl: `img/avatar.jpg`,
+    avatarUrl: ``,
   },
 };
 
 const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   SET_AUTHOR_INFORMATION: `SET_AUTHOR_INFORMATION`,
-  SET_ERROR_MESSAGE: `SET_ERROR_MESSAGE`,
+  FINISH_AUTHORIZATION_PROGRESS: `FINISH_AUTHORIZATION_PROGRESS`,
   SHOW_AUTHORIZATION_ERROR: `SHOW_AUTHORIZATION_ERROR`,
   DELETE_ERROR_AUTHORIZATION: `DELETE_ERROR_AUTHORIZATION`,
 };
@@ -37,10 +36,10 @@ const ActionCreator = {
       payload: userData,
     };
   },
-  setErrMessage: (msg) => {
+  finishAuthorizationProgress: () => {
     return {
-      type: ActionType.SET_ERROR_MESSAGE,
-      payload: msg,
+      type: ActionType.FINISH_AUTHORIZATION_PROGRESS,
+      payload: false,
     };
   },
 
@@ -65,9 +64,11 @@ const Operations = {
       .then((response) => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.setAuthorInfo(adaptUser(response.data)));
+        dispatch(ActionCreator.finishAuthorizationProgress());
       })
       .catch(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
+        dispatch(ActionCreator.finishAuthorizationProgress());
       });
   },
 
@@ -78,7 +79,6 @@ const Operations = {
     })
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
-        dispatch(AppStateActionCreator.goToMainPage());
       })
       .catch(() => {
         dispatch(ActionCreator.showAuthorizationError());
@@ -98,17 +98,17 @@ const reducer = (state = initialState, action) => {
         userInfo: action.payload,
       });
 
-    case ActionType.SET_ERROR_MESSAGE:
+    case ActionType.FINISH_AUTHORIZATION_PROGRESS:
       return extend(state, {
-        message: action.payload,
+        isAuthorizationProgress: action.payload,
       });
     case ActionType.SHOW_AUTHORIZATION_ERROR:
       return extend(state, {
-        authorizationError: action.payload,
+        isAuthorizationError: action.payload,
       });
     case ActionType.DELETE_ERROR_AUTHORIZATION:
       return extend(state, {
-        authorizationError: action.payload,
+        isAuthorizationError: action.payload,
       });
   }
 

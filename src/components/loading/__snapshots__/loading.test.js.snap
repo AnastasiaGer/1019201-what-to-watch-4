@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader Should render correctly 1`] = `
+<div
+  className="user-page"
+>
+  <div
+    className="sign-in user-page__content"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "center",
+        "minHeight": "100vh",
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": undefined,
+        }
+      }
+      style={
+        Object {
+          "fill": "#372824",
+          "height": 64,
+          "width": 64,
+        }
+      }
+    />
+  </div>
+</div>
+`;

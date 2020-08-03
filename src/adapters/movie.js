@@ -19,3 +19,5 @@ export const adaptMovie = (movie) => {
     backgroundColor: movie.background_color,
   };
 };
+
+export const adaptMovies = (movies) => movies.map((movie) => adaptMovie(movie));
