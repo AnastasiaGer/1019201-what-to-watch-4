@@ -1,12 +1,22 @@
 import * as React from 'react';
 
+interface State {
+  activeCard: boolean;
+}
+
+interface InjectedProps {
+  activeCard: boolean;
+  setActiveCard: (activeCard: boolean) => void;
+}
+
 const withActiveCard = (Component) => {
-  class WithActiveCard extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  class WithActiveCard extends React.PureComponent<P, State> {
     constructor(props) {
       super(props);
 
       this.state = {
-        activeCard: null,
+        activeCard: false,
       };
 
       this._setActiveCard = this._setActiveCard.bind(this);
@@ -28,8 +38,6 @@ const withActiveCard = (Component) => {
       />;
     }
   }
-
-  WithActiveCard.propTypes = {};
 
   return WithActiveCard;
 };

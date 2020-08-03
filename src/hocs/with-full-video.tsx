@@ -1,9 +1,31 @@
 import * as React from 'react';
 import {Time} from '../const';
-import {CustomPropTypes} from '../utils/props';
+import {Subtract} from "utility-types";
+import {MovieType} from '../types'
+
+interface Props {
+  movieCard: MovieType;
+}
+
+interface State {
+  isPlaying: boolean;
+  currentTime: number;
+  duration: number;
+}
+
+interface InjectedProps {
+  currentTime: number;
+  duration: number;
+  isPlaying: boolean;
+  handleIsPlayingChange: () => void;
+  handleSetFullScreen: () => void;
+}
 
 const withVideoControls = (Component) => {
-  class WithVideoControls extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Props & Subtract<P, InjectedProps>;
+  class WithVideoControls extends React.PureComponent<T, State> {
+    private _videoRef: React.RefObject<HTMLVideoElement>;
     constructor(props) {
       super(props);
 
@@ -95,17 +117,13 @@ const withVideoControls = (Component) => {
         onIsPlayingChange={this._handleIsPlayingChange}
         onSetFullScreen={this._handleSetFullScreen}
       >
-        <video className="player__video" type="video/webm"
+        <video className="player__video"
           poster={poster}
           ref={this._videoRef}
         >your browser doesn`t support embedded videos</video>
       </Component>;
     }
   }
-
-  WithVideoControls.propTypes = {
-    movieCard: CustomPropTypes.MOVIE,
-  };
 
   return WithVideoControls;
 };

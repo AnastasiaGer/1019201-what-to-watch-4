@@ -1,7 +1,24 @@
 import * as React from 'react';
+import {Subtract} from "utility-types";
+import {MovieType} from '../types'
+
+interface Props {
+  movie: MovieType;
+}
+
+interface State {
+  isPlaying: boolean;
+}
+
+interface InjectedProps {
+  isPlaying: boolean;
+  setPlayingFilm: (isPlaying: boolean) => void;
+}
 
 const withVideo = (Component) => {
-  class WithVideo extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Props & Subtract<P, InjectedProps>;
+  class WithVideo extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -10,7 +27,7 @@ const withVideo = (Component) => {
       };
 
       this._setPlayingFilm = this._setPlayingFilm.bind(this);
-      this._handleSmallMovieCardHover = this._handleSmallMovieCardHover.bind(this);
+      // this._handleSmallMovieCardHover = this._handleSmallMovieCardHover.bind(this);
     }
 
     _setPlayingFilm(isPlaying) {
@@ -19,11 +36,11 @@ const withVideo = (Component) => {
       });
     }
 
-    _handleSmallMovieCardHover(movie) {
-      this.setState({
-        activeCard: movie,
-      });
-    }
+    // _handleSmallMovieCardHover(movie) {
+    //   this.setState({
+    //     activeCard: movie,
+    //   });
+    // }
 
     render() {
       const {isPlaying} = this.state;
@@ -32,12 +49,10 @@ const withVideo = (Component) => {
         {...this.props}
         isPlaying={isPlaying}
         setPlayingFilm={this._setPlayingFilm}
-        handleSmallMovieCardHover={this._handleSmallMovieCardHover}
+        // handleSmallMovieCardHover={this._handleSmallMovieCardHover}
       />;
     }
   }
-
-  WithVideo.propTypes = {};
 
   return WithVideo;
 };

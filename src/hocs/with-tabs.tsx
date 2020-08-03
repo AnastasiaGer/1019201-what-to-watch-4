@@ -2,8 +2,19 @@ import * as React from 'react';
 
 import Tabs from '../components/tabs/tabs';
 
+interface State {
+  activeTab: string;
+}
+
+interface InjectedProps {
+  activeTab: string;
+  handleTabClick: (activeTab: string) => void;
+  getTabs: () => void;
+}
+
 const withTabs = (Component) => {
-  class WithTabs extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  class WithTabs extends React.PureComponent<P, State> {
     constructor(props) {
       super(props);
 

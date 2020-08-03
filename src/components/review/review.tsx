@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as moment from 'moment';
 import {CustomPropTypes} from '../../utils/props';
-import {getRatingFormat} from '../../utils/utils';
+import {getRatingFormat} from '../../utils';
 
 
 const Review = ({movieReview}) => {

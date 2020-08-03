@@ -1,14 +1,29 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Operations as DataOperations} from '../reducer/data/data';
 import {getCurrentMovieById} from '../reducer/app-state/selectors';
 import {CustomPropTypes} from '../utils/props';
 import {ReviewLength} from '../const';
 import {getIsReviewSending, getIsDispatchError} from '../reducer/data/selectors';
+import {MovieType} from '../types'
+interface Props {
+  onReviewSubmit(movieId: number, review: {
+    rating: number;
+    comment: string;
+  }): void;
+  isDataSending: boolean;
+  isDispatchError: boolean;
+  currentMovie: MovieType;
+}
+
+interface State {
+  comment: string;
+  rating: number;
+  isSubmitDisabled: boolean;
+}
 
 const withReview = (Component) => {
-  class WithReview extends React.PureComponent {
+  class WithReview extends React.PureComponent<Props, State> {
     constructor(props) {
       super(props);
 
@@ -64,13 +79,6 @@ const withReview = (Component) => {
       );
     }
   }
-
-  WithReview.propTypes = {
-    currentMovie: CustomPropTypes.MOVIE,
-    isDataSending: PropTypes.bool.isRequired,
-    isDispatchError: PropTypes.bool.isRequired,
-    onReviewSubmit: PropTypes.func.isRequired,
-  };
 
   const mapStateToProps = (state, ownProps) => ({
     currentMovie: getCurrentMovieById(state, ownProps),

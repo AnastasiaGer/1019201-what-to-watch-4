@@ -1,13 +1,20 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {MAX_SHOWN_MOVIES_LIKE_THIS, PageNames} from '../const';
-import {CustomPropTypes} from '../utils/props';
 import ShowMoreButton from '../components/show-more-btn/show-more-btn';
 import {getFilteredMoviesByGenre, getFilteredMoviesLikeThis} from '../reducer/data/selectors';
+import {MovieType} from '../types'
+
+interface Props {
+  movies: Array<MovieType>;
+}
+
+interface State {
+  shownMovies: Array<MovieType>;
+}
 
 const withShowMore = (Component) => {
-  class WithShowMore extends React.PureComponent {
+  class WithShowMore extends React.PureComponent<Props, State> {
     constructor(props) {
       super(props);
 
@@ -57,10 +64,6 @@ const withShowMore = (Component) => {
       );
     }
   }
-
-  WithShowMore.propTypes = {
-    movies: PropTypes.arrayOf(CustomPropTypes.MOVIE).isRequired,
-  };
 
   const mapStateToProps = (state, ownProps) => {
     if (ownProps.currentPage !== PageNames.MAIN) {

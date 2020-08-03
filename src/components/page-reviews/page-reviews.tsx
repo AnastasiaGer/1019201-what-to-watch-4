@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import Review from '../review/review';
 
 import {CustomPropTypes} from '../../utils/props';
-import {sliceReviews} from '../../utils/utils';
+import {sliceReviews} from '../../utils';
 
 import {getMovieReviews} from '../../reducer/data/selectors';
 
