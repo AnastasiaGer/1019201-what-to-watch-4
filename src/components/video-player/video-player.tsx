@@ -1,12 +1,12 @@
-import React, {PureComponent, createRef} from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import {CustomPropTypes} from '../../utils/props.js';
 
-export default class VideoPlayer extends PureComponent {
+export default class VideoPlayer extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this._video = createRef();
+    this._video = React.createRef();
     this._videoPlayerSetTimeout = null;
   }
 

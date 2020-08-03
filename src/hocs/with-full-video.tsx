@@ -1,9 +1,9 @@
-import React, {PureComponent, createRef} from 'react';
+import * as React from 'react';
 import {Time} from '../const';
 import {CustomPropTypes} from '../utils/props';
 
 const withVideoControls = (Component) => {
-  class WithVideoControls extends PureComponent {
+  class WithVideoControls extends React.PureComponent {
     constructor(props) {
       super(props);
 
@@ -13,7 +13,7 @@ const withVideoControls = (Component) => {
         isPlaying: true,
       };
 
-      this._videoRef = createRef();
+      this._videoRef = React.createRef();
 
       this._handleIsPlayingChange = this._handleIsPlayingChange.bind(this);
       this._handleSetFullScreen = this._handleSetFullScreen.bind(this);

@@ -1,11 +1,11 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
-import {AuthorizationStatus, AppRoute} from "../../const.js";
-import {CustomPropTypes} from '../../utils/props.js';
+import {AuthorizationStatus, AppRoute} from "../../const";
+import {CustomPropTypes} from '../../utils/props';
 import {connect} from 'react-redux';
-import {getAuthorizationStatus} from '../../reducer/user/selectors.js';
+import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import history from '../../history';
-import {Operations as DataOperations} from '../../reducer/data/data.js';
+import {Operations as DataOperations} from '../../reducer/data/data';
 
 const MyListButton = ({authorizationStatus, movie, changeIsMovieFavorite}) => {
   const handleMovieListButtonClick = (isFavorite) => {

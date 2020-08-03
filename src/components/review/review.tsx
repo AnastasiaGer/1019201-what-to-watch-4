@@ -1,7 +1,7 @@
-import React from 'react';
-import moment from 'moment';
-import {CustomPropTypes} from '../../utils/props.js';
-import {getRatingFormat} from '../../utils/utils.js';
+import * as React from 'react';
+import * as moment from 'moment';
+import {CustomPropTypes} from '../../utils/props';
+import {getRatingFormat} from '../../utils/utils';
 
 
 const Review = ({movieReview}) => {

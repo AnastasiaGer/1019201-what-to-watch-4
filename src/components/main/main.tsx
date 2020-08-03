@@ -1,20 +1,20 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import {connect} from 'react-redux';
 
-import MoviesList from '../movies-list/movies-list.jsx';
-import GenresList from "../genres-list/genres-list.jsx";
-import PageHeader from '../page-header/page-header.jsx';
-import PageFooter from '../page-footer/page-footer.jsx';
-import MyListButton from '../my-list-button/my-list-button.jsx';
+import MoviesList from '../movies-list/movies-list';
+import GenresList from "../genres-list/genres-list";
+import PageHeader from '../page-header/page-header';
+import PageFooter from '../page-footer/page-footer';
+import MyListButton from '../my-list-button/my-list-button';
 
-import {CustomPropTypes} from '../../utils/props.js';
-import {AppRoute, PageNames} from "../../const.js";
+import {CustomPropTypes} from '../../utils/props';
+import {AppRoute, PageNames} from "../../const";
 
 import {getMovieCard} from '../../reducer/data/selectors';
 
-import withTabs from '../../hocs/with-tabs.js';
+import withTabs from '../../hocs/with-tabs';
 import withShowMore from '../../hocs/with-show-more';
 
 const MoviesListWrapped = withShowMore(withTabs(MoviesList));

@@ -1,16 +1,16 @@
-import React, {PureComponent} from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 
-import PageOverview from '../page-overview/page-overview.jsx';
-import PageDetails from '../page-details/page-details.jsx';
-import PageReviews from '../page-reviews/page-reviews.jsx';
-import MoviesList from '../movies-list/movies-list.jsx';
-import PageFooter from '../page-footer/page-footer.jsx';
-import MovieCardHero from '../movie-card-hero/movie-card-hero.jsx';
+import PageOverview from '../page-overview/page-overview';
+import PageDetails from '../page-details/page-details';
+import PageReviews from '../page-reviews/page-reviews';
+import MoviesList from '../movies-list/movies-list';
+import PageFooter from '../page-footer/page-footer';
+import MovieCardHero from '../movie-card-hero/movie-card-hero';
 
-import {CustomPropTypes} from '../../utils/props.js';
-import {PageNames} from "../../const.js";
+import {CustomPropTypes} from '../../utils/props';
+import {PageNames} from "../../const";
 
 import {ActionCreator} from '../../reducer/app-state/app-state';
 import {Operations as DataOperations} from "../../reducer/data/data";
@@ -18,7 +18,7 @@ import {Operations as DataOperations} from "../../reducer/data/data";
 import withShowMore from '../../hocs/with-show-more';
 
 const MoviesListWrapped = withShowMore(MoviesList);
-class MoviePage extends PureComponent {
+class MoviePage extends React.PureComponent {
   constructor(props) {
     super(props);
   }

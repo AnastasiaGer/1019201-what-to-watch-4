@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
-import {CustomPropTypes} from '../../utils/props.js';
-import history from "../../history.js";
+import {CustomPropTypes} from '../../utils/props';
+import history from "../../history";
 
 const FullVideoPlayer = ({movieCard, children,
   duration,

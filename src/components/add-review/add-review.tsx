@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
-import PageHeader from '../page-header/page-header.jsx';
-import {CustomPropTypes} from '../../utils/props.js';
+import PageHeader from '../page-header/page-header';
+import {CustomPropTypes} from '../../utils/props';
 import {ReviewLength, reviewSubmitButton, NUMBER_OF_RATINGS} from '../../const';
-import {PageNames, AppRoute} from "../../const.js";
+import {PageNames, AppRoute} from "../../const";
 import {Link} from 'react-router-dom';
 
 const AddReview = ({currentMovie, isReviewSending, isDispatchError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, isSubmitDisabled}) => {

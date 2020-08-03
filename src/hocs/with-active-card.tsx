@@ -1,7 +1,7 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
 
 const withActiveCard = (Component) => {
-  class WithActiveCard extends PureComponent {
+  class WithActiveCard extends React.PureComponent {
     constructor(props) {
       super(props);
 

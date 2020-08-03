@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import {Link} from "react-router-dom";
-import {AppRoute} from "../../const.js";
+import {AppRoute} from "../../const";
 
 const PageFooter = () => {
   return (

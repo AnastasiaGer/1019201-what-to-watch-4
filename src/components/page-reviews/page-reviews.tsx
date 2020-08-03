@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import Review from '../review/review.jsx';
+import Review from '../review/review';
 
-import {CustomPropTypes} from '../../utils/props.js';
+import {CustomPropTypes} from '../../utils/props';
 import {sliceReviews} from '../../utils/utils';
 
 import {getMovieReviews} from '../../reducer/data/selectors';

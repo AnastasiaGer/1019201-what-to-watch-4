@@ -1,5 +1,5 @@
-import React from 'react';
-import {CustomPropTypes} from '../../utils/props.js';
+import * as React from 'react';
+import {CustomPropTypes} from '../../utils/props';
 
 
 const PageDetails = (movie) => {

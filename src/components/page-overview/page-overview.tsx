@@ -1,7 +1,7 @@
-import React from 'react';
-import {CustomPropTypes} from '../../utils/props.js';
+import * as React from 'react';
+import {CustomPropTypes} from '../../utils/props';
 
-import {RatingLevel} from '../../const.js';
+import {RatingLevel} from '../../const';
 
 const getMovieRatingDescription = (rating) => {
   let ratingLevel = ``;

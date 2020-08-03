@@ -1,22 +1,22 @@
-import React, {PureComponent, createRef} from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import PageHeader from '../page-header/page-header.jsx';
-import PageFooter from '../page-footer/page-footer.jsx';
+import PageHeader from '../page-header/page-header';
+import PageFooter from '../page-footer/page-footer';
 
 import {PageNames} from '../../const';
 
-import {ActionCreator, Operations as UserOperations} from '../../reducer/user/user.js';
-import {getAuthorizationError} from '../../reducer/user/selectors.js';
+import {ActionCreator, Operations as UserOperations} from '../../reducer/user/user';
+import {getAuthorizationError} from '../../reducer/user/selectors';
 
 
-class SignIn extends PureComponent {
+class SignIn extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.loginRef = createRef();
-    this.passwordRef = createRef();
+    this.loginRef = React.createRef();
+    this.passwordRef = React.createRef();
 
     this._handleSubmitClick = this._handleSubmitClick.bind(this);
   }

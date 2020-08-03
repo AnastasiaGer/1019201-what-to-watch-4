@@ -1,15 +1,14 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Operations as DataOperations} from '../reducer/data/data.js';
-import {getCurrentMovieById} from '../reducer/app-state/selectors.js';
+import {Operations as DataOperations} from '../reducer/data/data';
+import {getCurrentMovieById} from '../reducer/app-state/selectors';
 import {CustomPropTypes} from '../utils/props';
 import {ReviewLength} from '../const';
-
-import {getIsReviewSending, getIsDispatchError} from '../reducer/data/selectors.js';
+import {getIsReviewSending, getIsDispatchError} from '../reducer/data/selectors';
 
 const withReview = (Component) => {
-  class WithReview extends PureComponent {
+  class WithReview extends React.PureComponent {
     constructor(props) {
       super(props);
 

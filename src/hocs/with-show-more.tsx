@@ -1,13 +1,13 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {MAX_SHOWN_MOVIES_LIKE_THIS, PageNames} from '../const';
-import {CustomPropTypes} from '../utils/props.js';
-import ShowMoreButton from '../components/show-more-btn/show-more-btn.jsx';
+import {CustomPropTypes} from '../utils/props';
+import ShowMoreButton from '../components/show-more-btn/show-more-btn';
 import {getFilteredMoviesByGenre, getFilteredMoviesLikeThis} from '../reducer/data/selectors';
 
 const withShowMore = (Component) => {
-  class WithShowMore extends PureComponent {
+  class WithShowMore extends React.PureComponent {
     constructor(props) {
       super(props);
 

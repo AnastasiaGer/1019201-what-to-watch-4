@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {AppRoute, AuthorizationStatus, PageNames} from '../../const';
-import {getAuthorizationStatus, getUserInfo} from '../../reducer/user/selectors.js';
+import {getAuthorizationStatus, getUserInfo} from '../../reducer/user/selectors';
 import {Link} from "react-router-dom";
 
 const PageHeader = ({currentPage, isSignedIn, userInfo, children}) => {

@@ -1,9 +1,9 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
 
-import Tabs from '../components/tabs/tabs.jsx';
+import Tabs from '../components/tabs/tabs';
 
 const withTabs = (Component) => {
-  class WithTabs extends PureComponent {
+  class WithTabs extends React.PureComponent {
     constructor(props) {
       super(props);
 

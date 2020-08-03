@@ -1,13 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import PageHeader from '../page-header/page-header.jsx';
-import MyListButton from '../my-list-button/my-list-button.jsx';
+import PageHeader from '../page-header/page-header';
+import MyListButton from '../my-list-button/my-list-button';
 
-import {CustomPropTypes} from '../../utils/props.js';
-import {AuthorizationStatus, AppRoute, PageNames} from "../../const.js";
+import {CustomPropTypes} from '../../utils/props';
+import {AuthorizationStatus, AppRoute, PageNames} from "../../const";
 
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 const MovieCardHero = ({currentMovie, isSignedIn}) => {

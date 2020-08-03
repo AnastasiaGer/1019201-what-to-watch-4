@@ -1,32 +1,32 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import {Switch, Route, Router, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 
-import Main from '../main/main.jsx';
-import MoviePage from "../movie-page/movie-page.jsx";
-import MyList from "../my-list/my-list.jsx";
-import SignIn from '../sign-in/sign-in.jsx';
-import AddReview from '../add-review/add-review.jsx';
-import PrivateRoute from "../private-route/private-route.jsx";
-import FullVideoPlayer from '../full-video-player/full-video-player.jsx';
-import ErrorScreen from '../error-msg/error-msg.jsx';
-import Loading from '../loading/loading.jsx';
+import Main from '../main/main';
+import MoviePage from "../movie-page/movie-page";
+import MyList from "../my-list/my-list";
+import SignIn from '../sign-in/sign-in';
+import AddReview from '../add-review/add-review';
+import PrivateRoute from "../private-route/private-route";
+import FullVideoPlayer from '../full-video-player/full-video-player';
+import ErrorScreen from '../error-msg/error-msg';
+import Loading from '../loading/loading';
 
-import history from "../../history.js";
-import {CustomPropTypes} from '../../utils/props.js';
+import history from "../../history";
+import {CustomPropTypes} from '../../utils/props';
 import {AppRoute, AuthorizationStatus, ALL_GENRES} from '../../const';
 
-import withReview from '../../hocs/with-review.js';
-import withTabs from '../../hocs/with-tabs.js';
-import withVideoControls from '../../hocs/with-full-video.js';
+import withReview from '../../hocs/with-review';
+import withTabs from '../../hocs/with-tabs';
+import withVideoControls from '../../hocs/with-full-video';
 
 import {getMovies, getMovieCard, getIsLoadError, getIsLoading} from '../../reducer/data/selectors';
 import {ActionCreator} from '../../reducer/app-state/app-state';
 import {getIsMoviePlayerActive} from '../../reducer/app-state/selectors';
 import {getAuthorizationStatus, getAuthorizationProgress} from '../../reducer/user/selectors';
 import {Operations as UserOperation} from '../../reducer/user/user';
-import {Operations as DataOperations} from '../../reducer/data/data.js';
+import {Operations as DataOperations} from '../../reducer/data/data';
 
 const FullVideoPlayerWrapped = withVideoControls(FullVideoPlayer);
 const AddReviewWrapped = withReview(AddReview);
