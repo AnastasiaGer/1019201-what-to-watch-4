@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import PageHeader from '../page-header/page-header';
@@ -10,8 +9,17 @@ import {PageNames} from '../../const';
 import {ActionCreator, Operations as UserOperations} from '../../reducer/user/user';
 import {getAuthorizationError} from '../../reducer/user/selectors';
 
-
-class SignIn extends React.PureComponent {
+interface Props {
+  isAuthorizationError: boolean;
+  clearAuthError(): void;
+  onFormSubmit(userData: {
+    login: string;
+    password: string;
+  }): void;
+}
+class SignIn extends React.PureComponent<Props> {
+  private loginRef: React.RefObject<HTMLInputElement>;
+  private passwordRef: React.RefObject<HTMLInputElement>;
   constructor(props) {
     super(props);
 
@@ -92,12 +100,6 @@ class SignIn extends React.PureComponent {
     );
   }
 }
-
-SignIn.propTypes = {
-  onFormSubmit: PropTypes.func.isRequired,
-  isAuthorizationError: PropTypes.bool.isRequired,
-  clearAuthError: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = (state) => ({
   isAuthorizationError: getAuthorizationError(state),
