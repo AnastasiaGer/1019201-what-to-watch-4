@@ -1,15 +1,19 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import {ReviewType} from "../../types";
 import {connect} from 'react-redux';
 
 import Review from '../review/review';
 
-import {CustomPropTypes} from '../../utils/props';
 import {sliceReviews} from '../../utils';
 
 import {getMovieReviews} from '../../reducer/data/selectors';
 
-const PageReviews = ({movieReviews}) => {
+interface Props {
+  movieReviews: Array<ReviewType>;
+}
+
+const PageReviews: React.FC<Props> = (props: Props) => {
+  const {movieReviews} = props;
   const slicedReviews = sliceReviews(movieReviews);
 
   return (
@@ -25,12 +29,6 @@ const PageReviews = ({movieReviews}) => {
       </div>
     </React.Fragment>
   );
-};
-PageReviews.propTypes = {
-  movieReviews: PropTypes.PropTypes.oneOfType([
-    PropTypes.arrayOf(CustomPropTypes.REVIEWS),
-    PropTypes.bool,
-  ]),
 };
 
 const mapStateToProps = (state) => ({
