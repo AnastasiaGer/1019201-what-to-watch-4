@@ -1,15 +1,25 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import PageHeader from '../page-header/page-header';
-import {CustomPropTypes} from '../../utils/props';
 import {ReviewLength, reviewSubmitButton, NUMBER_OF_RATINGS} from '../../const';
 import {PageNames, AppRoute} from "../../const";
 import {Link} from 'react-router-dom';
+import {MovieType} from '../../types';
 
-const AddReview = ({currentMovie, isReviewSending, isDispatchError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, isSubmitDisabled}) => {
+interface Props {
+  currentMovie: MovieType;
+  isReviewSending: boolean,
+  isDispatchError: boolean,
+  onSubmitClick(): (evt: React.FormEvent<HTMLFormElement>) => void;
+  onFormChange(): (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onRatingChange(): void,
+  onReviewChange(): void,
+  isSubmitDisabled: boolean,
+}
+
+const AddReview : React.FunctionComponent<Props> = (props: Props) => {
+  const {currentMovie, isReviewSending, isDispatchError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, isSubmitDisabled} = props;
   const {backgroundColor, title, background, poster} = currentMovie;
-  const isRadioDisabled = isReviewSending ? true : false;
-
+  const isRadioDisabled = Boolean(onReviewChange);
   return (
     <React.Fragment>
       <section
@@ -105,17 +115,6 @@ const AddReview = ({currentMovie, isReviewSending, isDispatchError, onSubmitClic
       </section>
     </React.Fragment>
   );
-};
-
-AddReview.propTypes = {
-  currentMovie: CustomPropTypes.MOVIE,
-  isReviewSending: PropTypes.bool,
-  isDispatchError: PropTypes.bool,
-  onSubmitClick: PropTypes.func,
-  onFormChange: PropTypes.func,
-  onRatingChange: PropTypes.func,
-  onReviewChange: PropTypes.func,
-  isSubmitDisabled: PropTypes.bool,
 };
 
 export default AddReview;
