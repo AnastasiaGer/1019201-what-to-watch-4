@@ -1,7 +1,12 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 
-const Tabs = ({activeTab, onTabClick}) => {
+interface Props {
+  onTabClick: (Tab: string) => void;
+  activeTab: string;
+}
+
+const Tabs: React.FunctionComponent<Props> = (props: Props) => {
+  const {activeTab, onTabClick} = props;
   const activeClass = (tab) => activeTab === tab ? `movie-nav__item--active` : ``;
 
   const handleTabClick = (tab) => {
@@ -26,11 +31,6 @@ const Tabs = ({activeTab, onTabClick}) => {
       </ul>
     </nav>
   );
-};
-
-Tabs.propTypes = {
-  activeTab: PropTypes.string,
-  onTabClick: PropTypes.func,
 };
 
 export default Tabs;
