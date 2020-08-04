@@ -1,5 +1,5 @@
 import * as React from "react";
-import PropTypes from "prop-types";
+import {MovieType, ReviewType} from "../../types";
 import {connect} from 'react-redux';
 
 import PageOverview from '../page-overview/page-overview';
@@ -9,7 +9,6 @@ import MoviesList from '../movies-list/movies-list';
 import PageFooter from '../page-footer/page-footer';
 import MovieCardHero from '../movie-card-hero/movie-card-hero';
 
-import {CustomPropTypes} from '../../utils/props';
 import {PageNames} from "../../const";
 
 import {ActionCreator} from '../../reducer/app-state/app-state';
@@ -17,8 +16,16 @@ import {Operations as DataOperations} from "../../reducer/data/data";
 
 import withShowMore from '../../hocs/with-show-more';
 
+interface Props {
+  currentMovie: MovieType;
+  loadMovieInformation(movie: MovieType): void;
+  movieReviews: Array<ReviewType>;
+  activeTab: string;
+  renderTabs(): void;
+}
+
 const MoviesListWrapped = withShowMore(MoviesList);
-class MoviePage extends React.PureComponent {
+class MoviePage extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
   }
@@ -43,19 +50,11 @@ class MoviePage extends React.PureComponent {
       switch (activeTab) {
         case `Overview`:
           return <PageOverview
-            rating={currentMovie.rating}
-            scores={currentMovie.scores}
-            description={currentMovie.description}
-            director={currentMovie.director}
-            starring={currentMovie.starring}
+          currentMovie={currentMovie}
           />;
         case `Details`:
           return <PageDetails
-            director={currentMovie.director}
-            genre={currentMovie.genre}
-            movieDurationTime={currentMovie.movieDurationTime}
-            starring={currentMovie.starring}
-            date={currentMovie.date}
+          currentMovie={currentMovie}
           />;
         case `Reviews`:
           return <PageReviews
@@ -104,17 +103,6 @@ class MoviePage extends React.PureComponent {
     );
   }
 }
-
-MoviePage.propTypes = {
-  currentMovie: CustomPropTypes.MOVIE,
-  movieReviews: PropTypes.PropTypes.oneOfType([
-    PropTypes.arrayOf(CustomPropTypes.REVIEWS),
-    PropTypes.bool,
-  ]),
-  renderTabs: PropTypes.func.isRequired,
-  activeTab: PropTypes.string.isRequired,
-  loadMovieInformation: PropTypes.func.isRequired,
-};
 
 const mapDispatchToProps = (dispatch) => ({
   loadMovieInformation(movie) {

@@ -4,7 +4,7 @@ import {MovieType} from "../../types";
 import {RatingLevel} from '../../const';
 
 interface Props {
-  movieCard: MovieType;
+  currentMovie: MovieType;
 }
 
 const getMovieRatingDescription = (rating) => {
@@ -25,8 +25,8 @@ const getMovieRatingDescription = (rating) => {
 
 
 const PageOverview: React.FC<Props> = (props: Props) => {
-  const {movieCard}= props;
-  const {rating, scores, description, director, starring} = movieCard;
+  const {currentMovie}= props;
+  const {rating, scores, description, director, starring} = currentMovie;
   return (
     <>
       <div className="movie-rating">

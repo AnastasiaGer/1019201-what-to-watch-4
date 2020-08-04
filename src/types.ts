@@ -17,9 +17,6 @@ export interface MovieType {
   isFavorite: boolean;
   videoUrl: string; //
 }
-
-export type MoviesType = MovieType[];
-
 export interface UserType {
   id: number;
   email: string;
@@ -37,5 +34,3 @@ export interface ReviewType {
   comment: string;
   date: string;
 }
-
-export type ReviewsType = ReviewType[];

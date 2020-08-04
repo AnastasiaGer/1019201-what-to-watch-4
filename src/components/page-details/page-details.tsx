@@ -2,12 +2,12 @@ import * as React from 'react';
 import {MovieType} from "../../types";
 
 interface Props {
-  movie: MovieType;
+  currentMovie: MovieType;
 }
 
 const PageDetails: React.FC<Props> = (props: Props) => {
-  const {movie} = props;
-  const {director, starring, genre, movieDurationTime, date} = movie;
+  const {currentMovie} = props;
+  const {director, starring, genre, movieDurationTime, date} = currentMovie;
   return (
     <div className="movie-card__text movie-card__row">
       <div className="movie-card__text-col">
