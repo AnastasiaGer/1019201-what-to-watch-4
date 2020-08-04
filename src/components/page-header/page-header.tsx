@@ -1,11 +1,19 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import {MovieType, UserType} from "../../types";
 import {connect} from "react-redux";
 import {AppRoute, AuthorizationStatus, PageNames} from '../../const';
 import {getAuthorizationStatus, getUserInfo} from '../../reducer/user/selectors';
 import {Link} from "react-router-dom";
 
-const PageHeader = ({currentPage, isSignedIn, userInfo, children}) => {
+interface Props {
+  currentPage: MovieType;
+  isSignedIn: boolean;
+  userInfo: UserType;
+  children: JSX.Element;
+}
+
+const PageHeader: React.FC<Props> = (props: Props) => {
+  const {currentPage, isSignedIn, userInfo, children}= props;
 
   const isSignInPage = currentPage === PageNames.SIGN_IN;
   const isMyListPage = currentPage === PageNames.MY_LIST;
@@ -25,7 +33,7 @@ const PageHeader = ({currentPage, isSignedIn, userInfo, children}) => {
       {isSignedIn &&
         <Link to={AppRoute.MY_LIST}>
           <div className="user-block__avatar">
-            <img src={userInfo.avatarUrl} alt={userInfo.name} width="63" height="63" />
+            <img src={userInfo.avatarURL} alt={userInfo.name} width="63" height="63" />
           </div>
         </Link>}
       {!isSignedIn &&
@@ -56,18 +64,6 @@ const PageHeader = ({currentPage, isSignedIn, userInfo, children}) => {
       {!isSignInPage && userBlockElement}
     </header>
   );
-};
-
-PageHeader.propTypes = {
-  currentPage: PropTypes.string,
-  isSignedIn: PropTypes.bool,
-  userInfo: PropTypes.shape({
-    id: PropTypes.number,
-    email: PropTypes.string,
-    name: PropTypes.string,
-    avatarUrl: PropTypes.string,
-  }),
-  children: PropTypes.element,
 };
 
 const mapStateToProps = (state) => ({
