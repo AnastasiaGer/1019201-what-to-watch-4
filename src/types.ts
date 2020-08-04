@@ -18,6 +18,8 @@ export interface MovieType {
   videoUrl: string; //
 }
 
+export type MoviesType = MovieType[];
+
 export interface UserType {
   id: number;
   email: string;
@@ -35,3 +37,5 @@ export interface CommentType {
   comment: string;
   date: string;
 }
+
+export type CommentsType = CommentType[];

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import {connect} from 'react-redux';
 
@@ -9,8 +8,8 @@ import PageHeader from '../page-header/page-header';
 import PageFooter from '../page-footer/page-footer';
 import MyListButton from '../my-list-button/my-list-button';
 
-import {CustomPropTypes} from '../../utils/props';
 import {AppRoute, PageNames} from "../../const";
+import {MovieType} from "../../types";
 
 import {getMovieCard} from '../../reducer/data/selectors';
 
@@ -20,7 +19,14 @@ import withShowMore from '../../hocs/with-show-more';
 const MoviesListWrapped = withShowMore(withTabs(MoviesList));
 const GenresListWrapped = withTabs(GenresList);
 
-const Main = ({movieCard}) => {
+
+interface Props {
+  movieCard: MovieType;
+  onPlayClick: () => void;
+}
+
+const Main: React.FunctionComponent<Props> = (props: Props) => {
+  const {movieCard} = props;
   const {title, genre, date, background, poster, id} = movieCard;
 
   return (
@@ -81,11 +87,6 @@ const Main = ({movieCard}) => {
       </div>
     </React.Fragment>
   );
-};
-
-Main.propTypes = {
-  movieCard: CustomPropTypes.MOVIE,
-  onPlayClick: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
