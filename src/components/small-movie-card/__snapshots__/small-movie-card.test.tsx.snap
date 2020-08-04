@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SmallMovieCard Should render correctly movie card 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <a
+    className="small-movie-card__link"
+    href="/film/123890"
+    onClick={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <video
+        className="player__video"
+        poster="img/snatch.jpg"
+      />
+      <img
+        alt="Snatch"
+        height="175"
+        src="img/snatch.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      Snatch
+    </h3>
+  </a>
+</article>
+`;

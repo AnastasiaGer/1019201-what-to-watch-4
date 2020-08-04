@@ -5,8 +5,8 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../reducer/name-space';
 import {Router} from 'react-router-dom';
-import history from '../../history.js';
-import FullVideoPlayer from './full-video-player.js';
+import history from '../../history';
+import FullVideoPlayer from './full-video-player';
 
 const movie = movies[0];
 const mockStore = configureStore([]);

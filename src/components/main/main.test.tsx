@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import Main from "./main.js";
+import Main from "./main";
 import {movieCard, movies, reviews} from '../../test-data';
 import NameSpace from '../../reducer/name-space';
 import configureStore from 'redux-mock-store';
