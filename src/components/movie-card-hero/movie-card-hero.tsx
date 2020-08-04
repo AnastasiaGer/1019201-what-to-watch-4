@@ -1,16 +1,22 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import PageHeader from '../page-header/page-header';
 import MyListButton from '../my-list-button/my-list-button';
 
-import {CustomPropTypes} from '../../utils/props';
 import {AuthorizationStatus, AppRoute, PageNames} from "../../const";
+import {MovieType} from "../../types";
 
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
-const MovieCardHero = ({currentMovie, isSignedIn}) => {
+
+interface Props {
+  currentMovie: MovieType;
+  isSignedIn: boolean;
+}
+const MovieCardHero: React.FunctionComponent<Props> = (props: Props) => {
+  const {currentMovie, isSignedIn} = props;
+  
   const addReviewButton = (
     <Link
       to={`${AppRoute.MOVIE_PAGE}/${currentMovie.id}/review`}
@@ -54,11 +60,6 @@ const MovieCardHero = ({currentMovie, isSignedIn}) => {
       </div>
     </div>
   );
-};
-
-MovieCardHero.propTypes = {
-  currentMovie: CustomPropTypes.MOVIE,
-  isSignedIn: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
