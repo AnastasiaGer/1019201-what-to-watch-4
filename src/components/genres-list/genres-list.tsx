@@ -1,11 +1,17 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer/app-state/app-state';
 import {getMoviesGenres} from '../../reducer/data/selectors';
 import {getActiveGenre} from '../../reducer/app-state/selectors';
 
-const GenresList = ({genres, activeGenre, onGenreItemClick}) => {
+interface Props {
+  genres: Array<string>;
+  activeGenre: string;
+  onGenreItemClick(genre: string): void;
+}
+
+const GenresList: React.FC<Props> = (props: Props) => {
+  const {genres, activeGenre, onGenreItemClick} = props;
   return (
     <ul className="catalog__genres-list">
       {genres.map((genre, index) => {
@@ -23,12 +29,6 @@ const GenresList = ({genres, activeGenre, onGenreItemClick}) => {
       })}
     </ul>
   );
-};
-
-GenresList.propTypes = {
-  genres: PropTypes.arrayOf(PropTypes.string.isRequired),
-  activeGenre: PropTypes.string,
-  onGenreItemClick: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
