@@ -1,11 +1,17 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import {MovieType} from "../../types";
 import VideoPlayer from '../video-player/video-player';
-import {CustomPropTypes} from '../../utils/props';
+
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const";
 
-const SmallMovieCard = (props) => {
+interface Props {
+  movie: MovieType;
+  isPlaying: boolean,
+  setPlayingFilm: (b: boolean) => boolean;
+}
+
+const SmallMovieCard: React.FC<Props> = (props: Props) => {
   const {movie, isPlaying, setPlayingFilm} = props;
 
   return (
@@ -22,7 +28,7 @@ const SmallMovieCard = (props) => {
           <VideoPlayer
             movie={movie}
             isPlaying={isPlaying}
-            source={movie.videoPreview}
+            src={movie.preview}
             poster={movie.picture}
           />
           <img src={movie.poster} alt={movie.title} width="280" height="175" />
@@ -31,14 +37,6 @@ const SmallMovieCard = (props) => {
       </Link>
     </article>
   );
-};
-
-
-SmallMovieCard.propTypes = {
-  movie: CustomPropTypes.MOVIE,
-  onMovieCardHover: PropTypes.func,
-  isPlaying: PropTypes.bool,
-  setPlayingFilm: PropTypes.func,
 };
 
 export default SmallMovieCard;

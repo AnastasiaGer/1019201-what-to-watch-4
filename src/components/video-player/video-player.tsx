@@ -1,8 +1,16 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import {CustomPropTypes} from '../../utils/props.js';
+import {MovieType} from "../../types";
 
-export default class VideoPlayer extends React.PureComponent {
+interface Props {
+  movie: MovieType;
+  isPlaying: boolean,
+  src: string;
+  poster: string;
+}
+
+class VideoPlayer extends React.PureComponent<Props> {
+  private _video: React.RefObject<HTMLVideoElement>;
+  private _videoPlayerSetTimeout: NodeJS.Timeout;
   constructor(props) {
     super(props);
 
@@ -12,10 +20,10 @@ export default class VideoPlayer extends React.PureComponent {
 
   componentDidMount() {
     const {movie} = this.props;
-    const {videoPreview, poster} = movie;
+    const {preview, poster} = movie;
     const video = this._video.current;
 
-    video.src = videoPreview;
+    video.src = preview;
     video.poster = poster;
     video.muted = true;
   }
@@ -50,7 +58,4 @@ export default class VideoPlayer extends React.PureComponent {
   }
 }
 
-VideoPlayer.propTypes = {
-  movie: CustomPropTypes.MOVIE,
-  isPlaying: PropTypes.bool
-};
+export default VideoPlayer;
