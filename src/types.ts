@@ -27,7 +27,7 @@ export interface UserType {
   avatarURL: string;
 }
 
-export interface CommentType {
+export interface ReviewType {
   id: number;
   user: {
     id: number,
@@ -38,4 +38,4 @@ export interface CommentType {
   date: string;
 }
 
-export type CommentsType = CommentType[];
+export type ReviewsType = ReviewType[];

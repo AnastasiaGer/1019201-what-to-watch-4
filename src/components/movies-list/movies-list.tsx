@@ -1,12 +1,20 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+
+import {MovieType} from "../../types";
+
 import SmallMovieCard from '../small-movie-card/small-movie-card';
-import {CustomPropTypes} from '../../utils/props';
+
 import withVideo from "../../hocs/with-video";
 
 const SmallMovieCardWrapped = withVideo(SmallMovieCard);
 
-const MoviesList = (props) => {
+interface Props {
+  movies: Array<MovieType>;
+  render?: () => JSX.Element;
+  handleSmallMovieCardHover(): void;
+}
+
+const MoviesList: React.FC<Props> = (props: Props) => {
 
   const {movies, handleSmallMovieCardHover, render} = props;
 
@@ -26,12 +34,6 @@ const MoviesList = (props) => {
       {render()}
     </React.Fragment>
   );
-};
-
-MoviesList.propTypes = {
-  movies: PropTypes.arrayOf(CustomPropTypes.MOVIE).isRequired,
-  handleSmallMovieCardHover: PropTypes.func,
-  render: PropTypes.func
 };
 
 export default MoviesList;
