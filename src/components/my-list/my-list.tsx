@@ -12,11 +12,10 @@ import {getFavoriteMovies} from '../../reducer/data/selectors';
 
 interface Props {
   favoriteMovies: Array<MovieType>;
-  handleSmallMovieCardHover(): void;
 }
 
 const MyList: React.FC<Props> = (props: Props) => {
-  const {favoriteMovies, handleSmallMovieCardHover} = props;
+  const {favoriteMovies} = props;
 
   return (
     <React.Fragment>
@@ -30,7 +29,6 @@ const MyList: React.FC<Props> = (props: Props) => {
 
           <MoviesList
             movies={favoriteMovies}
-            handleSmallMovieCardHover={handleSmallMovieCardHover}
           />
         </section>
 

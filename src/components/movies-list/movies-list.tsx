@@ -11,12 +11,11 @@ const SmallMovieCardWrapped = withVideo(SmallMovieCard);
 interface Props {
   movies: Array<MovieType>;
   render?: () => JSX.Element;
-  handleSmallMovieCardHover(): void;
 }
 
 const MoviesList: React.FC<Props> = (props: Props) => {
 
-  const {movies, handleSmallMovieCardHover, render} = props;
+  const {movies, render} = props;
 
   return (
     <React.Fragment>
@@ -24,14 +23,13 @@ const MoviesList: React.FC<Props> = (props: Props) => {
         {movies.map((movie) => {
           return (
             <SmallMovieCardWrapped
-              key={movie.id}
               movie={movie}
-              handleSmallMovieCardHover={handleSmallMovieCardHover}
+              key={movie.id}
             />
           );
         })}
       </div>
-      {render()}
+      {render && render()}
     </React.Fragment>
   );
 };

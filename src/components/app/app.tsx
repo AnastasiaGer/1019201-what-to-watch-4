@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {Switch, Route, Router, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 
@@ -14,7 +13,6 @@ import ErrorScreen from '../error-msg/error-msg';
 import Loading from '../loading/loading';
 
 import history from "../../history";
-import {CustomPropTypes} from '../../utils/props';
 import {AppRoute, AuthorizationStatus, ALL_GENRES} from '../../const';
 
 import withReview from '../../hocs/with-review';
@@ -27,14 +25,28 @@ import {getIsMoviePlayerActive} from '../../reducer/app-state/selectors';
 import {getAuthorizationStatus, getAuthorizationProgress} from '../../reducer/user/selectors';
 import {Operations as UserOperation} from '../../reducer/user/user';
 import {Operations as DataOperations} from '../../reducer/data/data';
+import {MovieType} from "../../types";
 
 const FullVideoPlayerWrapped = withVideoControls(FullVideoPlayer);
 const AddReviewWrapped = withReview(AddReview);
 const MoviePageWrapped = withTabs(MoviePage);
 
-const App = (props) => {
-  const {movies,
-    login, authorizationStatus, isLoadError,
+interface Props {
+  isLoadError: boolean;
+  isAuthorizationProgress: boolean;
+  isLoading: boolean;
+  authorizationStatus: string;
+  setActiveGenre(genre: string): void;
+  loadMovies(): void;
+  movieCard: MovieType;
+  isVideoPlayer: boolean,
+  movies: Array<MovieType>,
+  login: string;
+}
+
+const App: React.FC<Props> = (props: Props) => {
+  const {movies, login,
+    authorizationStatus, isLoadError,
     movieCard, loadMovies, setActiveGenre, isAuthorizationProgress, isLoading
   } = props;
 
@@ -106,20 +118,6 @@ const App = (props) => {
   );
 };
 
-App.propTypes = {
-  movieCard: CustomPropTypes.MOVIE,
-  isVideoPlayer: PropTypes.bool,
-  login: PropTypes.func,
-  authorizationStatus: PropTypes.string,
-  onReviewSubmit: PropTypes.func,
-  loadMovies: PropTypes.func,
-  isLoadError: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  isAuthorizationProgress: PropTypes.bool,
-  setActiveGenre: PropTypes.func,
-  movies: PropTypes.arrayOf(CustomPropTypes.MOVIE),
-};
-
 const mapStateToProps = (state) => ({
   movieCard: getMovieCard(state),
   isVideoPlayer: getIsMoviePlayerActive(state),
@@ -143,9 +141,9 @@ const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
   },
-  onReviewSubmit(movieId, review) {
-    dispatch(DataOperations.pushReview(movieId, review));
-  },
+  // onReviewSubmit(movieId, review) {
+  //   dispatch(DataOperations.pushReview(movieId, review));
+  // },
   setActiveGenre(genre) {
     dispatch(ActionCreator.changeFilter(genre));
   },

@@ -1,4 +1,4 @@
-import {extend} from '../../utils/utils';
+import {extend} from '../../utils';
 import {AuthorizationStatus} from '../../const';
 import {adaptUser} from '../../adapters/user';
 
@@ -10,7 +10,7 @@ const initialState = {
     id: 0,
     email: ``,
     name: ``,
-    avatarUrl: ``,
+    avatarURL: ``,
   },
 };
 

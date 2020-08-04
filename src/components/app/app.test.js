@@ -33,7 +33,7 @@ describe(`App`, () => {
           id: 1,
           email: `ivanov@dmail.ru`,
           name: `Ivan`,
-          avatarUrl: `https://4.react.pages.academy/wtw/asda.jpg`,
+          avatarURL: `https://4.react.pages.academy/wtw/asda.jpg`,
         },
         message: `To be or not to be`,
       },

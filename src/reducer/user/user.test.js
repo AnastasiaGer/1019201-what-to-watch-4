@@ -63,7 +63,7 @@ describe(`User Reducer`, () => {
         id: 0,
         email: ``,
         name: ``,
-        avatarUrl: ``,
+        avatarURL: ``,
       },
     }, {
       type: ActionType.SET_AUTHOR_INFORMATION,
@@ -71,14 +71,14 @@ describe(`User Reducer`, () => {
         id: 1,
         email: `asdasda@sfdsf.ru`,
         name: `asdasda`,
-        avatarUrl: `wtw/sfdsf.ru`,
+        avatarURL: `wtw/sfdsf.ru`,
       },
     })).toEqual({
       userInfo: {
         id: 1,
         email: `asdasda@sfdsf.ru`,
         name: `asdasda`,
-        avatarUrl: `wtw/sfdsf.ru`,
+        avatarURL: `wtw/sfdsf.ru`,
       },
     });
   });

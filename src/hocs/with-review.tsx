@@ -2,7 +2,6 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {Operations as DataOperations} from '../reducer/data/data';
 import {getCurrentMovieById} from '../reducer/app-state/selectors';
-import {CustomPropTypes} from '../utils/props';
 import {ReviewLength} from '../const';
 import {getIsReviewSending, getIsDispatchError} from '../reducer/data/selectors';
 import {MovieType} from '../types'

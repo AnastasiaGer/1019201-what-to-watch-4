@@ -1,4 +1,4 @@
-import {extend} from '../../utils/utils';
+import {extend} from '../../utils';
 import {adaptMovie} from '../../adapters/movie';
 import {ActionCreator as AppStateActionCreator} from '../app-state/app-state';
 

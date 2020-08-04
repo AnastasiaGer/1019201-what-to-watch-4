@@ -24,7 +24,7 @@ describe(`SignIn`, () => {
           id: 0,
           email: ``,
           name: ``,
-          avatarUrl: ``,
+          avatarURL: ``,
         }
       },
     });
@@ -62,7 +62,7 @@ describe(`SignIn`, () => {
         id: 1,
         email: `ivanov@dmail.ru`,
         name: `Ivan`,
-        avatarUrl: `https://4.react.pages.academy/wtw/asda.jpg`,
+        avatarURL: `https://4.react.pages.academy/wtw/asda.jpg`,
       },
     });
 

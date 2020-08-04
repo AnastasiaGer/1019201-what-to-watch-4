@@ -1,5 +1,5 @@
 import {ALL_GENRES, MAX_SHOWN_MOVIES_LIKE_THIS, PageNames} from "../../const";
-import {extend} from '../../utils/utils';
+import {extend} from '../../utils';
 
 
 const initialState = {
