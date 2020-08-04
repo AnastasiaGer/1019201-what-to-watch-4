@@ -1,15 +1,27 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import {CustomPropTypes} from '../../utils/props';
 import history from "../../history";
+import {MovieType} from '../../types';
 
-const FullVideoPlayer = ({movieCard, children,
-  duration,
-  currentTime,
-  isPlaying,
-  leftTime,
-  onIsPlayingChange,
-  onSetFullScreen}) => {
+interface Props {
+  children: React.ReactNode;
+  currentTime: number;
+  duration: number;
+  isPlaying: boolean;
+  leftTime: string;
+  onIsPlayingChange: () => void;
+  onSetFullScreen: () => void;
+  movieCard: MovieType;
+}
+
+
+const FullVideoPlayer: React.FC<Props> = (props: Props) => {
+  const {movieCard, children,
+      duration,
+      currentTime,
+      isPlaying,
+      leftTime,
+      onIsPlayingChange,
+      onSetFullScreen} = props;
   const {title} = movieCard;
 
   return (
@@ -59,18 +71,6 @@ const FullVideoPlayer = ({movieCard, children,
       </div>
     </div>
   );
-};
-
-FullVideoPlayer.propTypes = {
-  children: PropTypes.element.isRequired,
-  currentTime: PropTypes.number.isRequired,
-  duration: PropTypes.number,
-  movieCard: CustomPropTypes.MOVIE,
-  isPlaying: PropTypes.bool.isRequired,
-  leftTime: PropTypes.string.isRequired,
-  onIsPlayingChange: PropTypes.func.isRequired,
-  onSetFullScreen: PropTypes.func.isRequired,
-
 };
 
 export default FullVideoPlayer;
