@@ -1,23 +1,21 @@
 import * as React from 'react';
-import ReactLoading from 'react-loading';
+import {css} from "@emotion/core";
+import PacmanLoader from "react-spinners/PacmanLoader";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+`;
 
 const Loading = () => {
-  const loaderStyles = {
-    display: `flex`,
-    width: `100%`,
-    minHeight: `100vh`,
-    justifyContent: `center`,
-    alignItems: `center`,
-  };
-
   return (
-    <div className="user-page">
-      <div className="sign-in user-page__content" style={loaderStyles}>
-        <ReactLoading
-          type="Bubbles"
-          color="#372824"
-        />
-      </div>
+    <div className="sweet-loading">
+      <PacmanLoader
+        css={override}
+        size={100}
+        color={`#150202`}
+        loading={true}
+      />
     </div>
   );
 };
