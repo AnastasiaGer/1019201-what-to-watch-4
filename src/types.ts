@@ -34,3 +34,8 @@ export interface ReviewType {
   comment: string;
   date: string;
 }
+
+export interface PostReview {
+  rating: number;
+  comment: string;
+}

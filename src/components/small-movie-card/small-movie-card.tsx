@@ -8,7 +8,7 @@ import {AppRoute} from "../../const";
 interface Props {
   movie: MovieType;
   isPlaying: boolean,
-  setPlayingFilm: (b: boolean) => boolean;
+  setPlayingFilm: (b: boolean) => void;
 }
 
 const SmallMovieCard: React.FC<Props> = (props: Props) => {

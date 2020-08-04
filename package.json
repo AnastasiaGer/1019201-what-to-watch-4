@@ -5,10 +5,14 @@
   "description": "Личный проект «Что посмотреть» от HTML Academy",
   "scripts": {
     "build": "webpack --mode production",
-    "eslint": "eslint --ext .jsx --ext .js src/",
+    "eslint": "npm run eslint.js && npm run eslint.ts",
+    "eslint.js": "eslint --ext .jsx --ext .js src/",
+    "eslint.ts": "eslint --config .eslintrc-ts.yml --ext .tsx src/",
     "start": "webpack-dev-server",
+    "test": "npm run eslint && npm run test.jest",
     "test.jest": "jest",
-    "test": "npm run eslint && npm run test.jest"
+    "update.jest": "jest -u",
+    "watch.jest": "jest --watch"
   },
   "devDependencies": {
     "@babel/core": "7.10.2",
@@ -46,7 +50,6 @@
     "axios": "0.19.2",
     "history": "4.9.0",
     "moment": "2.27.0",
-    "prop-types": "15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-loading": "2.0.3",

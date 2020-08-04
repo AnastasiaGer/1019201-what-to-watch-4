@@ -9,10 +9,10 @@ interface Props {
   currentMovie: MovieType;
   isReviewSending: boolean,
   isDispatchError: boolean,
-  onSubmitClick(): (evt: React.FormEvent<HTMLFormElement>) => void;
-  onFormChange(): (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => void;
-  onRatingChange(): void,
-  onReviewChange(): void,
+  onSubmitClick(): void;
+  onFormChange(): void;
+  onRatingChange(): void;
+  onReviewChange(): void;
   isSubmitDisabled: boolean,
   rating: number;
   comment: string;

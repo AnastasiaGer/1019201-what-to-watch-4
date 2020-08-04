@@ -9,7 +9,7 @@ interface Props {
   currentPage: MovieType;
   isSignedIn: boolean;
   userInfo: UserType;
-  children: JSX.Element;
+  children?: JSX.Element;
 }
 
 const PageHeader: React.FC<Props> = (props: Props) => {
