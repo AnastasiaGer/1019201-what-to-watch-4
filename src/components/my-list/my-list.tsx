@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import {MovieType} from "../../types";
 import {connect} from 'react-redux';
 
 import PageFooter from '../page-footer/page-footer';
@@ -7,13 +7,16 @@ import MoviesList from '../movies-list/movies-list';
 import PageHeader from '../page-header/page-header';
 
 import {PageNames} from '../../const';
-import {CustomPropTypes} from '../../utils/props';
 
 import {getFavoriteMovies} from '../../reducer/data/selectors';
 
+interface Props {
+  favoriteMovies: Array<MovieType>;
+  handleSmallMovieCardHover(): void;
+}
 
-const MyList = (props) => {
-  const {favoriteMovies} = props;
+const MyList: React.FC<Props> = (props: Props) => {
+  const {favoriteMovies, handleSmallMovieCardHover} = props;
 
   return (
     <React.Fragment>
@@ -27,20 +30,14 @@ const MyList = (props) => {
 
           <MoviesList
             movies={favoriteMovies}
-            render={() => {}} />
+            handleSmallMovieCardHover={handleSmallMovieCardHover}
+          />
         </section>
 
         <PageFooter />
       </div>
     </React.Fragment>
   );
-};
-
-MyList.propTypes = {
-  favoriteMovies: PropTypes.oneOfType([
-    PropTypes.arrayOf(CustomPropTypes.MOVIE),
-    PropTypes.arrayOf(undefined)
-  ]).isRequired,
 };
 
 const mapStateToProps = (state) => ({
