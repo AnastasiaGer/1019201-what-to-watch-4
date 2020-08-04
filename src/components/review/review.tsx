@@ -1,10 +1,15 @@
 import * as React from 'react';
 import * as moment from 'moment';
-import {CustomPropTypes} from '../../utils/props';
+import {ReviewType} from "../../types";
 import {getRatingFormat} from '../../utils';
 
+interface Props {
+  movieReview: ReviewType;
+}
 
-const Review = ({movieReview}) => {
+
+const Review: React.FC<Props> = (props: Props) => {
+  const {movieReview} = props;
 
   const rating = getRatingFormat(movieReview.rating);
   const date = moment(movieReview.date).format(`MMMM D, YYYY`);
@@ -24,10 +29,6 @@ const Review = ({movieReview}) => {
       <div className="review__rating">{rating}</div>
     </div>
   );
-};
-
-Review.propTypes = {
-  movieReview: CustomPropTypes.REVIEWS,
 };
 
 export default Review;
