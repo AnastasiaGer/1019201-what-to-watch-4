@@ -1,7 +1,11 @@
 import * as React from 'react';
-import {CustomPropTypes} from '../../utils/props';
+import {MovieType} from "../../types";
 
 import {RatingLevel} from '../../const';
+
+interface Props {
+  movieCard: MovieType;
+}
 
 const getMovieRatingDescription = (rating) => {
   let ratingLevel = ``;
@@ -20,7 +24,8 @@ const getMovieRatingDescription = (rating) => {
 };
 
 
-const PageOverview = (movieCard) => {
+const PageOverview: React.FC<Props> = (props: Props) => {
+  const {movieCard}= props;
   const {rating, scores, description, director, starring} = movieCard;
   return (
     <>
@@ -40,7 +45,5 @@ const PageOverview = (movieCard) => {
     </>
   );
 };
-PageOverview.propTypes = {
-  movieCard: CustomPropTypes.MOVIE,
-};
+
 export default PageOverview;
