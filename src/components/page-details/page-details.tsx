@@ -1,8 +1,12 @@
 import * as React from 'react';
-import {CustomPropTypes} from '../../utils/props';
+import {MovieType} from "../../types";
 
+interface Props {
+  movie: MovieType;
+}
 
-const PageDetails = (movie) => {
+const PageDetails: React.FC<Props> = (props: Props) => {
+  const {movie} = props;
   const {director, starring, genre, movieDurationTime, date} = movie;
   return (
     <div className="movie-card__text movie-card__row">
@@ -32,10 +36,6 @@ const PageDetails = (movie) => {
       </div>
     </div>
   );
-};
-
-PageDetails.propTypes = {
-  movie: CustomPropTypes.MOVIE,
 };
 
 export default PageDetails;
