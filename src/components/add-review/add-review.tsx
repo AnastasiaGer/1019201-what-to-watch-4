@@ -14,12 +14,15 @@ interface Props {
   onRatingChange(): void,
   onReviewChange(): void,
   isSubmitDisabled: boolean,
+  rating: number;
+  comment: string;
 }
 
 const AddReview : React.FunctionComponent<Props> = (props: Props) => {
-  const {currentMovie, isReviewSending, isDispatchError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, isSubmitDisabled} = props;
+  const {currentMovie, isReviewSending, isDispatchError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, isSubmitDisabled, rating, comment} = props;
   const {backgroundColor, title, background, poster} = currentMovie;
-  const isRadioDisabled = Boolean(onReviewChange);
+  const isValidReview = (rating && comment) ? false : true;
+
   return (
     <React.Fragment>
       <section
@@ -76,7 +79,7 @@ const AddReview : React.FunctionComponent<Props> = (props: Props) => {
                         type="radio"
                         name="rating"
                         value={rating}
-                        disabled={isRadioDisabled}
+                        disabled={isValidReview}
                       />
                       <label className="rating__label" htmlFor={`star-${rating}`}>Rating {rating}</label>
                     </React.Fragment>
@@ -94,13 +97,13 @@ const AddReview : React.FunctionComponent<Props> = (props: Props) => {
                 minLength={ReviewLength.MIN}
                 maxLength={ReviewLength.MAX}
                 onChange={onReviewChange}
-                required
+                disabled={isSubmitDisabled}
               ></textarea>
               <div className="add-review__submit">
                 <button
                   className="add-review__btn"
                   type="submit"
-                  disabled={isSubmitDisabled}
+                  disabled={isSubmitDisabled || isValidReview}
                 >
                   {isReviewSending ? reviewSubmitButton.sending : reviewSubmitButton.post}
                 </button>
