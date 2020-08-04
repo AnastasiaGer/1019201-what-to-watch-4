@@ -1,7 +1,11 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 
-const ShowMoreButton = ({onShowMoreClick}) => {
+interface Props {
+  onShowMoreClick(): void;
+}
+
+const ShowMoreButton: React.FC<Props> = (props: Props) => {
+  const {onShowMoreClick} = props;
   return (
     <div className="catalog__more">
       <button
@@ -15,10 +19,6 @@ const ShowMoreButton = ({onShowMoreClick}) => {
       </button>
     </div>
   );
-};
-
-ShowMoreButton.propTypes = {
-  onShowMoreClick: PropTypes.func,
 };
 
 export default ShowMoreButton;
