@@ -1,13 +1,19 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import {MovieType} from "../../types";
 import {AuthorizationStatus, AppRoute} from "../../const";
-import {CustomPropTypes} from '../../utils/props';
 import {connect} from 'react-redux';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import history from '../../history';
 import {Operations as DataOperations} from '../../reducer/data/data';
 
-const MyListButton = ({authorizationStatus, movie, changeIsMovieFavorite}) => {
+interface Props {
+  authorizationStatus: string;
+  movie: MovieType;
+  changeIsMovieFavorite(movieId: number, isFavorite: boolean): void;
+}
+
+const MyListButton: React.FC<Props> = (props: Props) => {
+  const {authorizationStatus, movie, changeIsMovieFavorite} = props;
   const handleMovieListButtonClick = (isFavorite) => {
     return authorizationStatus === AuthorizationStatus.AUTH
       ? changeIsMovieFavorite(movie.id, isFavorite)
@@ -45,12 +51,6 @@ const MyListButton = ({authorizationStatus, movie, changeIsMovieFavorite}) => {
       {!movie.isFavorite ? addToMyList : removeFromMyList}
     </React.Fragment>
   );
-};
-
-MyListButton.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-  movie: CustomPropTypes.MOVIE,
-  changeIsMovieFavorite: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
