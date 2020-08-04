@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
 
-const ErrorScreen = () => {
+const ErrorScreen: React.FC = () => {
   return (
     <React.Fragment>
       <div className="user-page">
