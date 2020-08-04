@@ -26,10 +26,9 @@ const SmallMovieCard: React.FC<Props> = (props: Props) => {
         <div
           className="small-movie-card__image">
           <VideoPlayer
-            movie={movie}
             isPlaying={isPlaying}
-            src={movie.preview}
-            poster={movie.picture}
+            source={movie.preview}
+            poster={movie.poster}
           />
           <img src={movie.poster} alt={movie.title} width="280" height="175" />
         </div>

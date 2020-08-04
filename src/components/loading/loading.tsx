@@ -1,20 +1,20 @@
 import * as React from 'react';
 import {css} from "@emotion/core";
-import PacmanLoader from "react-spinners/PacmanLoader";
+import DotLoader from 'react-spinners/DotLoader';
 
 const override = css`
   display: block;
-  margin: 0 auto;
+  margin: auto;
+  margin-top: 35vh;
 `;
 
 const Loading = () => {
   return (
     <div className="sweet-loading">
-      <PacmanLoader
+      <DotLoader
         css={override}
-        size={100}
-        color={`#150202`}
-        loading={true}
+        size={150}
+        color={`#100D06`}
       />
     </div>
   );

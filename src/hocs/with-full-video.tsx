@@ -68,10 +68,10 @@ const withVideoControls = (Component) => {
 
     componentDidMount() {
       const {movieCard} = this.props;
-      const {videoUrl} = movieCard;
+      const {videoLink} = movieCard;
       const video = this._videoRef.current;
 
-      video.src = videoUrl;
+      video.src = videoLink;
       video.play();
 
       video.onloadedmetadata = () => this.setState({
@@ -97,7 +97,6 @@ const withVideoControls = (Component) => {
       const video = this._videoRef.current;
 
       video.src = ``;
-      video.onplay = null;
       video.onloadedmetadata = null;
       video.ontimeupdate = null;
     }

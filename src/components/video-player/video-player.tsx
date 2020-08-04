@@ -1,54 +1,50 @@
 import * as React from 'react';
-import {MovieType} from "../../types";
-
 interface Props {
-  movie: MovieType;
   isPlaying: boolean,
-  src: string;
+  source: string;
   poster: string;
 }
 
 class VideoPlayer extends React.PureComponent<Props> {
   private _video: React.RefObject<HTMLVideoElement>;
-  private _videoPlayerSetTimeout: NodeJS.Timeout;
+
   constructor(props) {
     super(props);
 
     this._video = React.createRef();
-    this._videoPlayerSetTimeout = null;
   }
 
   componentDidMount() {
-    const {movie} = this.props;
-    const {preview, poster} = movie;
     const video = this._video.current;
 
-    video.src = preview;
-    video.poster = poster;
     video.muted = true;
+
   }
 
   componentWillUnmount() {
     const video = this._video.current;
-
     video.onplay = null;
     video.src = ``;
-    video.poster = ``;
+
     video.muted = null;
   }
 
   render() {
+    const {poster} = this.props;
     return (
       <video
         className="player__video"
         ref={this._video}
-      />
+        poster={poster}
+        />
     );
   }
 
   componentDidUpdate() {
-    const {isPlaying} = this.props;
+    const {source, isPlaying} = this.props;
     const video = this._video.current;
+
+    video.src = source;
 
     if (isPlaying) {
       video.play();

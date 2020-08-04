@@ -13,8 +13,8 @@ export const adaptMovie = (movie) => {
     director: movie.director,
     starring: movie.starring,
     movieDurationTime: movie.run_time,
-    videoPreview: movie.preview_video_link,
-    videoUrl: movie.video_link,
+    preview: movie.preview_video_link,
+    videoLink: movie.video_link,
     isFavorite: movie.is_favorite,
     backgroundColor: movie.background_color,
   };

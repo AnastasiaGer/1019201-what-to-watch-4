@@ -11,11 +11,11 @@ export interface MovieType {
   director: string;
   starring: string[];
   description: string;
-  preview: string; //
-  movieDurationTime: number; //
+  movieDurationTime: number;
   backgroundColor: string;
   isFavorite: boolean;
-  videoUrl: string; //
+  preview: string;
+  videoLink: string;
 }
 export interface UserType {
   id: number;

@@ -26,22 +26,21 @@ const withVideo = (Component) => {
         isPlaying: false,
       };
 
-      this.setPlayingFilm = this.setPlayingFilm.bind(this);
+      this._setPlayingFilm = this._setPlayingFilm.bind(this);
     }
 
-    private setPlayingFilm(isPlaying) {
+    _setPlayingFilm(isPlaying) {
       this.setState({
         isPlaying
       });
     }
-
     render() {
       const {isPlaying} = this.state;
 
       return <Component
         {...this.props}
         isPlaying={isPlaying}
-        setPlayingFilm={this.setPlayingFilm}
+        setPlayingFilm={this._setPlayingFilm}
       />;
     }
   }
