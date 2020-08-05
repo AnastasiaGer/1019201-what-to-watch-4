@@ -14,7 +14,7 @@ export const getErrMessage = (state) => {
 };
 
 export const getAuthorizationError = (state) => {
-  return state[NAME_SPACE].authorizationError;
+  return state[NAME_SPACE].isAuthorizationError;
 };
 
 export const getUserInfo = (state) => {
