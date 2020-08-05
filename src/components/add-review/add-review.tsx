@@ -19,6 +19,7 @@ interface Props {
 const AddReview : React.FunctionComponent<Props> = (props: Props) => {
   const {currentMovie, isDataSending, isDispatchError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, isSubmitDisabled} = props;
   const {backgroundColor, title, background, poster} = currentMovie;
+
   const isValidReview = Boolean(isDataSending);
 
   return (
@@ -101,7 +102,7 @@ const AddReview : React.FunctionComponent<Props> = (props: Props) => {
                 <button
                   className="add-review__btn"
                   type="submit"
-                  disabled={isSubmitDisabled}
+                  disabled={isDataSending || isValidReview || isSubmitDisabled}
                 >
                   {isDataSending ? reviewSubmitButton.sending : reviewSubmitButton.post}
                 </button>
