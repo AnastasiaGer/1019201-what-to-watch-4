@@ -90,8 +90,9 @@ const Operations = {
       email: authData.login,
       password: authData.password,
     })
-      .then(() => {
+      .then((response) => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.setAuthorInfo(adaptUser(response.data)));
       })
       .catch(() => {
         dispatch(ActionCreator.showAuthorizationError());
