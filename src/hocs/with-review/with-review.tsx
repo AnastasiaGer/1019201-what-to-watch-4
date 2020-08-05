@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {Operations as DataOperations, ActionCreator} from '../reducer/data/data';
-import {getCurrentMovieById} from '../reducer/app-state/selectors';
-import {ReviewLength} from '../const';
-import {getIsReviewSending, getIsDispatchError} from '../reducer/data/selectors';
-import {MovieType} from '../types'
+import {Operations as DataOperations, ActionCreator} from '../../reducer/data/data';
+import {getCurrentMovieById} from '../../reducer/app-state/selectors';
+import {ReviewLength, NUMBER_OF_RATINGS} from '../../const';
+import {getIsReviewSending, getIsDispatchError} from '../../reducer/data/selectors';
+import {MovieType} from '../../types'
 
 const validateReview = (comment) => {
   return comment.length >= ReviewLength.MIN && comment.length <= ReviewLength.MAX;
@@ -32,7 +32,7 @@ const withReview = (Component) => {
       super(props);
 
       this.state = {
-        rating: 5,
+        rating: NUMBER_OF_RATINGS,
         comment: ``,
         reviewIsValid: false,
         ratingIsValid: true,

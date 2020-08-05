@@ -1,5 +1,23 @@
+import {RatingLevel} from './const';
+
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
+};
+
+export const getMovieRatingDescription = (rating) => {
+  let ratingLevel = ``;
+  if (rating === 10) {
+    ratingLevel = RatingLevel.AWESOME;
+  } else if (rating >= 8) {
+    ratingLevel = RatingLevel.VERY_GOOD;
+  } else if (rating >= 5) {
+    ratingLevel = RatingLevel.GOOD;
+  } else if (rating >= 3) {
+    ratingLevel = RatingLevel.NORMAL;
+  } else {
+    ratingLevel = RatingLevel.BAD;
+  }
+  return ratingLevel;
 };
 
 export const sliceReviews = (movieReviews) => {

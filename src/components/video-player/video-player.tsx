@@ -29,17 +29,6 @@ class VideoPlayer extends React.PureComponent<Props> {
     video.muted = null;
   }
 
-  render() {
-    const {poster} = this.props;
-    return (
-      <video
-        className="player__video"
-        ref={this._video}
-        poster={poster}
-        />
-    );
-  }
-
   componentDidUpdate() {
     const {source, isPlaying} = this.props;
     const video = this._video.current;
@@ -51,6 +40,17 @@ class VideoPlayer extends React.PureComponent<Props> {
     } else {
       video.load();
     }
+  }
+
+  render() {
+    const {poster} = this.props;
+    return (
+      <video
+        className="player__video"
+        ref={this._video}
+        poster={poster}
+        />
+    );
   }
 }
 

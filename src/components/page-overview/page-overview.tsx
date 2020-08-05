@@ -1,28 +1,10 @@
 import * as React from 'react';
 import {MovieType} from "../../types";
-
-import {RatingLevel} from '../../const';
+import {getMovieRatingDescription} from '../../utils.js';
 
 interface Props {
   currentMovie: MovieType;
 }
-
-const getMovieRatingDescription = (rating) => {
-  let ratingLevel = ``;
-  if (rating === 10) {
-    ratingLevel = RatingLevel.AWESOME;
-  } else if (rating >= 8) {
-    ratingLevel = RatingLevel.VERY_GOOD;
-  } else if (rating >= 5) {
-    ratingLevel = RatingLevel.GOOD;
-  } else if (rating >= 3) {
-    ratingLevel = RatingLevel.NORMAL;
-  } else {
-    ratingLevel = RatingLevel.BAD;
-  }
-  return ratingLevel;
-};
-
 
 const PageOverview: React.FC<Props> = (props: Props) => {
   const {currentMovie}= props;

@@ -15,7 +15,7 @@ import Loading from '../loading/loading';
 import history from "../../history";
 import {AppRoute, AuthorizationStatus, ALL_GENRES} from '../../const';
 
-import withReview from '../../hocs/with-review';
+import withReview from '../../hocs/with-review/with-review';
 import withTabs from '../../hocs/with-tabs';
 import withVideoControls from '../../hocs/with-full-video';
 

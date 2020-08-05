@@ -41,31 +41,6 @@ const withVideoControls = (Component) => {
       this._handleSetFullScreen = this._handleSetFullScreen.bind(this);
     }
 
-    _handleIsPlayingChange() {
-      const {isPlaying} = this.state;
-
-      this.setState({
-        isPlaying: !isPlaying,
-      });
-    }
-
-    _handleSetFullScreen() {
-      const video = this._videoRef.current;
-      video.requestFullscreen();
-    }
-
-    _leftTime() {
-      const {currentTime, duration} = this.state;
-
-      const timeDiff = duration - currentTime;
-
-      const seconds = Math.trunc(timeDiff % Time.SECONDS_IN_MINUTE);
-      const minutes = Math.trunc(timeDiff / Time.SECONDS_IN_MINUTE);
-      const hours = Math.trunc(minutes / Time.MINUTES_IN_HOUR);
-
-      return `${hours.toString().padStart(2, `0`)}:${minutes.toString().padStart(2, `0`)}:${seconds.toString().padStart(2, `0`)}`;
-    }
-
     componentDidMount() {
       const {movieCard} = this.props;
       const {videoLink} = movieCard;
@@ -99,6 +74,31 @@ const withVideoControls = (Component) => {
       video.src = ``;
       video.onloadedmetadata = null;
       video.ontimeupdate = null;
+    }
+
+    _handleIsPlayingChange() {
+      const {isPlaying} = this.state;
+
+      this.setState({
+        isPlaying: !isPlaying,
+      });
+    }
+
+    _handleSetFullScreen() {
+      const video = this._videoRef.current;
+      video.requestFullscreen();
+    }
+
+    _leftTime() {
+      const {currentTime, duration} = this.state;
+
+      const timeDiff = duration - currentTime;
+
+      const seconds = Math.trunc(timeDiff % Time.SECONDS_IN_MINUTE);
+      const minutes = Math.trunc(timeDiff / Time.SECONDS_IN_MINUTE);
+      const hours = Math.trunc(minutes / Time.MINUTES_IN_HOUR);
+
+      return `${hours.toString().padStart(2, `0`)}:${minutes.toString().padStart(2, `0`)}:${seconds.toString().padStart(2, `0`)}`;
     }
 
     render() {

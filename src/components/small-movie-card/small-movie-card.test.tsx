@@ -13,7 +13,7 @@ describe(`SmallMovieCard`, () => {
               <SmallMovieCard
                 movie={movieCard}
                 isPlaying={false}
-                setPlayingFilm={noop}
+                handlePlayFilm={noop}
               />
           </Router>, {
             createNodeMock: () => {
