@@ -20,6 +20,7 @@ interface Props {
 const AddReview : React.FunctionComponent<Props> = (props: Props) => {
   const {currentMovie, isDataSending, isDispatchError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, reviewIsValid, ratingIsValid,} = props;
   const {backgroundColor, title, background, poster} = currentMovie;
+  const isRadioDisabled = Boolean(isDataSending);
 
   return (
     <React.Fragment>
@@ -77,6 +78,7 @@ const AddReview : React.FunctionComponent<Props> = (props: Props) => {
                         type="radio"
                         name="rating"
                         value={rating}
+                        disabled={isRadioDisabled}
                       />
                       <label className="rating__label" htmlFor={`star-${rating}`}>Rating {rating}</label>
                     </React.Fragment>
@@ -94,13 +96,14 @@ const AddReview : React.FunctionComponent<Props> = (props: Props) => {
                 minLength={ReviewLength.MIN}
                 maxLength={ReviewLength.MAX}
                 onChange={onReviewChange}
+                disabled={isDataSending}
                 required
               ></textarea>
               <div className="add-review__submit">
                 <button
                   className="add-review__btn"
                   type="submit"
-                  disabled={!reviewIsValid && ratingIsValid || isDataSending}
+                  disabled={!reviewIsValid && ratingIsValid}
                 >
                   {isDataSending ? reviewSubmitButton.sending : reviewSubmitButton.post}
                 </button>
