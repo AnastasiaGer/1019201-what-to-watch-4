@@ -13,14 +13,13 @@ interface Props {
   onFormChange(): void;
   onRatingChange(): void;
   onReviewChange(): void;
-  isSubmitDisabled: boolean,
+  ratingIsValid: boolean;
+  reviewIsValid: boolean;
 }
 
 const AddReview : React.FunctionComponent<Props> = (props: Props) => {
-  const {currentMovie, isDataSending, isDispatchError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, isSubmitDisabled} = props;
+  const {currentMovie, isDataSending, isDispatchError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, reviewIsValid, ratingIsValid,} = props;
   const {backgroundColor, title, background, poster} = currentMovie;
-
-  const isValidReview = Boolean(isDataSending);
 
   return (
     <React.Fragment>
@@ -78,7 +77,6 @@ const AddReview : React.FunctionComponent<Props> = (props: Props) => {
                         type="radio"
                         name="rating"
                         value={rating}
-                        disabled={isValidReview}
                       />
                       <label className="rating__label" htmlFor={`star-${rating}`}>Rating {rating}</label>
                     </React.Fragment>
@@ -102,7 +100,7 @@ const AddReview : React.FunctionComponent<Props> = (props: Props) => {
                 <button
                   className="add-review__btn"
                   type="submit"
-                  disabled={isDataSending || isValidReview || isSubmitDisabled}
+                  disabled={!reviewIsValid && ratingIsValid || isDataSending}
                 >
                   {isDataSending ? reviewSubmitButton.sending : reviewSubmitButton.post}
                 </button>

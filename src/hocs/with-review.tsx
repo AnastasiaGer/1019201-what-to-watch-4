@@ -5,6 +5,10 @@ import {getCurrentMovieById} from '../reducer/app-state/selectors';
 import {ReviewLength} from '../const';
 import {getIsReviewSending, getIsDispatchError} from '../reducer/data/selectors';
 import {MovieType} from '../types'
+
+const validateReview = (comment) => {
+  return comment.length >= ReviewLength.MIN && comment.length <= ReviewLength.MAX;
+};
 interface Props {
   onReviewSubmit(movieId: number, review: {
     rating: number;
@@ -18,7 +22,8 @@ interface Props {
 interface State {
   comment: string;
   rating: number;
-  isSubmitDisabled: boolean;
+  reviewIsValid: boolean;
+  ratingIsValid: boolean;
 }
 
 const withReview = (Component) => {
@@ -29,7 +34,8 @@ const withReview = (Component) => {
       this.state = {
         rating: 5,
         comment: ``,
-        isSubmitDisabled: true,
+        reviewIsValid: false,
+        ratingIsValid: true,
       };
 
       this.handleFormChange = this.handleFormChange.bind(this);
@@ -44,28 +50,29 @@ const withReview = (Component) => {
     }
 
     private handleRatingChange(evt) {
+      const {value} = evt.target;
       this.setState({
-        rating: evt.target.value,
+        rating: value,
+        ratingIsValid: !!value,
       });
     }
 
     private handleReviewChange(evt) {
-      const {isDataSending} = this.props;
-
+      const {value} = evt.target;
       this.setState({
-        comment: evt.target.value,
-        isSubmitDisabled: evt.target.value.length < ReviewLength.MIN || isDataSending,
+        comment: value,
+        reviewIsValid: validateReview(value),
       });
     }
 
     private handleSubmitClick(evt) {
+      evt.preventDefault();
       const {currentMovie, onReviewSubmit} = this.props;
       const review = {
         rating: this.state.rating,
         comment: this.state.comment,
       };
 
-      evt.preventDefault();
       onReviewSubmit(currentMovie.id, review);
     }
 
@@ -80,7 +87,6 @@ const withReview = (Component) => {
           onSubmitClick={this.handleSubmitClick}
           onRatingChange={this.handleRatingChange}
           onReviewChange={this.handleReviewChange}
-          isSubmitDisabled={this.state.isSubmitDisabled}
         />
       );
     }

@@ -122,7 +122,6 @@ exports[`AddReview Should render correctly 1`] = `
         >
           <input
             className="rating__input"
-            disabled={false}
             id="star-1"
             name="rating"
             type="radio"
@@ -137,7 +136,6 @@ exports[`AddReview Should render correctly 1`] = `
           </label>
           <input
             className="rating__input"
-            disabled={false}
             id="star-2"
             name="rating"
             type="radio"
@@ -152,7 +150,6 @@ exports[`AddReview Should render correctly 1`] = `
           </label>
           <input
             className="rating__input"
-            disabled={false}
             id="star-3"
             name="rating"
             type="radio"
@@ -167,7 +164,6 @@ exports[`AddReview Should render correctly 1`] = `
           </label>
           <input
             className="rating__input"
-            disabled={false}
             id="star-4"
             name="rating"
             type="radio"
@@ -182,7 +178,6 @@ exports[`AddReview Should render correctly 1`] = `
           </label>
           <input
             className="rating__input"
-            disabled={false}
             id="star-5"
             name="rating"
             type="radio"
@@ -202,13 +197,13 @@ exports[`AddReview Should render correctly 1`] = `
       >
         <textarea
           className="add-review__textarea"
-          disabled={false}
           id="review-text"
           maxLength={400}
           minLength={50}
           name="review-text"
           onChange={[Function]}
           placeholder="Review text"
+          required={true}
         />
         <div
           className="add-review__submit"

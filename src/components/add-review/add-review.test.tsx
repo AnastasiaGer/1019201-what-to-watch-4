@@ -40,7 +40,8 @@ describe(`AddReview`, () => {
                 onFormChange={noop}
                 onRatingChange={noop}
                 onReviewChange={noop}
-                isSubmitDisabled={false}
+                ratingIsValid={true}
+                reviewIsValid={true}
               />
             </Provider>
           </Router>, {
