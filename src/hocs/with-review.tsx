@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {Operations as DataOperations} from '../reducer/data/data';
+import {Operations as DataOperations, ActionCreator} from '../reducer/data/data';
 import {getCurrentMovieById} from '../reducer/app-state/selectors';
 import {ReviewLength} from '../const';
 import {getIsReviewSending, getIsDispatchError} from '../reducer/data/selectors';
@@ -11,7 +11,7 @@ interface Props {
     comment: string;
   }): void;
   isDataSending: boolean;
-  isDispatchError: boolean;
+  clearSendingError(): void;
   currentMovie: MovieType;
 }
 
@@ -32,18 +32,24 @@ const withReview = (Component) => {
         isSubmitDisabled: true,
       };
 
-      this._handleSubmitClick = this._handleSubmitClick.bind(this);
-      this._handleReviewChange = this._handleReviewChange.bind(this);
-      this._handleRatingChange = this._handleRatingChange.bind(this);
+      this.handleFormChange = this.handleFormChange.bind(this);
+      this.handleSubmitClick = this.handleSubmitClick.bind(this);
+      this.handleReviewChange = this.handleReviewChange.bind(this);
+      this.handleRatingChange = this.handleRatingChange.bind(this);
     }
 
-    _handleRatingChange(evt) {
+    private handleFormChange() {
+      const {clearSendingError} = this.props;
+      clearSendingError();
+    }
+
+    private handleRatingChange(evt) {
       this.setState({
         rating: evt.target.value,
       });
     }
 
-    _handleReviewChange(evt) {
+    private handleReviewChange(evt) {
       const {isDataSending} = this.props;
 
       this.setState({
@@ -52,7 +58,7 @@ const withReview = (Component) => {
       });
     }
 
-    _handleSubmitClick(evt) {
+    private handleSubmitClick(evt) {
       const {currentMovie, onReviewSubmit} = this.props;
       const review = {
         rating: this.state.rating,
@@ -70,9 +76,10 @@ const withReview = (Component) => {
         <Component
           {...this.props}
           currentMovie={currentMovie}
-          onSubmitClick={this._handleSubmitClick}
-          onRatingChange={this._handleRatingChange}
-          onReviewChange={this._handleReviewChange}
+          onFormChange={this.handleFormChange}
+          onSubmitClick={this.handleSubmitClick}
+          onRatingChange={this.handleRatingChange}
+          onReviewChange={this.handleReviewChange}
           isSubmitDisabled={this.state.isSubmitDisabled}
         />
       );
@@ -88,6 +95,9 @@ const withReview = (Component) => {
   const mapDispatchToProps = (dispatch) => ({
     onReviewSubmit(movieId, review) {
       dispatch(DataOperations.pushReview(movieId, review));
+    },
+    clearSendingError() {
+      dispatch(ActionCreator.clearSendingError());
     },
   });
 

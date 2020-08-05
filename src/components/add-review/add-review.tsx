@@ -7,21 +7,19 @@ import {MovieType} from '../../types';
 
 interface Props {
   currentMovie: MovieType;
-  isReviewSending: boolean,
+  isDataSending: boolean,
   isDispatchError: boolean,
   onSubmitClick(): void;
   onFormChange(): void;
   onRatingChange(): void;
   onReviewChange(): void;
   isSubmitDisabled: boolean,
-  rating: number;
-  comment: string;
 }
 
 const AddReview : React.FunctionComponent<Props> = (props: Props) => {
-  const {currentMovie, isReviewSending, isDispatchError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, isSubmitDisabled, rating, comment} = props;
+  const {currentMovie, isDataSending, isDispatchError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, isSubmitDisabled} = props;
   const {backgroundColor, title, background, poster} = currentMovie;
-  const isValidReview = (rating && comment) ? false : true;
+  const isValidReview = Boolean(isDataSending);
 
   return (
     <React.Fragment>
@@ -97,15 +95,15 @@ const AddReview : React.FunctionComponent<Props> = (props: Props) => {
                 minLength={ReviewLength.MIN}
                 maxLength={ReviewLength.MAX}
                 onChange={onReviewChange}
-                disabled={isSubmitDisabled}
+                required
               ></textarea>
               <div className="add-review__submit">
                 <button
                   className="add-review__btn"
                   type="submit"
-                  disabled={isSubmitDisabled || isValidReview}
+                  disabled={isSubmitDisabled}
                 >
-                  {isReviewSending ? reviewSubmitButton.sending : reviewSubmitButton.post}
+                  {isDataSending ? reviewSubmitButton.sending : reviewSubmitButton.post}
                 </button>
               </div>
 

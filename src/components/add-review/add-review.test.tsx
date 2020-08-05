@@ -7,14 +7,9 @@ import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {Router} from 'react-router-dom';
 import history from '../../history';
-import {PostReview} from '../../types';
 
 const mockStore = configureStore([]);
 
-const Settings: PostReview = {
-  rating: 5,
-  comment: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
-};
 
 describe(`AddReview`, () => {
   it(`Should render correctly`, () => {
@@ -39,15 +34,13 @@ describe(`AddReview`, () => {
             <Provider store={store}>
               <AddReview
                 currentMovie={movieCard}
-                isReviewSending={false}
+                isDataSending={false}
                 isDispatchError={false}
                 onSubmitClick={noop}
                 onFormChange={noop}
                 onRatingChange={noop}
                 onReviewChange={noop}
                 isSubmitDisabled={false}
-                rating={Settings.rating}
-                comment={Settings.comment}
               />
             </Provider>
           </Router>, {
