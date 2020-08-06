@@ -15,7 +15,7 @@ export const PageNames = {
 
 export const AppRoute = {
   LOGIN: `/login`,
-  MOVIE_PAGE: `/film`,
+  MOVIE_PAGE: `/films`,
   MOVIE_REVIEW: `/review`,
   VIDEO_PLAYER: `/player`,
   ROOT: `/`,
