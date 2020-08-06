@@ -1,9 +1,5 @@
 import {MovieType, ReviewType} from './types';
 
-export const noop = () => {
-  // Mock function for test props
-};
-
 export const movieCard: MovieType = {
   title: `Snatch`,
   genre: `Crime`,

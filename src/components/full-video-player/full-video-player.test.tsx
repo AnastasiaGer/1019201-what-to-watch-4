@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import {movies, noop} from '../../test-data';
+import {movies} from '../../test-data';
+import {noop} from "../../utils";
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../reducer/name-space';

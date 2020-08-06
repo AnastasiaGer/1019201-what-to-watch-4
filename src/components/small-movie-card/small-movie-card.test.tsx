@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import SmallMovieCard from "./small-movie-card";
-import {movieCard, noop} from '../../test-data';
+import {movieCard} from '../../test-data';
+import {noop} from "../../utils";
 import {Router} from 'react-router-dom';
 import history from '../../history';
 

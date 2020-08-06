@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import {GenresList} from './genres-list';
-import {genres, noop} from '../../test-data';
+import {genres} from '../../test-data';
+import {noop} from "../../utils";
 
 describe(`GenresList`, () => {
   it(`Should render correctly`, () => {

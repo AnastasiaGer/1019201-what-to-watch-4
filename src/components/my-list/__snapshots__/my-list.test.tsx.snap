@@ -75,7 +75,7 @@ exports[`MyList Should render correctly 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="/film/123890"
+          href="/films/123890"
           onClick={[Function]}
         >
           <div
@@ -106,7 +106,7 @@ exports[`MyList Should render correctly 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="/film/34567"
+          href="/films/34567"
           onClick={[Function]}
         >
           <div

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import MoviesList from "./movies-list";
-import {movies, noop} from '../../test-data';
+import {movies} from '../../test-data';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {Router} from 'react-router-dom';

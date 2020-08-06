@@ -3,7 +3,8 @@ import * as renderer from 'react-test-renderer';
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {App} from "./app";
-import {movieCard, movies, reviews, noop} from '../../test-data';
+import {movieCard, movies, reviews} from '../../test-data';
+import {noop} from "../../utils";
 import NameSpace from '../../reducer/name-space';
 
 const mockStore = configureStore([]);

@@ -4,6 +4,11 @@ export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
+export const noop = () => {
+  // Mock function for test props
+};
+
+
 export const getMovieRatingDescription = (rating) => {
   let ratingLevel = ``;
   if (rating === 10) {
