@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../reducer/name-space';
 import SignIn from './sign-in';
-import {movieCard} from '../..//test-data';
+import {movieCard} from '../../test-data';
 import {Router} from 'react-router-dom';
 import history from '../../history';
 

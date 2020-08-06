@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {MAX_SHOWN_MOVIES_LIKE_THIS, PageNames} from '../const';
 import ShowMoreButton from '../components/show-more-btn/show-more-btn';
-import {getFilteredMoviesByGenre, getFilteredMoviesLikeThis} from '../reducer/data/selectors';
+import {getFilteredMoviesByGenre, getFilteredMoviesLikeThis} from '../reducer/app-state/selectors';
 import {MovieType} from '../types'
 
 interface Props {
