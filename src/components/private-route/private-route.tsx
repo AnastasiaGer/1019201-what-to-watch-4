@@ -1,9 +1,9 @@
-import * as React from "react";
-import {Route, Redirect, RouteComponentProps} from "react-router-dom";
-import {connect} from "react-redux";
-import {AppRoute} from "../../const";
-import {AuthorizationStatus} from "../../reducer/user/user";
-import {getAuthorizationStatus} from "../../reducer/user/selectors";
+import * as React from 'react';
+import {Route, Redirect, RouteComponentProps} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {AppRoute} from '../../const';
+import {AuthorizationStatus} from '../../reducer/user/user';
+import {getAuthorizationStatus} from '../../reducer/user/selectors';
 
 interface Props {
   authorizationStatus: string;

@@ -1,6 +1,6 @@
 import NameSpace from '../name-space';
 import {getMovies} from '../data/selectors';
-import {ALL_GENRES, MAX_SHOWN_MOVIES_LIKE_THIS} from "../../const";
+import {ALL_GENRES, MAX_SHOWN_MOVIES_LIKE_THIS} from '../../const';
 import {createSelector} from 'reselect';
 
 export const getCurrentMovie = (state) => state[NameSpace.APP_STATE].currentMovie;

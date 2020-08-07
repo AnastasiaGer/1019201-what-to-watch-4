@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {MovieType, UserType} from "../../types";
-import {connect} from "react-redux";
+import {MovieType, UserType} from '../../types';
+import {connect} from 'react-redux';
 import {AppRoute, AuthorizationStatus, PageNames} from '../../const';
 import {getAuthorizationStatus, getUserInfo} from '../../reducer/user/selectors';
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 interface Props {
   currentPage: MovieType;

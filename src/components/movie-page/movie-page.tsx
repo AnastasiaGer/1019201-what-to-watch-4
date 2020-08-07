@@ -1,5 +1,5 @@
-import * as React from "react";
-import {MovieType, ReviewType} from "../../types";
+import * as React from 'react';
+import {MovieType, ReviewType} from '../../types';
 import {connect} from 'react-redux';
 
 import PageOverview from '../page-overview/page-overview';
@@ -9,10 +9,10 @@ import MoviesList from '../movies-list/movies-list';
 import PageFooter from '../page-footer/page-footer';
 import MovieCardHero from '../movie-card-hero/movie-card-hero';
 
-import {PageNames} from "../../const";
+import {PageNames} from '../../const';
 
 import {ActionCreator} from '../../reducer/app-state/app-state';
-import {Operations as DataOperations} from "../../reducer/data/data";
+import {Operations as DataOperations} from '../../reducer/data/data';
 
 import withShowMore from '../../hocs/with-show-more';
 

@@ -1,7 +1,6 @@
 import {createSelector} from 'reselect';
 import NameSpace from '../name-space';
-import {ALL_GENRES} from "../../const";
-import {getActiveGenre, getCurrentMovie} from '../app-state/selectors';
+import {ALL_GENRES} from '../../const';
 
 export const getMovies = (state) => state[NameSpace.DATA].movies;
 export const getMovieCard = (state) => state[NameSpace.DATA].movieCard;

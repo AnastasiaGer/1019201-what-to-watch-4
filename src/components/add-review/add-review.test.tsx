@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import {movieCard} from '../../test-data';
-import {noop} from "../../utils";
+import {noop} from '../../utils';
 import AddReview from './add-review';
 import NameSpace from '../../reducer/name-space';
 import configureStore from 'redux-mock-store';

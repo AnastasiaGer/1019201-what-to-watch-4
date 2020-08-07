@@ -1,9 +1,9 @@
-import * as React from "react";
-import {configure, shallow} from "enzyme";
-import * as Adapter from "enzyme-adapter-react-16";
-import AddReview from "./add-review";
-import {noop} from "../../utils";
-import {movieCard} from "../../test-data";
+import * as React from 'react';
+import {configure, shallow} from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
+import AddReview from './add-review';
+import {noop} from '../../utils';
+import {movieCard} from '../../test-data';
 
 configure({adapter: new Adapter()});
 

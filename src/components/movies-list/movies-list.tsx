@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import {MovieType} from "../../types";
+import {MovieType} from '../../types';
 
 import SmallMovieCard from '../small-movie-card/small-movie-card';
 
-import withVideo from "../../hocs/with-video";
+import withVideo from '../../hocs/with-video';
 
 const SmallMovieCardWrapped = withVideo(SmallMovieCard);
 

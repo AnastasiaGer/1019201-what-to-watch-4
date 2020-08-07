@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {MovieType} from "../../types";
+import {MovieType} from '../../types';
 
 interface Props {
   currentMovie: MovieType;

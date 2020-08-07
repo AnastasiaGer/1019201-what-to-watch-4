@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {MovieType} from "../types";
-import {Subtract} from "utility-types";
+import {MovieType} from '../types';
+import {Subtract} from 'utility-types';
 
 interface Props {
   movie: MovieType;

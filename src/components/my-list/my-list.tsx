@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {MovieType} from "../../types";
+import {MovieType} from '../../types';
 import {connect} from 'react-redux';
 
 import PageFooter from '../page-footer/page-footer';

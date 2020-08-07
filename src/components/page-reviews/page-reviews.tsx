@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ReviewType} from "../../types";
+import {ReviewType} from '../../types';
 import {connect} from 'react-redux';
 
 import Review from '../review/review';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as moment from 'moment';
-import {ReviewType} from "../../types";
+import {ReviewType} from '../../types';
 import {getRatingFormat} from '../../utils';
 
 interface Props {

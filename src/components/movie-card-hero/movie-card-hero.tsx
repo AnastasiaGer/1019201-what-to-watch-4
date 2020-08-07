@@ -5,8 +5,8 @@ import {Link} from 'react-router-dom';
 import PageHeader from '../page-header/page-header';
 import MyListButton from '../my-list-button/my-list-button';
 
-import {AuthorizationStatus, AppRoute, PageNames} from "../../const";
-import {MovieType} from "../../types";
+import {AuthorizationStatus, AppRoute, PageNames} from '../../const';
+import {MovieType} from '../../types';
 
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 

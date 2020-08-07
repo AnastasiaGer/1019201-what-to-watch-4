@@ -1,4 +1,4 @@
-import {ALL_GENRES, MAX_SHOWN_MOVIES_LIKE_THIS, PageNames} from "../../const";
+import {ALL_GENRES, PageNames} from '../../const';
 import {extend} from '../../utils';
 import {MovieType} from '../../types';
 
@@ -10,9 +10,6 @@ interface AppStateActionInterface {
 interface InitialStateInterface {
   activeGenre?: string;
   currentMovie?: MovieType | {};
-  cardsToShow: MAX_SHOWN_MOVIES_LIKE_THIS,
-  isVideoPlayer: false,
-  currentPage: PageNames.MAIN,
 }
 
 
@@ -20,9 +17,6 @@ interface InitialStateInterface {
 const initialState: InitialStateInterface = {
   activeGenre: ALL_GENRES,
   currentMovie: {},
-  cardsToShow: MAX_SHOWN_MOVIES_LIKE_THIS,
-  isVideoPlayer: false,
-  currentPage: PageNames.MAIN,
 };
 
 const ActionType = {

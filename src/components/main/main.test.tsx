@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import Main from "./main";
+import Main from './main';
 import {movieCard, movies, reviews} from '../../test-data';
 import NameSpace from '../../reducer/name-space';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {Router} from 'react-router-dom';
 import history from '../../history';
-import {noop} from "../../utils";
+import {noop} from '../../utils';
 
 const genres = [`Comedies`, `Crime`, `Documentary`];
 const activeGenre = `Comedies`;

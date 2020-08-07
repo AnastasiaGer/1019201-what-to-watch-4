@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import {Provider} from "react-redux";
-import configureStore from "redux-mock-store";
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
 import {movieCard} from '../../test-data';
 import NameSpace from '../../reducer/name-space';
 import {Router} from 'react-router-dom';

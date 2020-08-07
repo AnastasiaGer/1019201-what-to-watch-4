@@ -1,13 +1,13 @@
-import * as React from "react";
-import {configure, shallow} from "enzyme";
-import * as Adapter from "enzyme-adapter-react-16";
-import withReview from "./with-review";
-import history from "../../history";
-import {Router} from "react-router-dom";
-import {Provider} from "react-redux";
+import * as React from 'react';
+import {configure, shallow} from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
+import withReview from './with-review';
+import history from '../../history';
+import {Router} from 'react-router-dom';
+import {Provider} from 'react-redux';
 import configureMockStore from 'redux-mock-store';
-import {adaptMovie, adaptMovies} from "../../adapters/movie";
-import thunk from "redux-thunk";
+import {adaptMovie, adaptMovies} from '../../adapters/movie';
+import thunk from 'redux-thunk';
 import {movieCard as movie, movies} from '../../test-data';
 
 const mockStore = configureMockStore([thunk]);

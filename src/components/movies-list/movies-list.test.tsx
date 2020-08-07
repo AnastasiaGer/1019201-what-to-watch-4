@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import MoviesList from "./movies-list";
+import MoviesList from './movies-list';
 import {movies} from '../../test-data';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';

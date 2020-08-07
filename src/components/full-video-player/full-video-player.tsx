@@ -1,5 +1,5 @@
 import * as React from 'react';
-import history from "../../history";
+import history from '../../history';
 import {MovieType} from '../../types';
 
 interface Props {

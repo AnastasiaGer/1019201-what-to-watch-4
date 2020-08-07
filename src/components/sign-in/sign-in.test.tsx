@@ -7,7 +7,7 @@ import SignIn from './sign-in';
 import {movieCard} from '../../test-data';
 import {Router} from 'react-router-dom';
 import history from '../../history';
-import {noop} from "../../utils";
+import {noop} from '../../utils';
 
 describe(`SignIn`, () => {
   const mockStore = configureStore([]);

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {css} from "@emotion/core";
+import {css} from '@emotion/core';
 import DotLoader from 'react-spinners/DotLoader';
 
 const override = css`

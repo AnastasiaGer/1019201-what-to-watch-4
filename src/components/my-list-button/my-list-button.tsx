@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {MovieType} from "../../types";
-import {AuthorizationStatus, AppRoute} from "../../const";
+import {MovieType} from '../../types';
+import {AuthorizationStatus, AppRoute} from '../../const';
 import {connect} from 'react-redux';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import history from '../../history';

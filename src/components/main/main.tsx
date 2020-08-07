@@ -1,15 +1,15 @@
 import * as React from 'react';
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import MoviesList from '../movies-list/movies-list';
-import GenresList from "../genres-list/genres-list";
+import GenresList from '../genres-list/genres-list';
 import PageHeader from '../page-header/page-header';
 import PageFooter from '../page-footer/page-footer';
 import MyListButton from '../my-list-button/my-list-button';
 
-import {AppRoute, PageNames} from "../../const";
-import {MovieType} from "../../types";
+import {AppRoute, PageNames} from '../../const';
+import {MovieType} from '../../types';
 
 import {getMovieCard} from '../../reducer/data/selectors';
 

@@ -1,13 +1,13 @@
-import * as React from "react";
-import {configure, mount} from "enzyme";
-import * as Adapter from "enzyme-adapter-react-16";
-import SignIn from "./sign-in";
-import configureStore from "redux-mock-store";
-import {Provider} from "react-redux";
-import NameSpace from "../../reducer/name-space";
-import history from "../../history";
-import {Router} from "react-router-dom";
-import {noop} from "../../utils";
+import * as React from 'react';
+import {configure, mount} from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
+import SignIn from './sign-in';
+import configureStore from 'redux-mock-store';
+import {Provider} from 'react-redux';
+import NameSpace from '../../reducer/name-space';
+import history from '../../history';
+import {Router} from 'react-router-dom';
+import {noop} from '../../utils';
 
 configure({
   adapter: new Adapter(),

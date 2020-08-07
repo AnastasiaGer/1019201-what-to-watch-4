@@ -1,18 +1,18 @@
 import * as React from 'react';
-import {Switch, Route, Router, Redirect} from "react-router-dom";
-import {connect} from "react-redux";
+import {Switch, Route, Router, Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import Main from '../main/main';
-import MoviePage from "../movie-page/movie-page";
-import MyList from "../my-list/my-list";
+import MoviePage from '../movie-page/movie-page';
+import MyList from '../my-list/my-list';
 import SignIn from '../sign-in/sign-in';
 import AddReview from '../add-review/add-review';
-import PrivateRoute from "../private-route/private-route";
+import PrivateRoute from '../private-route/private-route';
 import FullVideoPlayer from '../full-video-player/full-video-player';
 import ErrorScreen from '../error-msg/error-msg';
 import Loading from '../loading/loading';
 
-import history from "../../history";
+import history from '../../history';
 import {AppRoute, AuthorizationStatus, ALL_GENRES} from '../../const';
 
 import withReview from '../../hocs/with-review/with-review';
@@ -25,7 +25,7 @@ import {getIsMoviePlayerActive} from '../../reducer/app-state/selectors';
 import {getAuthorizationStatus, getAuthorizationProgress} from '../../reducer/user/selectors';
 import {Operations as UserOperation} from '../../reducer/user/user';
 import {Operations as DataOperations} from '../../reducer/data/data';
-import {MovieType} from "../../types";
+import {MovieType} from '../../types';
 
 const FullVideoPlayerWrapped = withVideoControls(FullVideoPlayer);
 const AddReviewWrapped = withReview(AddReview);
