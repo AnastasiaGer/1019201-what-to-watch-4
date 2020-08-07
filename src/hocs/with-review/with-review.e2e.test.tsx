@@ -33,16 +33,16 @@ test(`onReviewSubmit called by handleSubmitClick`, () => {
   const api = {post: null};
   const onReviewSubmit = jest.fn().mockImplementationOnce(() => Promise.resolve(``));
   const wrapper = shallow(
-    <Provider store={store}>
+      <Provider store={store}>
         <Router history={history}>
-      <WrappedMockComponent
-        onReviewSubmit={onReviewSubmit}
-        currentMovie={movie}
-        store={store}
-        match={{params: {id: 1}}}
-        api={api}
-      />
-      </Router>
+          <WrappedMockComponent
+            onReviewSubmit={onReviewSubmit}
+            currentMovie={movie}
+            store={store}
+            match={{params: {id: 1}}}
+            api={api}
+          />
+        </Router>
       </Provider>
   );
 

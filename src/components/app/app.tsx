@@ -39,8 +39,8 @@ interface Props {
   setActiveGenre(genre: string): void;
   loadMovies(): void;
   movieCard: MovieType;
-  isVideoPlayer: boolean,
-  movies: Array<MovieType>,
+  isVideoPlayer: boolean;
+  movies: Array<MovieType>;
   login: string;
 }
 

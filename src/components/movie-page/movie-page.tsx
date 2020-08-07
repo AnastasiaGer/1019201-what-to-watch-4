@@ -50,11 +50,11 @@ class MoviePage extends React.PureComponent<Props, {}> {
       switch (activeTab) {
         case `Overview`:
           return <PageOverview
-          currentMovie={currentMovie}
+            currentMovie={currentMovie}
           />;
         case `Details`:
           return <PageDetails
-          currentMovie={currentMovie}
+            currentMovie={currentMovie}
           />;
         case `Reviews`:
           return <PageReviews

@@ -1,6 +1,6 @@
 import * as React from 'react';
 interface Props {
-  isPlaying: boolean,
+  isPlaying: boolean;
   source: string;
   poster: string;
 }
@@ -49,7 +49,7 @@ class VideoPlayer extends React.PureComponent<Props> {
         className="player__video"
         ref={this._video}
         poster={poster}
-        />
+      />
     );
   }
 }

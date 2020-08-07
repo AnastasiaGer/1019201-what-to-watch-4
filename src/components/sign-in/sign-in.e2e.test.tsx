@@ -7,6 +7,7 @@ import {Provider} from "react-redux";
 import NameSpace from "../../reducer/name-space";
 import history from "../../history";
 import {Router} from "react-router-dom";
+import {noop} from "../../utils";
 
 configure({
   adapter: new Adapter(),
@@ -23,18 +24,18 @@ it(`Click by Auth Button btn`, () => {
   });
 
   const signInComponent = mount(
-    <Provider store={store}>
+      <Provider store={store}>
         <Router history={history}>
-      <SignIn login={handleSubmitClick} />
-      </Router>
+          <SignIn login={handleSubmitClick} />
+        </Router>
       </Provider>, {
-    createNodeMock: () => {
-      return {};
-    }
-  });
+        createNodeMock: () => {
+          return {};
+        }
+      });
 
   const button = signInComponent.find(`button`);
-  button.simulate(`click`, {preventDefault: () => {}});
+  button.simulate(`click`, {preventDefault: {noop}});
 
 
   expect(handleSubmitClick).toEqual(handleSubmitClick);

@@ -18,7 +18,7 @@ interface InjectedProps {
 const withVideo = (Component) => {
   type P = React.ComponentProps<typeof Component>;
   type T = Props & Subtract<P, InjectedProps>;
-    class WithVideo extends React.PureComponent<T, State> {
+  class WithVideo extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 

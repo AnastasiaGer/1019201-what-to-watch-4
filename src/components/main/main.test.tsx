@@ -7,6 +7,7 @@ import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {Router} from 'react-router-dom';
 import history from '../../history';
+import {noop} from "../../utils";
 
 const genres = [`Comedies`, `Crime`, `Documentary`];
 const activeGenre = `Comedies`;
@@ -44,12 +45,12 @@ describe(`Main`, () => {
               <Main
                 movieCard={movieCard}
                 movies={movies}
-                onMovieCardClick={() => {}}
+                onMovieCardClick={noop}
                 genres={genres}
                 activeGenre={activeGenre}
-                onGenreItemClick={() => {}}
-                onShowMoreClick={() => {}}
-                onPlayClick={() => {}}
+                onGenreItemClick={noop}
+                onShowMoreClick={noop}
+                onPlayClick={noop}
               />
             </Provider>
           </Router>, {

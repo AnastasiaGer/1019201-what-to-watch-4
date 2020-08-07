@@ -15,13 +15,7 @@ interface Props {
 
 
 const FullVideoPlayer: React.FC<Props> = (props: Props) => {
-  const {movieCard, children,
-      duration,
-      currentTime,
-      isPlaying,
-      leftTime,
-      onIsPlayingChange,
-      onSetFullScreen} = props;
+  const {movieCard, children, duration, currentTime, isPlaying, leftTime, onIsPlayingChange, onSetFullScreen} = props;
   const {title} = movieCard;
 
   return (

@@ -7,7 +7,7 @@ import {AppRoute} from "../../const";
 
 interface Props {
   movie: MovieType;
-  isPlaying: boolean,
+  isPlaying: boolean;
   handlePlayFilm: (b: boolean) => void;
 }
 

@@ -13,7 +13,7 @@ interface Props {
 }
 
 const PageHeader: React.FC<Props> = (props: Props) => {
-  const {currentPage, isSignedIn, userInfo, children}= props;
+  const {currentPage, isSignedIn, userInfo, children} = props;
 
   const isSignInPage = currentPage === PageNames.SIGN_IN;
   const isMyListPage = currentPage === PageNames.MY_LIST;

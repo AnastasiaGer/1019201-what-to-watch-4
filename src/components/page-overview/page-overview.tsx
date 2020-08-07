@@ -7,7 +7,7 @@ interface Props {
 }
 
 const PageOverview: React.FC<Props> = (props: Props) => {
-  const {currentMovie}= props;
+  const {currentMovie} = props;
   const {rating, scores, description, director, starring} = currentMovie;
   return (
     <>

@@ -11,11 +11,11 @@ describe(`SmallMovieCard`, () => {
     const tree = renderer
       .create(
           <Router history={history}>
-              <SmallMovieCard
-                movie={movieCard}
-                isPlaying={false}
-                handlePlayFilm={noop}
-              />
+            <SmallMovieCard
+              movie={movieCard}
+              isPlaying={false}
+              handlePlayFilm={noop}
+            />
           </Router>, {
             createNodeMock: () => {
               return {};

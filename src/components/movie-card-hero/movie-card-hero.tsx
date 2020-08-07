@@ -16,7 +16,7 @@ interface Props {
 }
 const MovieCardHero: React.FunctionComponent<Props> = (props: Props) => {
   const {currentMovie, isSignedIn} = props;
-  
+
   const addReviewButton = (
     <Link
       to={`${AppRoute.MOVIE_PAGE}/${currentMovie.id}/review`}

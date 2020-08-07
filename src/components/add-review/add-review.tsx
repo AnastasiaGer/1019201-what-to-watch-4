@@ -7,8 +7,8 @@ import {MovieType} from '../../types';
 
 interface Props {
   currentMovie: MovieType;
-  isDataSending: boolean,
-  isDispatchError: boolean,
+  isDataSending: boolean;
+  isDispatchError: boolean;
   onSubmitClick(): void;
   onFormChange(): void;
   onRatingChange(): void;
@@ -17,8 +17,8 @@ interface Props {
   reviewIsValid: boolean;
 }
 
-const AddReview : React.FunctionComponent<Props> = (props: Props) => {
-  const {currentMovie, isDataSending, isDispatchError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, reviewIsValid, ratingIsValid,} = props;
+const AddReview: React.FunctionComponent<Props> = (props: Props) => {
+  const {currentMovie, isDataSending, isDispatchError, onSubmitClick, onFormChange, onRatingChange, onReviewChange, reviewIsValid, ratingIsValid} = props;
   const {backgroundColor, title, background, poster} = currentMovie;
   const isRadioDisabled = Boolean(isDataSending);
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Time} from '../const';
 import {Subtract} from "utility-types";
-import {MovieType} from '../types'
+import {MovieType} from '../types';
 
 interface Props {
   movieCard: MovieType;

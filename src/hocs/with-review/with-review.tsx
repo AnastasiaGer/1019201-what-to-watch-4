@@ -4,7 +4,7 @@ import {Operations as DataOperations, ActionCreator} from '../../reducer/data/da
 import {getCurrentMovieById} from '../../reducer/app-state/selectors';
 import {ReviewLength, NUMBER_OF_RATINGS} from '../../const';
 import {getIsReviewSending, getIsDispatchError} from '../../reducer/data/selectors';
-import {MovieType} from '../../types'
+import {MovieType} from '../../types';
 
 const validateReview = (comment) => {
   return comment.length >= ReviewLength.MIN && comment.length <= ReviewLength.MAX;

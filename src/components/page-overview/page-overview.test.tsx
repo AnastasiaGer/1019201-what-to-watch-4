@@ -5,7 +5,6 @@ import {movieCard} from '../../test-data';
 
 describe(`PageOverview`, () => {
   it(`Should render correctly`, () => {
-    const {description, director, rating, scores, starring} = movieCard;
 
     const tree = renderer
       .create(<PageOverview
