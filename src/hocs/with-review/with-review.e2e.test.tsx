@@ -1,5 +1,5 @@
 import * as React from "react";
-import {configure, shallow, mount} from "enzyme";
+import {configure, shallow} from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
 import withReview from "./with-review";
 import history from "../../history";
@@ -26,6 +26,7 @@ const store = mockStore({
 
 const MockComponent = () => <div/>;
 const WrappedMockComponent = withReview(MockComponent);
+
 configure({adapter: new Adapter()});
 
 test(`onReviewSubmit called by handleSubmitClick`, () => {
