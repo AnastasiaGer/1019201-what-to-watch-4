@@ -141,9 +141,6 @@ const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
   },
-  // onReviewSubmit(movieId, review) {
-  //   dispatch(DataOperations.pushReview(movieId, review));
-  // },
   setActiveGenre(genre) {
     dispatch(ActionCreator.changeFilter(genre));
   },
