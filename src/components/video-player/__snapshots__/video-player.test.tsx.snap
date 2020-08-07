@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VideoPlayer Should render correctly component 1`] = `
+<video
+  className="player__video"
+  poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+/>
+`;

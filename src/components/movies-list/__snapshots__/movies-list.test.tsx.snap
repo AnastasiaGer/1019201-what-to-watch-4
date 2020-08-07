@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MoviesList Should render correctly movie card 1`] = `
+<div
+  className="catalog__movies-list"
+>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <a
+      className="small-movie-card__link"
+      href="/films/123890"
+      onClick={[Function]}
+    >
+      <div
+        className="small-movie-card__image"
+      >
+        <video
+          className="player__video"
+          poster="img/snatch.jpg"
+        />
+        <img
+          alt="Snatch"
+          height="175"
+          src="img/snatch.jpg"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        Snatch
+      </h3>
+    </a>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <a
+      className="small-movie-card__link"
+      href="/films/34567"
+      onClick={[Function]}
+    >
+      <div
+        className="small-movie-card__image"
+      >
+        <video
+          className="player__video"
+          poster="img/bohemian-rhapsody.jpg"
+        />
+        <img
+          alt="Bohemian Rhapsody"
+          height="175"
+          src="img/bohemian-rhapsody.jpg"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        Bohemian Rhapsody
+      </h3>
+    </a>
+  </article>
+</div>
+`;
