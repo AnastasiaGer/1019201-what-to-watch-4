@@ -8,17 +8,17 @@ import {AppRoute} from '../../const';
 interface Props {
   movie: MovieType;
   isPlaying: boolean;
-  handlePlayFilm: (b: boolean) => void;
+  onPlayFilmHandle: (b: boolean) => void;
 }
 
 const SmallMovieCard: React.FC<Props> = (props: Props) => {
-  const {movie, isPlaying, handlePlayFilm} = props;
+  const {movie, isPlaying, onPlayFilmHandle} = props;
 
   return (
     <article
       className="small-movie-card catalog__movies-card"
-      onMouseEnter={() => handlePlayFilm(true)}
-      onMouseLeave={() => handlePlayFilm(false)}
+      onMouseEnter={() => onPlayFilmHandle(true)}
+      onMouseLeave={() => onPlayFilmHandle(false)}
     >
       <Link
         className="small-movie-card__link"

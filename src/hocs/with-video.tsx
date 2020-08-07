@@ -12,7 +12,7 @@ interface State {
 
 interface InjectedProps {
   isPlaying: boolean;
-  handlePlayFilm: (isPlaying: boolean) => void;
+  onPlayFilmHandle: (isPlaying: boolean) => void;
 }
 
 const withVideo = (Component) => {
@@ -26,10 +26,10 @@ const withVideo = (Component) => {
         isPlaying: false,
       };
 
-      this._handlePlayFilm = this._handlePlayFilm.bind(this);
+      this._onPlayFilmHandle = this._onPlayFilmHandle.bind(this);
     }
 
-    _handlePlayFilm(isPlaying) {
+    _onPlayFilmHandle(isPlaying) {
       this.setState({
         isPlaying
       });
@@ -40,7 +40,7 @@ const withVideo = (Component) => {
       return <Component
         {...this.props}
         isPlaying={isPlaying}
-        handlePlayFilm={this._handlePlayFilm}
+        onPlayFilmHandle={this._onPlayFilmHandle}
       />;
     }
   }

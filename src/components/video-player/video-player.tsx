@@ -15,25 +15,23 @@ class VideoPlayer extends React.PureComponent<Props> {
   }
 
   componentDidMount() {
+    const {source} = this.props;
     const video = this._video.current;
-
+    video.src = source;
     video.muted = true;
-
   }
 
   componentWillUnmount() {
     const video = this._video.current;
+
     video.onplay = null;
     video.src = ``;
-
     video.muted = null;
   }
 
   componentDidUpdate() {
-    const {source, isPlaying} = this.props;
+    const {isPlaying} = this.props;
     const video = this._video.current;
-
-    video.src = source;
 
     if (isPlaying) {
       video.play();

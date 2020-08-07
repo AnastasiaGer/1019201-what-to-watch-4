@@ -1,4 +1,4 @@
-import {RatingLevel} from './const';
+import {RatingLevel, RatingNumber} from './const';
 
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
@@ -11,13 +11,13 @@ export const noop = () => {
 
 export const getMovieRatingDescription = (rating) => {
   let ratingLevel = ``;
-  if (rating === 10) {
+  if (rating === RatingNumber.AWESOME) {
     ratingLevel = RatingLevel.AWESOME;
-  } else if (rating >= 8) {
+  } else if (rating >= RatingNumber.VERY_GOOD) {
     ratingLevel = RatingLevel.VERY_GOOD;
-  } else if (rating >= 5) {
+  } else if (rating >= RatingNumber.GOOD) {
     ratingLevel = RatingLevel.GOOD;
-  } else if (rating >= 3) {
+  } else if (rating >= RatingNumber.NORMAL) {
     ratingLevel = RatingLevel.NORMAL;
   } else {
     ratingLevel = RatingLevel.BAD;

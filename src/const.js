@@ -30,6 +30,13 @@ export const RatingLevel = {
   BAD: `Bad`
 };
 
+export const RatingNumber = {
+  AWESOME: 10,
+  VERY_GOOD: 8,
+  GOOD: 5,
+  NORMAL: 3,
+};
+
 export const TABS = {
   OVERVIEW: `overview`,
   DETAILS: `details`,
