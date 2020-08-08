@@ -70,7 +70,8 @@ const withVideoControls = (Component) => {
 
     componentWillUnmount() {
       const video = this._videoRef.current;
-
+      video.onplay = null;
+      video.onpause = null;
       video.src = ``;
       video.onloadedmetadata = null;
       video.ontimeupdate = null;
