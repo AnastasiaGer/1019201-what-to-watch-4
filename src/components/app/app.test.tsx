@@ -45,7 +45,6 @@ describe(`App`, () => {
               isAuthorizationProgress={true}
               isLoading={false}
               authorizationStatus={`AUTH`}
-              setActiveGenre={noop}
               loadMovies={noop}
               movieCard={movieCard}
               isVideoPlayer={false}

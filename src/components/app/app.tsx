@@ -36,7 +36,6 @@ interface Props {
   isAuthorizationProgress: boolean;
   isLoading: boolean;
   authorizationStatus: string;
-  setActiveGenre(genre: string): void;
   loadMovies(): void;
   movieCard: MovieType;
   isVideoPlayer: boolean;
@@ -47,11 +46,10 @@ interface Props {
 const App: React.FC<Props> = (props: Props) => {
   const {movies, login,
     authorizationStatus, isLoadError,
-    movieCard, loadMovies, setActiveGenre, isAuthorizationProgress, isLoading
+    movieCard, loadMovies, isAuthorizationProgress, isLoading
   } = props;
 
   const renderMainPage = () => {
-    setActiveGenre(ALL_GENRES);
     return !isLoadError ? <Main /> : <ErrorScreen />;
   };
 
@@ -140,9 +138,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   login(authData) {
     dispatch(UserOperation.login(authData));
-  },
-  setActiveGenre(genre) {
-    dispatch(ActionCreator.changeFilter(genre));
   },
 });
 
