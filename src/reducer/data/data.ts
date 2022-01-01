@@ -104,7 +104,7 @@ const ActionCreator = {
 
 const Operations = {
   loadMovieCard: () => (dispatch, getState, api) => {
-    return api.get(`/films/promo`)
+    return api.get(`/films/1`)
       .then((response) => {
         dispatch(ActionCreator.loadMovieCard(adaptMovie(response.data)));
         dispatch(AppStateActionCreator.setCurrentMovie(adaptMovie(response.data)));
