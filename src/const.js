@@ -1,4 +1,4 @@
-export const ENTRY_POINT = `https://4.react.pages.academy/wtw`;
+export const ENTRY_POINT = `https://8.react.pages.academy/wtw`;
 export const REQUEST_TIMEOUT = 5000;
 export const MAX_SIMILAR_CARDS = 4;
 export const ALL_GENRES = `All genres`;
